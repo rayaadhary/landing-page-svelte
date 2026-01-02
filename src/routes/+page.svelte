@@ -7,6 +7,7 @@
 
 <svelte:head>
 	<title>SITEMEDIKA — The perfect site you have, the convenience you get.</title>
+  <meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
 	<meta
 		name="description"
 		content="Platform profesional untuk mengelola produk dan operasi dengan cepat, aman, dan skalabel."
