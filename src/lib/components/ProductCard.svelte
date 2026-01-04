@@ -4,6 +4,7 @@
 	export let description;
 	export let features = [];
 	export let screenshot;
+	export let slug;
 </script>
 
 <div class="rounded-2xl ring-1 ring-neutral-200 bg-white overflow-hidden h-full flex flex-col border-t border-b border-neutral-200">
@@ -11,8 +12,7 @@
 		{#if screenshot}
 			<img src={screenshot} alt={`${title} screenshot`} class="w-full h-full object-cover" />
 		{:else}
-			<div class="h-full w-full flex items-center justify-center text-neutral-500 text-sm">
-				Screenshot akan ditaruh di sini
+			<div class="h-full w-full flex items-center justify-center text-neutral-500 text-sm">				
 			</div>
 		{/if}
 	</div>
@@ -30,7 +30,7 @@
 		</ul>
 		<div class="mt-6 flex items-center gap-3">
 			<a href="#contact" class="inline-flex items-center rounded-md bg-neutral-900 px-4 py-2 text-white text-sm">Request Demo</a>
-			<a href="#products" class="inline-flex items-center rounded-md ring-1 ring-inset ring-neutral-300 px-4 py-2 text-neutral-900 text-sm">Lihat Detail</a>
+			<a href={`/products/${slug}`} class="inline-flex items-center rounded-md ring-1 ring-inset ring-neutral-300 px-4 py-2 text-neutral-900 text-sm">Lihat Detail</a>
 		</div>
 	</div>
 </div>

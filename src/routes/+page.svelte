@@ -3,11 +3,14 @@
 	import Products from '$lib/components/Products.svelte';
 	import Features from '$lib/components/Features.svelte';
 	import Testimonials from '$lib/components/Testimonials.svelte';
+	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
+
 </script>
 
 <svelte:head>
 	<title>SITEMEDIKA — The perfect site you have, the convenience you get.</title>
-  <meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
+	<link rel="icon" href="/assets/logo-circle.png" />
+	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
 	<meta
 		name="description"
 		content="Platform profesional untuk mengelola produk dan operasi dengan cepat, aman, dan skalabel."
@@ -32,7 +35,9 @@
 			</div>
 			<div class="flex items-center gap-4">
 				<a
-					href="#contact"
+					href={whatsappLink}
+					target="_blank"
+					rel="noopener noreferrer"
 					class="inline-flex items-center rounded-md bg-white px-5 py-3 text-sm text-neutral-900"
 					>Hubungi Sales</a
 				>

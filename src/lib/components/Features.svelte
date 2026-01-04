@@ -1,24 +1,31 @@
 <script>
+	import {
+		ChartNoAxesCombined,
+		Settings,
+		Shield,
+		Plug
+	} from 'lucide-svelte';
+
 	const features = [
 		{
 			title: 'Pantau Bisnis Detik Ini',
 			desc: 'Data akurat yang tersaji instan, tanpa perlu tunggu laporan akhir bulan.',
-			icon: '📊'
+			icon: ChartNoAxesCombined
 		},
 		{
 			title: 'Kerja Otomatis, Tim Efisien',
 			desc: 'Biarkan sistem urus tugas rutin. Tim Anda bisa fokus ke hal yang lebih krusial.',
-			icon: '⚙️'
+			icon: Settings
 		},
 		{
 			title: 'Keamanan Lapis Baja',
 			desc: 'Privasi data klien terlindungi dengan enkripsi standar internasional.',
-			icon: '🛡️'
+			icon: Shield
 		},
 		{
 			title: 'Ekosistem Tanpa Batas',
 			desc: 'Satu sistem yang nyambung ke semua aplikasi yang sudah Anda gunakan.',
-			icon: '🔌'
+			icon: Plug
 		}
 	];
 </script>
@@ -32,7 +39,7 @@
 		{#each features as f}
 			<div class="rounded-xl bg-white p-6 ring-1 ring-neutral-200">
 				<div class="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-100 text-lg">
-					{f.icon}
+					<svelte:component this={f.icon} />
 				</div>
 				<div class="mt-4 font-medium text-neutral-900">{f.title}</div>
 				<div class="mt-2 text-sm text-neutral-600">{f.desc}</div>

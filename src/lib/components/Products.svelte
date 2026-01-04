@@ -3,27 +3,31 @@
 	import ProductCard from './ProductCard.svelte';
 	const products = [
 		{
+			slug: 'simrs',
 			title: 'SIMRS',
 			category: 'Healthcare',
 			description: 'Sistem Informasi Manajemen Rumah Sakit untuk operasional terpadu.',
 			features: ['Pendaftaran & EMR', 'Farmasi & Gudang', 'Billing & klaim BPJS', 'Laporan regulasi'],
-			screenshot: ''
+			screenshot: '/assets/sim-klinik-login.png'
 		},
 		{
+			slug: 'sim-klinik',
 			title: 'SIM Klinik',
 			category: 'Healthcare',
 			description: 'Manajemen klinik end-to-end untuk praktik, cabang, dan jaringan.',
 			features: ['Pendaftaran pasien', 'Kasir & inventory', 'Rekam medis', 'Janji temu & notifikasi'],
-			screenshot: ''
+			screenshot: '/assets/sim-klinik-login.png'
 		},
 		{
+			slug: 'pos',
 			title: 'POS',
 			category: 'Retail',
 			description: 'Point of Sale modern untuk toko, restoran, dan gerai.',
 			features: ['Kasir cepat', 'Stok & varian', 'Diskon & membership', 'Laporan penjualan'],
-			screenshot: ''
+			screenshot: '/assets/pos-login.png'
 		},
 		{
+			slug: 'custom',
 			title: 'Create Your Own System',
 			category: 'Custom',
 			description: 'Bangun sistem sesuai kebutuhan bisnis Anda dengan modul siap pakai.',
