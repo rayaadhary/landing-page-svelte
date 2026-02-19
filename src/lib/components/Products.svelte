@@ -25,7 +25,7 @@
 				'Billing & klaim BPJS',
 				'Laporan regulasi'
 			],
-			screenshot: '/assets/hospital.png'
+			screenshot: '/assets/hospital2.png'
 		},
 		{
 			slug: 'sim-klinik',
@@ -38,16 +38,21 @@
 				'Rekam medis',
 				'Janji temu & notifikasi'
 			],
-			screenshot: '/assets/clinic.png'
+			screenshot: '/assets/clinic2.png'
 		},
 		{
-			slug: 'pos',
-			title: 'POS atau E-Kasir',
-			category: 'Retail',
-			description: 'Point of Sale modern untuk toko, restoran, dan gerai.',
-			features: ['Kasir cepat', 'Stok & varian', 'Diskon & membership', 'Laporan penjualan'],
-			screenshot: '/assets/pos.png'
-		},
+            slug: 'hris',
+            title: 'HRIS SITEMEDIKA',
+            category: 'Healthcare',
+            description: 'Sistem manajemen SDM terintegrasi untuk efisiensi administrasi personel medis dan staf.',
+            features: [
+                'Manajemen Shift & Jadwal Medis', 
+                'Presensi Online & GPS', 
+                'Payroll', 
+                'Pengajuan Cuti & Lembur'
+            ],
+            screenshot: '/assets/hris.png'
+        },
 		{
 			slug: 'invitation-digital',
 			title: 'Invitation Digital',

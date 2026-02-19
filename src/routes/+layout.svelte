@@ -8,8 +8,8 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
 			<a href="/" class="flex items-center gap-2">
-				<img src="/assets/logo-circle.png" alt="SITEMEDIKA" class="h-8 w-8 rounded-md" />
-				<span class="text-lg font-semibold tracking-tight text-neutral-900">SITEMEDIKA</span>
+				<img src="/assets/logo-blue.png" alt="SITEMEDIKA" class="h-10 w-45 rounded-md" />
+				<!-- <span class="text-lg font-semibold tracking-tight text-neutral-900">SITEMEDIKA</span> -->
 			</a>
 			<nav class="hidden items-center gap-8 text-sm text-neutral-600 md:flex">
 				<a href="#features" class="hover:text-neutral-900">Fitur</a>
