@@ -3,5 +3,5 @@ export const createWhatsAppLink = (number, message) => {
 };
 
 export const whatsappNumber = '6289671328650';
-export const whatsappMessage = 'Halo Saya Tertarik menggunakan sistem dari sitemedika bisa tolong dibantu?';
+export const whatsappMessage = 'Halo Saya Tertarik menggunakan sistem dari AORTA bisa tolong dibantu?';
 export const whatsappLink = createWhatsAppLink(whatsappNumber, whatsappMessage);
