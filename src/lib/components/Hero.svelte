@@ -92,11 +92,6 @@
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 				
 				<div class="space-y-6 text-left">
-					<!-- <div in:fly={{ y: -10, duration: 600, delay: 100 }} class="inline-flex items-center gap-2 rounded-full border border-[#0155FF]/20 bg-white px-4 py-1.5 text-xs font-bold text-[#0155FF] shadow-sm">
-						<span class="material-symbols-outlined text-sm animate-pulse" style="font-variation-settings: 'FILL' 1;">verified</span>
-						TERPERCAYA DI 50+ RUMAH SAKIT
-					</div> -->
-					
 					<h1 in:fly={{ y: 30, duration: 800, delay: 200 }} class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 leading-[1.15]">
 						Solusi Digital Terpadu untuk <span class="bg-gradient-to-r from-[#0155FF] to-[#00C2CB] bg-clip-text text-transparent">Kesehatan & HR</span>
 					</h1>
@@ -115,21 +110,18 @@
 					</div>
 				</div>
 
-				<div class="hidden lg:flex flex-col justify-between min-h-[250px] relative w-full max-w-xl pl-6 border-l-2 border-slate-200/60">
+				<div class="flex flex-col justify-between min-h-[250px] relative w-full max-w-xl lg:pl-6 lg:border-l-2 border-slate-200/60">
 					
 					<div class="absolute -left-10 top-10 w-32 h-32 bg-[#0155FF]/5 rounded-full blur-3xl pointer-events-none"></div>
 
 					{#key activeIndex}
 					<div class="space-y-6">
 						<div class="flex items-center gap-4" in:fly={{ y: 15, duration: 500 }}>
-							<div 
-								class="h-12 w-12 flex items-center justify-center text-[#0155FF] transition-all duration-500"
-							>
+							<div class="h-12 w-12 flex items-center justify-center text-[#0155FF]">
 								<span class="material-symbols-outlined text-2xl">{slides[activeIndex].icon}</span>
 							</div>
 							<div class="flex flex-col">
 								<span class="text-[16px] font-black tracking-widest text-[#0155FF] uppercase">{slides[activeIndex].title}</span>
-								<!-- <span class="text-xs text-slate-400 font-medium font-mono">system_analysis.log</span> -->
 							</div>
 						</div>
 
@@ -142,29 +134,6 @@
 						</p>
 					</div>
 					{/key}
-
-					<!-- <div class="mt-8 space-y-4">
-						<div class="flex gap-3">
-							{#each slides as _, i}
-								<div class="h-[3px] flex-1 bg-slate-200 rounded-full overflow-hidden">
-									{#if i === activeIndex}
-										<div class="h-full bg-gradient-to-r from-[#0155FF] to-[#00C2CB]" style="width: {progress}%"></div>
-									{:else if i < activeIndex}
-										<div class="h-full bg-slate-400" style="width: 100%"></div>
-									{/if}
-								</div>
-							{/each}
-						</div>
-						
-						<div class="flex items-center justify-between text-[10px] font-bold text-slate-400 font-mono tracking-wider">
-							<span class="flex items-center gap-1.5">
-								<span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping"></span> 
-								AORTA CORE LIVE ENGINE
-							</span>
-							<span class="text-[#0155FF]">STEP 0{activeIndex + 1} / 03</span>
-						</div>
-					</div> -->
-
 				</div>
 
 			</div>
