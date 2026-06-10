@@ -5,28 +5,35 @@
 
 	// Data penjelasan urgensi Aorta
 	const slides = [
-		{
-			title: 'SISTEM INFORMASI MANAJEMEN RUMAH SAKIT',
-			subtitle: 'Centralize Healthcare Flow',
-			desc: 'Tanpa SIMRS, data pasien tercecer. Integrasi Aorta memastikan rekam medis (EMR) sinkron real-time, mempercepat layanan hingga 60% dan siap bridging Satu Sehat.',
-			icon: 'local_hospital',
-			color: '#0155FF'
-		},
-		{
-			title: 'SISTEM INFORMASI MANAJEMEN KLINIK',
-			subtitle: 'Streamline Patient Journey',
-			desc: 'Klinik sering stuck di antrean kaku. Sistem kami mengotomatisasi pendaftaran & klaim BPJS, meminimalisir human error dan kebocoran biaya operasional.',
-			icon: 'medical_information',
-			color: '#00C2CB'
-		},
-		{
-			title: 'HUMAN RESOURCE INFORMATION SYSTEM',
-			subtitle: 'Optimize Medical Shifts',
-			desc: 'Manajemen shift dokter & perawat itu rumit. HRIS Aorta mengatur jadwal otomatis, payroll akurat, hingga tracking kredensial tenaga medis dalam satu klik.',
-			icon: 'groups',
-			color: '#1E293B'
-		}
-	];
+    		{
+   			title: 'SISTEM INFORMASI MANAJEMEN RUMAH SAKIT',
+   			subtitle: 'Centralize Healthcare Flow',
+   			desc: 'Kekacauan administrasi dan data pasien yang tercecer adalah mimpi buruk operasional Rumah Sakit. SIMRS Aorta hadir menyatukan seluruh departemen—mulai dari IGD, rawat jalan, rawat inap, hingga bagian keuangan—ke dalam satu ekosistem digital terpadu. Dengan Rekam Medis Elektronik (EMR) yang tersinkronisasi secara real-time, Anda dapat mempercepat waktu pelayanan pasien hingga 60%, memangkas antrean kaku, serta memastikan kepatuhan regulasi lewat sistem yang 100% siap bridging dengan SatuSehat Kemenkes.',
+   			icon: 'local_hospital',
+   			color: '#0155FF'
+    		},
+    		{
+   			title: 'SISTEM INFORMASI MANAJEMEN KLINIK',
+   			subtitle: 'Streamline Patient Journey',
+   			desc: 'Banyak klinik kehilangan pasien potensial hanya karena proses pendaftaran yang lambat dan birokrasi klaim yang rumit. SIM Klinik Aorta mendesain ulang seluruh perjalanan pasien dari hulu ke hilir lewat otomatisasi booking online, pengelolaan antrean mandiri, hingga bridging klaim BPJS Kesehatan yang bebas hambatan. Solusi ini dirancang khusus untuk meminimalkan human error dalam pencatatan medis, mempercepat perputaran pasien, dan menutup rapat setiap celah kebocoran biaya operasional harian Anda.',
+   			icon: 'medical_information',
+   			color: '#00C2CB'
+    		},
+    		{
+   			title: 'HUMAN RESOURCE INFORMATION SYSTEM',
+   			subtitle: 'Smart Workforce Management',
+   			desc: 'Mengelola karyawan dengan cara manual adalah resep instan untuk kekacauan operasional dan konflik internal. HRIS Aorta menyederhanakan manajemen SDM Anda melalui otomatisasi absensi berbasis GPS/biometrik, penjadwalan shift kerja yang fleksibel, hingga pengajuan cuti dan reimbursement tanpa kertas. Dilengkapi kalkulator payroll otomatis yang memproses gaji, lembur, BPJS, dan PPh 21 secara presisi dalam hitungan menit, sistem ini membebaskan tim HR Anda dari beban administratif harian untuk fokus pada retensi talenta terbaik.',
+   			icon: 'groups',
+   			color: '#1E293B'
+    		},
+    		{
+   			title: 'POINT OF SALE (POS) & INVENTORY',
+   			subtitle: 'Seamless Transactions, Absolute Control',
+   			desc: 'Kebocoran kasir, selisih stok barang, dan lambatnya antrean pembayaran adalah musuh utama pertumbuhan bisnis retail maupun F&B Anda. POS Aorta hadir sebagai solusi kasir pintar yang mempercepat transaksi lewat integrasi e-payment (QRIS & Virtual Account) dan pencatatan instan. Lebih dari sekadar mesin kasir, sistem ini mengotomatisasi manajemen inventori multi-gudang, memberikan peringatan otomatis saat stok menipis, serta menyajikan laporan keuangan real-time langsung ke ponsel Anda.',
+   			icon: 'receipt_long',
+   			color: '#EA580C'
+    		}
+    ];
 
 	let activeIndex = 0;
 	let displayedDesc = '';
@@ -61,7 +68,7 @@
 				activeIndex = (activeIndex + 1) % slides.length;
 				startTyping(slides[activeIndex].desc);
 			}
-		}, 60); // Total waktu per slide +- 6 detik
+		}, 150); // Total waktu per slide +- 6 detik
 
 		return () => {
 			clearInterval(coreInterval);
@@ -93,11 +100,11 @@
 				
 				<div class="space-y-6 text-left">
 					<h1 in:fly={{ y: 30, duration: 800, delay: 200 }} class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 leading-[1.15]">
-						Solusi Digital Terpadu untuk <span class="bg-gradient-to-r from-[#0155FF] to-[#00C2CB] bg-clip-text text-transparent">Kesehatan & HR</span>
+						Solusi Digital Terpadu Untuk <span class="bg-gradient-to-r from-[#0155FF] to-[#00C2CB] bg-clip-text text-transparent">Segala Jenis Kebutuhan Bisnis Anda</span>
 					</h1>
 					
 					<p in:fly={{ y: 20, duration: 800, delay: 400 }} class="text-base sm:text-lg text-slate-600 max-w-lg leading-relaxed">
-						Optimalkan operasional medis dan manajemen sumber daya manusia dengan sistem informasi terintegrasi yang modern, aman, dan efisien.
+						Optimalkan operasional bisnis anda dengan sistem informasi terintegrasi yang modern, aman, dan efisien
 					</p>
 					
 					<div in:fly={{ y: 20, duration: 800, delay: 600 }} class="flex flex-wrap gap-4 pt-2">
