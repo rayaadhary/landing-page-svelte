@@ -7,30 +7,31 @@
 		Sparkles
 	} from 'lucide-svelte';
 
+	// Data dirombak total agar mencerminkan fungsionalitas riil ekosistem AORTA
 	const features = [
 		{
-			title: 'Pantau Bisnis Detik Ini',
-			desc: 'Data akurat yang tersaji instan, tanpa perlu tunggu laporan akhir bulan. Analisis tren pendapatan, performa staf, hingga grafik logistik secara real-time dari satu dashboard utama.',
+			title: 'Real-Time Analytics Dashboard',
+			desc: 'Pantau konsolidasi data pendapatan harian, tren perputaran inventori multi-gudang, hingga utilisasi staf operasional secara instan tanpa perlu menunggu rekapitulasi manual akhir bulan.',
 			icon: ChartNoAxesCombined,
-			sizeClass: 'lg:col-span-2'
+			layoutClass: 'lg:col-span-2'
 		},
 		{
-			title: 'Kerja Otomatis, Tim Efisien',
-			desc: 'Biarkan sistem urus tugas rutin. Tim Anda bisa fokus ke hal yang lebih krusial tanpa hambatan birokrasi.',
+			title: 'Automated Workflow Engine',
+			desc: 'Otomatisasi birokrasi internal mulai dari kalkulator payroll PPh 21 otomatis pada HRIS, e-prescribing farmasi, hingga auto-order ke supplier saat stok logistik menipis.',
 			icon: Settings,
-			sizeClass: 'lg:col-span-2'
+			layoutClass: 'lg:col-span-2'
 		},
 		{
-			title: 'Keamanan Lapis Baja',
-			desc: 'Privasi data klien terlindungi dengan enkripsi standar internasional, audit logging ketat, serta pembagian hak akses (role permission) yang granular.',
+			title: 'Enterprise-Grade Security',
+			desc: 'Proteksi data sensitif dan rekam medis pasien dengan enkripsi end-to-end, pencatatan audit logging aktivitas user yang ketat, serta kontrol hak akses granular berbasis Role-Based Access Control (RBAC).',
 			icon: Shield,
-			sizeClass: 'lg:col-span-2'
+			layoutClass: 'lg:col-span-2'
 		},
 		{
-			title: 'Ekosistem Tanpa Batas',
-			desc: 'Satu ekosistem modular yang terintegrasi penuh ke semua aplikasi eksternal, bridging SatuSehat, klaim BPJS, hingga printer kasir tanpa setup rumit.',
+			title: 'Native Integration & Bridging',
+			desc: 'Terintegrasi penuh melalui API standar industri untuk bridging SatuSehat Kemenkes, validasi klaim BPJS Kesehatan (VClaim), hingga sinkronisasi multi-payment gateway QRIS/E-Wallet.',
 			icon: Plug,
-			sizeClass: 'lg:col-span-2'
+			layoutClass: 'lg:col-span-2'
 		}
 	];
 </script>
@@ -47,13 +48,13 @@
 			Arsitektur Fitur Utama Enterprise
 		</h2>
 		<p class="text-sm text-slate-500 font-medium leading-relaxed">
-			Infrastruktur sistem yang dirancang kokoh untuk mengakomodasi kebutuhan skalabilitas dan efisiensi perusahaan modern.
+			Infrastruktur sistem yang dirancang kokoh untuk mengakomodasi kebutuhan skalabilitas, validasi kepatuhan regulasi, dan efisiensi perusahaan modern.
 		</p>
 	</div>
 
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 relative z-10">
 		{#each features as f}
-			<div class="relative rounded-[2rem] border border-slate-200/80 bg-white p-8 shadow-[0_4px_20px_rgba(15,23,42,0.02)] flex flex-col justify-between {f.sizeClass}">
+			<div class="relative rounded-[2rem] border border-slate-200/80 bg-white p-8 shadow-[0_4px_20px_rgba(15,23,42,0.02)] flex flex-col justify-between {f.layoutClass}">
 				
 				<div class="space-y-4">
 					<div class="h-12 w-12 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#0155FF] to-[#00C2CB] text-white shadow-md shadow-blue-500/10">
