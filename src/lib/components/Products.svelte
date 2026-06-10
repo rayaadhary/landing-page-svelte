@@ -2,13 +2,68 @@
 	import { onMount } from 'svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { ArrowRight, ArrowLeft, CheckCircle2, Layout, Layers, X, Eye } from 'lucide-svelte';
+	import { ArrowRight, ArrowLeft, CheckCircle2, Layout, Layers, X } from 'lucide-svelte';
 	import ProductCard from './ProductCard.svelte';
 
-	let selectedProduct = $state(null);
+	// 1. PINDAHKAN PRODUCTS KE ATAS SINI AGAR BISA DIAKSES OLEH $derived DAN FUNGSI LAIN
+	const products = [
+		{
+			slug: 'simrs',
+			title: 'SIMRS Core Enterprise',
+			description: 'Solusi transformasi digital menyeluruh untuk manajemen Rumah Sakit skala besar. Menyinkronkan seluruh alur kerja klinis, operasional, hingga administrasi keuangan dalam satu pusat data terpadu guna mendongkrak efisiensi layanan, memangkas antrean pasien, serta menjamin validitas pelaporan.',
+			features: [
+				'Rekam Medis Elektronik (EMR) terintegrasi penuh & 100% Siap Bridging SatuSehat Kemenkes',
+				'Sistem Antrean Multi-Layanan Pintar untuk IGD, Rawat Jalan, Rawat Inap, dan Penunjang Medis',
+				'Modul Farmasi Terpadu (E-Prescribing, Manajemen Stok Obat, Gudang Utama, & Resep Otomatis)',
+				'Billing System Akurat dengan Fitur Auto-Klaim & Bridging Sistem BPJS Kesehatan (VClaim/P-Care)'
+			],
+			screenshot: '/assets/hospital2.png'
+		},
+		{
+			slug: 'sim-klinik',
+			title: 'SIM Klinik Pratama & Utama',
+			description: 'Sistem manajemen klinik modern multi-cabang yang dirancang end-to-end untuk memotong birokrasi pendaftaran yang lambat. Membantu pemilik klinik mengontrol rekam medis, mempercepat perputaran pasien, dan menutup rapat setiap celah potensi kebocoran biaya operasional harian.',
+			features: [
+				'Portal Reservasi Online Pasien Mandiri & Sistem Antrean Terjadwal Real-Time',
+				'Pencatatan Rekam Medis Elektronik (RME) Ringkas & Terstandarisasi Kemenkes RI',
+				'Kasir Billing Kas terintegrasi dengan modul Live Inventory obat dan alat kesehatan',
+				'Sistem Notifikasi WhatsApp Otomatis untuk pengingat jadwal kontrol & kuitansi digital'
+			],
+			screenshot: '/assets/clinic2.png'
+		},
+		{
+			slug: 'hris',
+			title: 'HRIS Smart Corporate',
+			description: 'Sistem manajemen SDM cerdas berbasis cloud yang dirancang untuk mengotomatisasi seluruh administrasi personalia perusahaan Anda. Menghilangkan kerumitan pengelolaan manual, menyinkronkan data kehadiran, serta menjaga keharmonisan internal lewat transparansi kalkulasi komponen hak karyawan.',
+			features: [
+				'Aplikasi Presensi Online Anti-Fake GPS dengan verifikasi pengenalan wajah (Biometrik/Face Recognition)',
+				'Manajemen Penjadwalan Kerja Fleksibel untuk mendukung multi-shift, lembur, dan rotasi divisi',
+				'Kalkulator Payroll Otomatis yang memproses Gaji Pokok, Lembur, Insentif, BPJS, hingga PPh 21 dalam hitungan menit',
+				'Portal Mandiri Karyawan (ESS App) untuk pengajuan klaim reimbursement, cuti, dan slip gaji paperless'
+			],
+			screenshot: '/assets/hris.png'
+		},
+		{
+			slug: 'pos-inventory',
+			title: 'POS & Intelligent Inventory',
+			description: 'Aplikasi kasir pintar serbaguna yang dirancang khusus untuk mengamankan pendapatan dan mengoptimalkan manajemen stok pada bisnis retail, grosir, maupun F&B. Membantu memantau performa bisnis dari mana saja, mempercepat layanan kasir, dan mencegah kerugian akibat kelalaian pencatatan persediaan.',
+			features: [
+				'Aplikasi Kasir Omnichannel yang mendukung Multi-Payment modern (QRIS, E-Wallet, & Virtual Account)',
+				'Sistem Manajemen Inventori Multi-Gudang dengan deteksi otomatis barang lambat laku (Slow-moving) & Expired Date',
+				'Penyesuaian Harga Fleksibel (Grosir, Eceran, Multi-Satuan) dilengkapi fitur auto-order ke Supplier saat stok menipis',
+				'Dashboard Laporan Keuangan Komprehensif (Laba Rugi, Margin, Neraca) yang bisa dipantau Real-Time lewat HP'
+			],
+			screenshot: '/assets/pos.png'
+		}
+	];
+
+	// 2. STATE DAN LOGIKAL LAINNYA DI BAWAHNYA
 	let page = $state(0);
 	let perPage = $state(3);
-	
+	let autoSlide;
+
+	let selectedProduct = $state(null);
+
 	function openModal(product) {
 		selectedProduct = product;
 	}
@@ -16,88 +71,50 @@
 	function closeModal() {
 		selectedProduct = null;
 	}
-
-	const products = [
-		{
-			slug: 'simrs',
-			title: 'SIMRS Core Enterprise',
-			// category: 'Healthcare System',
-			description: 'Sistem Informasi Manajemen Rumah Sakit untuk digitalisasi operasional medis, bridging SatuSehat, dan klaim BPJS terpadu.',
-			features: [
-				'Pendaftaran & EMR (SatuSehat Ready)',
-				'Farmasi, Apotek & Gudang Farmasi',
-				'Billing System & Auto-Klaim BPJS',
-				'Laporan Regulasi & Kemenkes otomatis'
-			],
-			screenshot: '/assets/hospital2.png'
-		},
-		{
-			slug: 'sim-klinik',
-			title: 'SIM Klinik Pratama & Utama',
-			// category: 'Healthcare System',
-			description: 'Manajemen klinik modern multi-cabang end-to-end untuk menyederhanakan antrean, rekam medis elektronik, dan kasir.',
-			features: [
-				'Pendaftaran pasien & Antrean Mandiri',
-				'Kasir POS, Billing & Live Inventory',
-				'Rekam Medis Elektronik (RME) ringkas',
-				'Janji Temu Online & Notifikasi WhatsApp'
-			],
-			screenshot: '/assets/clinic2.png'
-		},
-		{
-			slug: 'hris',
-			title: 'HRIS',
-			// category: 'Healthcare System',
-			description: 'Sistem manajemen SDM cerdas yang dirancang khusus untuk memetakan shift dinamis dokter, perawat, dan staf medis.',
-			features: [
-				'Manajemen Shift Komplex & Jadwal Medis', 
-				'Presensi Online Anti-Fake GPS & Biometrik', 
-				'Payroll Otomatis (Insentif, Lembur, Potongan)', 
-				'Pengajuan Cuti, Tukar Shift & Lembur App'
-			],
-			screenshot: '/assets/hris.png'
-		},
-		// {
-		// 	slug: 'invitation-digital',
-		// 	title: 'Premium Digital Invitation',
-		// 	category: 'Event Platform',
-		// 	description: 'Platform undangan digital interaktif kelas premium dengan animasi super smooth, RSVP real-time, dan kustomisasi tanpa batas.',
-		// 	features: ['Desain Kustom Eksklusif & Elegan', 'Manajemen Buku Tamu & RSVP Kontrol', 'Praktis, Instan & High Performance Layout'],
-		// 	screenshot: '/assets/invitation.png'
-		// },
-		// {
-		// 	slug: 'custom',
-		// 	title: 'Create Your Own System',
-		// 	category: 'Custom Architecture',
-		// 	description: 'Bangun platform berskala enterprise yang dirancang khusus sesuai dengan blueprint logika bisnis unik institusi Anda.',
-		// 	features: ['Arsitektur Modular & Highly Scalable', 'Integrasi API Publik & Eksternal Gate', 'Role & Advanced Permission Level Security', 'Rapid Deployment & Cloud Infrastructure'],
-		// 	screenshot: ''
-		// }
-	];
-
+	
 	function updatePerPage() {
 		const w = window.innerWidth;
 		perPage = w < 640 ? 1 : w < 1024 ? 2 : 3;
-		// Batasi halaman aktif agar tidak melebihi indeks maks baru
-		if (page > maxPage) page = maxPage;
+		handleAutoSlide();
 	}
-
-	let maxPage = $derived(Math.max(0, products.length - perPage));
-
+	
+	let maxPage = $derived(
+		Math.max(0, products.length - perPage)
+	);
+	
 	function next() {
 		page = page >= maxPage ? 0 : page + 1;
 	}
-
+	
 	function prev() {
 		page = page <= 0 ? maxPage : page - 1;
 	}
 
+	function handleAutoSlide() {
+		if (autoSlide) clearInterval(autoSlide);
+
+		if (products.length > perPage) {
+			autoSlide = setInterval(() => {
+				next();
+			}, 3000);
+		}
+	}
+	
 	onMount(() => {
 		updatePerPage();
 		window.addEventListener('resize', updatePerPage);
-		return () => window.removeEventListener('resize', updatePerPage);
+	
+		return () => {
+			window.removeEventListener('resize', updatePerPage);
+			if (autoSlide) clearInterval(autoSlide);
+		};
 	});
 </script>
+
+<svelte:head>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+</svelte:head>
 
 <section id="products" class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
 	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#00C2CB]/5 blur-[120px] pointer-events-none"></div>
@@ -115,7 +132,7 @@
 			</p>
 		</div>
 
-		<div class="flex items-center gap-2 self-start md:self-end">
+		<div class="flex items-center gap-2 self-start md:self-end" class:hidden={products.length <= perPage}>
 			<button
 				class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-[#0155FF] hover:text-[#0155FF] active:scale-95 shadow-sm"
 				onclick={prev}
@@ -133,44 +150,26 @@
 		</div>
 	</div>
 
-	<div class="relative z-10">
-		<div class="overflow-visible">
-			<div
-				class="flex transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1)"
-				style="transform: translateX(-{page * (100 / perPage)}%);"
-			>
-				{#each products as p}
+	<div class="relative z-10 w-full overflow-hidden">
+		<div
+			class="flex transition-transform duration-700 custom-easing"
+			style="transform: translateX(-{page * (100 / perPage)}%)"
+		>
+			{#each products as p (p.slug)}
+				<div
+					class="shrink-0 px-3"
+					style="width: calc(100% / {perPage})"
+				>
 					<div
-						class="px-3 shrink-0"
-						style="width: {100 / perPage}%;"
+						class="relative group h-full cursor-pointer transition-all duration-300 hover:-translate-y-2"
+						onclick={() => openModal(p)}
+						onkeydown={(e) => e.key === 'Enter' && openModal(p)}
+						role="button"
+						tabindex="0"
 					>
-						<div 
-							class="relative group cursor-pointer h-full"
-							onclick={() => openModal(p)}
-							onkeydown={(e) => e.key === 'Enter' && openModal(p)}
-							role="button"
-							tabindex="0"
-						>
-							<ProductCard {...p} />
-							
-							<div class="absolute top-4 right-4 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none z-20">
-								<div class="flex items-center gap-1.5 rounded-lg bg-slate-900/90 text-white text-[10px] font-bold px-2.5 py-1.5 backdrop-blur-sm shadow-md">
-									<Eye size={12} /> Quick View
-								</div>
-							</div>
-						</div>
+						<ProductCard {...p} />
 					</div>
-				{/each}
-			</div>
-		</div>
-
-		<div class="mt-10 flex justify-center gap-2">
-			{#each Array(maxPage + 1) as _, i}
-				<button
-					class="h-1.5 rounded-full transition-all duration-300 {page === i ? 'w-6 bg-gradient-to-r from-[#0155FF] to-[#00C2CB]' : 'w-1.5 bg-slate-200'}"
-					onclick={() => (page = i)}
-					aria-label="Go to page {i + 1}"
-				/>
+				</div>
 			{/each}
 		</div>
 	</div>
@@ -184,7 +183,7 @@
 			tabindex="-1"
 		>
 			<div
-				transition:fly={{ y: 30, duration: 400, easing: cubicOut }}
+				transition:fly={{ x: 100, duration: 400 }}
 				class="relative w-full max-w-5xl bg-white rounded-[2rem] shadow-[0_50px_100px_-20px_rgba(15,23,42,0.25)] overflow-hidden border border-slate-100 grid grid-cols-1 md:grid-cols-12 max-h-[90vh] md:max-h-[85vh]"
 				onclick={(e) => e.stopPropagation()}
 				role="dialog"
@@ -219,9 +218,6 @@
 				<div class="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between h-full overflow-y-auto bg-white">
 					<div class="space-y-5">
 						<div>
-							<!-- <span class="text-[9px] font-black tracking-widest text-[#0155FF] bg-blue-50 px-2 py-1 rounded border border-blue-100 uppercase">
-								{selectedProduct.category}
-							</span> -->
 							<h3 class="text-2xl font-black text-slate-900 mt-2.5 tracking-tight leading-tight">
 								{selectedProduct.title}
 							</h3>
@@ -265,3 +261,10 @@
 		</div>
 	{/if}
 </section>
+
+<style>
+	/* Animasi geser slider menggunakan kurva premium Quintic Easing */
+	.custom-easing {
+		transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+	}
+</style>
