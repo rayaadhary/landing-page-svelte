@@ -3,12 +3,55 @@
 	import './layout.css';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { 
+		ChevronDown, 
+		Activity, 
+		Stethoscope, 
+		Users2, 
+		ShoppingBag 
+	} from 'lucide-svelte';
 
 	let open = false;
+	
+	// State untuk kontrol dropdown produk di Desktop
+	let productDropdownOpen = false;
 
 	const closeMenu = () => {
 		open = false;
+		productDropdownOpen = false;
 	};
+
+	// Data produk lengkap untuk ditampilkan di dalam dropdown mega-menu
+	const productsList = [
+		{
+			title: 'SIMRS Enterprise',
+			desc: 'Sistem manajemen Rumah Sakit terintegrasi & siap bridging SatuSehat.',
+			href: '/products/simrs',
+			icon: Activity,
+			color: 'text-blue-600 bg-blue-50'
+		},
+		{
+			title: 'SIM Klinik',
+			desc: 'Solusi operasional Klinik Pratama & Utama modern berbasis cloud.',
+			href: '/products/sim-klinik',
+			icon: Stethoscope,
+			color: 'text-cyan-600 bg-cyan-50'
+		},
+		{
+			title: 'HRIS Smart Corporate',
+			desc: 'Otomatisasi payroll PPh 21, absensi biometrik, dan manajemen shift.',
+			href: '/products/hris',
+			icon: Users2,
+			color: 'text-indigo-600 bg-indigo-50'
+		},
+		{
+			title: 'POS & Intelligent Inventory',
+			desc: 'Aplikasi kasir multi-gudang penunjang bisnis retail dan grosir.',
+			href: '/products/pos-inventory',
+			icon: ShoppingBag,
+			color: 'text-emerald-600 bg-emerald-50'
+		}
+	];
 
 	// DATA SVG FIXED & VALID
 	const socialLinks = [
@@ -39,7 +82,10 @@
 	];
 </script>
 
-<header class="sticky top-0 z-50 w-full border-b border-neutral-100 bg-white/70 backdrop-blur-md transition-all duration-300">
+<header 
+	class="sticky top-0 z-50 w-full border-b border-neutral-100 bg-white/70 backdrop-blur-md transition-all duration-300"
+	on:mouseleave={() => productDropdownOpen = false}
+>
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-20 items-center justify-between">
 			
@@ -52,7 +98,41 @@
 
 			<nav class="hidden items-center gap-8 text-sm font-semibold text-neutral-600 md:flex">
 				<a href="#features" class="relative py-2 transition-colors duration-300 hover:text-[#0155FF] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#0155FF] after:to-[#00C2CB] after:transition-all after:duration-300 hover:after:w-full">Fitur</a>
-				<a href="#products" class="relative py-2 transition-colors duration-300 hover:text-[#0155FF] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#0155FF] after:to-[#00C2CB] after:transition-all after:duration-300 hover:after:w-full">Produk</a>
+				
+				<div class="relative inline-block">
+					<button 
+						class="flex items-center gap-1 py-2 transition-colors duration-300 hover:text-[#0155FF]"
+						on:mouseenter={() => productDropdownOpen = true}
+						on:click={() => productDropdownOpen = !productDropdownOpen}
+					>
+						<span>Produk</span>
+						<ChevronDown size={14} class="transition-transform duration-300 {productDropdownOpen ? 'rotate-180' : ''}" />
+					</button>
+
+					{#if productDropdownOpen}
+						<div 
+							transition:fly={{ y: 10, duration: 200, easing: cubicOut }}
+							class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[480px] rounded-2xl border border-neutral-100 bg-white p-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] backdrop-blur-xl grid grid-cols-1 gap-2"
+						>
+							{#each productsList as prod}
+								<a 
+									href={prod.href}
+									on:click={closeMenu}
+									class="flex items-start gap-4 rounded-xl p-3 transition-all duration-200 hover:bg-neutral-50 group"
+								>
+									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105 {prod.color}">
+										<svelte:component this={prod.icon} size={20} strokeWidth={2.5} />
+									</div>
+									<div class="space-y-0.5 text-left">
+										<p class="font-bold text-neutral-800 transition-colors group-hover:text-[#0155FF]">{prod.title}</p>
+										<p class="text-xs text-neutral-400 font-medium leading-normal">{prod.desc}</p>
+									</div>
+								</a>
+							{/each}
+						</div>
+					{/if}
+				</div>
+
 				<a href="#contact" class="relative py-2 transition-colors duration-300 hover:text-[#0155FF] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#0155FF] after:to-[#00C2CB] after:transition-all after:duration-300 hover:after:w-full">Kontak</a>
 				
 				<span class="h-4 w-px bg-neutral-200"></span>
@@ -91,9 +171,25 @@
 			transition:fly={{ y: -20, duration: 300, easing: cubicOut }}
 			class="absolute left-0 top-full w-full border-b border-neutral-100 bg-white/95 shadow-xl backdrop-blur-lg md:hidden"
 		>
-			<div class="space-y-2 px-6 py-6 font-medium text-neutral-700">
+			<div class="space-y-2 px-6 py-6 font-medium text-neutral-700 max-h-[80vh] overflow-y-auto">
 				<a href="#features" on:click={closeMenu} class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]">Fitur</a>
-				<a href="#products" on:click={closeMenu} class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]">Produk</a>
+				
+				<div class="space-y-1 border-l-2 border-neutral-100 ml-3 pl-3">
+					<p class="text-[11px] font-black uppercase text-neutral-400 tracking-wider px-3 mb-2">Daftar Produk</p>
+					{#each productsList as prod}
+						<a 
+							href={prod.href} 
+							on:click={closeMenu} 
+							class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]"
+						>
+							<div class="p-1 rounded-md {prod.color}">
+								<svelte:component this={prod.icon} size={15} />
+							</div>
+							<span>{prod.title}</span>
+						</a>
+					{/each}
+				</div>
+
 				<a href="#contact" on:click={closeMenu} class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]">Kontak</a>
 				
 				<div class="my-4 border-t border-neutral-100"></div>
