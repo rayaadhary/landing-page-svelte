@@ -5,6 +5,13 @@
 
 	// Data penjelasan urgensi Aorta
 	const slides = [
+            {
+			title: 'CUSTOM APP & ERP ENGINE',
+			subtitle: 'Build Your Own Business App',
+			desc: 'Setiap bisnis memiliki alur kerja unik yang tidak bisa dipaksa masuk ke dalam template software kaku. Melalui ekosistem arsitektur modular Aorta, Anda bertindak sebagai arsiteknya. Bebas pilih, rakit, dan aktifkan aplikasi apa pun yang Anda butuhkan—mulai dari absensi staf, kasir multi-outlet, akuntansi, hingga rekam medis—semuanya tersinkronisasi sempurna dalam satu database terpadu skala enterprise.',
+			icon: 'widgets',
+			color: '#0155FF'
+			},
     		{
    			title: 'SISTEM INFORMASI MANAJEMEN RUMAH SAKIT',
    			subtitle: 'Centralize Healthcare Flow',

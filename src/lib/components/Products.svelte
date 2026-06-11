@@ -2,11 +2,23 @@
 	import { onMount } from 'svelte';
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { ArrowRight, ArrowLeft, CheckCircle2, Layout, Layers, X } from 'lucide-svelte';
+	import { ArrowRight, ArrowLeft, CheckCircle2, Layout, Layers, X, Settings2 } from 'lucide-svelte';
 	import ProductCard from './ProductCard.svelte';
 
-	// 1. PINDAHKAN PRODUCTS KE ATAS SINI AGAR BISA DIAKSES OLEH $derived DAN FUNGSI LAIN
+	// PRODUCTS LIST (Ditambahkan Custom App Engine di baris paling pertama)
 	const products = [
+		{
+			slug: 'custom-erp',
+			title: 'Custom App & ERP Engine',
+			description: 'Infrastruktur pengembangan software modular yang dirancang khusus untuk bisnis dengan alur kerja unik. Anda bebas menentukan modul operasional, skema database, aturan approval, hingga integrasi pihak ketiga tanpa harus terikat oleh keterbatasan template aplikasi konvensional.',
+			features: [
+				'Arsitektur Modular Terintegrasi (Aktifkan modul POS, HRIS, Akuntansi, atau CRM dalam satu database tunggal)',
+				'Rancang Alur Kerja Fleksibel (Kustomisasi penuh hak akses, reporting dashboard, dan skema birokrasi internal)',
+				'Skalabilitas Skala Enterprise (Siap menampung jutaan data transaksi dengan performa server cloud yang optimal)',
+				'Konektivitas Open API (Kemudahan bridging dengan software internal eksisting maupun layanan eksternal)'
+			],
+			screenshot: null // Biar ngerender kondisi keren "Custom Engine State" pas modal dibuka
+		},
 		{
 			slug: 'simrs',
 			title: 'SIMRS Core Enterprise',
@@ -57,7 +69,6 @@
 		}
 	];
 
-	// 2. STATE DAN LOGIKAL LAINNYA DI BAWAHNYA
 	let page = $state(0);
 	let perPage = $state(3);
 	let autoSlide;
@@ -96,7 +107,7 @@
 		if (products.length > perPage) {
 			autoSlide = setInterval(() => {
 				next();
-			}, 3000);
+			}, 3500); // Sedikit dinaikkan biar jeda baca card custom lebih dapet
 		}
 	}
 	
@@ -122,13 +133,13 @@
 	<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 relative z-10">
 		<div class="space-y-3 max-w-xl text-left">
 			<div class="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-100 px-3 py-1 text-[10px] font-black tracking-widest text-[#0155FF] uppercase">
-				<Layers size={12} /> AORTA PRODUCT SUITE
+				<Layers size={12} /> GLOBAL CORE ECOSYSTEM
 			</div>
 			<h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-				Produk Digital Unggulan
+				Katalog Modul Aplikasi
 			</h2>
 			<p class="text-sm text-slate-500 font-medium leading-relaxed">
-				Sistem manajemen fasilitas kesehatan pintar, aplikasi HRIS, hingga platform kustom enterprise siap pakai.
+				Gunakan aplikasi instan siap pakai yang kami sediakan, atau rancang bangun ekosistem software kustom Anda sendiri bersama tim engineer kami.
 			</p>
 		</div>
 
@@ -207,10 +218,12 @@
 							/>
 						</div>
 					{:else}
-						<div class="flex flex-col items-center justify-center text-slate-400 font-mono text-xs text-center border-2 border-dashed border-slate-200 rounded-2xl w-full aspect-[16/10] bg-white p-8">
-							<Layout size={32} class="text-[#00C2CB] mb-2 stroke-[1.5]" />
-							<p class="font-bold text-slate-600">LIVE SCREENSHOT NOT FOUND</p>
-							<p class="text-[10px] text-slate-400 mt-1">Sistem sedang di-deploy di lingkungan staging.</p>
+						<div class="flex flex-col items-center justify-center text-slate-400 font-mono text-xs text-center border-2 border-dashed border-slate-200 rounded-3xl w-full aspect-[16/10] bg-white p-8 shadow-sm">
+							<div class="h-14 w-14 rounded-2xl bg-blue-50 text-[#0155FF] flex items-center justify-center mb-3 border border-blue-100/60 animate-pulse">
+								<Settings2 size={28} class="stroke-[1.5]" />
+							</div>
+							<p class="font-black text-slate-700 tracking-tight text-sm">TAILORED ENGINE BLUEPRINT</p>
+							<p class="text-[10px] text-slate-400 mt-1 max-w-xs leading-normal">Kustomisasi tanpa batas. Tim arsitek sistem kami siap menyusun modul baru terintegrasi sesuai kebutuhan alur kerja inti perusahaan Anda.</p>
 						</div>
 					{/if}
 				</div>
@@ -263,7 +276,6 @@
 </section>
 
 <style>
-	/* Animasi geser slider menggunakan kurva premium Quintic Easing */
 	.custom-easing {
 		transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 	}
