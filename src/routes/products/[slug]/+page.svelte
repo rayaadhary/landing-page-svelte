@@ -3,7 +3,6 @@
 		CheckCircle,
 		ClipboardList,
 		FileText,
-		Microsheet, // Typo penulisan bawaan di-fix otomatis ke Microscope bawah
 		Microscope,
 		Stethoscope,
 		ListChecks,
@@ -19,33 +18,53 @@
 		ShieldCheck,
 		ArrowLeft,
 		Check,
-		Zap
+		Zap,
+		Lock,
+		Fingerprint,
+		Coins,
+		Smartphone,
+		Percent,
+		Barcode,
+		Spline
 	} from 'lucide-svelte';
 	
-	export let data;
-	const { product } = data;
+	// 1. Tangkap props data bawaan SvelteKit
+	let { data } = $props();
+
+	// 2. Variabel product otomatis reaktif memantau perubahan data lewat $derived
+	let product = $derived(data.product);
 
 	function iconFor(m) {
 		const t = m.toLowerCase();
+		
+		// Domain Healthcare (SIMRS / Klinik)
 		if (t.includes('pendaftaran')) return ClipboardList;
-		if (t.includes('rekam medis') || t.includes('emr')) return FileText;
-		if (t.includes('lab') || t.includes('laboratorium') || t.includes('radiologi')) return Microscope;
-		if (t.includes('pelayanan medis') || t.includes('medis')) return Stethoscope;
+		if (t.includes('rekam medis') || t.includes('emr') || t.includes('rme')) return FileText;
+		if (t.includes('lab') || t.includes('laboratorium') || t.includes('radiologi') || t.includes('ris/pacs')) return Microscope;
+		if (t.includes('pelayanan medis') || t.includes('medis') || t.includes('klinis')) return Stethoscope;
 		if (t.includes('antrean') || t.includes('antrian')) return ListChecks;
-		if (t.includes('farmasi')) return Pill;
-		if (t.includes('gudang') || t.includes('stok') || t.includes('inventory') || t.includes('varian')) return Package;
-		if (t.includes('kasir')) return Receipt;
-		if (t.includes('billing') || t.includes('klaim')) return Receipt;
-		if (t.includes('laporan')) return BarChart3;
-		if (t.includes('sdm') || t.includes('manajemen') || t.includes('membership')) return Users;
-		if (t.includes('printer')) return Printer;
-		if (t.includes('scanner')) return Scan;
-		if (t.includes('janji') || t.includes('notifikasi')) return Calendar;
-		if (t.includes('integrasi api')) return Plug;
-		if (t.includes('role') || t.includes('permission')) return ShieldCheck;
-		if (t.includes('audit') || t.includes('logging')) return FileText;
-		if (t.includes('dashboard')) return BarChart3;
-		if (t.includes('integrasi bpjs') || t.includes('satu sehat')) return Plug;
+		if (t.includes('farmasi') || t.includes('obat')) return Pill;
+		
+		// Domain HRIS (Human Resource)
+		if (t.includes('absensi') || t.includes('biometrik') || t.includes('gps') || t.includes('presensi')) return Fingerprint;
+		if (t.includes('payroll') || t.includes('gaji') || t.includes('pph 21')) return Coins;
+		if (t.includes('shift') || t.includes('jadwal') || t.includes('penjadwalan')) return Calendar;
+		if (t.includes('ess app') || t.includes('portal mandiri') || t.includes('karyawan')) return Smartphone;
+		if (t.includes('performa') || t.includes('staf') || t.includes('sdm')) return Users;
+		
+		// Domain POS & Inventory (Commerce)
+		if (t.includes('kasir') || t.includes('omnichannel') || t.includes('qris')) return Receipt;
+		if (t.includes('gudang') || t.includes('stok') || t.includes('inventory') || t.includes('logistik')) return Package;
+		if (t.includes('expired') || t.includes('slow-moving')) return Lock;
+		if (t.includes('grosir') || t.includes('eceran') || t.includes('harga')) return Percent;
+		if (t.includes('printer') || t.includes('scanner') || t.includes('barcode')) return Barcode;
+		
+		// Infrastructure / Common Modules
+		if (t.includes('laporan') || t.includes('dashboard') || t.includes('keuangan')) return BarChart3;
+		if (t.includes('integrasi api') || t.includes('bridging') || t.includes('satu sehat') || t.includes('bpjs')) return Plug;
+		if (t.includes('role') || t.includes('permission') || t.includes('hak akses')) return ShieldCheck;
+		if (t.includes('audit') || t.includes('logging')) return Spline;
+		
 		return CheckCircle;
 	}
 </script>
@@ -74,7 +93,7 @@
 	<div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 		<div class="lg:col-span-5 space-y-4">
 			<span class="inline-block text-[10px] font-black tracking-[0.2em] uppercase text-[#0155FF] bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-md">
-				{product.category || 'ENTERPRISE SYSTEM'}
+				{product.category}
 			</span>
 			<h1 class="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
 				{product.title}
@@ -101,7 +120,7 @@
 							<span class="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></span>
 							<span class="h-2.5 w-2.5 rounded-full bg-green-500/80"></span>
 						</div>
-						<span class="text-[10px] font-mono text-slate-500 tracking-wider">aorta_interface_v4.png</span>
+						<span class="text-[10px] font-mono text-slate-500 tracking-wider">{product.slug}_interface_v4.png</span>
 						<div class="w-10"></div>
 					</div>
 					
@@ -148,53 +167,79 @@
 	</div>
 </section>
 
-<section id="pricing" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-200/60 scroll-mt-24">
+<section id="pricing" class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-200/60 scroll-mt-24">
 	<div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
-		<h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Skema Investasi Sesuai Skala</h2>
-		<p class="text-sm text-slate-500 font-medium">Transparan, efisien, dan fleksibel tanpa biaya maintenance tersembunyi.</p>
+		<h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Skema Investasi & Kemitraan</h2>
+		<p class="text-sm text-slate-500 font-medium">Sistem modular yang fleksibel, disesuaikan sepenuhnya dengan skala operasional dan regulasi institusi Anda.</p>
 	</div>
 
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-		{#each product.pricing as tier, index}
-			{@const isFeatured = index === 1}
-			<div class="relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 border {isFeatured ? 'border-[#0155FF] bg-slate-950 text-white md:scale-[1.03] shadow-[0_32px_64px_-16px_rgba(1,85,255,0.15)] z-10' : 'border-slate-200 bg-white text-slate-900 shadow-sm hover:border-slate-300'}"
-			>
-				{#if isFeatured}
-					<span class="absolute -top-3.5 left-1/3 -translate-x-1/2 bg-gradient-to-r from-[#0155FF] to-[#00C2CB] text-white text-[10px] font-black tracking-widest px-3 py-1 rounded-full uppercase shadow-md">
-						RECOMMENDED
-					</span>
-				{/if}
-
-				<div>
-					<div class="text-lg font-black tracking-tight">{tier.name}</div>
-					<div class="mt-3 flex items-baseline gap-1">
-						<span class="text-2xl sm:text-3xl font-black tracking-tight {isFeatured ? 'text-[#00C2CB]' : 'text-[#0155FF]'}">{tier.price}</span>
+	<div class="relative rounded-[2.5rem] border border-slate-200 bg-white p-8 sm:p-12 shadow-[0_32px_64px_-16px_rgba(15,23,42,0.04)] overflow-hidden">
+		<div class="absolute -right-16 -top-16 w-48 h-48 bg-gradient-to-br from-[#0155FF]/10 to-[#00C2CB]/10 rounded-full blur-2xl pointer-events-none"></div>
+		
+		<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+			
+			<div class="lg:col-span-7 space-y-5 text-left">
+				<div class="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-100 px-3 py-1 text-[10px] font-black tracking-widest text-[#0155FF] uppercase">
+					Tailored Enterprise Solution
+				</div>
+				<h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+					Implementasi Sesuai Kebutuhan Spesifik
+				</h3>
+				<p class="text-sm text-slate-500 font-medium leading-relaxed">
+					Kami memahami bahwa setiap institusi memiliki standarisasi alur kerja, volume pengguna, dan kebutuhan infrastruktur yang berbeda. Layanan kami bersifat modular—Anda hanya berinvestasi pada fitur dan kapasitas yang benar-benar digunakan.
+				</p>
+				
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-bold text-slate-600">
+					<div class="flex items-center gap-2.5">
+						<div class="h-5 w-5 rounded-md bg-blue-50 text-[#0155FF] flex items-center justify-center shrink-0">
+							<Check size={12} strokeWidth={3} />
+						</div>
+						<span>SLA Uptime & Support 24/7</span>
 					</div>
-					
-					<div class="my-6 border-t {isFeatured ? 'border-slate-800' : 'border-slate-100'}"></div>
+					<div class="flex items-center gap-2.5">
+						<div class="h-5 w-5 rounded-md bg-blue-50 text-[#0155FF] flex items-center justify-center shrink-0">
+							<Check size={12} strokeWidth={3} />
+						</div>
+						<span>Kepatuhan Regulasi Kemenkes/BPJS</span>
+					</div>
+					<div class="flex items-center gap-2.5">
+						<div class="h-5 w-5 rounded-md bg-blue-50 text-[#0155FF] flex items-center justify-center shrink-0">
+							<Check size={12} strokeWidth={3} />
+						</div>
+						<span>Opsi On-Premise / Hybrid Cloud</span>
+					</div>
+					<div class="flex items-center gap-2.5">
+						<div class="h-5 w-5 rounded-md bg-blue-50 text-[#015FF] flex items-center justify-center shrink-0">
+							<Check size={12} strokeWidth={3} />
+						</div>
+						<span>Pelatihan Staf & Maintenance Full</span>
+					</div>
+				</div>
+			</div>
 
-					<ul class="space-y-3.5 text-xs font-semibold">
-						{#each tier.highlights as h}
-							<li class="flex items-start gap-3">
-								<div class="h-4 w-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 {isFeatured ? 'bg-blue-500/20 text-[#00C2CB]' : 'bg-emerald-50 text-emerald-600'}">
-									<Check size={10} strokeWidth={3} />
-								</div>
-								<span class={isFeatured ? 'text-slate-300' : 'text-slate-600'}>{h}</span>
-							</li>
-						{/each}
-					</ul>
+			<div class="lg:col-span-5 bg-slate-950 text-white rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl border border-slate-900 text-center lg:text-left">
+				<div class="space-y-2">
+					<p class="text-[10px] font-black uppercase tracking-widest text-[#00C2CB]">Informasi Lebih Lanjut</p>
+					<h4 class="text-xl font-black tracking-tight text-white">Minta Penawaran Resmi</h4>
+					<p class="text-xs text-slate-400 font-medium leading-relaxed pt-1">
+						Diskusikan arsitektur sistem yang Anda butuhkan bersama Technical Product Consultant kami untuk mendapatkan rincian biaya penawaran (Quotation).
+					</p>
 				</div>
 
-				<div class="mt-8">
+				<div class="mt-8 space-y-3">
 					<a 
 						href="/#contact" 
-						class="flex w-full items-center justify-center rounded-xl py-3.5 text-center text-xs font-bold transition-all duration-300 active:scale-95 {isFeatured ? 'bg-gradient-to-r from-[#0155FF] to-[#00C2CB] text-white shadow-lg shadow-blue-500/20' : 'bg-slate-100 hover:bg-[#0155FF] hover:text-white text-slate-700'}"
+						class="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#0155FF] to-[#00C2CB] py-3.5 text-center text-xs font-bold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 active:scale-95"
 					>
 						Hubungi Sales Executive
 					</a>
+					<p class="text-[10px] text-slate-500 font-semibold text-center leading-normal">
+						Atau jadwalkan Zoom Technical Meeting via WhatsApp.
+					</p>
 				</div>
 			</div>
-		{/each}
+
+		</div>
 	</div>
 </section>
 

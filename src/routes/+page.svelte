@@ -25,7 +25,7 @@
 <Features />
 <Testimonials />
 
-<section id="get-started" class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 overflow-hidden">
+<section id="get-started" class="relative mx-auto max-w-9xl px-4 py-20 sm:px-6 lg:px-8 overflow-hidden">
 	<div class="relative rounded-[2.5rem] bg-slate-950 p-8 sm:p-12 md:p-16 overflow-hidden">
 		
 		<div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#0155FF]/10 blur-[80px] pointer-events-none"></div>
@@ -110,7 +110,7 @@
 					<ul class="space-y-3 text-xs font-semibold text-slate-400">
 						<li class="flex items-center gap-2">
 							<Mail size={14} class="text-[#0155FF] shrink-0" />
-							<span class="truncate">info@aorta.com</span>
+							<span class="truncate">aortadigitalsolusi.business@gmail.com</span>
 						</li>
 						<li class="flex items-center gap-2">
 							<Phone size={14} class="text-[#00C2CB] shrink-0" />
