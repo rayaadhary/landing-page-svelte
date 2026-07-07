@@ -90,7 +90,10 @@
 		<div class="flex h-20 items-center justify-between">
 			
 			<a href="/" class="group flex items-center gap-2 transition-transform duration-300 active:scale-95">
-				<img src="/assets/logo.png" alt="AORTA" class="h-15 w-15 rounded-md" />
+				<picture>
+					<source srcset="/assets/logo.webp" type="image/webp" />
+					<img src="/assets/logo.png" alt="AORTA" class="h-15 w-15 rounded-md" width="105" height="105" />
+				</picture>
 				<span class="text-2xl font-black tracking-tight bg-gray-800 bg-clip-text text-transparent transition-transform duration-500 group-hover:rotate-1">
 					AORTA
 				</span>

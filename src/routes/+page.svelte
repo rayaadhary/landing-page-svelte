@@ -71,7 +71,10 @@
 				
 				<div class="md:col-span-4 space-y-5">
 					<div class="flex items-center gap-2 text-[#0155FF]">
-					    <img src="/assets/logo.png" alt="AORTA" class="h-15 w-15 rounded-md" />
+					    <picture>
+							<source srcset="/assets/logo.webp" type="image/webp" />
+							<img src="/assets/logo.png" alt="AORTA" class="h-15 w-15 rounded-md" width="105" height="105" />
+						</picture>
 						<span class="text-lg font-black tracking-tight text-white">AORTA</span>
 					</div>
 					<p class="text-xs font-semibold text-slate-400 leading-relaxed">
