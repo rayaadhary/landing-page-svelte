@@ -128,6 +128,8 @@
 						<img 
 							src={product.screenshots[0]} 
 							alt={product.title} 
+							loading="lazy"
+							decoding="async"
 							class="w-full h-full object-cover pt-10 transition-transform duration-700 group-hover:scale-[1.02]" 
 						/>
 					{:else}

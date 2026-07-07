@@ -5,42 +5,42 @@
 
 	// Data penjelasan urgensi Aorta
 	const slides = [
-            {
+		{
 			title: 'CUSTOM APP & ERP ENGINE',
 			subtitle: 'Build Your Own Business App',
 			desc: 'Setiap bisnis memiliki alur kerja unik yang tidak bisa dipaksa masuk ke dalam template software kaku. Melalui ekosistem arsitektur modular Aorta, Anda bertindak sebagai arsiteknya. Bebas pilih, rakit, dan aktifkan aplikasi apa pun yang Anda butuhkan—mulai dari absensi staf, kasir multi-outlet, akuntansi, hingga rekam medis—semuanya tersinkronisasi sempurna dalam satu database terpadu skala enterprise.',
-			icon: 'widgets',
+			svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>',
 			color: '#0155FF'
-			},
-    		{
-   			title: 'SISTEM INFORMASI MANAJEMEN RUMAH SAKIT',
-   			subtitle: 'Centralize Healthcare Flow',
-   			desc: 'Kekacauan administrasi dan data pasien yang tercecer adalah mimpi buruk operasional Rumah Sakit. SIMRS Aorta hadir menyatukan seluruh departemen—mulai dari IGD, rawat jalan, rawat inap, hingga bagian keuangan—ke dalam satu ekosistem digital terpadu. Dengan Rekam Medis Elektronik (EMR) yang tersinkronisasi secara real-time, Anda dapat mempercepat waktu pelayanan pasien hingga 60%, memangkas antrean kaku, serta memastikan kepatuhan regulasi lewat sistem yang 100% siap bridging dengan SatuSehat Kemenkes.',
-   			icon: 'local_hospital',
-   			color: '#0155FF'
-    		},
-    		{
-   			title: 'SISTEM INFORMASI MANAJEMEN KLINIK',
-   			subtitle: 'Streamline Patient Journey',
-   			desc: 'Banyak klinik kehilangan pasien potensial hanya karena proses pendaftaran yang lambat dan birokrasi klaim yang rumit. SIM Klinik Aorta mendesain ulang seluruh perjalanan pasien dari hulu ke hilir lewat otomatisasi booking online, pengelolaan antrean mandiri, hingga bridging klaim BPJS Kesehatan yang bebas hambatan. Solusi ini dirancang khusus untuk meminimalkan human error dalam pencatatan medis, mempercepat perputaran pasien, dan menutup rapat setiap celah kebocoran biaya operasional harian Anda.',
-   			icon: 'medical_information',
-   			color: '#00C2CB'
-    		},
-    		{
-   			title: 'HUMAN RESOURCE INFORMATION SYSTEM',
-   			subtitle: 'Smart Workforce Management',
-   			desc: 'Mengelola karyawan dengan cara manual adalah resep instan untuk kekacauan operasional dan konflik internal. HRIS Aorta menyederhanakan manajemen SDM Anda melalui otomatisasi absensi berbasis GPS/biometrik, penjadwalan shift kerja yang fleksibel, hingga pengajuan cuti dan reimbursement tanpa kertas. Dilengkapi kalkulator payroll otomatis yang memproses gaji, lembur, BPJS, dan PPh 21 secara presisi dalam hitungan menit, sistem ini membebaskan tim HR Anda dari beban administratif harian untuk fokus pada retensi talenta terbaik.',
-   			icon: 'groups',
-   			color: '#1E293B'
-    		},
-    		{
-   			title: 'POINT OF SALE (POS) & INVENTORY',
-   			subtitle: 'Seamless Transactions, Absolute Control',
-   			desc: 'Kebocoran kasir, selisih stok barang, dan lambatnya antrean pembayaran adalah musuh utama pertumbuhan bisnis retail maupun F&B Anda. POS Aorta hadir sebagai solusi kasir pintar yang mempercepat transaksi lewat integrasi e-payment (QRIS & Virtual Account) dan pencatatan instan. Lebih dari sekadar mesin kasir, sistem ini mengotomatisasi manajemen inventori multi-gudang, memberikan peringatan otomatis saat stok menipis, serta menyajikan laporan keuangan real-time langsung ke ponsel Anda.',
-   			icon: 'receipt_long',
-   			color: '#EA580C'
-    		}
-    ];
+		},
+		{
+			title: 'SISTEM INFORMASI MANAJEMEN RUMAH SAKIT',
+			subtitle: 'Centralize Healthcare Flow',
+			desc: 'Kekacauan administrasi dan data pasien yang tercecer adalah mimpi buruk operasional Rumah Sakit. SIMRS Aorta hadir menyatukan seluruh departemen—mulai dari IGD, rawat jalan, rawat inap, hingga bagian keuangan—ke dalam satu ekosistem digital terpadu. Dengan Rekam Medis Elektronik (EMR) yang tersinkronisasi secara real-time, Anda dapat mempercepat waktu pelayanan pasien hingga 60%, memangkas antrean kaku, serta memastikan kepatuhan regulasi lewat sistem yang 100% siap bridging dengan SatuSehat Kemenkes.',
+			svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 012-2h14a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M3 9V5a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M12 12v6"/><path d="M9 15h6"/></svg>',
+			color: '#0155FF'
+		},
+		{
+			title: 'SISTEM INFORMASI MANAJEMEN KLINIK',
+			subtitle: 'Streamline Patient Journey',
+			desc: 'Banyak klinik kehilangan pasien potensial hanya karena proses pendaftaran yang lambat dan birokrasi klaim yang rumit. SIM Klinik Aorta mendesain ulang seluruh perjalanan pasien dari hulu ke hilir lewat otomatisasi booking online, pengelolaan antrean mandiri, hingga bridging klaim BPJS Kesehatan yang bebas hambatan. Solusi ini dirancang khusus untuk meminimalkan human error dalam pencatatan medis, mempercepat perputaran pasien, dan menutup rapat setiap celah kebocoran biaya operasional harian Anda.',
+			svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+			color: '#00C2CB'
+		},
+		{
+			title: 'HUMAN RESOURCE INFORMATION SYSTEM',
+			subtitle: 'Smart Workforce Management',
+			desc: 'Mengelola karyawan dengan cara manual adalah resep instan untuk kekacauan operasional dan konflik internal. HRIS Aorta menyederhanakan manajemen SDM Anda melalui otomatisasi absensi berbasis GPS/biometrik, penjadwalan shift kerja yang fleksibel, hingga pengajuan cuti dan reimbursement tanpa kertas. Dilengkapi kalkulator payroll otomatis yang memproses gaji, lembur, BPJS, dan PPh 21 secara presisi dalam hitungan menit, sistem ini membebaskan tim HR Anda dari beban administratif harian untuk fokus pada retensi talenta terbaik.',
+			svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>',
+			color: '#1E293B'
+		},
+		{
+			title: 'POINT OF SALE (POS) & INVENTORY',
+			subtitle: 'Seamless Transactions, Absolute Control',
+			desc: 'Kebocoran kasir, selisih stok barang, dan lambatnya antrean pembayaran adalah musuh utama pertumbuhan bisnis retail maupun F&B Anda. POS Aorta hadir sebagai solusi kasir pintar yang mempercepat transaksi lewat integrasi e-payment (QRIS & Virtual Account) dan pencatatan instan. Lebih dari sekadar mesin kasir, sistem ini mengotomatisasi manajemen inventori multi-gudang, memberikan peringatan otomatis saat stok menipis, serta menyajikan laporan keuangan real-time langsung ke ponsel Anda.',
+			svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2z"/><path d="M8 10h8"/><path d="M8 14h5"/><path d="M8 6h8v4H8V6z"/><path d="M16 18a2 2 0 100-4 2 2 0 000 4z"/></svg>',
+			color: '#EA580C'
+		}
+	];
 
 	let activeIndex = 0;
 	let displayedDesc = '';
@@ -83,12 +83,6 @@
 		};
 	});
 </script>
-
-<svelte:head>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-</svelte:head>
-
 <div class="min-h-screen bg-slate-50 bg-texture text-slate-900 font-sans selection:bg-[#00C2CB] selection:text-white overflow-x-hidden relative">
 	
 	<div class="absolute inset-0 pointer-events-none overflow-hidden -z-10">
@@ -132,7 +126,7 @@
 					<div class="space-y-6">
 						<div class="flex items-center gap-4" in:fly={{ y: 15, duration: 500 }}>
 							<div class="h-12 w-12 flex items-center justify-center text-[#0155FF]">
-								<span class="material-symbols-outlined text-2xl">{slides[activeIndex].icon}</span>
+								{@html slides[activeIndex].svg}
 							</div>
 							<div class="flex flex-col">
 								<span class="text-[16px] font-black tracking-widest text-[#0155FF] uppercase">{slides[activeIndex].title}</span>

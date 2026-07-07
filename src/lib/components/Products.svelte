@@ -122,11 +122,6 @@
 	});
 </script>
 
-<svelte:head>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-</svelte:head>
-
 <section id="products" class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
 	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#00C2CB]/5 blur-[120px] pointer-events-none"></div>
 
@@ -214,6 +209,8 @@
 							<img
 								src={selectedProduct.screenshot}
 								alt={selectedProduct.title}
+								loading="lazy"
+								decoding="async"
 								class="h-auto w-full rounded-xl object-contain"
 							/>
 						</div>
