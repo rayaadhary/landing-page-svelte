@@ -100,6 +100,7 @@
 			</a>
 
 			<nav class="hidden items-center gap-8 text-sm font-semibold text-neutral-600 md:flex">
+				<a href="/blog" class="relative py-2 transition-colors duration-300 hover:text-[#0155FF] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#0155FF] after:to-[#00C2CB] after:transition-all after:duration-300 hover:after:w-full">Blog</a>
 				<a href="#features" class="relative py-2 transition-colors duration-300 hover:text-[#0155FF] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[#0155FF] after:to-[#00C2CB] after:transition-all after:duration-300 hover:after:w-full">Fitur</a>
 				
 				<div class="relative inline-block">
@@ -175,6 +176,7 @@
 			class="absolute left-0 top-full w-full border-b border-neutral-100 bg-white/95 shadow-xl backdrop-blur-lg md:hidden"
 		>
 			<div class="space-y-2 px-6 py-6 font-medium text-neutral-700 max-h-[80vh] overflow-y-auto">
+				<a href="/blog" on:click={closeMenu} class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]">Blog</a>
 				<a href="#features" on:click={closeMenu} class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]">Fitur</a>
 				
 				<div class="space-y-1 border-l-2 border-neutral-100 ml-3 pl-3">
