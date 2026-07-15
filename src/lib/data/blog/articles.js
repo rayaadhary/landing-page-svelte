@@ -39,6 +39,26 @@ const articles = [
 		readTime: '4 menit',
 		excerpt: 'Bingung memilih antara SIMRS untuk rumah sakit atau aplikasi klinik? Simak perbedaan mendasar dan panduan memilih dari AORTA.',
 	},
+	{
+		slug: 'aplikasi-rumah-sakit-gratis',
+		title: 'Aplikasi Rumah Sakit Gratis: Apakah Ada SIMRS yang Benar-Benar Gratis?',
+		category: 'SIMRS',
+		image: '/assets/hospital.png',
+		author: 'Tim AORTA',
+		date: '2025-07-15',
+		readTime: '5 menit',
+		excerpt: 'Mencari aplikasi rumah sakit gratis? Simak daftar SIMRS open source, keterbatasannya, dan kapan waktu yang tepat untuk beralih ke sistem berbayar.',
+	},
+	{
+		slug: 'aplikasi-klinik-gratis',
+		title: 'Aplikasi Klinik Gratis: 5 Rekomendasi dan Kapan Saatnya Berlangganan',
+		category: 'SIM Klinik',
+		image: '/assets/clinic2.png',
+		author: 'Tim AORTA',
+		date: '2025-07-12',
+		readTime: '5 menit',
+		excerpt: 'Butuh aplikasi klinik gratis untuk praktek? Ini 5 rekomendasi SIM Klinik gratis populer, plus panduan kapan saatnya upgrade ke sistem berbayar.',
+	},
 ];
 
 export function getAllArticles() {

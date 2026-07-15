@@ -10,7 +10,7 @@
 	<meta property="og:image" content={image} />
 	<meta property="og:type" content="article" />
 	<meta property="article:published_time" content={date} />
-	<link rel="canonical" href="https://aorta-digital.vercel.app/blog/{slug}" />
+	<link rel="canonical" href="https://aorta.my.id/blog/{slug}" />
 </svelte:head>
 
 <div class="min-h-screen bg-slate-50">

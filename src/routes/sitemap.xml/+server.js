@@ -1,4 +1,4 @@
-const BASE = 'https://aorta-digital.vercel.app';
+const BASE = 'https://aorta.my.id';
 
 const products = [
 	{ slug: 'simrs', updated: '2025-07-15' },
@@ -12,6 +12,8 @@ const blogArticles = [
 	{ slug: 'apa-itu-sim-klinik-manfaat', updated: '2025-07-05' },
 	{ slug: 'biaya-jasa-pembuatan-aplikasi-custom', updated: '2025-06-28' },
 	{ slug: 'perbedaan-simrs-dan-aplikasi-klinik', updated: '2025-06-20' },
+	{ slug: 'aplikasi-rumah-sakit-gratis', updated: '2025-07-15' },
+	{ slug: 'aplikasi-klinik-gratis', updated: '2025-07-12' },
 ];
 
 export async function GET() {

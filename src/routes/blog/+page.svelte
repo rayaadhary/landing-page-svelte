@@ -6,7 +6,7 @@
 <svelte:head>
 	<title>Blog — AORTA | Tips SIMRS, Aplikasi Klinik & Jasa Pembuatan Software</title>
 	<meta name="description" content="Blog AORTA: artikel seputar SIMRS rumah sakit, aplikasi klinik, HRIS, POS, dan jasa pembuatan aplikasi custom untuk bisnis di Indonesia." />
-	<link rel="canonical" href="https://aorta-digital.vercel.app/blog" />
+	<link rel="canonical" href="https://aorta.my.id/blog" />
 </svelte:head>
 
 <div class="min-h-screen bg-slate-50">

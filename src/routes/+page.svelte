@@ -20,7 +20,7 @@
 	<meta property="og:description" content="Solusi SIMRS, SIM Klinik, HRIS, POS, dan custom software untuk fasilitas kesehatan & enterprise di Indonesia." />
 	<meta property="og:image" content="/assets/logo.png" />
 	<meta property="og:type" content="website" />
-	<link rel="canonical" href="https://aorta-digital.vercel.app" />
+	<link rel="canonical" href="https://aorta.my.id" />
 </svelte:head>
 
 <Hero />
