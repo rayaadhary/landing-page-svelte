@@ -70,8 +70,9 @@
 </script>
 
 <svelte:head>
-	<title>{product.title} — Detail Produk Premium</title>
-	<meta name="description" content={product.overview} />
+	<title>{product.title} | AORTA — Solusi Sistem Informasi {product.category}</title>
+	<meta name="description" content="{product.overview} Hubungi AORTA untuk konsultasi dan demo gratis." />
+	<link rel="canonical" href="https://aorta-digital.vercel.app/products/{product.slug}" />
 </svelte:head>
 
 <div class="absolute inset-0 pointer-events-none overflow-hidden -z-10 bg-slate-50/50">

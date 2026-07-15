@@ -11,13 +11,16 @@
 </script>
 
 <svelte:head>
-	<title>AORTA — The perfect site you have, the convenience you get.</title>
+	<title>AORTA — Jasa Pembuatan Aplikasi Rumah Sakit, Klinik & Sistem Enterprise Custom</title>
 	<link rel="icon" href="/assets/logo.png" />
 	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
-	<meta
-		name="description"
-		content="Platform profesional untuk mengelola produk dan operasi fasilitas kesehatan pintar dengan cepat, aman, dan skalabel."
-	/>
+	<meta name="description" content="AORTA: Jasa pembuatan aplikasi rumah sakit (SIMRS), klinik, HRIS, POS, dan custom software. Solusi digital terintegrasi untuk fasilitas kesehatan & enterprise di Indonesia." />
+	<meta name="keywords" content="jasa pembuatan aplikasi, aplikasi rumah sakit, aplikasi klinik, SIMRS, sistem informasi rumah sakit, pembuatan software custom, AORTA" />
+	<meta property="og:title" content="AORTA — Jasa Pembuatan Aplikasi Rumah Sakit, Klinik & Sistem Enterprise" />
+	<meta property="og:description" content="Solusi SIMRS, SIM Klinik, HRIS, POS, dan custom software untuk fasilitas kesehatan & enterprise di Indonesia." />
+	<meta property="og:image" content="/assets/logo.png" />
+	<meta property="og:type" content="website" />
+	<link rel="canonical" href="https://aorta-digital.vercel.app" />
 </svelte:head>
 
 <Hero />
