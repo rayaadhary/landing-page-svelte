@@ -79,6 +79,16 @@ const articles = [
 		readTime: '5 menit',
 		excerpt: 'Mencari aplikasi rumah sakit murah tanpa biaya langganan bulanan? Simak opsi SIMRS sekali bayar, kelebihan, kekurangan, dan kapan model SaaS tetap lebih hemat.',
 	},
+	{
+		slug: 'aplikasi-klinik-sering-error-lemot',
+		title: 'Aplikasi Klinik Sering Error &amp; Lemot? Cara Memilih Sistem yang Stabil',
+		category: 'SIM Klinik',
+		image: '/assets/clinic.png',
+		author: 'Tim AORTA',
+		date: '2025-07-21',
+		readTime: '6 menit',
+		excerpt: 'Aplikasi klinik sering error atau lemot? Simak penyebab umum SIM Klinik tidak stabil, dampaknya ke operasional, dan panduan memilih sistem yang handal.',
+	},
 ];
 
 export function getAllArticles() {
