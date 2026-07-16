@@ -59,6 +59,26 @@ const articles = [
 		readTime: '5 menit',
 		excerpt: 'Butuh aplikasi klinik gratis untuk praktek? Ini 5 rekomendasi SIM Klinik gratis populer, plus panduan kapan saatnya upgrade ke sistem berbayar.',
 	},
+	{
+		slug: 'aplikasi-klinik-murah-tanpa-langganan',
+		title: 'Aplikasi Klinik Murah tanpa Langganan: Solusi Sekali Bayar Selamanya',
+		category: 'SIM Klinik',
+		image: '/assets/clinic2.png',
+		author: 'Tim AORTA',
+		date: '2025-07-18',
+		readTime: '5 menit',
+		excerpt: 'Cari aplikasi klinik murah tanpa biaya bulanan? Simak opsi software klinik sekali bayar, kelebihan vs kekurangannya, dan rekomendasi terbaik.',
+	},
+	{
+		slug: 'aplikasi-rumah-sakit-murah-tanpa-langganan',
+		title: 'Aplikasi Rumah Sakit Murah tanpa Langganan: Opsi dan Pertimbangannya',
+		category: 'SIMRS',
+		image: '/assets/hospital.png',
+		author: 'Tim AORTA',
+		date: '2025-07-19',
+		readTime: '5 menit',
+		excerpt: 'Mencari aplikasi rumah sakit murah tanpa biaya langganan bulanan? Simak opsi SIMRS sekali bayar, kelebihan, kekurangan, dan kapan model SaaS tetap lebih hemat.',
+	},
 ];
 
 export function getAllArticles() {
