@@ -52,6 +52,6 @@
 <h2>Lokasi &amp; Cakupan</h2>
 <p>Melayani seluruh wilayah Bandung Raya — Bandung Kota, Cimahi, Soreang, Banjaran, Cileunyi, Rancaekek, dan sekitarnya. Proses bisa online penuh atau tatap muka untuk kebutuhan spesifik.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Bandung">Konsultasi gratis via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Bandung">Konsultasi gratis via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

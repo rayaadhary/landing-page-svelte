@@ -52,6 +52,6 @@
 <h2>Lokasi &amp; Cakupan</h2>
 <p>Melayani seluruh wilayah Indramayu — Indramayu Kota, Jatibarang, Sliyeg, Karangampel, Haurgeulis, Anjatan, Patrol, Sindang, Lohbener, dan sekitarnya. Proses fleksibel — online atau tatap muka.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Indramayu">Konsultasi gratis via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Indramayu">Konsultasi gratis via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

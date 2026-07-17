@@ -63,6 +63,6 @@
 <li>✅ <strong>Harga terjangkau</strong> — tanpa biaya lisensi mahal ala software enterprise impor</li>
 </ul>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20software%20HRIS%20AORTA">Konsultasi gratis software HRIS via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20software%20HRIS%20AORTA">Konsultasi gratis software HRIS via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

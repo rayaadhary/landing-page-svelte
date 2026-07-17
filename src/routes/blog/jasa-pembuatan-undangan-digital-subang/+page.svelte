@@ -40,6 +40,6 @@
 <h2>Lokasi &amp; Cakupan</h2>
 <p>Melayani seluruh Subang — Subang Kota, Binong, Pamanukan, Ciasem, Patokbeusi, Purwadadi, Kalijati, Pagaden, dan sekitarnya.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20pesan%20undangan%20digital%20Subang">Pesan undangan digital via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20pesan%20undangan%20digital%20Subang">Pesan undangan digital via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

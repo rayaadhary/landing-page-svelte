@@ -85,6 +85,6 @@
 <p>AORTA SIM Klinik menggunakan model <strong>SaaS berlangganan</strong> mulai 850rb/bulan — sudah termasuk server, backup, support 24/7, update fitur rutin, bridging BPJS, dan RME standar Kemenkes. Tidak ada biaya instalasi atau biaya tersembunyi.</p>
 <p>Untuk klinik yang benar-benar ingin tanpa langganan, kami sarankan konsultasi dulu — mungkin model ini tetap lebih murah setelah dihitung total biaya kepemilikan selama 3-5 tahun.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20aplikasi%20klinik%20AORTA">Konsultasi gratis via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20aplikasi%20klinik%20AORTA">Konsultasi gratis via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

@@ -50,6 +50,6 @@
 <h2>Lokasi &amp; Cakupan</h2>
 <p>Melayani seluruh wilayah Subang — Subang Kota, Binong, Pamanukan, Ciasem, Patokbeusi, Purwadadi, Cibogo, Kalijati, Pagaden, dan sekitarnya. Proses online atau on-site.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Subang">Konsultasi gratis via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Subang">Konsultasi gratis via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

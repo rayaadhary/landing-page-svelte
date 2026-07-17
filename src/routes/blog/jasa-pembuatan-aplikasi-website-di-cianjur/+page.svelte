@@ -52,6 +52,6 @@
 <h2>Lokasi &amp; Cakupan</h2>
 <p>Kami melayani seluruh wilayah Cianjur — termasuk Cianjur Kota, Ciranjang, Cibeber, Cikalongkulon, Pacet, Cipanas, dan sekitarnya. Proses bisa dilakukan secara online atau tatap muka sesuai kebutuhan.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Cianjur">Konsultasi gratis via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20jasa%20pembuatan%20aplikasi%20di%20Cianjur">Konsultasi gratis via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

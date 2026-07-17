@@ -63,6 +63,6 @@
 <li>✅ Support terjamin — ada tim yang bantu jika ada masalah</li>
 </ul>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20website%20company%20profile%20AORTA">Konsultasi gratis via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20website%20company%20profile%20AORTA">Konsultasi gratis via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

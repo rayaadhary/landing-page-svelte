@@ -83,6 +83,6 @@
 
 <p>Untuk RS kecil-menengah, model <strong>SaaS dengan biaya bulanan terjangkau</strong> seperti AORTA SIMRS justru lebih hemat karena semua biaya server, update, support, dan bridging sudah termasuk dalam satu harga.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20SIMRS%20AORTA">Konsultasi gratis via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20SIMRS%20AORTA">Konsultasi gratis via WhatsApp →</a></blockquote>
 
 </ArticleLayout>

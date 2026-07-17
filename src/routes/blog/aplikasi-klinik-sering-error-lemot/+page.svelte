@@ -84,6 +84,6 @@
 
 <p>AORTA SIM Klinik dibangun di infrastruktur cloud dengan standar enterprise — SLA uptime 99.9%, support &lt; 1 jam, dan dioptimasi untuk ratusan transaksi per hari tanpa lemot.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20coba%20SIM%20Klinik%20AORTA%20yang%20stabil">Coba demo SIM Klinik AORTA gratis →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20coba%20SIM%20Klinik%20AORTA%20yang%20stabil">Coba demo SIM Klinik AORTA gratis →</a></blockquote>
 
 </ArticleLayout>

@@ -40,6 +40,6 @@
 <h2>Lokasi &amp; Cakupan</h2>
 <p>Melayani seluruh Bandung Raya — Bandung Kota, Cimahi, Soreang, Banjaran, Cileunyi, Rancaekek, dan sekitarnya.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20pesan%20undangan%20digital%20Bandung">Pesan undangan digital via WhatsApp →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20pesan%20undangan%20digital%20Bandung">Pesan undangan digital via WhatsApp →</a></blockquote>
 
 </ArticleLayout>
