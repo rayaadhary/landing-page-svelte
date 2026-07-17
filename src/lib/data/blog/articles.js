@@ -139,6 +139,16 @@ const articles = [
 		readTime: '5 menit',
 		excerpt: 'Butuh jasa pembuatan software HRIS / SDM & absensi untuk perusahaan? AORTA menyediakan sistem manajemen kepegawaian, payroll, absensi, dan cuti terintegrasi.',
 	},
+	{
+		slug: 'jasa-pembuatan-aplikasi-kursus-elearning-ecourse',
+		title: 'Jasa Pembuatan Aplikasi Kursus / E-Learning / Ecourse — Platform Belajar Online',
+		category: 'Custom Software',
+		image: '/assets/pos.png',
+		author: 'Tim AORTA',
+		date: '2025-07-28',
+		readTime: '5 menit',
+		excerpt: 'Butuh jasa pembuatan aplikasi kursus / e-learning / ecourse? AORTA menyediakan platform belajar online dengan manajemen murid, materi, quiz, dan sertifikat.',
+	},
 ];
 
 export function getAllArticles() {
