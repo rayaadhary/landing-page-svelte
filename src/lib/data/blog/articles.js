@@ -129,6 +129,16 @@ const articles = [
 		readTime: '4 menit',
 		excerpt: 'Butuh jasa pembuatan aplikasi atau website di Bandung? AORTA melayani SIM Klinik, SIMRS, HRIS, dan custom software untuk bisnis dan instansi di Bandung.',
 	},
+	{
+		slug: 'jasa-pembuatan-software-hris-sdm-absensi',
+		title: 'Jasa Pembuatan Software HRIS / SDM &amp; Absensi — Sistem Kepegawaian Digital',
+		category: 'HRIS',
+		image: '/assets/pos.png',
+		author: 'Tim AORTA',
+		date: '2025-07-26',
+		readTime: '5 menit',
+		excerpt: 'Butuh jasa pembuatan software HRIS / SDM & absensi untuk perusahaan? AORTA menyediakan sistem manajemen kepegawaian, payroll, absensi, dan cuti terintegrasi.',
+	},
 ];
 
 export function getAllArticles() {
