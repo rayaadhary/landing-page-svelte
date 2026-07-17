@@ -149,6 +149,16 @@ const articles = [
 		readTime: '5 menit',
 		excerpt: 'Butuh jasa pembuatan aplikasi kursus / e-learning / ecourse? AORTA menyediakan platform belajar online dengan manajemen murid, materi, quiz, dan sertifikat.',
 	},
+	{
+		slug: 'jasa-pembuatan-website-perusahaan-company-profile',
+		title: 'Jasa Pembuatan Website Perusahaan / Company Profile — Kesan Profesional di Mata Klien',
+		category: 'Custom Software',
+		image: '/assets/pos.png',
+		author: 'Tim AORTA',
+		date: '2025-07-29',
+		readTime: '4 menit',
+		excerpt: 'Butuh jasa pembuatan website perusahaan / company profile? AORTA membuat website profesional untuk bisnis, instansi, dan organisasi — desain modern, SEO friendly, mobile responsive.',
+	},
 ];
 
 export function getAllArticles() {
