@@ -70,6 +70,6 @@
 <h2>Solusi dari AORTA</h2>
 <p>Jika Anda ingin mencoba SIMRS tanpa komitmen, AORTA menyediakan <strong>demo gratis 14 hari</strong> dengan akses penuh fitur. Tim kami juga siap mendampingi migrasi data dari sistem gratis/excel ke SIMRS enterprise yang compliance Kemenkes.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20coba%20demo%20SIMRS%20AORTA">Minta akses demo SIMRS gratis →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20coba%20demo%20SIMRS%20AORTA">Minta akses demo SIMRS gratis →</a></blockquote>
 
 </ArticleLayout>

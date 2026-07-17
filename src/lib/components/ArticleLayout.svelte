@@ -59,7 +59,7 @@
 
 		<div class="mt-16 border-t border-slate-200 pt-8 text-center">
 			<p class="text-sm font-semibold text-slate-500 mb-4">Tertarik dengan solusi AORTA?</p>
-			<a href="https://wa.me/6289671328650?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#0155FF] to-[#00C2CB] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-md shadow-blue-500/10 hover:opacity-95 transition-all active:scale-95">
+			<a href="https://wa.me/6289629949441?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#0155FF] to-[#00C2CB] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-md shadow-blue-500/10 hover:opacity-95 transition-all active:scale-95">
 				Konsultasi Gratis via WhatsApp
 			</a>
 			<div class="mt-4">

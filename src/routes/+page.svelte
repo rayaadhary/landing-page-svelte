@@ -120,7 +120,7 @@
 						</li>
 						<li class="flex items-center gap-2">
 							<Phone size={14} class="text-[#00C2CB] shrink-0" />
-							<span>+62 812-3456-7890</span>
+							<span>+62 896-2994-9441</span>
 						</li>
 						<li class="flex items-start gap-2">
 							<MapPin size={14} class="text-slate-500 shrink-0 mt-0.5" />

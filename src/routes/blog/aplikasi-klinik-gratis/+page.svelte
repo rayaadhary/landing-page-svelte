@@ -65,6 +65,6 @@
 <h2>Kesimpulan</h2>
 <p>Aplikasi klinik gratis cocok untuk <strong>tahap awal</strong> — praktik pribadi dengan pasien terbatas. Saat pasien mulai bertambah dan kebutuhan operasional meningkat, aplikasi berbayar seperti AORTA SIM Klinik justru lebih <strong>murah dalam jangka panjang</strong> dibanding biaya error administratif dan kehilangan pasien akibat sistem lambat.</p>
 
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20coba%20SIM%20Klinik%20AORTA">Coba gratis SIM Klinik AORTA 14 hari →</a></blockquote>
+<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20coba%20SIM%20Klinik%20AORTA">Coba gratis SIM Klinik AORTA 14 hari →</a></blockquote>
 
 </ArticleLayout>

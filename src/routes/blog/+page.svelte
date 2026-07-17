@@ -1,6 +1,13 @@
 <script>
+	import { page } from '$app/stores';
 	import { getAllArticles } from '$lib/data/blog/articles.js';
-	let articles = getAllArticles();
+
+	const PER_PAGE = 9;
+	let allArticles = getAllArticles();
+	let totalPages = Math.ceil(allArticles.length / PER_PAGE);
+
+	$: currentPage = Math.min(Math.max(Number($page.url.searchParams.get('page')) || 1, 1), totalPages);
+	$: articles = allArticles.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
 </script>
 
 <svelte:head>
@@ -42,5 +49,17 @@
 				</a>
 			{/each}
 		</div>
+
+		{#if totalPages > 1}
+			<nav class="flex items-center justify-center gap-2 mt-12">
+				<a href="/blog?page={currentPage - 1}" class:pointer-events-none={currentPage === 1} class="px-4 py-2 rounded-xl text-sm font-bold transition-all {currentPage === 1 ? 'text-slate-300 bg-slate-100' : 'text-slate-700 bg-white border border-slate-200 hover:bg-[#0155FF] hover:text-white hover:border-[#0155FF]'}">Prev</a>
+
+				{#each Array(totalPages) as _, i}
+					<a href="/blog?page={i + 1}" class="w-10 h-10 rounded-xl text-sm font-bold flex items-center justify-center transition-all {currentPage === i + 1 ? 'bg-[#0155FF] text-white shadow-md' : 'text-slate-600 bg-white border border-slate-200 hover:bg-slate-50'}">{i + 1}</a>
+				{/each}
+
+				<a href="/blog?page={currentPage + 1}" class:pointer-events-none={currentPage === totalPages} class="px-4 py-2 rounded-xl text-sm font-bold transition-all {currentPage === totalPages ? 'text-slate-300 bg-slate-100' : 'text-slate-700 bg-white border border-slate-200 hover:bg-[#0155FF] hover:text-white hover:border-[#0155FF]'}">Next</a>
+			</nav>
+		{/if}
 	</section>
 </div>
