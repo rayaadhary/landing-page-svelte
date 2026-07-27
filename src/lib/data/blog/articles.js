@@ -199,6 +199,26 @@ const articles = [
 		readTime: '3 menit',
 		excerpt: 'Butuh jasa pembuatan undangan digital di Subang? AORTA melayani undangan pernikahan, akad, khitanan, ulang tahun — desain premium, link siap share.',
 	},
+	{
+		slug: 'harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat',
+		title: 'Harga Software SIMRS Murah Terintegrasi BPJS &amp; Satu Sehat',
+		category: 'SIMRS',
+		image: '/assets/hospital2.png',
+		author: 'Tim AORTA',
+		date: '2025-08-04',
+		readTime: '5 menit',
+		excerpt: 'Cari harga software SIMRS murah yang sudah terintegrasi BPJS dan Satu Sehat? Simak perbandingan biaya, fitur, dan rekomendasi SIMRS terjangkau untuk RS Anda.',
+	},
+	{
+		slug: 'aplikasi-penggajian-payroll-otomatis-pph-21',
+		title: 'Aplikasi Penggajian / Payroll Otomatis PPh 21 — Hitung Gaji Tanpa Ribet',
+		category: 'HRIS',
+		image: '/assets/pos.png',
+		author: 'Tim AORTA',
+		date: '2025-08-05',
+		readTime: '5 menit',
+		excerpt: 'Cari aplikasi penggajian / payroll otomatis dengan hitung PPh 21? AORTA menyediakan software payroll yang otomatis hitung gaji, potongan, BPJS, dan pajak karyawan.',
+	},
 ];
 
 export function getAllArticles() {
