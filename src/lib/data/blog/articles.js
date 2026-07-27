@@ -219,6 +219,16 @@ const articles = [
 		readTime: '5 menit',
 		excerpt: 'Cari aplikasi penggajian / payroll otomatis dengan hitung PPh 21? AORTA menyediakan software payroll yang otomatis hitung gaji, potongan, BPJS, dan pajak karyawan.',
 	},
+	{
+		slug: 'alternatif-simrs-selain-khanza',
+		title: 'Alternatif SIMRS selain Khanza — Solusi Kustomisasi Tanpa Batas',
+		category: 'SIMRS',
+		image: '/assets/hospital.png',
+		author: 'Tim AORTA',
+		date: '2025-08-06',
+		readTime: '5 menit',
+		excerpt: 'Cari alternatif SIMRS selain Khanza? AORTA solusinya — SIMRS yang bisa dikustomisasi sesuai kebutuhan RS Anda, lebih cepat implementasi, dan support lokal responsif.',
+	},
 ];
 
 export function getAllArticles() {
