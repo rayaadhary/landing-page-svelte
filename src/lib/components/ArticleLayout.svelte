@@ -1,5 +1,16 @@
 <script>
-	let { title, description, ogDescription = description, image, slug, date, category, author, readTime, children } = $props();
+	let {
+		title,
+		description,
+		ogDescription = description,
+		image,
+		slug,
+		date,
+		category,
+		author,
+		readTime,
+		children
+	} = $props();
 </script>
 
 <svelte:head>
@@ -10,60 +21,98 @@
 	<meta property="og:image" content={image} />
 	<meta property="og:type" content="article" />
 	<meta property="article:published_time" content={date} />
+	<meta property="og:url" content="https://aorta.my.id/blog/{slug}" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={ogDescription} />
+	<meta name="twitter:image" content={image} />
 	<link rel="canonical" href="https://aorta.my.id/blog/{slug}" />
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			"headline": {title},
+			"description": {description},
+			"image": "https://aorta.my.id{image}",
+			"datePublished": {date},
+			"author": { "@type": "Organization", "name": {author} },
+			"publisher": { "@id": "https://aorta.my.id/#organization" },
+			"mainEntityOfPage": "https://aorta.my.id/blog/{slug}",
+			"inLanguage": "id-ID"
+		}
+	</script>
 </svelte:head>
 
 <div class="min-h-screen bg-slate-50">
-	<article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-		<div class="flex items-center gap-2 text-xs font-semibold text-slate-500 bg-white border border-slate-100 rounded-full py-1.5 px-4 w-fit shadow-sm mb-8">
-			<a href="/" class="hover:text-[#0155FF] transition-colors flex items-center gap-1">Beranda</a>
+	<article class="mx-auto max-w-3xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
+		<div
+			class="mb-8 flex w-fit items-center gap-2 rounded-full border border-slate-100 bg-white px-4 py-1.5 text-xs font-semibold text-slate-500 shadow-sm"
+		>
+			<a href="/" class="flex items-center gap-1 transition-colors hover:text-[#0155FF]">Beranda</a>
 			<span class="text-slate-300">/</span>
-			<a href="/blog" class="hover:text-[#0155FF] transition-colors">Blog</a>
+			<a href="/blog" class="transition-colors hover:text-[#0155FF]">Blog</a>
 			<span class="text-slate-300">/</span>
-			<span class="text-slate-800 font-bold truncate max-w-[200px]">{title}</span>
+			<span class="max-w-[200px] truncate font-bold text-slate-800">{title}</span>
 		</div>
 
 		<div class="space-y-6">
-			<div class="flex flex-wrap items-center gap-3 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-				<span class="text-[#0155FF] bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-md">{category}</span>
+			<div
+				class="flex flex-wrap items-center gap-3 text-[11px] font-bold tracking-wider text-slate-500 uppercase"
+			>
+				<span class="rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-[#0155FF]"
+					>{category}</span
+				>
 				<span>·</span>
 				<time datetime={date}>{date}</time>
 				<span>·</span>
 				<span>{readTime}</span>
 			</div>
 
-			<h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">{title}</h1>
+			<h1
+				class="text-3xl leading-tight font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+			>
+				{title}
+			</h1>
 
-			<p class="text-slate-500 font-medium text-sm">{author}</p>
+			<p class="text-sm font-medium text-slate-500">{author}</p>
 		</div>
 
-		<div class="mt-10 rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm">
-			<img src={image} alt={title} class="w-full aspect-video object-cover" />
+		<div class="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+			<img src={image} alt={title} class="aspect-video w-full object-cover" />
 		</div>
 
-		<div class="mt-10 prose prose-slate max-w-none
+		<div
+			class="prose mt-10 max-w-none prose-slate
 			prose-headings:font-black prose-headings:tracking-tight prose-headings:text-slate-900
-			prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-			prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3
-			prose-p:text-sm prose-p:leading-relaxed prose-p:text-slate-600 prose-p:font-medium
-			prose-a:text-[#0155FF] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
-			prose-strong:text-slate-900
-			prose-table:text-sm prose-th:bg-slate-50 prose-th:text-slate-700 prose-th:font-bold prose-th:p-3 prose-td:p-3 prose-td:text-slate-600
-			prose-code:text-[#0155FF] prose-code:bg-blue-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:font-bold
-			prose-blockquote:border-l-[#0155FF] prose-blockquote:bg-slate-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-xl
-			prose-blockquote:text-sm prose-blockquote:text-slate-600
-			prose-li:text-sm prose-li:text-slate-600
-		">
+			prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-2xl
+			prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-lg
+			prose-p:text-sm prose-p:leading-relaxed prose-p:font-medium prose-p:text-slate-600
+			prose-a:font-bold prose-a:text-[#0155FF] prose-a:no-underline hover:prose-a:underline
+			prose-blockquote:rounded-r-xl
+			prose-blockquote:border-l-[#0155FF] prose-blockquote:bg-slate-50 prose-blockquote:px-4 prose-blockquote:py-2 prose-blockquote:text-sm prose-blockquote:text-slate-600 prose-strong:text-slate-900
+			prose-code:rounded prose-code:bg-blue-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-xs prose-code:font-bold prose-code:text-[#0155FF]
+			prose-li:text-sm prose-li:text-slate-600 prose-table:text-sm prose-th:bg-slate-50 prose-th:p-3
+			prose-th:font-bold prose-th:text-slate-700
+			prose-td:p-3 prose-td:text-slate-600
+		"
+		>
 			{@render children()}
 		</div>
 
 		<div class="mt-16 border-t border-slate-200 pt-8 text-center">
-			<p class="text-sm font-semibold text-slate-500 mb-4">Tertarik dengan solusi AORTA?</p>
-			<a href="https://wa.me/6289629949441?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#0155FF] to-[#00C2CB] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-md shadow-blue-500/10 hover:opacity-95 transition-all active:scale-95">
+			<p class="mb-4 text-sm font-semibold text-slate-500">Tertarik dengan solusi AORTA?</p>
+			<a
+				href="https://wa.me/6289629949441?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-2 rounded-xl bg-[#0155FF] px-8 py-3.5 text-sm font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:opacity-90 active:scale-95"
+			>
 				Konsultasi Gratis via WhatsApp
 			</a>
 			<div class="mt-4">
-				<a href="/blog" class="text-xs font-bold text-[#0155FF] hover:underline">← Kembali ke Blog</a>
+				<a href="/blog" class="text-xs font-bold text-[#0155FF] hover:underline"
+					>← Kembali ke Blog</a
+				>
 			</div>
 		</div>
 	</article>

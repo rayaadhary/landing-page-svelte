@@ -13,33 +13,43 @@
 	author="Tim AORTA"
 	readTime="3 menit"
 >
+	<h2>Jasa Pembuatan Undangan Digital di Indramayu</h2>
 
-<h2>Jasa Pembuatan Undangan Digital di Indramayu</h2>
+	<p>
+		Undangan cetak butuh biaya, waktu, dan ongkos kirim. Undangan digital dari AORTA <strong
+			>lebih murah dan lebih cepat</strong
+		>. Anda cukup membagikan link, dan tamu bisa mengonfirmasi kehadiran langsung dari HP.
+	</p>
 
-<p>Bikin undangan cetak itu mahal, ribet, dan terbatas. Pesan undangan digital di AORTA — <strong>lebih murah, lebih cepat, dan lebih praktis.</strong> Tinggal bagikan link, tamu bisa konfirmasi hadir langsung dari HP.</p>
+	<h2>Jenis Undangan Digital</h2>
+	<ul>
+		<li>Undangan pernikahan atau resepsi</li>
+		<li>Undangan akad nikah</li>
+		<li>Undangan khitanan</li>
+		<li>Undangan ulang tahun</li>
+		<li>Undangan acara kantor atau reuni</li>
+		<li>Desain custom sesuai tema acara</li>
+	</ul>
 
-<h2>Layanan Undangan Digital</h2>
-<ul>
-<li>✅ Undangan pernikahan / resepsi</li>
-<li>✅ Undangan akad nikah</li>
-<li>✅ Undangan khitanan</li>
-<li>✅ Undangan ulang tahun</li>
-<li>✅ Undangan acara kantor / reuni</li>
-<li>✅ Custom desain sesuai tema acara</li>
-</ul>
+	<h2>Kenapa Pilih Undangan Digital?</h2>
+	<ul>
+		<li><strong>Hemat biaya</strong> — tidak perlu cetak, amplop, dan ongkos kirim</li>
+		<li><strong>Proses cepat</strong> — selesai dalam 1-2 hari, revisi gratis</li>
+		<li><strong>Mudah dibagikan via WA</strong> — cukup kirim link, tamu membuka sendiri</li>
+		<li><strong>Ada konfirmasi hadir</strong> — tamu bisa RSVP langsung dari HP</li>
+		<li><strong>Ramah lingkungan</strong> — tanpa kertas, tanpa sampah</li>
+	</ul>
 
-<h2>Kenapa Pilih Undangan Digital?</h2>
-<ul>
-<li>💰 <strong>Hemat biaya</strong> — tidak perlu cetak, amplop, ongkos kirim</li>
-<li>⚡ <strong>Proses cepat</strong> — selesai dalam 1-2 hari, revisi gratis</li>
-<li>📱 <strong>Share via WA</strong> — tinggal kirim link, tamu buka sendiri</li>
-<li>📊 <strong>Konfirmasi hadir</strong> — tamu bisa RSVP langsung lewat HP</li>
-<li>🌿 <strong>Ramah lingkungan</strong> — tanpa kertas, tanpa sampah</li>
-</ul>
+	<h2>Lokasi &amp; Cakupan</h2>
+	<p>
+		Melayani seluruh Indramayu — Indramayu Kota, Jatibarang, Sliyeg, Karangampel, Haurgeulis,
+		Anjatan, Patrol, dan sekitarnya.
+	</p>
 
-<h2>Lokasi &amp; Cakupan</h2>
-<p>Melayani seluruh Indramayu — Indramayu Kota, Jatibarang, Sliyeg, Karangampel, Haurgeulis, Anjatan, Patrol, dan sekitarnya.</p>
-
-<blockquote><a href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20pesan%20undangan%20digital%20Indramayu">Pesan undangan digital via WhatsApp →</a></blockquote>
-
+	<blockquote>
+		<a
+			href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20pesan%20undangan%20digital%20Indramayu"
+			>Pesan undangan digital via WhatsApp →</a
+		>
+	</blockquote>
 </ArticleLayout>

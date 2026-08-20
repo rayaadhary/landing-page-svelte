@@ -13,60 +13,111 @@
 	author="Tim AORTA"
 	readTime="5 menit"
 >
+	<h2>Alternatif SIMRS selain Khanza: Kenapa Perlu Beralih?</h2>
 
-<h2>Alternatif SIMRS selain Khanza: Kenapa Perlu Beralih?</h2>
+	<p>
+		Khanza SIMRS populer dan gratis, tapi banyak rumah sakit mulai menemui keterbatasannya: sulit
+		dikustomisasi, kode lama, dokumentasi minim, dan kalau butuh fitur baru harus dikerjakan sendiri
+		atau bayar developer pihak ketiga dengan biaya besar.
+	</p>
 
-<p>Khanza SIMRS memang populer dan gratis — tapi banyak rumah sakit mulai sadar akan <strong>keterbatasannya</strong>: sulit dikustomisasi, codebase lama, dokumentasi minim, dan kalau butuh fitur baru harus ngoprek sendiri atau bayar developer pihak ketiga dengan harga mahal.</p>
+	<p>
+		Soal dukungan, komunitasnya aktif tapi tidak ada jaminan waktu respons. Kalau sistem error
+		tengah malam, tidak ada pihak yang bisa dihubungi secara resmi. Kalau bridging BPJS bermasalah,
+		harus mencari solusi di forum berjam-jam.
+	</p>
 
-<p>Belum lagi masalah <strong>support</strong> — komunitas aktif tapi tidak ada jaminan SLA. Kalau sistem error jam 2 pagi, siapa yang bantu? Masalah bridging BPJS error? Siap-siap searching forum berjam-jam.</p>
+	<h2>Masalah Umum Khanza SIMRS</h2>
 
-<h2>Masalah Umum Khanza SIMRS</h2>
+	<ul>
+		<li>
+			<strong>Sulit dikustomisasi</strong> — kodenya monolitik, menambah fitur butuh developer senior
+			yang paham struktur kode Khanza
+		</li>
+		<li>
+			<strong>Tidak ada SLA support</strong> — mengandalkan komunitas dan forum, tanpa jaminan waktu respons
+		</li>
+		<li>
+			<strong>Integrasi SatuSehat manual</strong> — tidak otomatis, harus diatur dan diurus sendiri
+		</li>
+		<li><strong>Tampilan ketinggalan</strong> — dibuat untuk desktop, kurang nyaman di HP</li>
+		<li><strong>Keamanan bergantung komunitas</strong> — tidak ada jaminan patch rutin</li>
+		<li>
+			<strong>Biaya tersembunyi</strong> — lisensi gratis, tapi biaya developer, server, dan maintenance
+			bisa melebihi SIMRS berbayar
+		</li>
+	</ul>
 
-<ul>
-<li>⚠️ <strong>Sulit dikustomisasi</strong> — kode monolitik, menambah fitur butuh developer senior yang paham struktur kode Khanza</li>
-<li>⚠️ <strong>Tidak ada SLA support</strong> — andalkan komunitas dan forum, tidak ada jaminan respons</li>
-<li>⚠️ <strong>Integrasi SatuSehat manual</strong> — tidak otomatis, harus setup dan maintain sendiri</li>
-<li>⚠️ <strong>UI/UX ketinggalan</strong> — tampilan desktop-focused, tidak mobile-friendly</li>
-<li>⚠️ <strong>Update keamanan tergantung komunitas</strong> — tidak ada jaminan patch rutin</li>
-<li>⚠️ <strong>Biaya tersembunyi</strong> — gratis lisensi tapi biaya developer, server, dan maintenance bisa lebih mahal dari SIMRS berbayar</li>
-</ul>
+	<h2>Perbandingan Khanza vs AORTA SIMRS</h2>
 
-<h2>Perbandingan Khanza vs AORTA SIMRS</h2>
+	<table>
+		<thead><tr><th>Aspek</th><th>Khanza SIMRS</th><th>AORTA SIMRS</th></tr></thead>
+		<tbody>
+			<tr><td>Lisensi</td><td>Gratis (open source)</td><td>SaaS bulanan terjangkau</td></tr>
+			<tr><td>Kustomisasi</td><td>Manual — butuh developer</td><td>Dikerjakan tim AORTA</td></tr>
+			<tr><td>Bridging BPJS</td><td>Setup manual</td><td>Termasuk, langsung jalan</td></tr>
+			<tr
+				><td>Integrasi SatuSehat</td><td>Manual — kustom sendiri</td><td>Termasuk, otomatis</td></tr
+			>
+			<tr
+				><td>Support</td><td>Forum komunitas</td><td>SLA, WA &amp; tiket, respon &lt; 1 jam</td></tr
+			>
+			<tr><td>UI/UX</td><td>Desktop, ketinggalan</td><td>Tampilan terbaru, nyaman di HP</td></tr>
+			<tr
+				><td>Update &amp; Maintenance</td><td>Manual — ketinggalan versi</td><td
+					>Otomatis — selalu terbaru</td
+				></tr
+			>
+			<tr
+				><td>Biaya Total 3 Tahun</td><td>50-100jt (IT + server)</td><td>54-90jt (semua termasuk)</td
+				></tr
+			>
+		</tbody>
+	</table>
 
-<table>
-<thead><tr><th>Aspek</th><th>Khanza SIMRS</th><th>AORTA SIMRS</th></tr></thead>
-<tbody>
-<tr><td>Lisensi</td><td>Gratis (open source)</td><td>SaaS bulanan terjangkau</td></tr>
-<tr><td>Kustomisasi</td><td>Manual — butuh developer</td><td>✅ Tim AORTA yang handle</td></tr>
-<tr><td>Bridging BPJS</td><td>Setup manual</td><td>✅ Termasuk, langsung jalan</td></tr>
-<tr><td>Integrasi SatuSehat</td><td>Manual — kustom sendiri</td><td>✅ Termasuk, otomatis</td></tr>
-<tr><td>Support</td><td>Forum komunitas</td><td>✅ SLA, WA &amp; tiket, respon &lt; 1 jam</td></tr>
-<tr><td>UI/UX</td><td>Desktop, ketinggalan</td><td>✅ Modern, mobile-friendly</td></tr>
-<tr><td>Update &amp; Maintenance</td><td>Manual — ketinggalan versi</td><td>✅ Otomatis — selalu terbaru</td></tr>
-<tr><td>Biaya Total 3 Tahun</td><td>50-100jt (IT + server)</td><td>54-90jt (semua termasuk)</td></tr>
-</tbody>
-</table>
+	<h2>Kenapa AORTA Jadi Alternatif Terbaik?</h2>
 
-<h2>Kenapa AORTA Jadi Alternatif Terbaik?</h2>
+	<h3>1. Kustomisasi Sesuai Kebutuhan</h3>
+	<p>
+		Anda tidak perlu menerima sistem yang kaku. Butuh modul khusus, alur kerja tertentu, atau
+		laporan custom? Tim AORTA menyesuaikan SIMRS dengan cara kerja RS Anda, bukan sebaliknya.
+	</p>
 
-<h3>1. Kustomisasi Sesuai Kebutuhan</h3>
-<p>Tidak perlu terima sistem kaku. Butuh modul khusus? Alur kerja tertentu? Laporan custom? Tim AORTA bisa menyesuaikan SIMRS dengan alur operasional RS Anda — bukan sebaliknya.</p>
+	<h3>2. Implementasi Cepat</h3>
+	<p>
+		Mengoprek Khanza sendiri bisa makan waktu berbulan-bulan. AORTA SIMRS bisa berjalan dalam
+		hitungan hari hingga minggu — tinggal konfigurasi, impor data, dan pelatihan staf.
+	</p>
 
-<h3>2. Implementasi Cepat</h3>
-<p>Dibanding ngoprek Khanza sendiri yang bisa berbulan-bulan, AORTA SIMRS bisa <strong>go live dalam hitungan hari hingga minggu</strong> — tinggal konfigurasi, import data, dan training staf.</p>
+	<h3>3. Support Lokal Responsif</h3>
+	<p>
+		Tim AORTA berada di Indonesia. Respon lewat WhatsApp, tiket, atau telepon, dengan SLA yang jelas
+		— bukan forum yang balasannya tidak tentu.
+	</p>
 
-<h3>3. Support Lokal Responsif</h3>
-<p>Tim AORTA di Indonesia — respon via WhatsApp, tiket, atau telepon. Ada SLA jelas, bukan cuma forum yang bisa dibalas kapan-kapan.</p>
+	<h3>4. Bridging BPJS &amp; SatuSehat Otomatis</h3>
+	<p>
+		Integrasi sudah termasuk dalam layanan. Tinggal aktivasi, tanpa setup manual atau biaya
+		developer tambahan.
+	</p>
 
-<h3>4. Bridging BPJS &amp; SatuSehat Otomatis</h3>
-<p>Integrasi sudah include — tinggal aktivasi, tidak perlu setup manual atau bayar developer tambahan.</p>
+	<h3>5. Biaya Transparan</h3>
+	<p>
+		Tidak ada biaya di luar tagihan bulanan. Harga sudah mencakup fitur, support, server, dan
+		update.
+	</p>
 
-<h3>5. Biaya Transparan</h3>
-<p>Tidak ada biaya tersembunyi. Harga bulanan sudah include semua fitur, support, server, dan update.</p>
+	<h2>Kesimpulan</h2>
+	<p>
+		Khanza adalah SIMRS open source yang bagus untuk belajar atau rumah sakit dengan tim IT besar.
+		Tapi untuk RS yang butuh sistem siap pakai, kustomisasi cepat, support terjamin, dan kepatuhan
+		regulasi, AORTA SIMRS adalah pilihan yang lebih tepat.
+	</p>
 
-<h2>Kesimpulan</h2>
-<p>Khanza adalah SIMRS open source yang bagus untuk belajar atau RS dengan tim IT besar. Tapi untuk RS yang butuh <strong>siap pakai, kustomisasi cepat, support terjamin, dan compliance regulasi</strong> — AORTA SIMRS adalah alternatif yang lebih tepat.</p>
-
-<blockquote><a href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20alternatif%20SIMRS%20selain%20Khanza">Konsultasi gratis via WhatsApp →</a></blockquote>
-
+	<blockquote>
+		<a
+			href="https://wa.me/6289671328650?text=Halo%20saya%20ingin%20konsultasi%20alternatif%20SIMRS%20selain%20Khanza"
+			>Konsultasi gratis via WhatsApp →</a
+		>
+	</blockquote>
 </ArticleLayout>
