@@ -15,7 +15,7 @@
 		{
 			title: 'SISTEM INFORMASI MANAJEMEN RUMAH SAKIT',
 			subtitle: 'Centralize Healthcare Flow',
-			desc: 'Kekacauan administrasi dan data pasien yang tercecer adalah mimpi buruk operasional Rumah Sakit. SIMRS Aorta hadir menyatukan seluruh departemen—mulai dari IGD, rawat jalan, rawat inap, hingga bagian keuangan—ke dalam satu ekosistem digital terpadu. Dengan Rekam Medis Elektronik (EMR) yang tersinkronisasi secara real-time, Anda dapat mempercepat waktu pelayanan pasien hingga 60%, memangkas antrean kaku, serta memastikan kepatuhan regulasi lewat sistem yang 100% siap bridging dengan SatuSehat Kemenkes.',
+			desc: 'Kekacauan administrasi dan data pasien yang tercecer adalah mimpi buruk operasional Rumah Sakit. SIMRS Aorta hadir menyatukan seluruh departemen—mulai dari IGD, rawat jalan, rawat inap, hingga bagian keuangan—ke dalam satu ekosistem digital terpadu. Dengan Rekam Medis Elektronik (EMR) yang tersinkronisasi secara real-time, Anda dapat mempersingkat waktu pelayanan pasien, memangkas antrean, serta memastikan kepatuhan regulasi lewat sistem yang 100% siap bridging dengan SatuSehat Kemenkes.',
 			svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 012-2h14a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M3 9V5a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M12 12v6"/><path d="M9 15h6"/></svg>',
 			color: '#0155FF'
 		},
@@ -52,7 +52,7 @@
 		clearInterval(typingInterval);
 		displayedDesc = '';
 		let i = 0;
-		
+
 		typingInterval = setInterval(() => {
 			if (i < text.length) {
 				displayedDesc += text.charAt(i);
@@ -64,6 +64,12 @@
 	};
 
 	onMount(() => {
+		// Hormati preferensi reduced-motion: tampilkan teks penuh tanpa animasi ketik/slide
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			displayedDesc = slides[0].desc;
+			return;
+		}
+
 		// Jalankan ketikan pertama pas mount
 		startTyping(slides[activeIndex].desc);
 
@@ -83,76 +89,117 @@
 		};
 	});
 </script>
-<div class="min-h-screen bg-slate-50 bg-texture text-slate-900 font-sans selection:bg-[#00C2CB] selection:text-white overflow-x-hidden relative">
-	
-	<div class="absolute inset-0 pointer-events-none overflow-hidden -z-10">
-		<div class="absolute top-[-10%] left-[-10%] w-[80vw] h-[50vh] rounded-full bg-gradient-to-tr from-[#0155FF]/10 to-transparent blur-[140px]"></div>
-		<div class="absolute top-[20%] right-[-20%] w-[60vw] h-[60vh] rounded-full bg-gradient-to-br from-[#00C2CB]/10 to-transparent blur-[160px]"></div>
+
+<div
+	class="bg-texture relative min-h-screen overflow-x-hidden bg-slate-50 font-sans text-slate-900 selection:bg-[#00C2CB] selection:text-white"
+>
+	<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+		<div
+			class="absolute top-[-10%] left-[-10%] h-[50vh] w-[80vw] rounded-full bg-gradient-to-tr from-[#0155FF]/10 to-transparent blur-[140px]"
+		></div>
+		<div
+			class="absolute top-[20%] right-[-20%] h-[60vh] w-[60vw] rounded-full bg-gradient-to-br from-[#00C2CB]/10 to-transparent blur-[160px]"
+		></div>
 	</div>
 
-	<main class="relative z-10">
-		<section class="relative min-h-[80vh] flex items-center pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden">
-			<div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-				<div class="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#00C2CB]/5 blur-[120px]"></div>
-				<div class="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-[#0155FF]/5 blur-[150px]"></div>
+	<div class="relative z-10">
+		<section
+			class="relative flex min-h-[80vh] items-center overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24"
+		>
+			<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+				<div
+					class="absolute top-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-[#00C2CB]/5 blur-[120px]"
+				></div>
+				<div
+					class="absolute bottom-1/4 left-1/3 h-[500px] w-[500px] rounded-full bg-[#0155FF]/5 blur-[150px]"
+				></div>
 			</div>
 
-			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-				
+			<div
+				class="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"
+			>
 				<div class="space-y-6 text-left">
-					<h1 in:fly={{ y: 30, duration: 800, delay: 200 }} class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 leading-[1.15]">
-						Solusi Digital Terpadu Untuk <span class="bg-gradient-to-r from-[#0155FF] to-[#00C2CB] bg-clip-text text-transparent">Segala Jenis Kebutuhan Bisnis Anda</span>
+					<h1
+						in:fly={{ y: 30, duration: 800, delay: 200 }}
+						class="text-4xl leading-[1.15] font-black tracking-tight text-slate-900 sm:text-5xl md:text-6xl"
+					>
+						Solusi Digital Terpadu Untuk <span class="text-[#0155FF]"
+							>Segala Jenis Kebutuhan Bisnis Anda</span
+						>
 					</h1>
-					
-					<p in:fly={{ y: 20, duration: 800, delay: 400 }} class="text-base sm:text-lg text-slate-600 max-w-lg leading-relaxed">
-						Optimalkan operasional bisnis anda dengan sistem informasi terintegrasi yang modern, aman, dan efisien
+
+					<p
+						in:fly={{ y: 20, duration: 800, delay: 400 }}
+						class="max-w-lg text-base leading-relaxed text-slate-600 sm:text-lg"
+					>
+						Optimalkan operasional bisnis anda dengan sistem informasi terintegrasi yang modern,
+						aman, dan efisien
 					</p>
-					
+
 					<div in:fly={{ y: 20, duration: 800, delay: 600 }} class="flex flex-wrap gap-4 pt-2">
-						<a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-gradient-to-r from-[#0155FF] to-[#00C2CB] text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-blue-500/25 transition-all duration-300 hover:opacity-95 hover:scale-[1.02] active:scale-98 text-sm">
+						<a
+							href={whatsappLink}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center justify-center rounded-full bg-[#0155FF] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:scale-[1.02] hover:opacity-90 active:scale-98"
+						>
 							Konsultasi Sekarang
 						</a>
-						<a href="#layanan" class="inline-flex items-center justify-center border border-slate-200 bg-white/80 backdrop-blur-sm hover:border-[#0155FF] text-slate-700 hover:text-[#0155FF] px-8 py-4 rounded-full font-semibold transition-all shadow-sm active:scale-98 text-sm">
+						<a
+							href="#layanan"
+							class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white/80 px-8 py-4 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur-sm transition-all hover:border-[#0155FF] hover:text-[#0155FF] active:scale-98"
+						>
 							Lihat Demo
 						</a>
 					</div>
 				</div>
 
-				<div class="flex flex-col justify-between min-h-[250px] relative w-full max-w-xl lg:pl-6 lg:border-l-2 border-slate-200/60">
-					
-					<div class="absolute -left-10 top-10 w-32 h-32 bg-[#0155FF]/5 rounded-full blur-3xl pointer-events-none"></div>
+				<div
+					class="relative flex min-h-[250px] w-full max-w-xl flex-col justify-between border-slate-200/60 lg:border-l-2 lg:pl-6"
+				>
+					<div
+						class="pointer-events-none absolute top-10 -left-10 h-32 w-32 rounded-full bg-[#0155FF]/5 blur-3xl"
+					></div>
 
 					{#key activeIndex}
-					<div class="space-y-6">
-						<div class="flex items-center gap-4" in:fly={{ y: 15, duration: 500 }}>
-							<div class="h-12 w-12 flex items-center justify-center text-[#0155FF]">
-								{@html slides[activeIndex].svg}
+						<div class="space-y-6">
+							<div class="flex items-center gap-4" in:fly={{ y: 15, duration: 500 }}>
+								<div class="flex h-12 w-12 items-center justify-center text-[#0155FF]">
+									{@html slides[activeIndex].svg}
+								</div>
+								<div class="flex flex-col">
+									<span class="text-[16px] font-black tracking-widest text-[#0155FF] uppercase"
+										>{slides[activeIndex].title}</span
+									>
+								</div>
 							</div>
-							<div class="flex flex-col">
-								<span class="text-[16px] font-black tracking-widest text-[#0155FF] uppercase">{slides[activeIndex].title}</span>
-							</div>
+
+							<h3
+								class="text-2xl font-black tracking-tight text-slate-900"
+								in:fly={{ y: 10, duration: 500, delay: 50 }}
+							>
+								{slides[activeIndex].subtitle}
+							</h3>
+
+							<p
+								class="relative min-h-[100px] text-base leading-relaxed font-medium text-slate-600"
+							>
+								{displayedDesc}<span
+									class="animate-blink ml-1 inline-block h-4 w-2 bg-[#00C2CB] align-middle"
+								></span>
+							</p>
 						</div>
-
-						<h3 class="text-2xl font-black text-slate-900 tracking-tight" in:fly={{ y: 10, duration: 500, delay: 50 }}>
-							{slides[activeIndex].subtitle}
-						</h3>
-
-						<p class="text-base text-slate-600 leading-relaxed font-medium min-h-[100px] relative">
-							{displayedDesc}<span class="inline-block w-2 h-4 ml-1 bg-[#00C2CB] animate-blink align-middle"></span>
-						</p>
-					</div>
 					{/key}
 				</div>
-
 			</div>
 		</section>
-	</main>
+	</div>
 </div>
 
 <style>
 	/* CSS Grid Arsitektur Semitransparan */
 	.bg-texture {
-		background-image: 
+		background-image:
 			linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
 			linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
 		background-size: 50px 50px;
@@ -163,7 +210,9 @@
 
 	/* Animasi kursor ngetik kedip-kedip */
 	@keyframes blink {
-		50% { opacity: 0; }
+		50% {
+			opacity: 0;
+		}
 	}
 	:global(.animate-blink) {
 		animation: blink 0.8s infinite steps(1);
