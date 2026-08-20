@@ -64,6 +64,43 @@
 	];
 </script>
 
+<svelte:head>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"@id": "https://aorta.my.id/#organization",
+			"name": "AORTA",
+			"url": "https://aorta.my.id",
+			"logo": { "@type": "ImageObject", "url": "https://aorta.my.id/assets/logo.png" },
+			"email": "aortadigitalsolusi.business@gmail.com",
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+6289629949441",
+				"contactType": "sales",
+				"availableLanguage": ["id"]
+			},
+			"address": {
+				"@type": "PostalAddress",
+				"addressRegion": "Jawa Barat",
+				"addressLocality": "Cianjur",
+				"addressCountry": "ID"
+			}
+		}
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"@id": "https://aorta.my.id/#website",
+			"url": "https://aorta.my.id",
+			"name": "AORTA",
+			"publisher": { "@id": "https://aorta.my.id/#organization" },
+			"inLanguage": "id-ID"
+		}
+	</script>
+</svelte:head>
+
 <header
 	class="sticky top-0 z-50 w-full border-b border-neutral-100 bg-white/70 backdrop-blur-md transition-all duration-300"
 	on:mouseleave={() => (productDropdownOpen = false)}

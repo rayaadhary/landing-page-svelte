@@ -32,7 +32,7 @@
 <section id="features" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mb-12 max-w-3xl space-y-3 text-left">
 		<h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-			Empat Kemampuan Inti AORTA
+			Keunggulan AORTA
 		</h2>
 		<p class="text-sm leading-relaxed font-medium text-slate-500">
 			Semua modul berjalan dalam satu database. Data masuk sekali, laporan, klaim, dan pembayaran

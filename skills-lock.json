@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "analytics-tracking": {
+      "source": "kostja94/marketing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analytics/tracking/SKILL.md",
+      "computedHash": "16009ea520923cc92aa70572fd7f1c12cbbca3b3bac52aebbd545933fd87c4f5"
+    },
     "copy-editing": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",

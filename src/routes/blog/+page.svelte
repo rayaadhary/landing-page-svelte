@@ -14,12 +14,33 @@
 </script>
 
 <svelte:head>
-	<title>Blog — AORTA | Tips SIMRS, Aplikasi Klinik & Jasa Pembuatan Software</title>
+	<title>Tips SIMRS, Aplikasi Klinik &amp; Jasa Software | Blog AORTA</title>
 	<meta
 		name="description"
 		content="Blog AORTA: artikel seputar SIMRS rumah sakit, aplikasi klinik, HRIS, POS, dan jasa pembuatan aplikasi custom untuk bisnis di Indonesia."
 	/>
 	<link rel="canonical" href="https://aorta.my.id/blog" />
+	<meta property="og:type" content="website" />
+	<meta
+		property="og:title"
+		content="Blog AORTA — Tips SIMRS, Aplikasi Klinik &amp; Jasa Software"
+	/>
+	<meta
+		property="og:description"
+		content="Blog AORTA: artikel seputar SIMRS rumah sakit, aplikasi klinik, HRIS, POS, dan jasa pembuatan aplikasi custom."
+	/>
+	<meta property="og:url" content="https://aorta.my.id/blog" />
+	<meta property="og:image" content="https://aorta.my.id/assets/logo.png" />
+	<meta name="twitter:card" content="summary" />
+	<meta
+		name="twitter:title"
+		content="Blog AORTA — Tips SIMRS, Aplikasi Klinik &amp; Jasa Software"
+	/>
+	<meta
+		name="twitter:description"
+		content="Artikel seputar SIMRS, aplikasi klinik, HRIS, POS, dan jasa pembuatan aplikasi custom."
+	/>
+	<meta name="twitter:image" content="https://aorta.my.id/assets/logo.png" />
 </svelte:head>
 
 <div class="min-h-screen bg-slate-50">

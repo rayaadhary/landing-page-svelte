@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>AORTA — Jasa Pembuatan Aplikasi Rumah Sakit, Klinik & Sistem Enterprise Custom</title>
+	<title>Jasa Pembuatan Aplikasi Rumah Sakit, Klinik &amp; Software | AORTA</title>
 	<link rel="icon" href="/assets/logo.png" />
 	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
 	<meta
@@ -37,8 +37,19 @@
 		property="og:description"
 		content="Solusi SIMRS, SIM Klinik, HRIS, POS, dan custom software untuk fasilitas kesehatan & enterprise di Indonesia."
 	/>
-	<meta property="og:image" content="/assets/logo.png" />
+	<meta property="og:image" content="https://aorta.my.id/assets/logo.png" />
 	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://aorta.my.id" />
+	<meta name="twitter:card" content="summary" />
+	<meta
+		name="twitter:title"
+		content="AORTA — Jasa Pembuatan Aplikasi Rumah Sakit, Klinik & Software Custom"
+	/>
+	<meta
+		name="twitter:description"
+		content="Solusi SIMRS, SIM Klinik, HRIS, POS, dan custom software untuk fasilitas kesehatan & enterprise di Indonesia."
+	/>
+	<meta name="twitter:image" content="https://aorta.my.id/assets/logo.png" />
 	<link rel="canonical" href="https://aorta.my.id" />
 </svelte:head>
 

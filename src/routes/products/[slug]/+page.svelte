@@ -98,12 +98,44 @@
 </script>
 
 <svelte:head>
-	<title>{product.title} | AORTA — Solusi Sistem Informasi {product.category}</title>
+	<title>{product.title} | AORTA</title>
 	<meta
 		name="description"
 		content="{product.overview} Hubungi AORTA untuk konsultasi dan demo gratis."
 	/>
 	<link rel="canonical" href="https://aorta.my.id/products/{product.slug}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={product.title} />
+	<meta property="og:description" content={product.overview} />
+	<meta property="og:url" content="https://aorta.my.id/products/{product.slug}" />
+	<meta
+		property="og:image"
+		content={product.screenshots?.[0]
+			? 'https://aorta.my.id' + product.screenshots[0]
+			: 'https://aorta.my.id/assets/logo.png'}
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={product.title} />
+	<meta name="twitter:description" content={product.overview} />
+	<meta
+		name="twitter:image"
+		content={product.screenshots?.[0]
+			? 'https://aorta.my.id' + product.screenshots[0]
+			: 'https://aorta.my.id/assets/logo.png'}
+	/>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": {product.title},
+			"description": {product.overview},
+			"url": "https://aorta.my.id/products/{product.slug}",
+			"applicationCategory": "BusinessApplication",
+			"operatingSystem": "Web",
+			"inLanguage": "id-ID",
+			"publisher": { "@id": "https://aorta.my.id/#organization" }
+		}
+	</script>
 </svelte:head>
 
 <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-slate-50/50">
