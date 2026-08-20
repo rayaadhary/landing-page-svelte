@@ -364,7 +364,7 @@
 
 				<div class="mt-8 space-y-3">
 					<a
-						href="/#contact"
+						href="/#get-started"
 						class="flex w-full items-center justify-center rounded-xl bg-[#0155FF] py-3.5 text-center text-xs font-bold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:opacity-90 active:scale-95"
 					>
 						Hubungi Sales Executive
@@ -404,13 +404,13 @@
 
 			<div class="flex w-full shrink-0 flex-wrap items-center justify-center gap-4 sm:w-auto">
 				<a
-					href="/#contact"
+					href="/#get-started"
 					class="inline-flex w-full items-center justify-center rounded-xl bg-white px-6 py-4 text-center text-sm font-bold text-slate-950 shadow-md transition-all hover:bg-slate-50 active:scale-98 sm:w-auto"
 				>
 					Request Demo Langsung
 				</a>
 				<a
-					href="/#signup"
+					href="/#get-started"
 					class="inline-flex w-full items-center justify-center rounded-xl bg-white/5 px-6 py-4 text-center text-sm font-bold text-white ring-1 ring-white/20 backdrop-blur-sm transition-all ring-inset hover:bg-white/10 active:scale-98 sm:w-auto"
 				>
 					Coba Akses Gratis

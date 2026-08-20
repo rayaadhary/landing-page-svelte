@@ -65,6 +65,7 @@
 </script>
 
 <svelte:head>
+	<link rel="icon" href="/assets/logo.png" />
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
@@ -74,6 +75,7 @@
 			"url": "https://aorta.my.id",
 			"logo": { "@type": "ImageObject", "url": "https://aorta.my.id/assets/logo.png" },
 			"email": "aortadigitalsolusi.business@gmail.com",
+			"description": "Penyedia SIMRS, SIM Klinik, HRIS, POS, dan jasa pembuatan aplikasi custom untuk rumah sakit, klinik, dan enterprise di Indonesia.",
 			"contactPoint": {
 				"@type": "ContactPoint",
 				"telephone": "+6289629949441",
@@ -85,6 +87,20 @@
 				"addressRegion": "Jawa Barat",
 				"addressLocality": "Cianjur",
 				"addressCountry": "ID"
+			},
+			"hasOfferCatalog": {
+				"@type": "OfferCatalog",
+				"name": "Layanan AORTA",
+				"itemListElement": [
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SIMRS Rumah Sakit" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SIM Klinik" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HRIS" } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "POS & Inventory" } },
+					{
+						"@type": "Offer",
+						"itemOffered": { "@type": "Service", "name": "Jasa Pembuatan Aplikasi Custom" }
+					}
+				]
 			}
 		}
 	</script>

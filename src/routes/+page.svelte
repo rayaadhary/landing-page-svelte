@@ -19,7 +19,6 @@
 
 <svelte:head>
 	<title>Jasa Pembuatan Aplikasi Rumah Sakit, Klinik &amp; Software | AORTA</title>
-	<link rel="icon" href="/assets/logo.png" />
 	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
 	<meta
 		name="description"
@@ -31,7 +30,7 @@
 	/>
 	<meta
 		property="og:title"
-		content="AORTA — Jasa Pembuatan Aplikasi Rumah Sakit, Klinik & Sistem Enterprise"
+		content="Jasa Pembuatan Aplikasi Rumah Sakit, Klinik &amp; Software | AORTA"
 	/>
 	<meta
 		property="og:description"
@@ -147,9 +146,13 @@
 								>SIM Klinik Pratama & Utama</a
 							>
 						</li>
-						<li><a href="/products/hris" class="hover:text-[#00C2CB]">HRIS</a></li>
 						<li>
-							<a href="/products/custom" class="hover:text-[#00C2CB]">Custom Architecture System</a>
+							<a href="/products/hris" class="hover:text-[#00C2CB]">HRIS</a>
+						</li>
+						<li>
+							<a href="/products/pos-inventory" class="hover:text-[#00C2CB]"
+								>POS &amp; Intelligent Inventory</a
+							>
 						</li>
 					</ul>
 				</div>
@@ -163,8 +166,6 @@
 						<li class="flex items-center gap-1.5 text-slate-300">
 							<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> Bridging BPJS
 						</li>
-						<li><a href="/privacy" class="hover:text-[#00C2CB]">Kebijakan Privasi</a></li>
-						<li><a href="/terms" class="hover:text-[#00C2CB]">Syarat & Ketentuan</a></li>
 					</ul>
 				</div>
 
