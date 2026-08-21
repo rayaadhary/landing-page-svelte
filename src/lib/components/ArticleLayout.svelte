@@ -99,7 +99,12 @@
 			{@render children()}
 		</div>
 
-		<div class="mt-16 border-t border-slate-200 pt-8 text-center">
+		<div class="mt-10 flex flex-wrap gap-2 text-xs">
+		<a href="/blog/cara-memilih-simrs-rumah-sakit" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">Cara memilih SIMRS →</a>
+		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">Harga SIMRS →</a>
+		<a href="/blog/apa-itu-sim-klinik-manfaat" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">Apa itu SIM Klinik →</a>
+	</div>
+	<div class="mt-16 border-t border-slate-200 pt-8 text-center">
 			<p class="mb-4 text-sm font-semibold text-slate-500">Tertarik dengan solusi AORTA?</p>
 			<a
 				href="https://wa.me/6289629949441?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA"

@@ -72,9 +72,14 @@
 	<h2>Lokasi &amp; Cakupan</h2>
 	<p>
 		Melayani seluruh wilayah Indramayu — Indramayu Kota, Jatibarang, Sliyeg, Karangampel,
-		Haurgeulis, Anjatan, Patrol, Sindang, Lohbener, dan sekitarnya. Proses bisa online atau tatap
-		muka.
+		Haurgeulis, Anjatan, Patrol, Sindang, Lohbener, dan sekitarnya. Dekat RSUD Indramayu & Jatibarang — tim siap on-site. Proses bisa online atau tatap muka.
 	</p>
+
+	<h2>FAQ — Jasa Aplikasi di Indramayu</h2>
+	<p><strong>Bisakah untuk UMKM Indramayu?</strong> Bisa — POS & website toko online untuk UMKM.</p>
+	<p><strong>Support setelah jadi?</strong> Ya, maintenance & update termasuk SLA.</p>
+	<p><strong>Berapa lama jadi?</strong> Website 7 hari, aplikasi klinik 14–21 hari.</p>
+	<script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Bisakah untuk UMKM Indramayu?","acceptedAnswer":{"@type":"Answer","text":"Bisa, POS & website toko online untuk UMKM."}},{"@type":"Question","name":"Support setelah jadi?","acceptedAnswer":{"@type":"Answer","text":"Ya, maintenance & update termasuk SLA."}},{"@type":"Question","name":"Berapa lama jadi?","acceptedAnswer":{"@type":"Answer","text":"Website 7 hari, aplikasi klinik 14-21 hari."}}]})}</script>
 
 	<blockquote>
 		<a
