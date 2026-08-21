@@ -136,6 +136,17 @@
 			"publisher": { "@id": "https://aorta.my.id/#organization" }
 		}
 	</script>
+	<script type="application/ld+json">
+		{JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Beranda", item: "https://aorta.my.id/" },
+				{ "@type": "ListItem", position: 2, name: "Produk", item: "https://aorta.my.id/#products" },
+				{ "@type": "ListItem", position: 3, name: product.title, item: `https://aorta.my.id/products/${product.slug}` }
+			]
+		})}
+	</script>
 </svelte:head>
 
 <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-slate-50/50">
