@@ -149,7 +149,6 @@
 							Lihat Demo
 						</a>
 					</div>
-					<p class="pt-1 text-xs font-semibold tracking-wide text-slate-500">★★★★★ 4.9/5 • 20+ RS & Klinik • Garansi bridging lolos Kemenkes</p>
 				</div>
 
 				<div
