@@ -123,17 +123,14 @@
 						in:fly={{ y: 30, duration: 800, delay: 200 }}
 						class="text-4xl leading-[1.15] font-black tracking-tight text-slate-900 sm:text-5xl md:text-6xl"
 					>
-						Solusi Digital Terpadu Untuk <span class="text-[#0155FF]"
-							>Segala Jenis Kebutuhan Bisnis Anda</span
-						>
+						SIMRS & Aplikasi Klinik <span class="text-[#0155FF]">Terintegrasi BPJS & SatuSehat</span> — Tanpa Biaya Tersembunyi
 					</h1>
 
 					<p
 						in:fly={{ y: 20, duration: 800, delay: 400 }}
 						class="max-w-lg text-base leading-relaxed text-slate-600 sm:text-lg"
 					>
-						Optimalkan operasional bisnis anda dengan sistem informasi terintegrasi yang modern,
-						aman, dan efisien
+						Bridging jadi 14 hari, SLA 24/7. RS & klinik di Cianjur & Bandung sudah pakai — mulai 1,5jt/bulan, konsultasi gratis hari ini.
 					</p>
 
 					<div in:fly={{ y: 20, duration: 800, delay: 600 }} class="flex flex-wrap gap-4 pt-2">
@@ -143,7 +140,7 @@
 							rel="noopener noreferrer"
 							class="inline-flex items-center justify-center rounded-full bg-[#0155FF] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:scale-[1.02] hover:opacity-90 active:scale-98"
 						>
-							Konsultasi Sekarang
+							Konsultasi Gratis
 						</a>
 						<a
 							href="#layanan"

@@ -72,8 +72,14 @@
 	<h2>Lokasi &amp; Cakupan</h2>
 	<p>
 		Melayani seluruh wilayah Subang — Subang Kota, Binong, Pamanukan, Ciasem, Patokbeusi, Purwadadi,
-		Cibogo, Kalijati, Pagaden, dan sekitarnya. Proses bisa online atau on-site.
+		Cibogo, Kalijati, Pagaden, dan sekitarnya. Dekat RSUD Subang & kawasan Pamanukan — on-site tersedia. Proses bisa online atau on-site.
 	</p>
+
+	<h2>FAQ — Jasa Aplikasi di Subang</h2>
+	<p><strong>Apakah melayani puskesmas Subang?</strong> Ya, SIM Klinik & SIMRS untuk puskesmas & klinik pratama.</p>
+	<p><strong>Bisa custom untuk industri Subang?</strong> Bisa — HRIS & POS custom untuk pabrik & retail Subang.</p>
+	<p><strong>Garansi?</strong> SLA 24/7 & garansi bridging.</p>
+	<script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Apakah melayani puskesmas Subang?","acceptedAnswer":{"@type":"Answer","text":"Ya, SIM Klinik & SIMRS untuk puskesmas & klinik pratama."}},{"@type":"Question","name":"Bisa custom untuk industri Subang?","acceptedAnswer":{"@type":"Answer","text":"Bisa, HRIS & POS custom untuk pabrik & retail Subang."}},{"@type":"Question","name":"Garansi?","acceptedAnswer":{"@type":"Answer","text":"SLA 24/7 & garansi bridging."}}]})}</script>
 
 	<blockquote>
 		<a

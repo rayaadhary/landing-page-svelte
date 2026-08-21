@@ -3,26 +3,26 @@
 
 	const features = [
 		{
-			title: 'Laporan Otomatis',
-			desc: 'Pendapatan harian, stok, dan beban kerja staf tersaji otomatis. Tidak perlu rekap manual menunggu akhir bulan.',
+			title: 'Rekap Keuangan Selesai Otomatis',
+			desc: 'Tutup buku tanpa lembur jam 11 malam. Laba/rugi, stok & beban staf keluar sendiri tiap hari.',
 			icon: ChartNoAxesCombined,
 			layoutClass: 'lg:col-span-2'
 		},
 		{
-			title: 'Alur Kerja Berjalan Sendiri',
-			desc: 'Payroll dengan PPh 21, resep obat, dan pesanan ke supplier diproses otomatis mengikuti aturan yang Anda tentukan.',
+			title: 'Payroll & Resep Jalan Sendiri',
+			desc: 'Gaji + PPh 21, resep obat & order supplier diproses otomatis — tanpa salah hitung.',
 			icon: Settings,
 			layoutClass: 'lg:col-span-2'
 		},
 		{
-			title: 'Data Terkunci Aman',
-			desc: 'Data pasien dan karyawan dienkripsi. Hak akses diatur per peran, dan setiap aktivitas pengguna tercatat.',
+			title: 'Data Pasien Terkunci Aman',
+			desc: 'Enkripsi berlapis, hak akses per peran, audit trail lengkap — siap audit Kemenkes.',
 			icon: Shield,
 			layoutClass: 'lg:col-span-2'
 		},
 		{
-			title: 'Terhubung ke Sistem Resmi',
-			desc: 'Bridging SatuSehat Kemenkes, klaim BPJS (VClaim), dan pembayaran QRIS/e-wallet terintegrasi langsung di sistem.',
+			title: 'Lolos Bridging Resmi Sekali Jadi',
+			desc: 'SatuSehat, VClaim BPJS & QRIS terhubung langsung — klaim tidak ditolak lagi.',
 			icon: Plug,
 			layoutClass: 'lg:col-span-2'
 		}

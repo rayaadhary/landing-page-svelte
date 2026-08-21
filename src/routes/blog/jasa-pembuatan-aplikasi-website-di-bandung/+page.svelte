@@ -75,8 +75,14 @@
 	<h2>Lokasi &amp; Cakupan</h2>
 	<p>
 		Melayani seluruh wilayah Bandung Raya — Bandung Kota, Cimahi, Soreang, Banjaran, Cileunyi,
-		Rancaekek, dan sekitarnya. Proses bisa online penuh atau tatap muka untuk kebutuhan spesifik.
+		Rancaekek, dan sekitarnya. Dekat RS Hasan Sadikin & area Dago — tim bisa on-site Bandung dalam 24 jam. Proses bisa online penuh atau tatap muka.
 	</p>
+
+	<h2>FAQ — Jasa Aplikasi di Bandung</h2>
+	<p><strong>Bisakah untuk RS besar di Bandung?</strong> Bisa — SIMRS Enterprise skala ribuan pasien/hari.</p>
+	<p><strong>Berapa biaya awal?</strong> Mulai 1,5jt/bulan sudah termasuk bridging BPJS & SatuSehat.</p>
+	<p><strong>Support Bandung?</strong> Ya, SLA 24/7 via WA & remote.</p>
+	<script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Bisakah untuk RS besar di Bandung?","acceptedAnswer":{"@type":"Answer","text":"Bisa, SIMRS Enterprise skala ribuan pasien per hari."}},{"@type":"Question","name":"Berapa biaya awal?","acceptedAnswer":{"@type":"Answer","text":"Mulai 1,5 juta per bulan sudah termasuk bridging BPJS & SatuSehat."}},{"@type":"Question","name":"Support Bandung?","acceptedAnswer":{"@type":"Answer","text":"Ya, SLA 24/7 via WhatsApp & remote."}}]})}</script>
 
 	<blockquote>
 		<a

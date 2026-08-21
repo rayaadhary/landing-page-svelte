@@ -19,7 +19,10 @@
 		name="description"
 		content="Blog AORTA: artikel seputar SIMRS rumah sakit, aplikasi klinik, HRIS, POS, dan jasa pembuatan aplikasi custom untuk bisnis di Indonesia."
 	/>
-	<link rel="canonical" href="https://aorta.my.id/blog" />
+	<meta name="robots" content="index, follow" />
+	<link rel="canonical" href="https://aorta.my.id/blog{currentPage > 1 ? `?page=${currentPage}` : ''}" />
+	{#if currentPage > 1}<link rel="prev" href="https://aorta.my.id/blog{currentPage - 1 > 1 ? `?page=${currentPage - 1}` : ''}" />{/if}
+	{#if currentPage < totalPages}<link rel="next" href="https://aorta.my.id/blog?page={currentPage + 1}" />{/if}
 	<meta property="og:type" content="website" />
 	<meta
 		property="og:title"
@@ -29,9 +32,9 @@
 		property="og:description"
 		content="Blog AORTA: artikel seputar SIMRS rumah sakit, aplikasi klinik, HRIS, POS, dan jasa pembuatan aplikasi custom."
 	/>
-	<meta property="og:url" content="https://aorta.my.id/blog" />
-	<meta property="og:image" content="https://aorta.my.id/assets/logo.png" />
-	<meta name="twitter:card" content="summary" />
+	<meta property="og:url" content="https://aorta.my.id/blog{currentPage > 1 ? `?page=${currentPage}` : ''}" />
+	<meta property="og:image" content="https://aorta.my.id/assets/og-default.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta
 		name="twitter:title"
 		content="Blog AORTA — Tips SIMRS, Aplikasi Klinik &amp; Jasa Software"
@@ -40,7 +43,17 @@
 		name="twitter:description"
 		content="Artikel seputar SIMRS, aplikasi klinik, HRIS, POS, dan jasa pembuatan aplikasi custom."
 	/>
-	<meta name="twitter:image" content="https://aorta.my.id/assets/logo.png" />
+	<meta name="twitter:image" content="https://aorta.my.id/assets/og-default.jpg" />
+	<script type="application/ld+json">
+		{JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			itemListElement: [
+				{ "@type": "ListItem", position: 1, name: "Beranda", item: "https://aorta.my.id/" },
+				{ "@type": "ListItem", position: 2, name: "Blog", item: "https://aorta.my.id/blog" }
+			]
+		})}
+	</script>
 </svelte:head>
 
 <div class="min-h-screen bg-slate-50">

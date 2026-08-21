@@ -74,8 +74,14 @@
 	<h2>Lokasi &amp; Cakupan</h2>
 	<p>
 		Kami melayani seluruh wilayah Cianjur — Cianjur Kota, Ciranjang, Cibeber, Cikalongkulon, Pacet,
-		Cipanas, dan sekitarnya. Prosesnya bisa online atau tatap muka.
+		Cipanas, dan sekitarnya. Dekat RSUD Cianjur & kawasan Cipanas — survey on-site bisa 1×24 jam. Prosesnya bisa online atau tatap muka.
 	</p>
+
+	<h2>FAQ — Jasa Aplikasi di Cianjur</h2>
+	<p><strong>Berapa lama pembuatan SIM Klinik di Cianjur?</strong> 14–21 hari termasuk bridging BPJS & SatuSehat.</p>
+	<p><strong>Bisa on-site ke Cianjur?</strong> Bisa — Cianjur Kota, Cipanas, Cibeber kami jangkau langsung.</p>
+	<p><strong>Apakah ada garansi?</strong> Ya, SLA 24/7 & garansi bridging lolos Kemenkes.</p>
+	<script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Berapa lama pembuatan SIM Klinik di Cianjur?","acceptedAnswer":{"@type":"Answer","text":"14-21 hari termasuk bridging BPJS & SatuSehat."}},{"@type":"Question","name":"Bisa on-site ke Cianjur?","acceptedAnswer":{"@type":"Answer","text":"Bisa, Cianjur Kota, Cipanas, Cibeber kami jangkau langsung."}},{"@type":"Question","name":"Apakah ada garansi?","acceptedAnswer":{"@type":"Answer","text":"Ya, SLA 24/7 & garansi bridging lolos Kemenkes."}}]})}</script>
 
 	<blockquote>
 		<a

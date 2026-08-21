@@ -4,9 +4,10 @@ import { getAllProducts } from '$lib/data/products.js';
 const BASE = 'https://aorta.my.id';
 
 export async function GET() {
+	const today = new Date().toISOString().split('T')[0];
 	const staticPages = [
-		{ loc: '/', lastmod: undefined, priority: '1.0', changefreq: 'weekly' },
-		{ loc: '/blog', lastmod: undefined, priority: '0.9', changefreq: 'weekly' }
+		{ loc: '/', lastmod: today, priority: '1.0', changefreq: 'weekly' },
+		{ loc: '/blog', lastmod: today, priority: '0.9', changefreq: 'weekly' }
 	];
 
 	const productPages = getAllProducts().map((p) => ({

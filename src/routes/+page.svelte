@@ -18,38 +18,32 @@
 </script>
 
 <svelte:head>
-	<title>Jasa Pembuatan Aplikasi Rumah Sakit, Klinik &amp; Software | AORTA</title>
+	<title>Jasa Pembuatan SIMRS &amp; Aplikasi Klinik Terintegrasi BPJS SatuSehat | AORTA</title>
 	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
 	<meta
 		name="description"
-		content="AORTA: Jasa pembuatan aplikasi rumah sakit (SIMRS), klinik, HRIS, POS, dan custom software. Solusi digital terintegrasi untuk fasilitas kesehatan & enterprise di Indonesia."
+		content="AORTA jasa pembuatan SIMRS, aplikasi klinik, HRIS & POS terintegrasi BPJS & SatuSehat. Custom software tanpa langganan untuk RS, klinik & enterprise di Indonesia."
 	/>
-	<meta
-		name="keywords"
-		content="jasa pembuatan aplikasi, aplikasi rumah sakit, aplikasi klinik, SIMRS, sistem informasi rumah sakit, pembuatan software custom, AORTA"
-	/>
-	<meta
-		property="og:title"
-		content="Jasa Pembuatan Aplikasi Rumah Sakit, Klinik &amp; Software | AORTA"
-	/>
+	<meta name="robots" content="index, follow" />
+	<meta property="og:title" content="Jasa Pembuatan SIMRS & Aplikasi Klinik Terintegrasi BPJS SatuSehat | AORTA" />
 	<meta
 		property="og:description"
-		content="Solusi SIMRS, SIM Klinik, HRIS, POS, dan custom software untuk fasilitas kesehatan & enterprise di Indonesia."
+		content="SIMRS, SIM Klinik, HRIS & POS terintegrasi BPJS & SatuSehat. Konsultasi & demo gratis — Cianjur, Bandung, seluruh Indonesia."
 	/>
-	<meta property="og:image" content="https://aorta.my.id/assets/logo.png" />
+	<meta property="og:image" content="https://aorta.my.id/assets/og-default.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://aorta.my.id" />
-	<meta name="twitter:card" content="summary" />
-	<meta
-		name="twitter:title"
-		content="AORTA — Jasa Pembuatan Aplikasi Rumah Sakit, Klinik & Software Custom"
-	/>
+	<meta property="og:locale" content="id_ID" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Jasa Pembuatan SIMRS & Aplikasi Klinik Terintegrasi BPJS SatuSehat | AORTA" />
 	<meta
 		name="twitter:description"
-		content="Solusi SIMRS, SIM Klinik, HRIS, POS, dan custom software untuk fasilitas kesehatan & enterprise di Indonesia."
+		content="SIMRS, SIM Klinik, HRIS & POS terintegrasi BPJS & SatuSehat. Demo gratis sekarang."
 	/>
-	<meta name="twitter:image" content="https://aorta.my.id/assets/logo.png" />
-	<link rel="canonical" href="https://aorta.my.id" />
+	<meta name="twitter:image" content="https://aorta.my.id/assets/og-default.jpg" />
+	<link rel="canonical" href="https://aorta.my.id/" />
 </svelte:head>
 
 <Hero />
