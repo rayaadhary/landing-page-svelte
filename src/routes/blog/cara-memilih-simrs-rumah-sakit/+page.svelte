@@ -23,7 +23,9 @@
 
 	<p>
 		Peraturan Kemenkes RI mewajibkan setiap Rumah Sakit memiliki SIMRS yang terintegrasi dengan
-		SatuSehat dan BPJS Kesehatan.
+		SatuSehat dan BPJS Kesehatan. Sebelum masuk ke tips memilih, pastikan Anda memahami
+		<a href="/blog/perbedaan-simrs-dan-aplikasi-klinik">perbedaan mendasar SIMRS dan aplikasi klinik</a>
+		— karena keduanya tidak bisa saling substitusi.
 	</p>
 
 	<h2>5 Hal yang Perlu Diperhatikan</h2>
@@ -61,6 +63,14 @@
 	<p>
 		Tanyakan: berapa lama <em>response time</em> jika sistem down? Apakah ada dedicated engineer?
 		Sistem rumah sakit adalah <em>critical system</em> — downtime 1 jam bisa mengganggu ratusan pasien.
+	</p>
+
+	<p>
+		Bingung menentukan budget? Lihat rincian
+		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">harga software SIMRS</a>
+		termasuk biaya integrasi BPJS dan SatuSehat. Kalau RS Anda sedang pakai Khanza dan ingin
+		migrasi, baca juga
+		<a href="/blog/alternatif-simrs-selain-khanza">alternatif SIMRS selain Khanza</a>.
 	</p>
 
 	<h2>Kenapa AORTA?</h2>

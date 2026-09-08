@@ -101,7 +101,7 @@ const articles = [
 	},
 	{
 		slug: 'jasa-pembuatan-software-hris-sdm-absensi',
-		title: 'Jasa Pembuatan Software HRIS / SDM &amp; Absensi — Sistem Kepegawaian Digital',
+		title: 'Panduan Memilih Software HRIS untuk Perusahaan — Fitur Wajib &amp; Tips',
 		category: 'HRIS',
 		image: '/assets/pos.png',
 		author: 'Tim AORTA',
@@ -111,7 +111,7 @@ const articles = [
 	},
 	{
 		slug: 'jasa-pembuatan-aplikasi-kursus-elearning-ecourse',
-		title: 'Jasa Pembuatan Aplikasi Kursus / E-Learning / Ecourse — Platform Belajar Online',
+		title: 'Checklist Fitur E-Learning yang Wajib Ada di Platform Kursus Online',
 		category: 'Custom Software',
 		image: '/assets/pos.png',
 		author: 'Tim AORTA',
@@ -121,23 +121,13 @@ const articles = [
 	},
 	{
 		slug: 'jasa-pembuatan-website-perusahaan-company-profile',
-		title: 'Jasa Pembuatan Website Perusahaan / Company Profile — Kesan Profesional di Mata Klien',
+		title: 'Cara Membuat Website Profesional untuk UMKM — Panduan Lengkap',
 		category: 'Custom Software',
 		image: '/assets/pos.png',
 		author: 'Tim AORTA',
 		date: '2025-07-29',
 		readTime: '4 menit',
 		excerpt: 'Butuh jasa pembuatan website perusahaan / company profile? AORTA membuat website profesional untuk bisnis, instansi, dan organisasi — desain modern, SEO friendly, mobile responsive.',
-	},
-	{
-		slug: 'jasa-pembuatan-undangan-digital',
-		title: 'Jasa Pembuatan Undangan Digital — Nikah, Khitan, Ulang Tahun',
-		category: 'Jasa Pembuatan',
-		image: '/assets/pos.png',
-		author: 'Tim AORTA',
-		date: '2025-07-30',
-		readTime: '4 menit',
-		excerpt: 'Butuh jasa pembuatan undangan digital? AORTA melayani undangan pernikahan, akad, khitanan, ulang tahun — desain premium, link siap share, RSVP online.',
 	},
 	{
 		slug: 'harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat',

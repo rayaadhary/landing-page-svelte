@@ -64,7 +64,7 @@
 	</ul>
 
 	<h2>Kapan Pilih Aplikasi Klinik?</h2>
-	<p>Pilih Aplikasi Klinik jika:</p>
+	<p>Pilih <a href="/blog/apa-itu-sim-klinik-manfaat">Aplikasi Klinik (SIM Klinik)</a> jika:</p>
 	<ul>
 		<li>Anda mengelola klinik pratama / utama</li>
 		<li>Fokus pada pelayanan rawat jalan dan konsultasi</li>
@@ -75,7 +75,11 @@
 	<h2>Solusi dari AORTA</h2>
 	<p>
 		Kami menyediakan <strong>kedua sistem</strong> — SIMRS Core Enterprise untuk RS dan SIM Klinik Pratama
-		&amp; Utama untuk klinik. Tim kami akan membantu Anda menentukan mana yang paling sesuai.
+		&amp; Utama untuk klinik. Jika masih bingung menentukan budget, simak
+		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">rincian harga SIMRS</a>
+		dan
+		<a href="/blog/cara-memilih-simrs-rumah-sakit">panduan memilih SIMRS</a>
+		secara lengkap. Tim kami akan membantu Anda menentukan mana yang paling sesuai.
 	</p>
 
 	<blockquote>

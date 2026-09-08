@@ -10,9 +10,10 @@
 		{ "source": "/blog/jasa-pembuatan-aplikasi-website-di-cianjur", "destination": "/blog/jasa-pembuatan-aplikasi-website", "permanent": true },
 		{ "source": "/blog/jasa-pembuatan-aplikasi-website-di-subang", "destination": "/blog/jasa-pembuatan-aplikasi-website", "permanent": true },
 		{ "source": "/blog/jasa-pembuatan-aplikasi-website-di-indramayu", "destination": "/blog/jasa-pembuatan-aplikasi-website", "permanent": true },
-		{ "source": "/blog/jasa-pembuatan-undangan-digital-bandung", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true },
-		{ "source": "/blog/jasa-pembuatan-undangan-digital-cianjur", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true },
-		{ "source": "/blog/jasa-pembuatan-undangan-digital-indramayu", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true },
-		{ "source": "/blog/jasa-pembuatan-undangan-digital-subang", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true }
+		{ "source": "/blog/jasa-pembuatan-undangan-digital", "destination": "/blog", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-bandung", "destination": "/blog", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-cianjur", "destination": "/blog", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-indramayu", "destination": "/blog", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-subang", "destination": "/blog", "permanent": true }
 	]
 }

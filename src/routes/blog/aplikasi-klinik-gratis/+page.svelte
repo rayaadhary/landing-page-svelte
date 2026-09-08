@@ -86,7 +86,9 @@
 	<p><em>* OpenEMR gratis biaya lisensi, tapi butuh biaya server dan maintenance IT</em></p>
 
 	<h2>Kapan Saatnya Upgrade?</h2>
-	<p>Segera beralih ke aplikasi klinik berbayar jika:</p>
+	<p>
+		Segera beralih ke <a href="/blog/apa-itu-sim-klinik-manfaat">aplikasi klinik berbayar</a> jika:
+	</p>
 	<ul>
 		<li>Pasien sudah lebih dari 30 per hari — spreadsheet tidak lagi cukup</li>
 		<li>Butuh laporan keuangan yang akurat untuk akuntan atau pajak</li>
@@ -98,8 +100,11 @@
 	<h2>Kesimpulan</h2>
 	<p>
 		Aplikasi klinik gratis cocok untuk <strong>tahap awal</strong> — praktik pribadi dengan pasien
-		terbatas. Saat pasien bertambah dan kebutuhan operasional naik, aplikasi berbayar seperti AORTA
-		SIM Klinik bisa lebih <strong>murah dalam jangka panjang</strong> dibanding biaya salah input dan
+		terbatas. Saat pasien bertambah dan kebutuhan operasional naik, pertimbangkan
+		<a href="/blog/aplikasi-klinik-murah-tanpa-langganan">opsi aplikasi klinik murah tanpa langganan</a>
+		atau SaaS berlangganan. Kalau sistem lama sering bermasalah, baca juga
+		<a href="/blog/aplikasi-klinik-sering-error-lemot">cara mengatasi aplikasi klinik yang error dan lemot</a>.
+		AORTA SIM Klinik bisa lebih <strong>murah dalam jangka panjang</strong> dibanding biaya salah input dan
 		pasien yang pergi karena sistem lambat.
 	</p>
 

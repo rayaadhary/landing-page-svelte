@@ -59,6 +59,8 @@
 	<p>
 		Aplikasi open source seperti OpenEMR atau Odoo gratis lisensinya — tapi Anda tetap membayar
 		tenaga IT untuk instalasi, konfigurasi, dan maintenance. Cocok jika sudah punya tim IT internal.
+		Lihat juga <a href="/blog/aplikasi-klinik-gratis">daftar lengkap aplikasi klinik gratis</a>
+		untuk opsi lainnya.
 	</p>
 
 	<h2>Perbandingan Model Pembayaran</h2>
@@ -130,8 +132,10 @@
 	<h2>Solusi dari AORTA</h2>
 	<p>
 		AORTA SIM Klinik memakai model <strong>SaaS berlangganan</strong> mulai 850rb/bulan — sudah termasuk
-		server, backup, support 24/7, update fitur rutin, bridging BPJS, dan RME standar Kemenkes. Tidak ada
-		biaya instalasi atau biaya tersembunyi.
+		server, backup, support 24/7, update fitur rutin, bridging BPJS, dan
+		<a href="/blog/apa-itu-sim-klinik-manfaat">RME standar Kemenkes</a>. Tidak ada
+		biaya instalasi atau biaya tersembunyi. Kalau aplikasi klinik Anda sekarang sering bermasalah,
+		baca <a href="/blog/aplikasi-klinik-sering-error-lemot">penyebab dan solusi aplikasi klinik error &amp; lemot</a>.
 	</p>
 	<p>
 		Untuk klinik yang benar-benar ingin tanpa langganan, konsultasikan dulu kebutuhan Anda — model

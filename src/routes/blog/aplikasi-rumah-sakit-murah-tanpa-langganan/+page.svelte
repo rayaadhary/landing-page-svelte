@@ -52,7 +52,8 @@
 	<h3>3. Open Source SIMRS</h3>
 	<p>
 		Beberapa SIMRS open source (seperti OpenEMR, HospitalRun) bisa dipakai gratis. Tapi implementasi
-		di RS kelas C ke atas butuh kustomisasi berat dan biaya IT yang tidak sedikit.
+		di RS kelas C ke atas butuh kustomisasi berat dan biaya IT yang tidak sedikit. Lihat
+		<a href="/blog/aplikasi-rumah-sakit-gratis">daftar lengkap SIMRS gratis</a> untuk opsi lainnya.
 	</p>
 
 	<h2>Perbandingan Biaya 5 Tahun</h2>
@@ -130,7 +131,10 @@
 	<p>
 		Untuk RS kecil-menengah, model <strong>SaaS dengan biaya bulanan terjangkau</strong> seperti AORTA
 		SIMRS bisa lebih hemat karena biaya server, update, support, dan bridging sudah termasuk dalam satu
-		harga.
+		harga. Lihat juga
+		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">rincian harga SIMRS</a>
+		dan
+		<a href="/blog/alternatif-simrs-selain-khanza">alternatif SIMRS selain Khanza</a>.
 	</p>
 
 	<blockquote>
