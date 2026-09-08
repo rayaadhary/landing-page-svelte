@@ -24,7 +24,8 @@
 
 	<p>
 		Software jadi (<em>off-the-shelf</em>) dipaksa masuk ke template yang kaku. Aplikasi custom
-		dirancang mengikuti alur kerja Anda — bukan sebaliknya.
+		dirancang mengikuti alur kerja Anda — bukan sebaliknya. Jika butuh sistem kesehatan, baca juga
+		<a href="/blog/perbedaan-simrs-dan-aplikasi-klinik">perbedaan SIMRS vs aplikasi klinik</a>.
 	</p>
 
 	<h2>Kisaran Biaya di Pasaran</h2>

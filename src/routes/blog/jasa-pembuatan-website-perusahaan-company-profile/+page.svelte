@@ -3,98 +3,126 @@
 </script>
 
 <ArticleLayout
-	title="Jasa Pembuatan Website Perusahaan / Company Profile — Kesan Profesional di Mata Klien"
-	description="Butuh jasa pembuatan website perusahaan / company profile? AORTA membuat website profesional untuk bisnis, instansi, dan organisasi — desain modern, SEO friendly, mobile responsive."
-	ogDescription="Jasa pembuatan website company profile dari AORTA. Website profesional untuk bisnis dan instansi — desain kekinian, cepat, dan siap mendukung branding Anda."
+	title="Cara Membuat Website Profesional untuk UMKM — Panduan Lengkap"
+	description="Panduan membuat website profesional untuk UMKM: fitur wajib, tips SEO, pilihan teknologi, dan estimasi biaya agar bisnis Anda tampil profesional."
+	ogDescription="Panduan lengkap membuat website profesional untuk UMKM dan bisnis kecil. Fitur wajib, tips SEO, dan estimasi biaya."
 	image="/assets/pos.png"
 	slug="jasa-pembuatan-website-perusahaan-company-profile"
 	date="2025-07-29"
 	category="Custom Software"
 	author="Tim AORTA"
-	readTime="4 menit"
+	readTime="6 menit"
 >
-	<h2>Website Company Profile: Wajib untuk Bisnis Profesional</h2>
+	<h2>Kenapa UMKM Butuh Website?</h2>
 
 	<p>
-		Website company profile bukan lagi pilihan — ini etalase pertama yang dilihat calon klien,
-		mitra, atau investor sebelum memutuskan bekerja sama. Tanpa website, bisnis Anda dianggap tidak
-		profesional, tidak kredibel, dan ketinggalan zaman.
+		Banyak UMKM masih mengandalkan media sosial sebagai satu-satunya kehadiran digital. Padahal,
+		website punya keunggulan yang Instagram atau Facebook tidak punya:
 	</p>
+	<ul>
+		<li><strong>Kredibilitas</strong> — calon klien menilai perusahaan yang punya website lebih profesional</li>
+		<li><strong>SEO</strong> — muncul di Google saat orang cari produk/jasa Anda (tanpa bayar iklan)</li>
+		<li><strong>Kontrol penuh</strong> — data pelanggan dan konten milik Anda, bukan platform media sosial</li>
+		<li><strong>24/7</strong> — website bekerja tanpa libur, bahkan saat Anda tidur</li>
+	</ul>
 
+	<h2>Fitur Wajib Website UMKM</h2>
+
+	<h3>1. Profil Perusahaan</h3>
 	<p>
-		<strong>AORTA</strong> membuat website perusahaan / company profile dengan desain yang rapi, cepat,
-		dan siap mendukung branding bisnis Anda.
+		Halaman "Tentang Kami" dengan visi, misi, sejarah, dan tim. Ini yang dilihat calon klien
+		sebelum memutuskan bekerja sama. Jangan remehkan — halaman ini sering jadi halaman kedua
+		paling banyak dikunjungi setelah homepage.
 	</p>
 
-	<h2>Fitur Website Company Profile AORTA</h2>
+	<h3>2. Daftar Layanan / Produk</h3>
+	<p>
+		Jelaskan apa yang Anda jual dengan jelas. Gunakan foto asli (bukan stock photo), harga
+		(jika memungkinkan), dan CTA (Call to Action) yang jelas seperti "Konsultasi Gratis" atau
+		"Beli Sekarang".
+	</p>
+
+	<h3>3. Portofolio / Testimoni</h3>
+	<p>
+		Bukti sosial adalah faktor keputusan terbesar. Tampilkan projek yang sudah dikerjakan,
+		testimoni klien, dan studi kasus. Semakin spesifik, semakin meyakinkan.
+	</p>
+
+	<h3>4. Halaman Kontak &amp; Google Maps</h3>
+	<p>
+		Form kontak, nomor WhatsApp, alamat, dan peta lokasi. WhatsApp integration sangat penting
+		untuk UMKM Indonesia — mayoritas konsumen lebih suka chat langsung.
+	</p>
+
+	<h3>5. Blog / Artikel</h3>
+	<p>
+		Blog adalah mesin SEO gratis. Tulis artikel yang menjawab pertanyaan calon pelanggan.
+		Contoh: toko material bangunan bisa tulis "Cara Memilih Keramik yang Benar" — orang yang
+		baca artikel ini adalah prospek yang sudah dekat dengan keputusan beli.
+	</p>
+
+	<h2>Pilihan Teknologi untuk Website UMKM</h2>
 
 	<table>
-		<thead><tr><th>Fitur</th><th>Keterangan</th></tr></thead>
+		<thead><tr><th>Opsi</th><th>Biaya</th><th>Kelebihan</th><th>Kekurangan</th></tr></thead>
 		<tbody>
-			<tr
-				><td>Desain Responsive</td><td
-					>Tampil rapi di HP, tablet, dan desktop — tanpa perlu dua versi website</td
-				></tr
-			>
-			<tr
-				><td>Halaman Profil Perusahaan</td><td>Tentang kami, visi misi, tim, sejarah perusahaan</td
-				></tr
-			>
-			<tr><td>Portofolio / Proyek</td><td>Galeri hasil kerja, studi kasus, testimoni klien</td></tr>
-			<tr><td>Layanan / Produk</td><td>Halaman lengkap produk atau jasa yang ditawarkan</td></tr>
-			<tr><td>Blog / Artikel</td><td>Fitur blog untuk SEO dan konten marketing</td></tr>
-			<tr
-				><td>Kontak &amp; Google Maps</td><td
-					>Form kontak, alamat, WhatsApp integration, peta lokasi</td
-				></tr
-			>
-			<tr
-				><td>SEO Optimized</td><td>Struktur SEO, meta tags, sitemap, kecepatan loading tinggi</td
-				></tr
-			>
-			<tr><td>Admin Panel</td><td>Update konten sendiri tanpa perlu ngoding</td></tr>
+			<tr>
+				<td>WordPress</td>
+				<td>Rp 500rb-2jt/tahun (hosting + domain)</td>
+				<td>Murah, banyak plugin, mudah dikelola</td>
+				<td>Rawan hack, loading lambat jika tidak dioptimasi</td>
+			</tr>
+			<tr>
+				<td>Website Builder (Wix, Squarespace)</td>
+				<td>Rp 200rb-500rb/bulan</td>
+				<td>Drag-drop, tidak perlu coding</td>
+				<td>Terbatas fitur, domain tidak milik sendiri</td>
+			</tr>
+			<tr>
+				<td>Custom (HTML/CSS/JS)</td>
+				<td>Rp 5-35 juta (sekali buat)</td>
+				<td>Cepat, ringan, full kontrol</td>
+				<td>Butuh developer untuk update</td>
+			</tr>
+			<tr>
+				<td>Static Site (Hugo, Astro)</td>
+				<td>Murah (hosting gratis di Vercel/Netlify)</td>
+				<td>Sangat cepat, aman, SEO-friendly</td>
+				<td>Tidak ada admin panel dinamis</td>
+			</tr>
 		</tbody>
 	</table>
 
-	<h2>Kenapa Website Itu Penting?</h2>
+	<h2>Tips SEO untuk Website UMKM</h2>
+	<ol>
+		<li><strong>Gunakan domain sendiri</strong> — `tokobangunan.com`, bukan `tokobangunan.wordpress.com`</li>
+		<li><strong>Title tag unik</strong> — setiap halaman punya judul berbeda, 50-60 karakter</li>
+		<li><strong>Meta description</strong> — deskripsi singkat yang mengundang klik, 150-160 karakter</li>
+		<li><strong>Speed</strong> — loading di bawah 3 detik (hosting cepat, gambar terkompresi)</li>
+		<li><strong>Mobile-friendly</strong> — 70% pengunjung Indonesia akses dari HP</li>
+		<li><strong>Content</strong> — tulis blog minimal 1 artikel per minggu tentang topik relevan</li>
+	</ol>
+
+	<h2>Estimasi Biaya</h2>
+	<p>
+		Perkiraan biaya membuat website profesional untuk UMKM (2025):
+	</p>
 	<ul>
-		<li>
-			<strong>Kredibilitas</strong> — konsumen menilai perusahaan dengan website lebih kredibel
-		</li>
-		<li>
-			<strong>24/7 Marketing</strong> — website bekerja 24 jam sehari, 7 hari seminggu tanpa libur
-		</li>
-		<li>
-			<strong>Informasi Lengkap</strong> — semua info bisnis Anda di satu tempat, klien tidak perlu tanya
-			satu-satu
-		</li>
-		<li>
-			<strong>SEO &amp; Trafik Organik</strong> — ditemukan di Google tanpa harus bayar iklan terus-menerus
-		</li>
-		<li><strong>Investasi Jangka Panjang</strong> — sekali buat, manfaat bertahun-tahun</li>
+		<li><strong>DIY (WordPress/Wix):</strong> Rp 1-3 juta/tahun (hosting + domain + template)</li>
+		<li><strong>Jasa Pembuatan:</strong> Rp 5-15 juta (design + development + setup)</li>
+		<li><strong>Custom Premium:</strong> Rp 15-35 juta (fitur lengkap, SEO, admin panel)</li>
 	</ul>
 
-	<h2>Siapa yang Butuh Website Company Profile?</h2>
-	<ul>
-		<li>Perusahaan jasa — kontraktor, arsitek, konsultan, event organizer</li>
-		<li>Startup &amp; UKM — branding profesional untuk menarik investor &amp; klien</li>
-		<li>Klinik, RS, laboratorium — tempat pasien cari informasi sebelum datang</li>
-		<li>Lembaga pendidikan — sekolah, universitas, LPK, bimbel</li>
-		<li>Organisasi &amp; yayasan — portal informasi untuk anggota &amp; publik</li>
-	</ul>
-
-	<h2>Mengapa Pilih AORTA?</h2>
-	<ul>
-		<li>Desain custom — bukan template murahan yang dipakai ribuan orang</li>
-		<li>Mobile-first — dioptimasi untuk pengguna HP</li>
-		<li>Cepat &amp; ringan — loading cepat</li>
-		<li>SEO siap — langsung muncul di pencarian Google</li>
-		<li>Support terjamin — ada tim yang bantu jika ada masalah</li>
-	</ul>
+	<h2>Kesimpulan</h2>
+	<p>
+		Website adalah investasi, bukan biaya. Untuk UMKM, mulai dari yang sederhana — yang penting
+		punya domain sendiri, mobile-friendly, dan konten yang jelas. Bisa diupgrade nanti saat
+		bisnis berkembang.
+	</p>
 
 	<blockquote>
 		<a
-			href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20website%20company%20profile%20AORTA"
+			href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20website%20untuk%20bisnis"
 			>Konsultasi gratis via WhatsApp →</a
 		>
 	</blockquote>

@@ -82,7 +82,9 @@
 	</ul>
 
 	<h2>Kapan Harus Upgrade ke SIMRS Berbayar?</h2>
-	<p>Segera upgrade jika:</p>
+	<p>
+		Segera upgrade jika (baca <a href="/blog/cara-memilih-simrs-rumah-sakit">panduan lengkap memilih SIMRS</a>):
+	</p>
 	<ul>
 		<li>RS Anda wajib akreditasi KARS</li>
 		<li>Wajib bridging SatuSehat dan BPJS VClaim</li>
@@ -95,7 +97,10 @@
 	<p>
 		Jika ingin mencoba SIMRS tanpa komitmen, AORTA menyediakan <strong>demo gratis 14 hari</strong> dengan
 		akses penuh fitur. Tim kami siap mendampingi migrasi data dari sistem gratis atau Excel ke SIMRS yang
-		memenuhi standar Kemenkes.
+		memenuhi standar Kemenkes. Bandingkan juga
+		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">harga software SIMRS</a>
+		dan
+		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">opsi SIMRS tanpa langganan</a>.
 	</p>
 
 	<blockquote>

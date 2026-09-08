@@ -63,7 +63,9 @@
 	<h3>3. SIMRS Open Source</h3>
 	<p>
 		Lisensinya gratis, tetapi biaya implementasi dan kustomisasi bisa lebih mahal dari SaaS dalam
-		1-2 tahun pertama. Integrasi BPJS &amp; SatuSehat harus dibangun sendiri dari nol.
+		1-2 tahun pertama. Integrasi BPJS &amp; SatuSehat harus dibangun sendiri dari nol. Lihat
+		<a href="/blog/aplikasi-rumah-sakit-gratis">daftar SIMRS gratis/open source</a> dan
+		<a href="/blog/alternatif-simrs-selain-khanza">alternatif selain Khanza</a>.
 	</p>
 
 	<h2>Biaya Tersembunyi SIMRS Murah</h2>
@@ -92,7 +94,9 @@
 
 	<p>
 		AORTA SIMRS menawarkan harga mulai 1,5 juta/bulan dengan bridging BPJS &amp; Satu Sehat sudah
-		termasuk dalam paket — tanpa biaya tambahan, tanpa biaya tersembunyi.
+		termasuk dalam paket — tanpa biaya tambahan, tanpa biaya tersembunyi. Baca panduan lengkap
+		<a href="/blog/cara-memilih-simrs-rumah-sakit">cara memilih SIMRS</a> dan
+		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">opsi SIMRS tanpa langganan</a>.
 	</p>
 
 	<blockquote>

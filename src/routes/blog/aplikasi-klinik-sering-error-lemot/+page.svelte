@@ -70,7 +70,7 @@
 
 	<h3>1. Infrastruktur Server Lemah</h3>
 	<p>
-		Banyak aplikasi klinik murah dipasang di shared hosting atau server seadanya. Saat data pasien
+		Banyak <a href="/blog/aplikasi-klinik-gratis">aplikasi klinik gratis</a> atau murah dipasang di shared hosting atau server seadanya. Saat data pasien
 		bertambah, server tidak sanggup menahan beban. Akibatnya: <strong
 			>loading makin lambat tiap bulan.</strong
 		>
@@ -153,7 +153,11 @@
 
 	<p>
 		AORTA SIM Klinik dibangun di infrastruktur cloud dengan standar enterprise — dilengkapi SLA
-		tertulis dan dirancang untuk ratusan transaksi per hari tanpa lemot.
+		tertulis dan dirancang untuk ratusan transaksi per hari tanpa lemot. Pelajari juga
+		<a href="/blog/perbedaan-simrs-dan-aplikasi-klinik">perbedaan SIMRS vs aplikasi klinik</a>
+		dan
+		<a href="/blog/cara-memilih-simrs-rumah-sakit">tips memilih sistem informasi kesehatan</a>
+		yang tepat.
 	</p>
 
 	<blockquote>
