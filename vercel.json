@@ -4,5 +4,15 @@
 			"source": "/assets/(.*)",
 			"headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
 		}
+	],
+	"redirects": [
+		{ "source": "/blog/jasa-pembuatan-aplikasi-website-di-bandung", "destination": "/blog/jasa-pembuatan-aplikasi-website", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-aplikasi-website-di-cianjur", "destination": "/blog/jasa-pembuatan-aplikasi-website", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-aplikasi-website-di-subang", "destination": "/blog/jasa-pembuatan-aplikasi-website", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-aplikasi-website-di-indramayu", "destination": "/blog/jasa-pembuatan-aplikasi-website", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-bandung", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-cianjur", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-indramayu", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true },
+		{ "source": "/blog/jasa-pembuatan-undangan-digital-subang", "destination": "/blog/jasa-pembuatan-undangan-digital", "permanent": true }
 	]
 }
