@@ -204,6 +204,16 @@
 					class="relative py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#0155FF] after:transition-all after:duration-300 hover:text-[#0155FF] hover:after:w-full"
 					>Kontak</a
 				>
+				<a
+					href="/faq"
+					class="relative py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#0155FF] after:transition-all after:duration-300 hover:text-[#0155FF] hover:after:w-full"
+					>FAQ</a
+				>
+				<a
+					href="/testimonials"
+					class="relative py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#0155FF] after:transition-all after:duration-300 hover:text-[#0155FF] hover:after:w-full"
+					>Testimoni</a
+				>
 
 				<span class="h-4 w-px bg-neutral-200"></span>
 
@@ -290,6 +300,18 @@
 					on:click={closeMenu}
 					class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]"
 					>Kontak</a
+				>
+				<a
+					href="/faq"
+					on:click={closeMenu}
+					class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]"
+					>FAQ</a
+				>
+				<a
+					href="/testimonials"
+					on:click={closeMenu}
+					class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-neutral-50 hover:text-[#0155FF]"
+					>Testimoni</a
 				>
 
 				<div class="my-4 border-t border-neutral-100"></div>
