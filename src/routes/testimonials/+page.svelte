@@ -2,7 +2,7 @@
 	const testimonials = [
 		{
 			quote:
-				'Tim AORTA membangun platform eLearning/LMS untuk daycare di Jepang sesuai kebutuhan. Responsif, tepat waktu, dan sistemnya stabil. Puas dengan hasilnya.',
+				'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
 			name: 'Tim Kaigopedia',
 			role: 'kaigopedia.com',
 			avatar: 'K',
