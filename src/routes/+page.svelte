@@ -15,6 +15,15 @@
 
 	// Ambil tahun berjalan secara dinamis
 	const currentYear = new Date().getFullYear();
+
+	let faqOpen = $state(null);
+	const faqs = [
+		{ q: 'Apakah sistem bisa di-custom?', a: 'Bisa. Semua produk AORTA bisa dikustomisasi sesuai kebutuhan operasional Anda — dari alur kerja, tampilan, hingga integrasi sistem pihak ketiga.' },
+		{ q: 'Apakah menerima jasa buat aplikasi lain?', a: 'Ya. Selain produk standar, kami juga menerima jasa pembuatan aplikasi custom — ERP, e-learning, portal layanan publik, dan lainnya.' },
+		{ q: 'Berapa lama proses implementasi?', a: 'SIM Klinik: 14–21 hari. SIMRS: 2–6 bulan. Aplikasi custom: disepakati setelah analisis kebutuhan.' },
+		{ q: 'Sudah terintegrasi BPJS & SatuSehat?', a: 'Ya. Bridging BPJS (VClaim) dan SatuSehat sudah termasuk dalam paket, bukan biaya tambahan.' },
+		{ q: 'Bagaimana support setelah beli?', a: 'SLA tertulis, support 24/7 via WhatsApp & tiket, dedicated engineer, dan update otomatis.' }
+	];
 </script>
 
 <svelte:head>
@@ -49,6 +58,57 @@
 <Hero />
 <Products />
 <Features />
+
+<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+	<div class="mb-10 text-center">
+		<span class="inline-block rounded-md border border-blue-100 bg-blue-50 px-3 py-1.5 text-[10px] font-black tracking-[0.2em] text-[#0155FF] uppercase">TESTIMONI</span>
+		<h2 class="mt-3 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Apa Kata <span class="text-[#0155FF]">Klien Kami</span></h2>
+	</div>
+
+	<div class="mx-auto max-w-2xl">
+		<div class="rounded-2xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(1,85,255,0.1)]">
+			<div class="mb-4 flex items-center gap-1 text-amber-400">
+				{#each Array(5) as _}
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+				{/each}
+			</div>
+			<blockquote class="mb-6 text-sm leading-relaxed font-medium text-slate-600">
+				"Tim AORTA membangun platform eLearning/LMS untuk daycare di Jepang sesuai kebutuhan. Responsif, tepat waktu, dan sistemnya stabil. Puas dengan hasilnya."
+			</blockquote>
+			<div class="flex items-center gap-3">
+				<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-black text-white">K</div>
+				<div>
+					<p class="text-sm font-bold text-slate-900">Tim Kaigopedia</p>
+					<p class="text-xs font-medium text-slate-500">kaigopedia.com</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+	<div class="mb-10 text-center">
+		<span class="inline-block rounded-md border border-blue-100 bg-blue-50 px-3 py-1.5 text-[10px] font-black tracking-[0.2em] text-[#0155FF] uppercase">FAQ</span>
+		<h2 class="mt-3 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">Pertanyaan <span class="text-[#0155FF]">Umum</span></h2>
+	</div>
+
+	<div class="space-y-3">
+		{#each faqs as faq, i}
+			<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:shadow-md">
+				<button onclick={() => faqOpen = faqOpen === i ? null : i} class="flex w-full items-center justify-between gap-4 p-5 text-left">
+					<span class="text-sm font-bold text-slate-900">{faq.q}</span>
+					<span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-transform duration-300 {faqOpen === i ? 'rotate-45' : ''}">
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+					</span>
+				</button>
+				{#if faqOpen === i}
+					<div class="px-5 pb-5 text-sm leading-relaxed font-medium text-slate-600">{faq.a}</div>
+				{/if}
+			</div>
+		{/each}
+	</div>
+</section>
 
 <section
 	id="get-started"
