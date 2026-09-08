@@ -112,7 +112,7 @@
 	<blockquote>
 		<a
 			href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20aplikasi%20kursus%20e-learning"
-			Konsultasi gratis untuk kebutuhan platform e-learning Anda →</a
+			>Konsultasi gratis untuk kebutuhan platform e-learning Anda →</a
 		>
 	</blockquote>
 </ArticleLayout>

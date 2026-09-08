@@ -105,7 +105,7 @@
 	<blockquote>
 		<a
 			href="https://wa.me/6289629949441?text=Halo%20saya%20ingin%20konsultasi%20software%20HRIS"
-			Konsultasi gratis via WhatsApp →</a
+			>Konsultasi gratis via WhatsApp →</a
 		>
 	</blockquote>
 </ArticleLayout>
