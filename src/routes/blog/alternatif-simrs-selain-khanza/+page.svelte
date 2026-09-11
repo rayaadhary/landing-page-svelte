@@ -111,7 +111,10 @@
 	<p>
 		Khanza adalah SIMRS open source yang bagus untuk belajar atau rumah sakit dengan tim IT besar.
 		Tapi untuk RS yang butuh sistem siap pakai, kustomisasi cepat, support terjamin, dan kepatuhan
-		regulasi, AORTA SIMRS adalah pilihan yang lebih tepat. Baca juga
+		regulasi, AORTA SIMRS adalah pilihan yang lebih tepat. Jika ingin tahu opsi gratis lainnya, baca
+		<a href="/blog/aplikasi-rumah-sakit-gratis">daftar SIMRS gratis</a> atau
+		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">SIMRS murah tanpa langganan</a>.
+		Baca juga
 		<a href="/blog/cara-memilih-simrs-rumah-sakit">panduan memilih SIMRS</a> dan
 		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">rincian harga software SIMRS</a>.
 	</p>

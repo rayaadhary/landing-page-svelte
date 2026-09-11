@@ -6,6 +6,7 @@
 		image,
 		slug,
 		date,
+		dateModified,
 		category,
 		author,
 		readTime,
@@ -27,20 +28,19 @@
 	<meta name="twitter:description" content={ogDescription} />
 	<meta name="twitter:image" content={image} />
 	<link rel="canonical" href="https://aorta.my.id/blog/{slug}" />
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "BlogPosting",
-			"headline": {title},
-			"description": {description},
-			"image": "https://aorta.my.id{image}",
-			"datePublished": {date},
-			"author": { "@type": "Organization", "name": {author} },
-			"publisher": { "@id": "https://aorta.my.id/#organization" },
-			"mainEntityOfPage": "https://aorta.my.id/blog/{slug}",
-			"inLanguage": "id-ID"
-		}
-	</script>
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": title,
+		"description": description,
+		"image": "https://aorta.my.id" + image,
+		"datePublished": date,
+		"dateModified": dateModified || date,
+		"author": { "@type": "Organization", "name": author },
+		"publisher": { "@id": "https://aorta.my.id/#organization" },
+		"mainEntityOfPage": "https://aorta.my.id/blog/" + slug,
+		"inLanguage": "id-ID"
+	})}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-slate-50">

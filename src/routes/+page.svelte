@@ -28,7 +28,6 @@
 
 <svelte:head>
 	<title>Jasa Pembuatan SIMRS &amp; Aplikasi Klinik Terintegrasi BPJS SatuSehat | AORTA</title>
-	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
 	<meta
 		name="description"
 		content="AORTA jasa pembuatan SIMRS, aplikasi klinik, HRIS & POS terintegrasi BPJS & SatuSehat. Custom software tanpa langganan untuk RS, klinik & enterprise di Indonesia."
@@ -242,14 +241,14 @@
 				</div>
 			</div>
 
-			<div
-				class="mt-8 flex flex-col items-center justify-between gap-4 text-[10px] font-bold tracking-wider text-slate-500 uppercase sm:flex-row"
-			>
+			<div class="flex items-center gap-4 text-[10px] font-bold tracking-wider text-slate-500 uppercase sm:flex-row">
 				<div>
 					&copy; {currentYear} AORTA. All rights reserved.
 				</div>
-				<div class="flex items-center gap-1 text-slate-600">
-					Engineered with Precision &bull; Built for Excellence
+				<div class="flex items-center gap-3 text-slate-600">
+					<a href="/privacy" class="hover:text-[#0155FF]">Kebijakan Privasi</a>
+					<span>&bull;</span>
+					<span>Engineered with Precision &bull; Built for Excellence</span>
 				</div>
 			</div>
 		</div>

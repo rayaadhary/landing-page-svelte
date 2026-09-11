@@ -65,6 +65,7 @@
 </script>
 
 <svelte:head>
+	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
 	<link rel="icon" href="/assets/logo.png" />
 	<script type="application/ld+json">
 		{
