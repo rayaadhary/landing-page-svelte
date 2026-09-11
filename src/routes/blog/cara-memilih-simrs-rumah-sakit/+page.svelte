@@ -68,7 +68,10 @@
 	<p>
 		Bingung menentukan budget? Lihat rincian
 		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">harga software SIMRS</a>
-		termasuk biaya integrasi BPJS dan SatuSehat. Kalau RS Anda sedang pakai Khanza dan ingin
+		termasuk biaya integrasi BPJS dan SatuSehat. Jika mencari opsi lebih terjangkau, baca juga
+		<a href="/blog/aplikasi-rumah-sakit-gratis">daftar SIMRS gratis</a> dan
+		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">SIMRS murah tanpa langganan</a>.
+		Kalau RS Anda sedang pakai Khanza dan ingin
 		migrasi, baca juga
 		<a href="/blog/alternatif-simrs-selain-khanza">alternatif SIMRS selain Khanza</a>.
 	</p>

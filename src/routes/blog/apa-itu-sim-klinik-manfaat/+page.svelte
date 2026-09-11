@@ -64,9 +64,11 @@
 		SIM Klinik dibuat untuk <strong>klinik pratama dan utama</strong> dengan skala operasional lebih kecil
 		dan lebih sederhana dibanding SIMRS untuk rumah sakit. Baca detail
 		<a href="/blog/perbedaan-simrs-dan-aplikasi-klinik">perbedaan SIMRS vs aplikasi klinik</a>
-		untuk memahami kapan harus pakai mana. Harganya juga jauh lebih terjangkau — kalau ingin tahu
-	.opsi gratis, lihat
+		untuk memahami kapan harus pakai mana. 	Harganya juga jauh lebih terjangkau — kalau ingin tahu
+		opsi gratis, lihat
 		<a href="/blog/aplikasi-klinik-gratis">rekomendasi aplikasi klinik gratis</a>.
+		Jika sedang cari opsi tanpa langganan, baca juga
+		<a href="/blog/aplikasi-klinik-murah-tanpa-langganan">aplikasi klinik murah tanpa langganan</a>.
 	</p>
 
 	<blockquote>

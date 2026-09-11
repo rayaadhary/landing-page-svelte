@@ -7,7 +7,8 @@ export async function GET() {
 	const today = new Date().toISOString().split('T')[0];
 	const staticPages = [
 		{ loc: '/', lastmod: today, priority: '1.0', changefreq: 'weekly' },
-		{ loc: '/blog', lastmod: today, priority: '0.9', changefreq: 'weekly' }
+		{ loc: '/blog', lastmod: today, priority: '0.9', changefreq: 'weekly' },
+		{ loc: '/privacy', lastmod: today, priority: '0.3', changefreq: 'yearly' }
 	];
 
 	const productPages = getAllProducts().map((p) => ({

@@ -88,7 +88,8 @@
 	<h2>FAQ</h2>
 	<p><strong>Berapa lama pembuatan SIM Klinik?</strong> 14–21 hari termasuk bridging BPJS &amp; SatuSehat.</p>
 	<p><strong>Bisa untuk RS besar?</strong> Bisa — SIMRS Enterprise skala ribuan pasien per hari.</p>
-	<p><strong>Berapa biaya awal?</strong> Mulai 1,5jt/bulan sudah termasuk bridging BPJS &amp; SatuSehat.</p>
+	<p><strong>Berapa biaya awal?</strong> Mulai 1,5jt/bulan sudah termasuk bridging BPJS &amp; SatuSehat. Rincian lengkap ada di
+		<a href="/blog/biaya-jasa-pembuatan-aplikasi-custom">halaman biaya jasa pembuatan aplikasi custom</a>.</p>
 	<p><strong>Bisa on-site ke kota saya?</strong> Ya — Bandung, Cianjur, Subang, Indramayu bisa on-site. Proses juga bisa online penuh.</p>
 	<p><strong>Apakah ada garansi?</strong> Ya, SLA 24/7 &amp; garansi bridging lolos Kemenkes.</p>
 	<script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Berapa lama pembuatan SIM Klinik?","acceptedAnswer":{"@type":"Answer","text":"14-21 hari termasuk bridging BPJS & SatuSehat."}},{"@type":"Question","name":"Bisa untuk RS besar?","acceptedAnswer":{"@type":"Answer","text":"Bisa, SIMRS Enterprise skala ribuan pasien per hari."}},{"@type":"Question","name":"Berapa biaya awal?","acceptedAnswer":{"@type":"Answer","text":"Mulai 1,5 juta per bulan sudah termasuk bridging BPJS & SatuSehat."}},{"@type":"Question","name":"Bisa on-site ke kota saya?","acceptedAnswer":{"@type":"Answer","text":"Ya, Bandung, Cianjur, Subang, Indramayu bisa on-site. Proses juga bisa online penuh."}},{"@type":"Question","name":"Apakah ada garansi?","acceptedAnswer":{"@type":"Answer","text":"Ya, SLA 24/7 & garansi bridging lolos Kemenkes."}}]})}</script>
