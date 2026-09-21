@@ -13,16 +13,22 @@
 		MapPin
 	} from 'lucide-svelte';
 
-	// Ambil tahun berjalan secara dinamis
+	let { data } = $props();
+
 	const currentYear = new Date().getFullYear();
 
-	let faqOpen = $state(null);
-	const faqs = [
-		{ q: 'Apakah sistem bisa di-custom?', a: 'Bisa. Semua produk AORTA bisa dikustomisasi sesuai kebutuhan operasional Anda — dari alur kerja, tampilan, hingga integrasi sistem pihak ketiga.' },
-		{ q: 'Apakah menerima jasa buat aplikasi lain?', a: 'Ya. Selain produk standar, kami juga menerima jasa pembuatan aplikasi custom — ERP, e-learning, portal layanan publik, dan lainnya.' },
-		{ q: 'Berapa lama proses implementasi?', a: 'SIM Klinik: 14–21 hari. SIMRS: 2–6 bulan. Aplikasi custom: disepakati setelah analisis kebutuhan.' },
-		{ q: 'Sudah terintegrasi BPJS & SatuSehat?', a: 'Ya. Bridging BPJS (VClaim) dan SatuSehat sudah termasuk dalam paket, bukan biaya tambahan.' },
-		{ q: 'Bagaimana support setelah beli?', a: 'SLA tertulis, support 24/7 via WhatsApp & tiket, dedicated engineer, dan update otomatis.' }
+	let faqOpen = $state(/** @type {number | null} */ (null));
+
+	const faqs = (data.faqs || []).map((/** @type {any} */ f) => ({ q: f.question || f.q, a: f.answer || f.a }));
+
+	const testimonials = data.testimonials || [
+		{
+			quote: 'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
+			clientName: 'Tim Kaigopedia',
+			clientRole: 'kaigopedia.com',
+			avatarLetter: 'K',
+			avatarColor: 'bg-emerald-500'
+		}
 	];
 </script>
 
@@ -65,25 +71,26 @@
 	</div>
 
 	<div class="mx-auto max-w-2xl">
-		<div class="rounded-2xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(1,85,255,0.1)]">
-			<div class="mb-4 flex items-center gap-1 text-amber-400">
-				{#each Array(5) as _}
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-				{/each}
-			</div>
-			<blockquote class="mb-6 text-sm leading-relaxed font-medium text-slate-600">
-				"Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya"
-			</blockquote>
-			<div class="flex items-center gap-3">
-				<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-black text-white">K</div>
-				<div>
-					<p class="text-sm font-bold text-slate-900">Tim Kaigopedia</p>
-					<p class="text-xs font-medium text-slate-500">kaigopedia.com</p>
+		{#each testimonials as t}
+			<div class="rounded-2xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(1,85,255,0.1)]">
+				<div class="mb-4 flex items-center gap-1 text-amber-400">
+					{#each Array(5) as _}
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+					{/each}
+				</div>
+				<blockquote class="mb-6 text-sm leading-relaxed font-medium text-slate-600">
+					"{t.quote}"
+				</blockquote>
+				<div class="flex items-center gap-3">
+					<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full {t.avatarColor} text-xs font-black text-white">{t.avatarLetter}</div>
+					<div>
+						<p class="text-sm font-bold text-slate-900">{t.clientName}</p>
+						<p class="text-xs font-medium text-slate-500">{t.clientRole}</p>
+					</div>
 				</div>
 			</div>
-		</div>
+		{/each}
 	</div>
-
 </section>
 
 <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
