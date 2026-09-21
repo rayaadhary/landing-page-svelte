@@ -6,7 +6,7 @@
 		image,
 		slug,
 		date,
-		dateModified,
+		dateModified = undefined,
 		category,
 		author,
 		readTime,
