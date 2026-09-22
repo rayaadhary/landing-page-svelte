@@ -25,14 +25,23 @@ jobs:
         with:
           push: true
           tags: ${{ env.IMAGE }}
-          build-args: |
-            DATABASE_URL=postgresql://postgres:supersecretpassword@pgbouncer:5432/aorta_cms
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment: AORTA_VPS
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          source: "docker-compose.yml"
+          target: "/opt/aorta-web"
+
       - uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -41,8 +50,10 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             cd /opt/aorta-web
+            docker rm -f pgbouncer 2>/dev/null || true
             echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull app
             docker compose up -d --force-recreate app
-            docker compose run --rm app npm run db:migrate
+            docker exec aorta-web npx drizzle-kit push --config=drizzle.config.js
+            docker exec aorta-web node src/lib/server/db/seed.js
             docker image prune -f

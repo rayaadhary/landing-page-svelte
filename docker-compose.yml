@@ -1,16 +1,14 @@
 services:
   app:
-    build: .
     image: ghcr.io/rayaadhary/landing-page-svelte:latest
     container_name: aorta-web
     restart: unless-stopped
     ports:
       - "3000:3000"
-    environment:
-      - DATABASE_URL=postgresql://postgres:supersecretpassword@postgres-pusat:5432/aorta_cms
+    env_file:
+      - .env
     networks:
       - global-proxy
-
 
 networks:
   global-proxy:
