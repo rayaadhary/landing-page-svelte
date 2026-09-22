@@ -6,7 +6,6 @@
 	export let description;
 	export let features = [];
 	export let screenshot;
-	export let slug;
 </script>
 
 <div

@@ -19,9 +19,9 @@
 
 	let faqOpen = $state(/** @type {number | null} */ (null));
 
-	const faqs = (data.faqs || []).map((/** @type {any} */ f) => ({ q: f.question || f.q, a: f.answer || f.a }));
+	const faqs = $derived((data.faqs || []).map((/** @type {any} */ f) => ({ q: f.question || f.q, a: f.answer || f.a })));
 
-	const testimonials = data.testimonials || [
+	const testimonials = $derived(data.testimonials || [
 		{
 			quote: 'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
 			clientName: 'Tim Kaigopedia',
@@ -29,7 +29,7 @@
 			avatarLetter: 'K',
 			avatarColor: 'bg-emerald-500'
 		}
-	];
+	]);
 </script>
 
 <svelte:head>

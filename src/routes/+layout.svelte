@@ -118,6 +118,7 @@
 	</script>
 </svelte:head>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <header
 	class="sticky top-0 z-50 w-full border-b border-neutral-100 bg-white/70 backdrop-blur-md transition-all duration-300"
 	on:mouseleave={() => (productDropdownOpen = false)}

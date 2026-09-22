@@ -3,6 +3,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
 RUN npm run build
 
 FROM node:20-alpine
