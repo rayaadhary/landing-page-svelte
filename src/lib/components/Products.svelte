@@ -1,231 +1,180 @@
 <script>
-	import { fade, fly } from 'svelte/transition';
-	import { CheckCircle2, X, Settings2, ArrowRight } from 'lucide-svelte';
-	import ProductCard from './ProductCard.svelte';
+	import { CheckCircle2, ArrowRight, ChevronRight } from 'lucide-svelte';
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
 
-	const products = [
+	const services = [
+		{
+			slug: 'custom-software-app',
+			title: 'Custom Web & Mobile App',
+			tagline: 'Solusi Tailor-made untuk Skala Enterprise',
+			description:
+				'Pengembangan aplikasi kustom dari nol sesuai kebutuhan unik bisnis Anda. Bebas menentukan arsitektur, fitur, dan integrasi API tanpa batasan template.',
+			features: [
+				'Arsitektur Tailor-made & Scalable',
+				'UI/UX Kustom, Responsive & Modern',
+				'Integrasi Third-Party API & Payment Gateway',
+				'Keamanan Tingkat Tinggi & Optimasi Performa'
+			]
+		},
 		{
 			slug: 'custom-erp',
-			title: 'Custom App & ERP Engine',
+			title: 'Enterprise Resource Planning (ERP)',
+			tagline: 'Otomatisasi & Integrasi Alur Bisnis Terpusat',
 			description:
-				'Infrastruktur pengembangan software modular untuk bisnis dengan alur kerja unik. Bebas menentukan modul, skema database, dan integrasi pihak ketiga.',
+				'Sistem manajemen terintegrasi untuk mengotomatisasi seluruh alur kerja operasional, keuangan, supply chain, hingga manufaktur secara real-time.',
 			features: [
-				'Arsitektur Modular Terintegrasi',
-				'Alur Kerja Fleksibel',
-				'Skalabilitas Enterprise',
-				'Konektivitas Open API'
-			],
-			screenshot: null
+				'Modul Bisnis Fleksibel & Modular',
+				'Multi-Branch, Multi-Warehouse & Currency',
+				'Dashboard Laporan Keuangan Real-time',
+				'Otomatisasi Workflow & Approval Multi-Level'
+			]
 		},
 		{
-			slug: 'simrs',
-			title: 'SIMRS Core Enterprise',
+			slug: 'simrs-klinik',
+			title: 'SIMRS & SIM Klinik',
+			tagline: 'Digitalisasi Ekosistem Fasilitas Kesehatan',
 			description:
-				'Solusi digital menyeluruh untuk manajemen Rumah Sakit. sinkronkan alur kerja klinis, operasional, hingga keuangan dalam satu pusat data.',
+				'Solusi digitalisasi operasional Fasilitas Kesehatan (Faskes) dari pendaftaran, rekam medis elektronik (RME), hingga integrasi BPJS & Satusehat.',
 			features: [
-				'Rekam Medis Elektronik (EMR)',
-				'Antrean Multi-Layanan Pintar',
-				'Modul Farmasi Terpadu',
-				'Billing + Bridging BPJS'
-			],
-			screenshot: '/assets/hospital2.png'
+				'Rekam Medis Elektronik (RME) Standar Kemenkes',
+				'Antrean Pintar, Farmasi & Laboratorium',
+				'Bridging BPJS V-Claim & Integrasi Satusehat',
+				'Kasir Billing & Laporan Klaim Terpadu'
+			]
 		},
 		{
-			slug: 'sim-klinik',
-			title: 'SIM Klinik Pratama & Utama',
+			slug: 'hris-payroll',
+			title: 'HRIS & Payroll System',
+			tagline: 'Kelola SDM & Penggajian Lebih Efisien',
 			description:
-				'Sistem manajemen klinik modern multi-cabang. Potong birokrasi pendaftaran, kontrol rekam medis, dan percepat perputaran pasien.',
+				'Sistem pengelolaan SDM otomatis untuk menyederhanakan administrasi personalia, presensi GPS berbasis lokasi/biometrik, hingga kalkulasi payroll.',
 			features: [
-				'Reservasi Online & Antrean',
-				'Rekam Medis Elektronik (RME)',
-				'Kasir Billing Terpadu',
-				'Notifikasi WhatsApp Otomatis'
-			],
-			screenshot: '/assets/clinic2.png'
-		},
-		{
-			slug: 'hris',
-			title: 'HRIS Smart Corporate',
-			description:
-				'Sistem manajemen SDM berbasis cloud. Otomasikan administrasi personalia, presensi, penggajian, dan portal karyawan.',
-			features: [
-				'Presensi GPS & Biometrik',
-				'Penjadwalan Kerja Fleksibel',
-				'Payroll + PPh 21 Otomatis',
-				'Portal Mandiri Karyawan (ESS)'
-			],
-			screenshot: '/assets/hris.png'
+				'Presensi GPS, Geofencing & Face Recognition',
+				'Kalkulasi PPh 21, BPJS Ketenagakerjaan & Kesehatan',
+				'Portal Mandiri Karyawan / ESS App',
+				'Manajemen Shift, Cuti & Overtime'
+			]
 		},
 		{
 			slug: 'pos-inventory',
-			title: 'POS & Intelligent Inventory',
+			title: 'POS & Smart Inventory',
+			tagline: 'Kasir Pintar & Kontrol Stok Multi-Gudang',
 			description:
-				'Aplikasi kasir pintar untuk retail, grosir, dan F&B. Kendalikan stok multi-gudang, transaksi QRIS, dan laporan keuangan real-time.',
+				'Sistem kasir dan manajemen stok terpusat untuk retail, grosir, maupun F&B dengan pemantauan multi-gudang secara akurat dan real-time.',
 			features: [
-				'Kasir Omnichannel (QRIS, E-Wallet)',
-				'Inventori Multi-Gudang',
-				'Harga Fleksibel (Grosir/Eceran)',
-				'Dashboard Keuangan Real-Time'
-			],
-			screenshot: '/assets/pos.png'
+				'Kasir Omnichannel (QRIS, EDC & E-Wallet)',
+				'Manajemen Stok Multi-Gudang & Barcode',
+				'Dashboard Laporan Penjualan & Profitability',
+				'Skema Harga Fleksibel (Grosir/Eceran/Promo)'
+			]
 		}
 	];
 
-	let selectedProduct = $state(null);
-	let dialogRef = $state();
-
-	function openModal(product) {
-		selectedProduct = product;
-	}
-
-	function closeModal() {
-		selectedProduct = null;
-	}
-
-	$effect(() => {
-		if (selectedProduct && dialogRef) {
-			dialogRef.focus();
-		}
-	});
-
-	function onOverlayKeydown(e) {
-		if (e.key === 'Escape') closeModal();
-	}
+	// State untuk menyimpan index produk yang sedang aktif
+	let activeIndex = $state(0);
+	let activeService = $derived(services[activeIndex]);
 </script>
 
-<section id="layanan" class="px-4 py-20 sm:px-6 lg:px-8">
+<section id="layanan" class="bg-white px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
+		<!-- Header Section -->
 		<div class="mb-12 max-w-2xl">
 			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-				Produk Kami
+				Layanan & <span class="text-[#0155FF]">Solusi Digital</span>
 			</h2>
 			<p class="mt-3 text-base text-slate-600">
-				Pilih aplikasi siap pakai atau rancang sistem kustom bersama tim engineer kami.
+				Pilih jenis solusi di sebelah kiri untuk melihat gambaran sistem, cakupan fitur, dan opsi pengembangannya.
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-			{#each products as p, i (p.slug)}
-				<div
-					class="cursor-pointer"
-					onclick={() => openModal(p)}
-					onkeydown={(e) => e.key === 'Enter' && openModal(p)}
-					role="button"
-					tabindex="0"
-					aria-label="Buka detail {p.title}"
-				>
-					<ProductCard index={i} {...p} />
+		<!-- Layout Main Grid (Kiri List, Kanan Detail) -->
+		<div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
+			
+			<!-- SEBELAH KIRI: List Navigation (4/12 Grid) -->
+			<div class="flex flex-col gap-2 lg:col-span-4">
+				{#each services as item, index}
+					<button
+						type="button"
+						onclick={() => (activeIndex = index)}
+						class="group relative flex items-center justify-between rounded-xl border p-4 text-left transition-all duration-200 {activeIndex ===
+						index
+							? 'border-slate-300 bg-white text-slate-900'
+							: 'border-transparent text-slate-600 hover:border-slate-200 hover:bg-white/60 hover:text-slate-900'}"
+					>
+						<!-- Active Accent Line Indicator -->
+						<!-- {#if activeIndex === index}
+							<div class="absolute left-0 top-3 bottom-3 w-1 rounded-r-full bg-[#0155FF]"></div>
+						{/if} -->
+
+						<div class="pl-2">
+							<p class="text-xs font-semibold uppercase tracking-wider {activeIndex === index ? 'text-[#0155FF]' : 'text-slate-400'}">
+								0{index + 1}
+							</p>
+							<h3 class="text-base font-bold {activeIndex === index ? 'text-[#0155FF]' : 'text-slate-700'}">
+								{item.title}
+							</h3>
+						</div>
+
+						<ChevronRight
+							size={18}
+							class="transition-transform duration-200 {activeIndex === index
+								? 'translate-x-0.5 text-[#0155FF]'
+								: 'text-slate-300 group-hover:text-slate-500'}"
+						/>
+					</button>
+				{/each}
+			</div>
+
+			<!-- SEBELAH KANAN: Detail Content (8/12 Grid) - Card Polos Tanpa Shadow -->
+			<div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:col-span-8">
+				<div class="space-y-6">
+					<div>
+						<span class="inline-block rounded-md bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#0155FF]">
+							{activeService.tagline}
+						</span>
+						<h3 class="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
+							{activeService.title}
+						</h3>
+						<p class="mt-3 text-base leading-relaxed text-slate-600">
+							{activeService.description}
+						</p>
+					</div>
+
+					<!-- Fitur Utama -->
+					<div class="border-t border-slate-100 pt-6">
+						<h4 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-400">
+							Cakupan Fitur & Kemampuan Utama:
+						</h4>
+						<div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+							{#each activeService.features as feature}
+								<div class="flex items-start gap-2.5 text-sm text-slate-700">
+									<CheckCircle2 size={16} class="mt-0.5 shrink-0 text-[#0155FF]" />
+									<span>{feature}</span>
+								</div>
+							{/each}
+						</div>
+					</div>
+
+					<!-- Action Buttons -->
+					<div class="flex flex-wrap gap-4 border-t border-slate-100 pt-6 sm:items-center">
+						<a
+							href={whatsappLink}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 rounded-lg bg-[#0155FF] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.98]"
+						>
+							Konsultasi Modul Ini <ArrowRight size={16} />
+						</a>
+						<a
+							href="#kontak"
+							class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-slate-300 hover:bg-slate-50 active:scale-[0.98]"
+						>
+							Tanya Spesifikasi
+						</a>
+					</div>
 				</div>
-			{/each}
+			</div>
+
 		</div>
 	</div>
 </section>
-
-{#if selectedProduct}
-	<div
-		transition:fade={{ duration: 150 }}
-		class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4 backdrop-blur-sm"
-		onclick={closeModal}
-		onkeydown={(e) => e.key === 'Escape' && closeModal()}
-		role="presentation"
-	>
-		<div
-			transition:fly={{ y: 20, duration: 250 }}
-			class="relative grid max-h-[90vh] w-full max-w-4xl grid-cols-1 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl md:max-h-[80vh] md:grid-cols-12"
-			onclick={(e) => e.stopPropagation()}
-			onkeydown={(e) => e.key === 'Escape' && closeModal()}
-			role="dialog"
-			aria-modal="true"
-			aria-labelledby="product-modal-title"
-			bind:this={dialogRef}
-			tabindex="-1"
-		>
-			<button
-				class="absolute top-3 right-3 z-50 rounded-lg bg-slate-100 p-2 text-slate-400 transition-colors hover:bg-slate-200 hover:text-slate-600"
-				onclick={closeModal}
-				aria-label="Close modal"
-			>
-				<X size={16} />
-			</button>
-
-			<div
-				class="flex min-h-[200px] items-center justify-center overflow-y-auto border-b border-slate-100 bg-slate-50 p-6 md:col-span-7 md:h-full md:border-r md:border-b-0"
-			>
-				{#if selectedProduct.screenshot}
-					<div class="w-full rounded-lg border border-slate-200 bg-white p-1">
-						<img
-							src={selectedProduct.screenshot}
-							alt={selectedProduct.title}
-							loading="lazy"
-							decoding="async"
-							class="w-full rounded-md object-contain"
-						/>
-					</div>
-				{:else}
-					<div
-						class="flex aspect-[16/10] w-full flex-col items-center justify-center rounded-xl border border-dashed border-slate-200 bg-white p-8 text-center text-slate-400"
-					>
-						<div class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-[#0155FF]">
-							<Settings2 size={24} />
-						</div>
-						<p class="text-sm font-bold text-slate-700">TAILORED ENGINE</p>
-						<p class="mt-1 max-w-xs text-xs text-slate-400">
-							Kustomisasi tanpa batas sesuai kebutuhan alur kerja Anda.
-						</p>
-					</div>
-				{/if}
-			</div>
-
-			<div
-				class="flex h-full flex-col justify-between overflow-y-auto bg-white p-6 sm:p-8 md:col-span-5"
-			>
-				<div class="space-y-5">
-					<h3
-						id="product-modal-title"
-						class="text-xl font-bold text-slate-900"
-					>
-						{selectedProduct.title}
-					</h3>
-
-					<p class="text-sm leading-relaxed text-slate-600">
-						{selectedProduct.description}
-					</p>
-
-					<div class="space-y-3">
-						<h4 class="text-xs font-semibold tracking-wider text-slate-400 uppercase">
-							Fitur Utama:
-						</h4>
-						<ul class="space-y-2">
-							{#each selectedProduct.features as feature}
-								<li class="flex items-start gap-2 text-sm text-slate-700">
-									<CheckCircle2 size={14} class="mt-0.5 shrink-0 text-[#00C2CB]" />
-									<span>{feature}</span>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				</div>
-
-				<div class="mt-6 flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row">
-					<a
-						href="/products/{selectedProduct.slug}"
-						class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-[#0155FF] px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.98]"
-						onclick={closeModal}
-					>
-						Lihat Detail <ArrowRight size={14} />
-					</a>
-					<a
-						href={whatsappLink}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50 active:scale-[0.98]"
-						onclick={closeModal}
-					>
-						Tanya Sales
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-{/if}
