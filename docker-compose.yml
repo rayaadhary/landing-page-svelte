@@ -27,7 +27,7 @@ services:
       - POOL_MODE=transaction
       - DEFAULT_POOL_SIZE=20
       - MAX_CLIENT_CONN=200
-      - AUTH_TYPE=plain
+      - AUTH_TYPE=trust
     networks:
       - global-proxy
 
