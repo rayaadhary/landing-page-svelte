@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import postgres from 'postgres';
 import { drizzle } from 'drizzle-orm/postgres-js';
-import { users, heroSlides, products, features, testimonials, faqs, blogPosts, settings } from './schema.js';
+import { users, sessions, heroSlides, products, features, testimonials, faqs, blogPosts, settings } from './schema.js';
 import { scrypt, randomBytes } from 'crypto';
 import { promisify } from 'util';
 
@@ -302,7 +302,7 @@ const testimonialsData = [
 		clientName: 'Tim Kaigopedia',
 		clientRole: 'kaigopedia.com',
 		avatarLetter: 'K',
-		avatarColor: 'bg-emerald-500',
+		avatarColor: '#10b981',
 		projectName: 'Platform eLearning / LMS untuk Daycare di Jepang',
 		sortOrder: 0
 	}
@@ -341,6 +341,57 @@ const faqsData = [
 	}
 ];
 
+const blogPostsData = [
+	{
+		slug: 'digitalisasi-rumah-sakit-simrs-aorta',
+		title: 'Digitalisasi Rumah Sakit: Mengapa SIMRS AORTA Solusi Tepat',
+		category: 'Healthcare',
+		image: '/assets/hospital2.png',
+		author: 'AORTA Team',
+		date: '22 Sep 2026',
+		readTime: '5 min read',
+		excerpt:
+			'Migrasi dari sistem manual ke SIMRS berbasis cloud bukan lagi pilihan, melainkan kebutuhan mendesak bagi rumah sakit modern.',
+		content:
+			'<p>Rumah sakit yang masih mengandalkan kertas dan spreadsheet menghadapi risiko data hilang, antrean panjang, dan ketidaksesuaian billing. SIMRS AORTA dirancang untuk mengatasi semua itu dalam satu platform terpadu.</p><h3>Manfaat Utama</h3><ul><li>Rekam Medis Elektronik (EMR) real-time yang siap terhubung dengan SatuSehat Kemenkes</li><li>Billing system otomatis dengan integrasi VClaim BPJS</li><li>Dashboard operasional untuk manajemen IGD, rawat inap, hingga farmasi</li></ul><p>Dengan implementasi yang bisa selesai dalam 2-6 bulan, rumah sakit Anda bisa segera merasakan efisiensi operasional yang signifikan.</p>',
+		metaDescription: 'Pelajari bagaimana SIMRS AORTA membantu digitalisasi rumah sakit dengan EMR, billing otomatis, dan integrasi BPJS.',
+		tags: 'simrs, digitalisasi, rumah sakit, emr, bpjs',
+		active: true
+	},
+	{
+		slug: 'hris-modern-kelola-karyawan-lebih-mudah',
+		title: 'HRIS Modern: Kelola Karyawan Lebih Mudah dengan AORTA',
+		category: 'Business',
+		image: '/assets/hris.png',
+		author: 'AORTA Team',
+		date: '18 Sep 2026',
+		readTime: '4 min read',
+		excerpt:
+			'Manajemen SDMManual sering kali memakan waktu dan rentan kesalahan. HRIS AORTA mengotomatiskan presensi, payroll, hingga PPh 21.',
+		content:
+			'<p>Tim HR yang masih menghitung gaji dan potongan secara manual pasti paham betapa melelahkannya proses itu setiap bulan. HRIS AORTA mengubah semua itu menjadi beberapa klik saja.</p><h3>Fitur Unggulan</h3><ul><li>Absensi biometrik dan GPS anti-fake</li><li>Kalkulator payroll otomatis dengan PPh 21 & BPJS</li><li>Portal mandiri karyawan (ESS) untuk pengajuan cuti dan slip gaji</li></ul>',
+		metaDescription: 'Temukan bagaimana HRIS AORTA mengotomatiskan presensi, payroll, dan manajemen SDM perusahaan Anda.',
+		tags: 'hris, payroll, manajemen sdm, karyawan',
+		active: true
+	},
+	{
+		slug: 'pos-stok-bisnis-retail-efisien',
+		title: 'POS & Stok: Cara Tingkatkan Efisiensi Bisnis Retail',
+		category: 'Retail',
+		image: '/assets/pos.png',
+		author: 'AORTA Team',
+		date: '15 Sep 2026',
+		readTime: '4 min read',
+		excerpt:
+			'Kebocoran kasir dan selisih stok bisa dihilangkan dengan sistem POS yang tepat. Pelajari cara AORTA membantu bisnis retail Anda.',
+		content:
+			'<p>Bisnis retail sering kali kehilangan profit karena kebocoran kasir dan ketidakakuratan stok. POS & Inventory AORTA dirancang untuk mencegah masalah ini sejak awal.</p><h3>Yang Bisa Anda Dapatkan</h3><ul><li>Kasir omnichannel dengan support QRIS</li><li>Manajemen stok multi-gudang real-time</li><li>Deteksi otomatis expired date dan slow-moving items</li></ul>',
+		metaDescription: 'Pelajari cara meningkatkan efisiensi bisnis retail dengan POS dan manajemen inventori dari AORTA.',
+		tags: 'pos, retail, stok, inventori, qris',
+		active: true
+	}
+];
+
 const settingsData = [
 	{ key: 'whatsapp_number', value: '6289629949441' },
 	{ key: 'whatsapp_message', value: 'Halo Saya Tertarik menggunakan sistem dari AORTA bisa tolong dibantu?' },
@@ -363,6 +414,8 @@ async function seed() {
 	await db.delete(features);
 	await db.delete(products);
 	await db.delete(heroSlides);
+	await db.delete(sessions);
+	await db.delete(users);
 
 	// Create superadmin user
 	const passwordHash = await hashPassword('superadmin');
@@ -377,6 +430,7 @@ async function seed() {
 	await db.insert(features).values(featuresData);
 	await db.insert(testimonials).values(testimonialsData);
 	await db.insert(faqs).values(faqsData);
+	await db.insert(blogPosts).values(blogPostsData);
 	await db.insert(settings).values(settingsData);
 
 	console.log('Seed complete!');
