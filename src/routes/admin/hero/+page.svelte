@@ -1,16 +1,24 @@
 <script>
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { Image, Pencil, Trash2, Plus } from 'lucide-svelte';
+	import PageHeader from '$lib/components/admin/primitives/PageHeader.svelte';
+	import Card from '$lib/components/admin/primitives/Card.svelte';
+	import Button from '$lib/components/admin/primitives/Button.svelte';
+	import Input from '$lib/components/admin/primitives/Input.svelte';
+	import EmptyState from '$lib/components/admin/primitives/EmptyState.svelte';
+	import ConfirmDialog from '$lib/components/admin/primitives/ConfirmDialog.svelte';
 
 	let slides = $state([]);
 	let loading = $state(true);
 	let editing = $state(null);
 	let form = $state({ title: '', subtitle: '', description: '', svgHtml: '', color: '#0155FF', sortOrder: 0 });
+	let confirmOpen = $state(false);
+	let deleteId = $state(null);
 
 	onMount(loadSlides);
 
 	async function loadSlides() {
-		const res = await fetch('/api/hero');
+		const res = await fetch('/admin/api/hero');
 		slides = await res.json();
 		loading = false;
 	}
@@ -27,64 +35,83 @@
 
 	async function save() {
 		if (editing === 'new') {
-			await fetch('/api/hero', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
+			await fetch('/admin/api/hero', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
 		} else {
-			await fetch('/api/hero', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: editing, ...form }) });
+			await fetch('/admin/api/hero', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: editing, ...form }) });
 		}
 		editing = null;
 		await loadSlides();
 	}
 
-	async function remove(id) {
-		if (!confirm('Hapus slide ini?')) return;
-		await fetch('/api/hero', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
+	function confirmDelete(id) {
+		deleteId = id;
+		confirmOpen = true;
+	}
+
+	async function remove() {
+		await fetch('/admin/api/hero', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: deleteId }) });
 		await loadSlides();
 	}
 </script>
 
 <div class="space-y-6">
-	<div class="flex items-center justify-between">
-		<h1 class="text-2xl font-black text-slate-900">Hero Slides</h1>
-		<button onclick={startNew} class="rounded-lg bg-[#0155FF] px-4 py-2 text-sm font-bold text-white hover:opacity-90">+ Tambah Slide</button>
-	</div>
+	<PageHeader title="Hero Slides">
+		<button onclick={startNew} class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0155FF] text-white transition-colors hover:bg-[#0144dd]" aria-label="Tambah Slide">
+			<Plus size={16} strokeWidth={2} />
+		</button>
+	</PageHeader>
 
 	{#if editing !== null}
-		<div class="rounded-xl border border-slate-200 bg-white p-6 space-y-4">
-			<h2 class="font-bold text-slate-800">{editing === 'new' ? 'Slide Baru' : 'Edit Slide'}</h2>
-			<input bind:value={form.title} placeholder="Title" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
-			<input bind:value={form.subtitle} placeholder="Subtitle" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
-			<textarea bind:value={form.description} placeholder="Description" rows="3" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></textarea>
-			<textarea bind:value={form.svgHtml} placeholder="SVG HTML" rows="2" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm font-mono text-xs"></textarea>
-			<div class="flex gap-4">
-				<input bind:value={form.color} type="color" class="h-10 w-20 rounded-lg border border-slate-300" />
-				<input bind:value={form.sortOrder} type="number" placeholder="Sort Order" class="w-24 rounded-lg border border-slate-300 px-3 py-2 text-sm" />
+		<Card class="p-6">
+			<h2 class="mb-4 text-sm font-bold text-slate-800">{editing === 'new' ? 'Slide Baru' : 'Edit Slide'}</h2>
+			<div class="space-y-3">
+				<Input bind:value={form.title} placeholder="Title" />
+				<Input bind:value={form.subtitle} placeholder="Subtitle" />
+				<Input bind:value={form.description} type="textarea" placeholder="Description" rows={3} />
+				<Input bind:value={form.svgHtml} type="textarea" placeholder="SVG HTML" rows={2} />
+				<div class="flex gap-4">
+					<input bind:value={form.color} type="color" class="h-10 w-20 rounded-lg border border-slate-200" />
+					<Input bind:value={form.sortOrder} type="number" placeholder="Sort Order" />
+				</div>
 			</div>
-			<div class="flex gap-2">
-				<button onclick={save} class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-bold text-white hover:opacity-90">Simpan</button>
-				<button onclick={() => (editing = null)} class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-300">Batal</button>
+			<div class="mt-4 flex gap-2">
+				<Button variant="primary" onclick={save}>Simpan</Button>
+				<Button variant="secondary" onclick={() => (editing = null)}>Batal</Button>
 			</div>
-		</div>
+		</Card>
 	{/if}
 
 	{#if loading}
-		<p class="text-sm text-slate-500">Loading...</p>
-	{:else}
 		<div class="space-y-3">
+			{#each [1, 2, 3] as _}
+				<div class="h-16 animate-pulse rounded-xl bg-slate-100"></div>
+			{/each}
+		</div>
+	{:else if slides.length === 0}
+		<EmptyState icon={Image} message="Belum ada slide" actionLabel="Tambah Slide" onaction={startNew} />
+	{:else}
+		<div class="space-y-2">
 			{#each slides as slide}
-				<div class="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4">
+				<div class="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 transition-colors hover:border-slate-200">
 					<div class="flex items-center gap-3">
-						<div class="h-8 w-8 rounded-lg" style="background-color: {slide.color}"></div>
-						<div>
-							<p class="font-bold text-slate-800">{slide.title}</p>
-							<p class="text-xs text-slate-500">{slide.subtitle}</p>
+						<div class="h-8 w-8 shrink-0 rounded-lg" style="background-color: {slide.color}"></div>
+						<div class="min-w-0">
+							<p class="truncate text-sm font-semibold text-slate-800">{slide.title}</p>
+							<p class="truncate text-xs text-slate-400">{slide.subtitle}</p>
 						</div>
 					</div>
-					<div class="flex gap-2">
-						<button onclick={() => startEdit(slide)} class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-200">Edit</button>
-						<button onclick={() => remove(slide.id)} class="rounded-lg bg-red-50 px-3 py-1.5 text-xs font-bold text-red-600 hover:bg-red-100">Hapus</button>
+					<div class="flex shrink-0 gap-1">
+						<button onclick={() => startEdit(slide)} class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600" aria-label="Edit">
+							<Pencil size={15} strokeWidth={1.5} />
+						</button>
+						<button onclick={() => confirmDelete(slide.id)} class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500" aria-label="Hapus">
+							<Trash2 size={15} strokeWidth={1.5} />
+						</button>
 					</div>
 				</div>
 			{/each}
 		</div>
 	{/if}
 </div>
+
+<ConfirmDialog bind:open={confirmOpen} title="Hapus slide?" message="Slide yang dihapus tidak dapat dikembalikan." onconfirm={remove} />

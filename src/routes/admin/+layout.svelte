@@ -31,7 +31,7 @@
 	let sidebarOpen = $state(false);
 
 	async function logout() {
-		await fetch('/api/auth/logout', { method: 'POST' });
+		await fetch('/admin/api/auth/logout', { method: 'POST' });
 		goto('/admin/login');
 	}
 </script>
