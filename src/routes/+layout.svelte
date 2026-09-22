@@ -139,6 +139,7 @@
     		</a>
 
 			<nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
+				<a href="/tentang-kami" class="transition-colors hover:text-[#0155FF]">Tentang Kami</a>
 				<a href="/blog" class="transition-colors hover:text-[#0155FF]">Blog</a>
 				<a href="#features" class="transition-colors hover:text-[#0155FF]">Fitur</a>
 
@@ -219,6 +220,7 @@
 			class="absolute top-full left-0 w-full border-b border-slate-100 bg-white shadow-lg md:hidden"
 		>
 			<div class="space-y-1 px-4 py-4">
+				<a href="/tentang-kami" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">Tentang Kami</a>
 				<a href="/blog" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">Blog</a>
 				<a href="#features" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">Fitur</a>
 

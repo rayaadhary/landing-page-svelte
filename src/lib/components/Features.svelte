@@ -1,49 +1,113 @@
 <script>
-	import { ChartNoAxesCombined, Settings, Shield, Plug } from 'lucide-svelte';
+	import { Layers, Unlink2, ShieldCheck, BarChart3, Plus, ArrowRight } from 'lucide-svelte';
+	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
+	import bgMain from '$lib/assets/bg_main2.jpg'; 
+	import bgAnalytics from '$lib/assets/bg_analytics.jpg'; 
 
 	const features = [
 		{
-			title: 'Rekap Keuangan Otomatis',
-			desc: 'Laba/rugi, stok & beban staf keluar sendiri tiap hari. Tutup buku tanpa lembur.',
-			icon: ChartNoAxesCombined
+			title: '100% Tailor-Made & Modular',
+			desc: 'Pengembangan software kustom yang dirancang dari nol sesuai dengan alur kerja, skala, dan kompleksitas bisnis Anda tanpa batasan template kaku.',
+			icon: Layers,
+			bgImage: bgMain, // Menggunakan gambar impor
+			badgeColor: 'bg-white/20 text-white backdrop-blur-md',
+			iconColor: 'text-white',
+			plusColor: 'text-white/80',
+			gridSpan: 'lg:col-span-2 lg:row-span-2',
+			isFeatured: true
 		},
 		{
-			title: 'Payroll & Resep Jalan',
-			desc: 'Gaji + PPh 21, resep obat & order supplier diproses otomatis tanpa salah hitung.',
-			icon: Settings
+			title: 'Integrasi & Bridging API',
+			desc: 'Mudah dihubungkan dengan berbagai sistem third-party, payment gateway, hardware, hingga platform pemerintah secara seamless.',
+			icon: Unlink2,
+			bg: 'bg-slate-100 text-slate-900 border border-slate-200/80',
+			badgeColor: 'bg-slate-100 text-[#0155FF]',
+			iconColor: 'text-[#0155FF]',
+			plusColor: 'text-slate-400',
+			gridSpan: 'lg:col-span-1',
+			isFeatured: false
 		},
 		{
-			title: 'Data Terkunci Aman',
-			desc: 'Enkripsi berlapis, hak akses per peran, audit trail lengkap — siap audit Kemenkes.',
-			icon: Shield
+			title: 'Keamanan Data Enterprise',
+			desc: 'Enkripsi data berlapis, kontrol hak akses berbasis peran (RBAC), serta audit trail lengkap untuk keamanan aset digital Anda.',
+			icon: ShieldCheck,
+			bg: 'bg-slate-100 text-slate-900 border border-slate-200/80',
+			badgeColor: 'bg-slate-100 text-[#0155FF]',
+			iconColor: 'text-[#0155FF]',
+			plusColor: 'text-slate-400',
+			gridSpan: 'lg:col-span-1',
+			isFeatured: false
 		},
 		{
-			title: 'Bridging Resmi Sekali Jadi',
-			desc: 'SatuSehat, VClaim BPJS & QRIS terhubung langsung — klaim tidak ditolak lagi.',
-			icon: Plug
+			title: 'Otomatisasi & Analytics Real-time',
+			desc: 'Otomatiskan proses manual bisnis Anda dan dapatkan insight laporan operasional maupun keuangan secara real-time.',
+			icon: BarChart3,
+			bgImage: bgAnalytics,
+			badgeColor: 'bg-white/20 text-white backdrop-blur-md',
+			iconColor: 'text-white',
+			plusColor: 'text-white/80',
+			gridSpan: 'lg:col-span-2',
+			isFeatured: false
 		}
 	];
 </script>
 
-<section id="features" class="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8">
+<section id="features" class="bg-white px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
+		<!-- Header Section -->
 		<div class="mb-12 max-w-2xl">
 			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-				Keunggulan AORTA
+				Keunggulan Aorta
 			</h2>
 			<p class="mt-3 text-base text-slate-600">
-				Semua modul berjalan dalam satu database. Data masuk sekali, laporan keluar otomatis.
+				Solusi teknologi terpadu yang dirancang khusus untuk mempercepat efisiensi dan transformasi digital perusahaan Anda.
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+		<!-- Bento Grid Container -->
+		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 			{#each features as f}
-				<div class="rounded-xl border border-slate-200 bg-white p-6">
-					<div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#0155FF]">
-						<f.icon size={20} />
+				<div
+					class="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 {f.bg || 'text-white'} {f.gridSpan}"
+					style={f.bgImage ? `background-image: url('${f.bgImage}'); background-size: cover; background-position: center;` : ''}
+				>
+					<!-- Dark Overlay khusus untuk card dengan background image agar teks tidak samar -->
+					{#if f.bgImage}
+						<div class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/90 via-slate-900/60 to-slate-900/40"></div>
+					{/if}
+
+					<!-- Header Card (Icon & Plus Indicator) -->
+					<div class="relative z-10 flex items-center justify-between">
+						<div class="flex h-12 w-12 items-center justify-center rounded-2xl {f.badgeColor}">
+							<f.icon size={22} class={f.iconColor} />
+						</div>
+						<div class="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-sm">
+							<Plus size={18} class={f.plusColor} />
+						</div>
 					</div>
-					<h3 class="text-base font-bold text-slate-900">{f.title}</h3>
-					<p class="mt-2 text-sm leading-relaxed text-slate-600">{f.desc}</p>
+
+					<!-- Body Content -->
+					<div class="relative z-10 mt-8 space-y-3">
+						<h3 class="text-xl font-bold tracking-tight sm:text-2xl">
+							{f.title}
+						</h3>
+						<p class="text-sm leading-relaxed opacity-90 sm:text-base">
+							{f.desc}
+						</p>
+
+						{#if f.isFeatured}
+							<div class="pt-4">
+								<a
+									href={whatsappLink}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-gray-800 transition-all hover:bg-slate-100 active:scale-95"
+								>
+									Konsultasi Kebutuhan <ArrowRight size={16} />
+								</a>
+							</div>
+						{/if}
+					</div>
 				</div>
 			{/each}
 		</div>

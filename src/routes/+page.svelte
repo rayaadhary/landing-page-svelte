@@ -2,6 +2,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Products from '$lib/components/Products.svelte';
 	import Features from '$lib/components/Features.svelte';
+	import About from '$lib/components/About.svelte';
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
 	import { MessageSquare, Mail, Phone, MapPin, ChevronDown } from 'lucide-svelte';
 
@@ -46,6 +47,7 @@
 </svelte:head>
 
 <Hero />
+<About />
 <Products />
 <Features />
 
@@ -147,6 +149,12 @@
 				<p class="text-sm leading-relaxed text-slate-500">
 					Penyedia software enterprise modular untuk kesehatan dan bisnis di Indonesia.
 				</p>
+				<a
+					href="/tentang-kami"
+					class="text-sm font-semibold text-[#0155FF] hover:underline"
+				>
+					Tentang Kami
+				</a>
 			</div>
 
 			<div class="space-y-4">
