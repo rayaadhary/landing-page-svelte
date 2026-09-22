@@ -17,6 +17,11 @@ services:
     image: edoburu/pgbouncer:latest
     container_name: pgbouncer
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -p 5432 -U postgres || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     environment:
       - DATABASE_URL=postgresql://postgres:supersecretpassword@postgres-pusat:5432/aorta_cms
       - POOL_MODE=transaction

@@ -26,7 +26,7 @@ jobs:
           push: true
           tags: ${{ env.IMAGE }}
           build-args: |
-            DATABASE_URL=postgresql://postgres:supersecretpassword@pgbouncer:6432/aorta_cms
+            DATABASE_URL=postgresql://postgres:supersecretpassword@pgbouncer:5432/aorta_cms
 
   deploy:
     needs: build
