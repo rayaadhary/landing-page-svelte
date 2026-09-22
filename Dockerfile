@@ -11,6 +11,7 @@ FROM node:20-alpine
 WORKDIR /app
 COPY --from=build /app/build build/
 COPY --from=build /app/package.json /app/package-lock.json ./
+COPY --from=build /app/src/lib/server/db ./src/lib/server/db
 RUN npm ci --omit=dev
 EXPOSE 3000
 CMD ["node", "build"]
