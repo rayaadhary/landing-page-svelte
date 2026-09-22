@@ -7,27 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://postgres:supersecretpassword@pgbouncer:5432/aorta_cms
-    depends_on:
-      - pgbouncer
-    networks:
-      - global-proxy
-
-  pgbouncer:
-    image: edoburu/pgbouncer:latest
-    container_name: pgbouncer
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -p 5432 -U postgres || exit 1"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    environment:
       - DATABASE_URL=postgresql://postgres:supersecretpassword@postgres-pusat:5432/aorta_cms
-      - POOL_MODE=transaction
-      - DEFAULT_POOL_SIZE=20
-      - MAX_CLIENT_CONN=200
-      - AUTH_TYPE=trust
     networks:
       - global-proxy
 
