@@ -1,5 +1,6 @@
 services:
   app:
+    build: .
     image: ghcr.io/rayaadhary/landing-page-svelte:latest
     container_name: aorta-web
     restart: unless-stopped
