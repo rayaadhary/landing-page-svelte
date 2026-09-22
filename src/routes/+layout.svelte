@@ -139,7 +139,7 @@
     		</a>
 
 			<nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
-				<a href="/tentang-kami" class="transition-colors hover:text-[#0155FF]">Tentang Kami</a>
+				<!-- <a href="/tentang-kami" class="transition-colors hover:text-[#0155FF]">Tentang Kami</a>wa -->
 				<a href="/blog" class="transition-colors hover:text-[#0155FF]">Blog</a>
 				<a href="#features" class="transition-colors hover:text-[#0155FF]">Fitur</a>
 

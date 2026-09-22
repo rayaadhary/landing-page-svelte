@@ -6,7 +6,7 @@
 
 <section class="relative overflow-hidden bg-white py-20 lg:py-24">
 	<!-- Gambar Kanan: Full Height & Full Width di Sisi Kanan Section dengan Clip-Path (<) -->
-	<div class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+	<div class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block fade-in">
 		<img
 			src={bgMain}
 			alt="AORTA Digital Solution"
@@ -19,15 +19,15 @@
 		<div class="grid items-center gap-8 lg:grid-cols-12">
 			<!-- Teks Kiri -->
 			<div class="space-y-6 lg:col-span-6 z-10">
-				<h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+				<h1 class="rise text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
 					Jasa Pembuatan <span class="text-[#0155FF]">Aplikasi & Software Kustom</span>
 				</h1>
 
-				<p class="max-w-lg text-lg leading-relaxed text-slate-600">
+				<p class="rise max-w-lg text-lg leading-relaxed text-slate-600" style="animation-delay: 120ms;">
 				Dari ERP, SIMRS, HRIS, hingga POS retail. Kami bantu digitalisasi operasional bisnis Anda dengan sistem scalable, aman, dan harga fleksibel.
 				</p>
 
-				<div class="flex flex-wrap gap-4 pt-2">
+				<div class="rise flex flex-wrap gap-4 pt-2" style="animation-delay: 240ms;">
 					<a
 						href={whatsappLink}
 						target="_blank"
@@ -44,7 +44,7 @@
 					</a>
 				</div>
 
-				<div class="grid grid-cols-2 gap-8 border-t border-slate-100 pt-10 sm:grid-cols-4">
+				<div class="rise grid grid-cols-2 gap-8 border-t border-slate-100 pt-10 sm:grid-cols-4" style="animation-delay: 360ms;">
 					<div>
 						<p class="text-xl font-bold text-slate-900">100%</p>
 						<p class="mt-1 text-xs text-slate-500">Custom Solution</p>

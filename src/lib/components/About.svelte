@@ -1,5 +1,6 @@
 <script>
 	import { Target, Compass, CheckCircle2 } from 'lucide-svelte';
+	import { reveal } from '$lib/actions/reveal.js';
 
 	const missions = [
 		'Mengembangkan software kustom yang menjawab kebutuhan & tantangan operasional.',
@@ -13,7 +14,7 @@
 	<div class="mx-auto max-w-7xl">
 		<div class="grid items-start gap-12 lg:grid-cols-2">
 			<!-- KIRI: Narasi Tentang Kami -->
-			<div class="space-y-5 text-base leading-relaxed text-slate-700">
+			<div class="space-y-5 text-base leading-relaxed text-slate-700" use:reveal>
 				<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
 					Tentang <span class="text-[#0155FF]">Aorta Digital Solusi</span>
 				</h2>
@@ -41,7 +42,7 @@
 			<!-- KANAN: Visi & Misi (Simpel & Minimalis) -->
 			<div class="space-y-4">
 				<!-- Card Visi -->
-				<div class="rounded-xl border border-slate-200 bg-white p-6">
+				<div class="rounded-xl border border-slate-200 bg-white p-6" use:reveal={{ delay: 100 }}>
 					<div class="mb-3 flex items-center gap-3">
 						<div class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#0155FF]">
 							<Target size={18} />
@@ -54,7 +55,7 @@
 				</div>
 
 				<!-- Card Misi -->
-				<div class="rounded-xl border border-slate-200 bg-white p-6">
+				<div class="rounded-xl border border-slate-200 bg-white p-6" use:reveal={{ delay: 200 }}>
 					<div class="mb-4 flex items-center gap-3">
 						<div class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#0155FF]">
 							<Compass size={18} />

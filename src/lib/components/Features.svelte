@@ -1,6 +1,7 @@
 <script>
 	import { Layers, Unlink2, ShieldCheck, BarChart3, Plus, ArrowRight } from 'lucide-svelte';
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
+	import { reveal } from '$lib/actions/reveal.js';
 	import bgMain from '$lib/assets/bg_main2.jpg'; 
 	import bgAnalytics from '$lib/assets/bg_analytics.jpg'; 
 
@@ -55,9 +56,9 @@
 <section id="features" class="bg-white px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<!-- Header Section -->
-		<div class="mb-12 max-w-2xl">
+		<div class="mb-12 max-w-2xl" use:reveal>
 			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-				Keunggulan Aorta
+				Keunggulan  <span class="text-[#0155FF]">Aorta Digital Solusi</span>
 			</h2>
 			<p class="mt-3 text-base text-slate-600">
 				Solusi teknologi terpadu yang dirancang khusus untuk mempercepat efisiensi dan transformasi digital perusahaan Anda.
@@ -66,10 +67,11 @@
 
 		<!-- Bento Grid Container -->
 		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-			{#each features as f}
+			{#each features as f, i}
 				<div
 					class="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 {f.bg || 'text-white'} {f.gridSpan}"
 					style={f.bgImage ? `background-image: url('${f.bgImage}'); background-size: cover; background-position: center;` : ''}
+					use:reveal={{ delay: 60 + i * 80 }}
 				>
 					<!-- Dark Overlay khusus untuk card dengan background image agar teks tidak samar -->
 					{#if f.bgImage}

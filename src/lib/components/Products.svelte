@@ -1,6 +1,9 @@
 <script>
 	import { CheckCircle2, ArrowRight, ChevronRight } from 'lucide-svelte';
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
+	import { reveal } from '$lib/actions/reveal.js';
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
 	const services = [
 		{
@@ -78,7 +81,7 @@
 <section id="layanan" class="bg-white px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<!-- Header Section -->
-		<div class="mb-12 max-w-2xl">
+		<div class="mb-12 max-w-2xl" use:reveal>
 			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
 				Layanan & <span class="text-[#0155FF]">Solusi Digital</span>
 			</h2>
@@ -96,6 +99,7 @@
 					<button
 						type="button"
 						onclick={() => (activeIndex = index)}
+						use:reveal={{ delay: 80 + index * 70 }}
 						class="group relative flex items-center justify-between rounded-xl border p-4 text-left transition-all duration-200 {activeIndex ===
 						index
 							? 'border-slate-300 bg-white text-slate-900'
@@ -125,9 +129,10 @@
 				{/each}
 			</div>
 
-			<!-- SEBELAH KANAN: Detail Content (8/12 Grid) - Card Polos Tanpa Shadow -->
-			<div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:col-span-8">
-				<div class="space-y-6">
+<!-- SEBELAH KANAN: Detail Content (8/12 Grid) - Card Polos Tanpa Shadow -->
+		<div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:col-span-8" use:reveal={{ delay: 200 }}>
+				{#key activeIndex}
+					<div class="space-y-6" in:fly={{ y: 12, duration: 350, easing: cubicOut }}>
 					<div>
 						<span class="inline-block rounded-md bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#0155FF]">
 							{activeService.tagline}
@@ -172,7 +177,8 @@
 							Tanya Spesifikasi
 						</a>
 					</div>
-				</div>
+					</div>
+				{/key}
 			</div>
 
 		</div>
