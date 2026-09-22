@@ -51,6 +51,7 @@ jobs:
           script: |
             cd /opt/aorta-web
             docker rm -f pgbouncer 2>/dev/null || true
+            echo 'DATABASE_URL=postgresql://postgres:${{ secrets.DB_PASSWORD }}@postgres-pusat:5432/aorta_cms' > .env
             echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull app
             docker compose up -d --force-recreate app
