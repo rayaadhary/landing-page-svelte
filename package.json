@@ -15,7 +15,8 @@
 		"lint": "prettier --check .",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
-		"db:seed": "node src/lib/server/db/seed.js"
+		"db:seed": "node src/lib/server/db/seed.js",
+		"db:push": "drizzle-kit push --config=drizzle.config.js"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-node": "^5.5.7",
@@ -23,7 +24,6 @@
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.17",
-		"drizzle-kit": "^0.31.11",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.7.2",
@@ -41,6 +41,7 @@
 		"@tiptap/starter-kit": "^3.31.3",
 		"dotenv": "^18.0.1",
 		"drizzle-orm": "^0.45.3",
+		"drizzle-kit": "^0.31.11",
 		"lucide-svelte": "^0.562.0",
 		"postgres": "^3.4.9"
 	}

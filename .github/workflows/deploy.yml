@@ -51,10 +51,9 @@ jobs:
           script: |
             cd /opt/aorta-web
             docker rm -f pgbouncer 2>/dev/null || true
-            echo 'DATABASE_URL=postgresql://postgres:${{ secrets.DB_PASSWORD }}@postgres-pusat:5432/aorta_cms' > .env
             echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull app
             docker compose up -d --force-recreate app
-            docker exec aorta-web npx drizzle-kit push --config=drizzle.config.js
-            docker exec aorta-web node src/lib/server/db/seed.js
+            docker exec aorta-web npm run db:push
+            docker exec aorta-web npm run db:seed
             docker image prune -f
