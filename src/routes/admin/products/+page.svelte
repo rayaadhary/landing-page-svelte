@@ -26,14 +26,22 @@
 	}
 
 	async function remove() {
-		await fetch('/admin/api/products', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: deleteId }) });
+		await fetch('/admin/api/products', {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ id: deleteId })
+		});
 		await load();
 	}
 </script>
 
 <div class="space-y-6">
 	<PageHeader title="Produk">
-		<button onclick={() => goto('/admin/products/new')} class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0155FF] text-white transition-colors hover:bg-[#0144dd]" aria-label="Tambah Produk">
+		<button
+			onclick={() => goto('/admin/products/new')}
+			class="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0155FF] text-white transition-colors hover:bg-[#0144dd]"
+			aria-label="Tambah Produk"
+		>
 			<Plus size={16} strokeWidth={2} />
 		</button>
 	</PageHeader>
@@ -45,20 +53,37 @@
 			{/each}
 		</div>
 	{:else if items.length === 0}
-		<EmptyState icon={Package} message="Belum ada produk" actionLabel="Tambah Produk" onaction={() => goto('/admin/products/new')} />
+		<EmptyState
+			icon={Package}
+			message="Belum ada produk"
+			actionLabel="Tambah Produk"
+			onaction={() => goto('/admin/products/new')}
+		/>
 	{:else}
 		<div class="space-y-2">
 			{#each items as item}
-				<div class="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 transition-colors hover:border-slate-200">
+				<div
+					class="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 transition-colors hover:border-slate-200"
+				>
 					<div class="min-w-0">
 						<p class="truncate text-sm font-semibold text-slate-800">{item.title}</p>
-						<p class="truncate text-xs text-slate-400">{item.category} · {item.slug}</p>
+						<p class="truncate text-xs text-slate-400">
+							{item.tagline || item.category} · {item.slug}
+						</p>
 					</div>
 					<div class="flex shrink-0 gap-1">
-						<button onclick={() => goto(`/admin/products/${item.id}`)} class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600" aria-label="Edit">
+						<button
+							onclick={() => goto(`/admin/products/${item.id}`)}
+							class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
+							aria-label="Edit"
+						>
 							<Pencil size={15} strokeWidth={1.5} />
 						</button>
-						<button onclick={() => confirmDelete(item.id)} class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500" aria-label="Hapus">
+						<button
+							onclick={() => confirmDelete(item.id)}
+							class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500"
+							aria-label="Hapus"
+						>
 							<Trash2 size={15} strokeWidth={1.5} />
 						</button>
 					</div>
@@ -68,4 +93,9 @@
 	{/if}
 </div>
 
-<ConfirmDialog bind:open={confirmOpen} title="Hapus produk?" message="Produk yang dihapus tidak dapat dikembalikan." onconfirm={remove} />
+<ConfirmDialog
+	bind:open={confirmOpen}
+	title="Hapus produk?"
+	message="Produk yang dihapus tidak dapat dikembalikan."
+	onconfirm={remove}
+/>

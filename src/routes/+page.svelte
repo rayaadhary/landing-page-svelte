@@ -82,7 +82,7 @@
 
 <Hero content={data.hero} />
 <About />
-<Products />
+<Products items={data.products} />
 <Features />
 
 <section class="bg-white px-4 py-20 sm:px-6 lg:px-8">

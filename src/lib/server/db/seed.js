@@ -51,19 +51,55 @@ const heroData = {
 
 const productsData = [
 	{
-		slug: 'simrs',
-		title: 'SIMRS Core Enterprise',
-		category: 'HEALTHCARE SYSTEM',
+		slug: 'custom-software-app',
+		title: 'Custom Web & Mobile App',
+		category: 'BUSINESS ENTERPRISE',
+		tagline: 'Solusi Tailor-made untuk Skala Enterprise',
 		overview:
-			'Solusi transformasi digital menyeluruh untuk manajemen Rumah Sakit skala besar. Menyinkronkan seluruh alur kerja klinis, operasional, hingga administrasi keuangan dalam satu pusat data terpadu.',
+			'Pengembangan aplikasi kustom dari nol sesuai kebutuhan unik bisnis Anda. Bebas menentukan arsitektur, fitur, dan integrasi API tanpa batasan template.',
+		image: '/assets/og-default.jpg',
+		screenshots: [],
+		modules: [
+			'Arsitektur Tailor-made & Scalable',
+			'UI/UX Kustom, Responsive & Modern',
+			'Integrasi Third-Party API & Payment Gateway',
+			'Keamanan Tingkat Tinggi & Optimasi Performa'
+		],
+		pricing: [],
+		sortOrder: 0
+	},
+	{
+		slug: 'custom-erp',
+		title: 'Enterprise Resource Planning (ERP)',
+		category: 'BUSINESS ENTERPRISE',
+		tagline: 'Otomatisasi & Integrasi Alur Bisnis Terpusat',
+		overview:
+			'Sistem manajemen terintegrasi untuk mengotomatisasi seluruh alur kerja operasional, keuangan, supply chain, hingga manufaktur secara real-time.',
+		image: '/assets/hris.png',
+		screenshots: [],
+		modules: [
+			'Modul Bisnis Fleksibel & Modular',
+			'Multi-Branch, Multi-Warehouse & Currency',
+			'Dashboard Laporan Keuangan Real-time',
+			'Otomatisasi Workflow & Approval Multi-Level'
+		],
+		pricing: [],
+		sortOrder: 1
+	},
+	{
+		slug: 'simrs-klinik',
+		title: 'SIMRS & SIM Klinik',
+		category: 'HEALTHCARE SYSTEM',
+		tagline: 'Digitalisasi Ekosistem Fasilitas Kesehatan',
+		overview:
+			'Solusi digitalisasi operasional Fasilitas Kesehatan (Faskes) dari pendaftaran, rekam medis elektronik (RME), hingga integrasi BPJS & Satusehat.',
+		image: '/assets/hospital2.png',
 		screenshots: ['/assets/hospital2.png'],
 		modules: [
-			'Pendaftaran & Antrean Multi-Layanan',
-			'Rekam Medis Elektronik (EMR) Kemenkes',
-			'Pelayanan Medis IGD & Rawat Inap',
-			'Laboratorium & Radiologi (RIS/PACS)',
-			'Modul Farmasi & E-Prescribing',
-			'Billing System & Integrasi BPJS VClaim'
+			'Rekam Medis Elektronik (RME) Standar Kemenkes',
+			'Antrean Pintar, Farmasi & Laboratorium',
+			'Bridging BPJS V-Claim & Integrasi Satusehat',
+			'Kasir Billing & Laporan Klaim Terpadu'
 		],
 		pricing: [
 			{
@@ -85,83 +121,24 @@ const productsData = [
 					'Dedicated Server VPS High-Spec',
 					'24/7 Priority Engineer Support'
 				]
-			},
-			{
-				name: 'Custom Hospital Node',
-				price: 'Custom Quote',
-				highlights: [
-					'On-Premise Infrastructure Deployment',
-					'Custom Modul sesuai Perda / Grand Design',
-					'Source Code Ownership Option',
-					'In-House IT Team Training Service'
-				]
 			}
 		],
-		sortOrder: 0
+		sortOrder: 2
 	},
 	{
-		slug: 'sim-klinik',
-		title: 'SIM Klinik Pratama & Utama',
-		category: 'HEALTHCARE SYSTEM',
-		overview:
-			'Sistem manajemen klinik modern multi-cabang yang dirancang end-to-end untuk memotong birokrasi pendaftaran yang lambat dan mengontrol rekam medis pasien.',
-		screenshots: ['/assets/clinic2.png'],
-		modules: [
-			'Portal Reservasi Online & Janji Pasien',
-			'Pencatatan Rekam Medis Ringkas (RME)',
-			'Live Inventory Obat & Alat Kesehatan',
-			'Kasir Billing Mandiri',
-			'Sistem Notifikasi WhatsApp Otomatis',
-			'Laporan Operasional & Margin'
-		],
-		pricing: [
-			{
-				name: 'Starter Node',
-				price: 'Rp 850rb / bln',
-				highlights: [
-					'Maksimal 2 Cabang Klinik',
-					'RME Standar Kemenkes RI',
-					'Modul Kasir & Stok Dasar',
-					'Email Support Level 1'
-				]
-			},
-			{
-				name: 'Multi-Branch Pro',
-				price: 'Rp 2.2jt / bln',
-				highlights: [
-					'Unlimited Cabang & Multi-Gudang',
-					'Notifikasi Integrasi WhatsApp Gateway',
-					'Sinkronisasi Dashboard Keuangan',
-					'Premium Cloud Backup 2x Sehari'
-				]
-			},
-			{
-				name: 'Corporate Grid',
-				price: 'Custom Quote',
-				highlights: [
-					'White-Label Application Branding',
-					'SLA Uptime Guarantee 99.99%',
-					'Dedicated Database Cluster',
-					'Dedicated Account Manager Dedicated'
-				]
-			}
-		],
-		sortOrder: 1
-	},
-	{
-		slug: 'hris',
-		title: 'HRIS Smart Corporate',
+		slug: 'hris-payroll',
+		title: 'HRIS & Payroll System',
 		category: 'BUSINESS ENTERPRISE',
+		tagline: 'Kelola SDM & Penggajian Lebih Efisien',
 		overview:
-			'Sistem manajemen SDM cerdas berbasis cloud untuk mengotomatisasi seluruh administrasi personalia, kehadiran biometrik, hingga kalkulasi payroll perusahaan Anda.',
+			'Sistem pengelolaan SDM otomatis untuk menyederhanakan administrasi personalia, presensi GPS berbasis lokasi/biometrik, hingga kalkulasi payroll.',
+		image: '/assets/hris.png',
 		screenshots: ['/assets/hris.png'],
 		modules: [
-			'Absensi Biometrik & Anti-Fake GPS',
-			'Manajemen Penjadwalan & Multi-Shift',
-			'Kalkulator Payroll Otomatis & PPh 21',
-			'Portal Mandiri Karyawan (ESS App)',
-			'Dashboard Manajemen Performa Staf',
-			'Audit Logging & Role Permission'
+			'Presensi GPS, Geofencing & Face Recognition',
+			'Kalkulasi PPh 21, BPJS Ketenagakerjaan & Kesehatan',
+			'Portal Mandiri Karyawan / ESS App',
+			'Manajemen Shift, Cuti & Overtime'
 		],
 		pricing: [
 			{
@@ -183,34 +160,24 @@ const productsData = [
 					'Multi-Shift Scheduling Logika Rumit',
 					'Dedicated Chat Support Channel'
 				]
-			},
-			{
-				name: 'Conglomerate Node',
-				price: 'Custom Quote',
-				highlights: [
-					'Unlimited Employee & Subsidiaries',
-					'Custom API Core HR Integration',
-					'On-Premise Server Hybrid Support',
-					'Annual Compliance Audit Assistance'
-				]
 			}
 		],
-		sortOrder: 2
+		sortOrder: 3
 	},
 	{
 		slug: 'pos-inventory',
-		title: 'POS & Intelligent Inventory',
+		title: 'POS & Smart Inventory',
 		category: 'RETAIL & COMMERCE',
+		tagline: 'Kasir Pintar & Kontrol Stok Multi-Gudang',
 		overview:
-			'Aplikasi kasir pintar serbaguna untuk mengamankan arus pendapatan dan mengoptimalkan manajemen stok multi-gudang pada bisnis retail, grosir, maupun F&B.',
+			'Sistem kasir dan manajemen stok terpusat untuk retail, grosir, maupun F&B dengan pemantauan multi-gudang secara akurat dan real-time.',
+		image: '/assets/pos.png',
 		screenshots: ['/assets/pos.png'],
 		modules: [
-			'Aplikasi Kasir Omnichannel & QRIS',
-			'Manajemen Inventori Multi-Gudang',
-			'Deteksi Otomatis Expired Date & Slow-Moving',
-			'Penyesuaian Skema Harga Grosir / Eceran',
-			'Dashboard Keuangan Laba Rugi Komprehensif',
-			'Integrasi API Printer & Barcode Scanner'
+			'Kasir Omnichannel (QRIS, EDC & E-Wallet)',
+			'Manajemen Stok Multi-Gudang & Barcode',
+			'Dashboard Laporan Penjualan & Profitability',
+			'Skema Harga Fleksibel (Grosir/Eceran/Promo)'
 		],
 		pricing: [
 			{
@@ -232,19 +199,9 @@ const productsData = [
 					'Integrasi Sistem Payment Gateway',
 					'Priority Phone Support Technical'
 				]
-			},
-			{
-				name: 'Global Supply Enterprise',
-				price: 'Custom Quote',
-				highlights: [
-					'Sistem Custom Supply Chain ERP',
-					'Custom Database Replication Layout',
-					'Dedicated Server On-Site Setup',
-					'Dedicated Support Team 24/7'
-				]
 			}
 		],
-		sortOrder: 3
+		sortOrder: 4
 	}
 ];
 
