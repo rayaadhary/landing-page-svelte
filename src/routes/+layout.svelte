@@ -6,15 +6,26 @@
 	import { cubicOut } from 'svelte/easing';
 	import { ChevronDown, Activity, Stethoscope, Users2, ShoppingBag } from 'lucide-svelte';
 
-	let open = false;
+	let open = $state(false);
 	let isAdmin = $derived(page.url.pathname.startsWith('/admin'));
 
 	// State untuk kontrol dropdown produk di Desktop
-	let productDropdownOpen = false;
+	let productDropdownOpen = $state(false);
+	let productDropdownEl = $state(/** @type {HTMLDivElement | null} */ (null));
 
 	const closeMenu = () => {
 		open = false;
 		productDropdownOpen = false;
+	};
+
+	const handleWindowClick = (/** @type {MouseEvent} */ e) => {
+		if (
+			productDropdownOpen &&
+			productDropdownEl &&
+			!productDropdownEl.contains(/** @type {Node} */ (e.target))
+		) {
+			productDropdownOpen = false;
+		}
 	};
 
 	const productsList = [
@@ -63,6 +74,8 @@
 		}
 	];
 </script>
+
+<svelte:window onclick={handleWindowClick} />
 
 <svelte:head>
 	<meta name="google-site-verification" content="cmPKTuqioD41LutY6_kGUpIzNLfmf1Sab1LvJw1uymo" />
@@ -119,172 +132,212 @@
 </svelte:head>
 
 {#if !isAdmin}
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<header
-	class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md"
->
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="flex h-16 items-center justify-between">
-    		<a
-    			href="/"
-    			class="flex items-center gap-2.5 transition-transform duration-200 active:scale-95"
-    		>
-    			<picture>
-    				<source srcset="/assets/logo.webp" type="image/webp" />
-    				<img
-    					src="/assets/logo.png"
-    					alt="AORTA"
-    					class="h-9 w-9 rounded object-contain"
-    					width="36"
-    					height="36"
-    				/>
-    			</picture>
-    		
-    			<div class="flex flex-col leading-tight">
-    				<span class="text-base font-extrabold tracking-tight text-slate-900">
-    					<span class="text-[#0155FF]">AORTA</span> DIGITAL SOLUSI
-    				</span>
-    				<span class="text-[9.5px] font-semibold tracking-wider text-slate-500 uppercase">
-    					Empowering Digital Transformation
-    				</span>
-    			</div>
-    		</a>
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<header class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div class="flex h-16 items-center justify-between">
+				<a
+					href="/"
+					class="flex items-center gap-2.5 transition-transform duration-200 active:scale-95"
+				>
+					<picture>
+						<source srcset="/assets/logo.webp" type="image/webp" />
+						<img
+							src="/assets/logo.png"
+							alt="AORTA"
+							class="h-9 w-9 rounded object-contain"
+							width="36"
+							height="36"
+						/>
+					</picture>
 
-			<nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
-				<!-- <a href="/tentang-kami" class="transition-colors hover:text-[#0155FF]">Tentang Kami</a>wa -->
-				<a href="/blog" class="transition-colors hover:text-[#0155FF]">Blog</a>
-				<a href="#features" class="transition-colors hover:text-[#0155FF]">Fitur</a>
+					<div class="flex flex-col leading-tight">
+						<span class="text-base font-extrabold tracking-tight text-slate-900">
+							<span class="text-[#0155FF]">AORTA</span> DIGITAL SOLUSI
+						</span>
+						<span class="text-[9.5px] font-semibold tracking-wider text-slate-500 uppercase">
+							Empowering Digital Transformation
+						</span>
+					</div>
+				</a>
 
-				<div class="relative">
-					<button
-						class="flex items-center gap-1 transition-colors hover:text-[#0155FF]"
-						onclick={() => (productDropdownOpen = !productDropdownOpen)}
-						onmouseenter={() => (productDropdownOpen = true)}
-					>
-						<span>Produk</span>
-						<ChevronDown size={14} class="transition-transform duration-200 {productDropdownOpen ? 'rotate-180' : ''}" />
-					</button>
+				<nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
+					<!-- <a href="/tentang-kami" class="transition-colors hover:text-[#0155FF]">Tentang Kami</a>wa -->
+					<a href="/blog" class="transition-colors hover:text-[#0155FF]">Blog</a>
+					<a href="#features" class="transition-colors hover:text-[#0155FF]">Fitur</a>
 
-					{#if productDropdownOpen}
-						<div
-							role="menu"
-							tabindex="-1"
-							transition:fly={{ y: 8, duration: 150, easing: cubicOut }}
-							onmouseleave={() => (productDropdownOpen = false)}
-							class="absolute top-full left-0 mt-2 w-72 rounded-xl border border-slate-100 bg-white p-2 shadow-lg"
+					<div class="relative" bind:this={productDropdownEl}>
+						<button
+							class="flex items-center gap-1 transition-colors hover:text-[#0155FF]"
+							onclick={() => (productDropdownOpen = !productDropdownOpen)}
 						>
-							{#each productsList as prod}
-								<a
-									href={prod.href}
-									onclick={closeMenu}
-									class="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-slate-50"
-								>
-									<div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {prod.color}">
-										<svelte:component this={prod.icon} size={16} />
-									</div>
-									<div>
-										<p class="text-sm font-medium text-slate-900">{prod.title}</p>
-										<p class="text-xs text-slate-500">{prod.desc}</p>
-									</div>
-								</a>
-							{/each}
-						</div>
-					{/if}
-				</div>
+							<span>Produk</span>
+							<ChevronDown
+								size={14}
+								class="transition-transform duration-200 {productDropdownOpen ? 'rotate-180' : ''}"
+							/>
+						</button>
 
-				<a href="#get-started" class="transition-colors hover:text-[#0155FF]">Kontak</a>
-				<a href="/faq" class="transition-colors hover:text-[#0155FF]">FAQ</a>
-
-				<span class="h-4 w-px bg-slate-200"></span>
-
-				<div class="flex items-center gap-1.5">
-					{#each socialLinks as item}
-						<a
-							href={item.href}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-all duration-200 active:scale-90 {item.color}"
-							aria-label={item.label}
-						>
-							{@html item.svg}
-						</a>
-					{/each}
-				</div>
-			</nav>
-
-			<button
-				class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 md:hidden"
-				onclick={() => (open = !open)}
-				aria-label="Toggle menu"
-			>
-				<div class="flex flex-col gap-1 transition-all duration-200 {open ? 'rotate-90' : ''}">
-					<span class="h-0.5 w-5 rounded-full bg-slate-800 transition-all duration-200 {open ? 'translate-y-1.5 rotate-45' : ''}"></span>
-					<span class="h-0.5 w-5 rounded-full bg-slate-800 transition-all duration-200 {open ? 'opacity-0' : ''}"></span>
-					<span class="h-0.5 w-5 rounded-full bg-slate-800 transition-all duration-200 {open ? '-translate-y-1.5 -rotate-45' : ''}"></span>
-				</div>
-			</button>
-		</div>
-	</div>
-
-	{#if open}
-		<div
-			transition:fly={{ y: -10, duration: 200, easing: cubicOut }}
-			class="absolute top-full left-0 w-full border-b border-slate-100 bg-white shadow-lg md:hidden"
-		>
-			<div class="space-y-1 px-4 py-4">
-				<a href="/tentang-kami" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">Tentang Kami</a>
-				<a href="/blog" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">Blog</a>
-				<a href="#features" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">Fitur</a>
-
-				<div class="py-1.5">
-					<p class="px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-400 uppercase">Produk</p>
-					{#each productsList as prod}
-						<a
-							href={prod.href}
-							onclick={closeMenu}
-							class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
-						>
-							<div class="rounded-md p-1 {prod.color}">
-								<svelte:component this={prod.icon} size={14} />
+						{#if productDropdownOpen}
+							<div
+								role="menu"
+								tabindex="-1"
+								transition:fly={{ y: 8, duration: 150, easing: cubicOut }}
+								class="absolute top-full left-0 mt-2 w-72 rounded-xl border border-slate-100 bg-white p-2 shadow-lg"
+							>
+								{#each productsList as prod}
+									<a
+										href={prod.href}
+										onclick={closeMenu}
+										class="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-slate-50"
+									>
+										<div
+											class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {prod.color}"
+										>
+											<svelte:component this={prod.icon} size={16} />
+										</div>
+										<div>
+											<p class="text-sm font-medium text-slate-900">{prod.title}</p>
+											<p class="text-xs text-slate-500">{prod.desc}</p>
+										</div>
+									</a>
+								{/each}
 							</div>
-							<span>{prod.title}</span>
-						</a>
-					{/each}
-				</div>
+						{/if}
+					</div>
 
-				<a href="#get-started" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">Kontak</a>
-				<a href="/faq" onclick={closeMenu} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]">FAQ</a>
+					<a href="#get-started" class="transition-colors hover:text-[#0155FF]">Kontak</a>
+					<a href="/faq" class="transition-colors hover:text-[#0155FF]">FAQ</a>
 
-				<div class="border-t border-slate-100 pt-3">
-					<div class="flex gap-2">
+					<span class="h-4 w-px bg-slate-200"></span>
+
+					<div class="flex items-center gap-1.5">
 						{#each socialLinks as item}
 							<a
 								href={item.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								onclick={closeMenu}
-								class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-500 transition-all {item.color}"
+								class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-all duration-200 active:scale-90 {item.color}"
+								aria-label={item.label}
 							>
-								<div class="fill-current text-slate-400">{@html item.svg}</div>
-								<span>{item.label}</span>
+								{@html item.svg}
 							</a>
 						{/each}
 					</div>
-				</div>
+				</nav>
 
-				<div class="pt-2">
+				<button
+					class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 md:hidden"
+					onclick={() => (open = !open)}
+					aria-label="Toggle menu"
+				>
+					<div class="flex flex-col gap-1 transition-all duration-200 {open ? 'rotate-90' : ''}">
+						<span
+							class="h-0.5 w-5 rounded-full bg-slate-800 transition-all duration-200 {open
+								? 'translate-y-1.5 rotate-45'
+								: ''}"
+						></span>
+						<span
+							class="h-0.5 w-5 rounded-full bg-slate-800 transition-all duration-200 {open
+								? 'opacity-0'
+								: ''}"
+						></span>
+						<span
+							class="h-0.5 w-5 rounded-full bg-slate-800 transition-all duration-200 {open
+								? '-translate-y-1.5 -rotate-45'
+								: ''}"
+						></span>
+					</div>
+				</button>
+			</div>
+		</div>
+
+		{#if open}
+			<div
+				transition:fly={{ y: -10, duration: 200, easing: cubicOut }}
+				class="absolute top-full left-0 w-full border-b border-slate-100 bg-white shadow-lg md:hidden"
+			>
+				<div class="space-y-1 px-4 py-4">
+					<a
+						href="/tentang-kami"
+						onclick={closeMenu}
+						class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
+						>Tentang Kami</a
+					>
+					<a
+						href="/blog"
+						onclick={closeMenu}
+						class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
+						>Blog</a
+					>
+					<a
+						href="#features"
+						onclick={closeMenu}
+						class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
+						>Fitur</a
+					>
+
+					<div class="py-1.5">
+						<p class="px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-400 uppercase">
+							Produk
+						</p>
+						{#each productsList as prod}
+							<a
+								href={prod.href}
+								onclick={closeMenu}
+								class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
+							>
+								<div class="rounded-md p-1 {prod.color}">
+									<svelte:component this={prod.icon} size={14} />
+								</div>
+								<span>{prod.title}</span>
+							</a>
+						{/each}
+					</div>
+
 					<a
 						href="#get-started"
 						onclick={closeMenu}
-						class="flex w-full items-center justify-center rounded-lg bg-[#0155FF] py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.98]"
+						class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
+						>Kontak</a
 					>
-						Mulai Sekarang
-					</a>
+					<a
+						href="/faq"
+						onclick={closeMenu}
+						class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
+						>FAQ</a
+					>
+
+					<div class="border-t border-slate-100 pt-3">
+						<div class="flex gap-2">
+							{#each socialLinks as item}
+								<a
+									href={item.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									onclick={closeMenu}
+									class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-500 transition-all {item.color}"
+								>
+									<div class="fill-current text-slate-400">{@html item.svg}</div>
+									<span>{item.label}</span>
+								</a>
+							{/each}
+						</div>
+					</div>
+
+					<div class="pt-2">
+						<a
+							href="#get-started"
+							onclick={closeMenu}
+							class="flex w-full items-center justify-center rounded-lg bg-[#0155FF] py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.98]"
+						>
+							Mulai Sekarang
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
-	{/if}
-</header>
+		{/if}
+	</header>
 {/if}
 
 <main class="min-h-screen">
