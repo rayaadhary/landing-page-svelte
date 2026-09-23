@@ -127,21 +127,27 @@
 		<div class="flex h-16 items-center justify-between">
     		<a
     			href="/"
-    			class="flex items-center gap-2 transition-transform duration-200 active:scale-95"
+    			class="flex items-center gap-2.5 transition-transform duration-200 active:scale-95"
     		>
     			<picture>
     				<source srcset="/assets/logo.webp" type="image/webp" />
     				<img
     					src="/assets/logo.png"
     					alt="AORTA"
-    					class="h-8 w-8 rounded"
-    					width="32"
-    					height="32"
+    					class="h-9 w-9 rounded object-contain"
+    					width="36"
+    					height="36"
     				/>
     			</picture>
-      		    <span class="text-lg font-extrabold tracking-tight text-slate-900">
-                    <span class="text-[#0155FF]">AORTA</span> DIGITAL SOLUSI
-                </span>
+    		
+    			<div class="flex flex-col leading-tight">
+    				<span class="text-base font-extrabold tracking-tight text-slate-900">
+    					<span class="text-[#0155FF]">AORTA</span> DIGITAL SOLUSI
+    				</span>
+    				<span class="text-[9.5px] font-semibold tracking-wider text-slate-500 uppercase">
+    					Empowering Digital Transformation
+    				</span>
+    			</div>
     		</a>
 
 			<nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
