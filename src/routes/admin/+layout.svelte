@@ -19,7 +19,7 @@
 
 	const navItems = [
 		{ href: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-		{ href: '/admin/hero', label: 'Hero Slides', icon: Target },
+		{ href: '/admin/hero', label: 'Hero', icon: Target },
 		{ href: '/admin/products', label: 'Produk', icon: Package },
 		{ href: '/admin/features', label: 'Fitur', icon: Zap },
 		{ href: '/admin/testimonials', label: 'Testimoni', icon: MessageSquare },
@@ -69,7 +69,9 @@
 							this={item.icon}
 							size={18}
 							strokeWidth={active ? 2 : 1.5}
-							class="shrink-0 {active ? 'text-[#0155FF]' : 'text-slate-400 group-hover:text-slate-500'}"
+							class="shrink-0 {active
+								? 'text-[#0155FF]'
+								: 'text-slate-400 group-hover:text-slate-500'}"
 						/>
 						<span>{item.label}</span>
 					</a>

@@ -1,4 +1,13 @@
-import { pgTable, serial, text, varchar, integer, boolean, timestamp, jsonb } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	serial,
+	text,
+	varchar,
+	integer,
+	boolean,
+	timestamp,
+	jsonb
+} from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
 	id: serial('id').primaryKey(),
@@ -10,19 +19,23 @@ export const users = pgTable('users', {
 export const sessions = pgTable('sessions', {
 	id: serial('id').primaryKey(),
 	token: varchar('token', { length: 64 }).notNull().unique(),
-	userId: integer('user_id').references(() => users.id).notNull(),
+	userId: integer('user_id')
+		.references(() => users.id)
+		.notNull(),
 	expiresAt: timestamp('expires_at').notNull()
 });
 
-export const heroSlides = pgTable('hero_slides', {
+export const hero = pgTable('hero', {
 	id: serial('id').primaryKey(),
-	title: varchar('title', { length: 255 }).notNull(),
-	subtitle: varchar('subtitle', { length: 255 }).notNull(),
+	titlePrefix: varchar('title_prefix', { length: 255 }).notNull(),
+	titleHighlight: varchar('title_highlight', { length: 255 }).notNull(),
+	highlightColor: varchar('highlight_color', { length: 50 }).default('#0155FF').notNull(),
 	description: text('description').notNull(),
-	svgHtml: text('svg_html').notNull(),
-	color: varchar('color', { length: 50 }).notNull(),
-	sortOrder: integer('sort_order').default(0).notNull(),
-	active: boolean('active').default(true).notNull()
+	ctaPrimaryLabel: varchar('cta_primary_label', { length: 255 }).notNull(),
+	ctaPrimaryHref: text('cta_primary_href').default('').notNull(),
+	ctaSecondaryLabel: varchar('cta_secondary_label', { length: 255 }).notNull(),
+	ctaSecondaryHref: varchar('cta_secondary_href', { length: 500 }).default('#layanan').notNull(),
+	stats: jsonb('stats').$type().default([]).notNull()
 });
 
 export const products = pgTable('products', {
