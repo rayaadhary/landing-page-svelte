@@ -1,6 +1,8 @@
 node_modules
 graphify-out
 
+graphify-out
+
 # Output
 .output
 .vercel

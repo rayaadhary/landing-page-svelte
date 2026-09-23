@@ -1,11 +1,15 @@
 <script>
 	import '../app.css';
 	import './layout.css';
+	import { page } from '$app/state';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { ChevronDown, Activity, Stethoscope, Users2, ShoppingBag } from 'lucide-svelte';
 
 	let open = false;
+	let isAdmin = $derived(page.url.pathname.startsWith('/admin'));
+
+	// State untuk kontrol dropdown produk di Desktop
 	let productDropdownOpen = false;
 
 	const closeMenu = () => {
@@ -114,6 +118,8 @@
 	</script>
 </svelte:head>
 
+{#if !isAdmin}
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <header
 	class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md"
 >
@@ -273,6 +279,7 @@
 		</div>
 	{/if}
 </header>
+{/if}
 
 <main class="min-h-screen">
 	<slot />

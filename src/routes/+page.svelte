@@ -11,16 +11,23 @@
 	import bgKaigopedia from '$lib/assets/kaigopedia.png'; 
 	import { MessageSquare, Mail, Phone, MapPin, ChevronDown, Instagram, MessageCircle, ArrowUpRight, Star, CircleCheck } from 'lucide-svelte';
 
+	let { data } = $props();
+
 	const currentYear = new Date().getFullYear();
 
-	let faqOpen = $state(null);
-	const faqs = [
-		{ q: 'Apakah sistem bisa di-custom?', a: 'Bisa. Semua produk AORTA bisa dikustomisasi sesuai kebutuhan operasional Anda — dari alur kerja, tampilan, hingga integrasi sistem pihak ketiga.' },
-		{ q: 'Apakah menerima jasa buat aplikasi lain?', a: 'Ya. Selain produk standar, kami juga menerima jasa pembuatan aplikasi custom — ERP, e-learning, portal layanan publik, dan lainnya.' },
-		{ q: 'Berapa lama proses implementasi?', a: 'SIM Klinik: 14–21 hari. SIMRS: 2–6 bulan. Aplikasi custom: disepakati setelah analisis kebutuhan.' },
-		{ q: 'Sudah terintegrasi BPJS & SatuSehat?', a: 'Ya. Bridging BPJS (VClaim) dan SatuSehat sudah termasuk dalam paket, bukan biaya tambahan.' },
-		{ q: 'Bagaimana support setelah beli?', a: 'SLA tertulis, support 24/7 via WhatsApp & tiket, dedicated engineer, dan update otomatis.' }
-	];
+	let faqOpen = $state(/** @type {number | null} */ (null));
+
+	const faqs = $derived((data.faqs || []).map((/** @type {any} */ f) => ({ q: f.question || f.q, a: f.answer || f.a })));
+
+	const testimonials = $derived(data.testimonials || [
+		{
+			quote: 'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
+			clientName: 'Tim Kaigopedia',
+			clientRole: 'kaigopedia.com',
+			avatarLetter: 'K',
+			avatarColor: 'bg-emerald-500'
+		}
+	]);
 </script>
 
 <svelte:head>

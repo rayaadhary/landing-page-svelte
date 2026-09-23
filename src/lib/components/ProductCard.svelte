@@ -1,7 +1,11 @@
 <script>
 	import { ArrowRight } from 'lucide-svelte';
 
-	let { index = 0, title, description, features = [], screenshot, slug } = $props();
+	export let index = 0;
+	export let title;
+	export let description;
+	export let features = [];
+	export let screenshot;
 </script>
 
 <div

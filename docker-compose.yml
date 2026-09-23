@@ -1,0 +1,15 @@
+services:
+  app:
+    image: ghcr.io/rayaadhary/landing-page-svelte:latest
+    container_name: aorta-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    networks:
+      - global-proxy
+
+networks:
+  global-proxy:
+    external: true
