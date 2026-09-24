@@ -4,7 +4,17 @@
 	import { page } from '$app/state';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { ChevronDown, Activity, Stethoscope, Users2, ShoppingBag } from 'lucide-svelte';
+	import {
+		ChevronDown,
+		Activity,
+		Stethoscope,
+		Users2,
+		ShoppingBag,
+		Package,
+		Sparkles
+	} from 'lucide-svelte';
+
+	let { data } = $props();
 
 	let open = $state(false);
 	let isAdmin = $derived(page.url.pathname.startsWith('/admin'));
@@ -28,36 +38,39 @@
 		}
 	};
 
-	const productsList = [
-		{
-			title: 'SIMRS Enterprise',
-			desc: 'Sistem manajemen Rumah Sakit terintegrasi.',
-			href: '/products/simrs',
-			icon: Activity,
-			color: 'text-blue-600 bg-blue-50'
-		},
-		{
-			title: 'SIM Klinik',
-			desc: 'Solusi operasional Klinik berbasis cloud.',
-			href: '/products/sim-klinik',
-			icon: Stethoscope,
-			color: 'text-cyan-600 bg-cyan-50'
-		},
-		{
-			title: 'HRIS Smart Corporate',
-			desc: 'Otomatisasi payroll, absensi, dan manajemen shift.',
-			href: '/products/hris',
-			icon: Users2,
-			color: 'text-indigo-600 bg-indigo-50'
-		},
-		{
-			title: 'POS & Inventory',
-			desc: 'Aplikasi kasir multi-gudang untuk retail.',
-			href: '/products/pos-inventory',
-			icon: ShoppingBag,
-			color: 'text-emerald-600 bg-emerald-50'
-		}
-	];
+	/** @type {Record<string, { icon: any, color: string }>} */
+	const categoryStyle = {
+		'HEALTHCARE SYSTEM': { icon: Stethoscope, color: 'text-cyan-600 bg-cyan-50' },
+		'BUSINESS ENTERPRISE': { icon: Users2, color: 'text-indigo-600 bg-indigo-50' },
+		'RETAIL & COMMERCE': { icon: ShoppingBag, color: 'text-emerald-600 bg-emerald-50' }
+	};
+
+	function styleFor(/** @type {any} */ product) {
+		const byCat = categoryStyle[product.category];
+		if (byCat) return byCat;
+		const t = `${product.slug} ${product.title}`.toLowerCase();
+		if (t.includes('simrs') || t.includes('klinik') || t.includes('health'))
+			return { icon: Activity, color: 'text-blue-600 bg-blue-50' };
+		if (t.includes('hris') || t.includes('payroll') || t.includes('erp'))
+			return { icon: Users2, color: 'text-indigo-600 bg-indigo-50' };
+		if (t.includes('pos') || t.includes('inventory'))
+			return { icon: ShoppingBag, color: 'text-emerald-600 bg-emerald-50' };
+		if (t.includes('custom')) return { icon: Sparkles, color: 'text-amber-600 bg-amber-50' };
+		return { icon: Package, color: 'text-blue-600 bg-blue-50' };
+	}
+
+	const productsList = $derived(
+		(data.navProducts ?? []).map((/** @type {any} */ p) => {
+			const style = styleFor(p);
+			return {
+				title: p.title,
+				desc: p.tagline || p.overview || p.category,
+				href: `/products/${p.slug}`,
+				icon: style.icon,
+				color: style.color
+			};
+		})
+	);
 
 	const socialLinks = [
 		{
@@ -165,47 +178,49 @@
 					<!-- <a href="/tentang-kami" class="transition-colors hover:text-[#0155FF]">Tentang Kami</a>wa -->
 					<a href="/blog" class="transition-colors hover:text-[#0155FF]">Blog</a>
 					<a href="#features" class="transition-colors hover:text-[#0155FF]">Fitur</a>
-
-					<div class="relative" bind:this={productDropdownEl}>
-						<button
-							class="flex items-center gap-1 transition-colors hover:text-[#0155FF]"
-							onclick={() => (productDropdownOpen = !productDropdownOpen)}
-						>
-							<span>Produk</span>
-							<ChevronDown
-								size={14}
-								class="transition-transform duration-200 {productDropdownOpen ? 'rotate-180' : ''}"
-							/>
-						</button>
-
-						{#if productDropdownOpen}
-							<div
-								role="menu"
-								tabindex="-1"
-								transition:fly={{ y: 8, duration: 150, easing: cubicOut }}
-								class="absolute top-full left-0 mt-2 w-72 rounded-xl border border-slate-100 bg-white p-2 shadow-lg"
+					{#if productsList.length > 0}
+						<div class="relative" bind:this={productDropdownEl}>
+							<button
+								class="flex items-center gap-1 transition-colors hover:text-[#0155FF]"
+								onclick={() => (productDropdownOpen = !productDropdownOpen)}
 							>
-								{#each productsList as prod}
-									<a
-										href={prod.href}
-										onclick={closeMenu}
-										class="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-slate-50"
-									>
-										<div
-											class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {prod.color}"
-										>
-											<svelte:component this={prod.icon} size={16} />
-										</div>
-										<div>
-											<p class="text-sm font-medium text-slate-900">{prod.title}</p>
-											<p class="text-xs text-slate-500">{prod.desc}</p>
-										</div>
-									</a>
-								{/each}
-							</div>
-						{/if}
-					</div>
+								<span>Produk</span>
+								<ChevronDown
+									size={14}
+									class="transition-transform duration-200 {productDropdownOpen
+										? 'rotate-180'
+										: ''}"
+								/>
+							</button>
 
+							{#if productDropdownOpen}
+								<div
+									role="menu"
+									tabindex="-1"
+									transition:fly={{ y: 8, duration: 150, easing: cubicOut }}
+									class="absolute top-full left-0 mt-2 w-72 rounded-xl border border-slate-100 bg-white p-2 shadow-lg"
+								>
+									{#each productsList as prod}
+										<a
+											href={prod.href}
+											onclick={closeMenu}
+											class="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-slate-50"
+										>
+											<div
+												class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg {prod.color}"
+											>
+												<svelte:component this={prod.icon} size={16} />
+											</div>
+											<div class="min-w-0">
+												<p class="truncate text-sm font-medium text-slate-900">{prod.title}</p>
+												<p class="truncate text-xs text-slate-500">{prod.desc}</p>
+											</div>
+										</a>
+									{/each}
+								</div>
+							{/if}
+						</div>
+					{/if}
 					<a href="#get-started" class="transition-colors hover:text-[#0155FF]">Kontak</a>
 					<a href="/faq" class="transition-colors hover:text-[#0155FF]">FAQ</a>
 
@@ -277,23 +292,25 @@
 						>Fitur</a
 					>
 
-					<div class="py-1.5">
-						<p class="px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-400 uppercase">
-							Produk
-						</p>
-						{#each productsList as prod}
-							<a
-								href={prod.href}
-								onclick={closeMenu}
-								class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
-							>
-								<div class="rounded-md p-1 {prod.color}">
-									<svelte:component this={prod.icon} size={14} />
-								</div>
-								<span>{prod.title}</span>
-							</a>
-						{/each}
-					</div>
+					{#if productsList.length > 0}
+						<div class="py-1.5">
+							<p class="px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-400 uppercase">
+								Produk
+							</p>
+							{#each productsList as prod}
+								<a
+									href={prod.href}
+									onclick={closeMenu}
+									class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#0155FF]"
+								>
+									<div class="rounded-md p-1 {prod.color}">
+										<svelte:component this={prod.icon} size={14} />
+									</div>
+									<span>{prod.title}</span>
+								</a>
+							{/each}
+						</div>
+					{/if}
 
 					<a
 						href="#get-started"

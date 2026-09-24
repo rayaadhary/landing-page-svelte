@@ -45,6 +45,7 @@ export const products = pgTable('products', {
 	category: varchar('category', { length: 255 }).notNull(),
 	tagline: varchar('tagline', { length: 255 }).default('').notNull(),
 	overview: text('overview').notNull(),
+	content: text('content').default('').notNull(),
 	image: varchar('image', { length: 500 }).default('').notNull(),
 	screenshots: jsonb('screenshots').$type().default([]).notNull(),
 	modules: jsonb('modules').$type().default([]).notNull(),

@@ -16,15 +16,8 @@
 		tagline: '',
 		overview: '',
 		image: '',
-		screenshots: [],
-		modules: [],
-		pricing: [],
 		sortOrder: 0
 	});
-	let newModule = $state('');
-	let newPricingName = $state('');
-	let newPricingPrice = $state('');
-	let newPricingHighlight = $state('');
 	let loading = $state(true);
 	let uploading = $state(false);
 
@@ -37,42 +30,6 @@
 		}
 		loading = false;
 	});
-
-	function addModule() {
-		if (newModule.trim()) {
-			form.modules = [...form.modules, newModule.trim()];
-			newModule = '';
-		}
-	}
-
-	function removeModule(i) {
-		form.modules = form.modules.filter((_, idx) => idx !== i);
-	}
-
-	function addPricing() {
-		if (newPricingName && newPricingPrice) {
-			form.pricing = [
-				...form.pricing,
-				{ name: newPricingName, price: newPricingPrice, highlights: [] }
-			];
-			newPricingName = '';
-			newPricingPrice = '';
-		}
-	}
-
-	function addHighlight(pricingIdx) {
-		if (newPricingHighlight.trim()) {
-			form.pricing[pricingIdx].highlights = [
-				...form.pricing[pricingIdx].highlights,
-				newPricingHighlight.trim()
-			];
-			newPricingHighlight = '';
-		}
-	}
-
-	function removePricing(i) {
-		form.pricing = form.pricing.filter((_, idx) => idx !== i);
-	}
 
 	async function handleImageUpload(e) {
 		const file = e.target.files?.[0];
@@ -97,7 +54,16 @@
 
 	async function save() {
 		const method = isNew ? 'POST' : 'PUT';
-		const body = isNew ? form : { id: Number(id), ...form };
+		const base = {
+			slug: form.slug,
+			title: form.title,
+			category: form.category,
+			tagline: form.tagline,
+			overview: form.overview,
+			image: form.image,
+			sortOrder: form.sortOrder ?? 0
+		};
+		const body = isNew ? base : { id: Number(id), ...base };
 		await fetch('/admin/api/products', {
 			method,
 			headers: { 'Content-Type': 'application/json' },
@@ -177,80 +143,11 @@
 			</div>
 		</Card>
 
-		<Card class="p-6">
-			<h2 class="mb-3 text-sm font-bold text-slate-800">Modules</h2>
-			<div class="flex gap-2">
-				<input
-					bind:value={newModule}
-					placeholder="Tambah module"
-					class="flex-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
-					onkeydown={(e) => e.key === 'Enter' && addModule()}
-				/>
-				<Button variant="secondary" onclick={addModule}>Add</Button>
-			</div>
-			{#if form.modules.length > 0}
-				<div class="mt-3 space-y-1.5">
-					{#each form.modules as mod, i}
-						<div class="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2">
-							<span class="text-[13px] text-slate-700">{mod}</span>
-							<button
-								onclick={() => removeModule(i)}
-								class="text-xs text-red-500 hover:text-red-700">Hapus</button
-							>
-						</div>
-					{/each}
-				</div>
-			{/if}
-		</Card>
-
-		<Card class="p-6">
-			<h2 class="mb-3 text-sm font-bold text-slate-800">Pricing Tiers</h2>
-			<div class="flex gap-2">
-				<input
-					bind:value={newPricingName}
-					placeholder="Nama tier"
-					class="flex-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
-				/>
-				<input
-					bind:value={newPricingPrice}
-					placeholder="Harga"
-					class="w-40 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
-				/>
-				<Button variant="secondary" onclick={addPricing}>Add</Button>
-			</div>
-			{#if form.pricing.length > 0}
-				<div class="mt-3 space-y-3">
-					{#each form.pricing as pricing, pi}
-						<div class="rounded-lg border border-slate-100 p-3">
-							<div class="flex items-center justify-between">
-								<p class="text-sm font-semibold text-slate-800">
-									{pricing.name} <span class="font-normal text-slate-400">— {pricing.price}</span>
-								</p>
-								<button
-									onclick={() => removePricing(pi)}
-									class="text-xs text-red-500 hover:text-red-700">Hapus Tier</button
-								>
-							</div>
-							<div class="mt-2 flex gap-2">
-								<input
-									bind:value={newPricingHighlight}
-									placeholder="Tambah highlight"
-									class="flex-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
-									onkeydown={(e) => e.key === 'Enter' && addHighlight(pi)}
-								/>
-								<Button variant="ghost" onclick={() => addHighlight(pi)}>Add</Button>
-							</div>
-							{#if pricing.highlights.length > 0}
-								<ul class="mt-2 space-y-0.5">
-									{#each pricing.highlights as h}
-										<li class="text-xs text-slate-500">· {h}</li>
-									{/each}
-								</ul>
-							{/if}
-						</div>
-					{/each}
-				</div>
-			{/if}
-		</Card>
+		<p class="text-xs text-slate-400">
+			Screenshots, modules, &amp; pricing diatur di menu
+			<a href="/admin/product-detail" class="font-semibold text-[#0155FF] hover:underline"
+				>Detail Produk</a
+			>.
+		</p>
 	</div>
 {/if}

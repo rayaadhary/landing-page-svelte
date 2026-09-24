@@ -6,6 +6,7 @@ import { getProductBySlug } from '$lib/data/products.js';
 
 export async function load({ params }) {
 	let product = null;
+	let dbAvailable = false;
 
 	try {
 		const rows = await db
@@ -14,11 +15,14 @@ export async function load({ params }) {
 			.where(eq(productsTable.slug, params.slug))
 			.limit(1);
 		product = rows[0] ?? null;
+		dbAvailable = true;
 	} catch {
 		product = null;
 	}
 
-	if (!product) {
+	// Static fallback hanya saat DB error — bukan saat slug tidak ada
+	// (biar data admin tidak ditimpa data statis lama)
+	if (!product && !dbAvailable) {
 		product = getProductBySlug(params.slug);
 	}
 

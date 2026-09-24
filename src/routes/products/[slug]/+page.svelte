@@ -9,8 +9,6 @@
 		Pill,
 		Package,
 		Receipt,
-		Printer,
-		Scan,
 		BarChart3,
 		Users,
 		Calendar,
@@ -25,19 +23,22 @@
 		Smartphone,
 		Percent,
 		Barcode,
-		Spline
+		Spline,
+		ChevronRight,
+		ArrowUpRight
 	} from 'lucide-svelte';
+	import { ICON_MAP, normalizeModule } from '$lib/data/moduleIcons.js';
+	import bgMain3 from '$lib/assets/bg_main3.jpg';
 
-	// 1. Tangkap props data bawaan SvelteKit
+	// 1. Props & Reactive Data
 	let { data } = $props();
-
-	// 2. Variabel product otomatis reaktif memantau perubahan data lewat $derived
 	let product = $derived(data.product);
+	let modules = $derived((product.modules ?? []).map(normalizeModule));
 
+	// 2. Icon Mapper (fallback untuk data lama / icon kosong)
 	function iconFor(m) {
 		const t = m.toLowerCase();
 
-		// Domain Healthcare (SIMRS / Klinik)
 		if (t.includes('pendaftaran')) return ClipboardList;
 		if (t.includes('rekam medis') || t.includes('emr') || t.includes('rme')) return FileText;
 		if (
@@ -52,7 +53,6 @@
 		if (t.includes('antrean') || t.includes('antrian')) return ListChecks;
 		if (t.includes('farmasi') || t.includes('obat')) return Pill;
 
-		// Domain HRIS (Human Resource)
 		if (
 			t.includes('absensi') ||
 			t.includes('biometrik') ||
@@ -66,7 +66,6 @@
 			return Smartphone;
 		if (t.includes('performa') || t.includes('staf') || t.includes('sdm')) return Users;
 
-		// Domain POS & Inventory (Commerce)
 		if (t.includes('kasir') || t.includes('omnichannel') || t.includes('qris')) return Receipt;
 		if (
 			t.includes('gudang') ||
@@ -79,7 +78,6 @@
 		if (t.includes('grosir') || t.includes('eceran') || t.includes('harga')) return Percent;
 		if (t.includes('printer') || t.includes('scanner') || t.includes('barcode')) return Barcode;
 
-		// Infrastructure / Common Modules
 		if (t.includes('laporan') || t.includes('dashboard') || t.includes('keuangan'))
 			return BarChart3;
 		if (
@@ -98,11 +96,8 @@
 </script>
 
 <svelte:head>
-	<title>{product.title} | AORTA</title>
-	<meta
-		name="description"
-		content="{product.overview} Hubungi AORTA untuk konsultasi dan demo gratis."
-	/>
+	<title>{product.title} — AORTA</title>
+	<meta name="description" content="{product.overview} Hubungi AORTA untuk konsultasi dan demo gratis." />
 	<link rel="canonical" href="https://aorta.my.id/products/{product.slug}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={product.title} />
@@ -124,17 +119,17 @@
 			: 'https://aorta.my.id/assets/logo.png'}
 	/>
 	<script type="application/ld+json">
-		{
+		{JSON.stringify({
 			"@context": "https://schema.org",
 			"@type": "SoftwareApplication",
-			"name": {product.title},
-			"description": {product.overview},
-			"url": "https://aorta.my.id/products/{product.slug}",
+			"name": product.title,
+			"description": product.overview,
+			"url": `https://aorta.my.id/products/${product.slug}`,
 			"applicationCategory": "BusinessApplication",
 			"operatingSystem": "Web",
 			"inLanguage": "id-ID",
 			"publisher": { "@id": "https://aorta.my.id/#organization" }
-		}
+		})}
 	</script>
 	<script type="application/ld+json">
 		{JSON.stringify({
@@ -149,284 +144,243 @@
 	</script>
 </svelte:head>
 
-<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-slate-50/50">
-	<div
-		class="absolute top-[5%] right-[-10%] h-[50vh] w-[50vw] rounded-full bg-gradient-to-br from-[#00C2CB]/5 to-transparent blur-[120px]"
-	></div>
-	<div
-		class="absolute top-[40%] left-[-10%] h-[50vh] w-[60vw] rounded-full bg-gradient-to-tr from-[#0155FF]/5 to-transparent blur-[150px]"
-	></div>
+<!-- Gradient Background Subtle -->
+<div class="pointer-events-none fixed inset-0 -z-10 bg-slate-50/50">
+	<div class="absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-full max-w-7xl bg-[radial-gradient(ellipse_at_top,rgba(1,85,255,0.06),transparent_70%)]"></div>
 </div>
 
-<section class="mx-auto max-w-7xl px-4 pt-24 pb-12 sm:px-6 lg:px-8">
-	<div
-		class="flex w-fit items-center gap-2 rounded-full border border-slate-100 bg-white px-4 py-1.5 text-xs font-semibold text-slate-500 shadow-sm"
-	>
-		<a href="/" class="flex items-center gap-1 transition-colors hover:text-[#0155FF]">
-			<ArrowLeft size={12} /> Beranda
+<main class="mx-auto max-w-6xl px-4 pt-16 pb-24 sm:px-6 lg:px-8">
+	<!-- Breadcrumb Minimalis -->
+	<nav class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+		<a href="/" class="flex items-center gap-1 hover:text-slate-900 transition-colors">
+			<ArrowLeft size={14} class="text-slate-400" /> Beranda
 		</a>
-		<span class="text-slate-300">/</span>
-		<a href="/#products" class="transition-colors hover:text-[#0155FF]">Produk</a>
-		<span class="text-slate-300">/</span>
-		<span class="font-bold text-slate-800">{product.title}</span>
-	</div>
+		<ChevronRight size={12} class="text-slate-300" />
+		<a href="/#products" class="hover:text-slate-900 transition-colors">Produk</a>
+		<ChevronRight size={12} class="text-slate-300" />
+		<span class="text-slate-900 font-semibold">{product.title}</span>
+	</nav>
 
-	<div class="mt-8 grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
-		<div class="space-y-4 lg:col-span-5">
-			<span
-				class="inline-block rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-black tracking-[0.2em] text-[#0155FF] uppercase"
-			>
+	<!-- Hero Section -->
+	<section class="mt-8 grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+		<!-- Main Info -->
+		<div class="space-y-6 lg:col-span-6">
+			<div class="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/80 px-3 py-1 text-xs font-semibold text-[#0155FF]">
+				<span class="h-1.5 w-1.5 rounded-full bg-[#0155FF]"></span>
 				{product.category}
-			</span>
-			<h1 class="text-4xl leading-tight font-black tracking-tight text-slate-900 sm:text-5xl">
+			</div>
+
+			<h1 class="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:leading-tight">
 				{product.title}
 			</h1>
-			<p class="pt-2 text-base leading-relaxed font-medium text-slate-600">
+
+			<p class="text-base leading-relaxed text-slate-600">
 				{product.overview}
 			</p>
-			<div class="flex items-center gap-4 pt-4">
+
+			<div class="flex items-center gap-3 pt-2">
 				<a
 					href="#pricing"
-					class="rounded-xl bg-[#0155FF] px-6 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:opacity-90 active:scale-95"
+					class="inline-flex items-center justify-center rounded-lg bg-[#0155FF] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-600 active:scale-[0.98]"
 				>
-					Lihat Skema Harga
+					Lihat Harga
 				</a>
 				<a
 					href="#modules"
-					class="rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-slate-700 transition-all hover:border-[#0155FF]"
+					class="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 active:scale-[0.98]"
 				>
 					Eksplor Modul
 				</a>
 			</div>
 		</div>
 
-		<div class="lg:col-span-7">
-			<div
-				class="relative rounded-[2.5rem] border border-white/80 bg-white/60 p-3 shadow-[0_32px_64px_-16px_rgba(15,23,42,0.06)] backdrop-blur-xl sm:p-4"
-			>
-				<div
-					class="group relative aspect-[16/10] overflow-hidden rounded-[1.8rem] border border-slate-900 bg-slate-950 shadow-inner"
-				>
-					<div
-						class="absolute inset-x-0 top-0 z-10 flex h-10 items-center justify-between border-b border-slate-800/50 bg-slate-900/90 px-4 backdrop-blur-md"
-					>
-						<div class="flex items-center gap-1.5">
-							<span class="h-2.5 w-2.5 rounded-full bg-red-500/80"></span>
-							<span class="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></span>
-							<span class="h-2.5 w-2.5 rounded-full bg-green-500/80"></span>
-						</div>
-						<span class="font-mono text-[10px] tracking-wider text-slate-500"
-							>{product.slug}_interface_v4.png</span
-						>
-						<div class="w-10"></div>
-					</div>
-
+		<!-- Screenshot Showcase -->
+		<div class="lg:col-span-6">
+			<div class="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-1.5 shadow-lg shadow-slate-200/40">
+				<div class="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-900">
 					{#if product.screenshots && product.screenshots.length > 0}
 						<img
 							src={product.screenshots[0]}
 							alt={product.title}
 							loading="lazy"
 							decoding="async"
-							class="h-full w-full object-cover pt-10 transition-transform duration-700 group-hover:scale-[1.02]"
+							class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
 						/>
 					{:else}
-						<div
-							class="flex h-full w-full flex-col items-center justify-center pt-10 font-mono text-xs text-slate-500"
-						>
-							<Zap size={24} class="mb-2 animate-pulse text-[#00C2CB]" />
-							NO PREVIEW AVAILABLE
+						<div class="flex h-full w-full flex-col items-center justify-center font-mono text-xs text-slate-500">
+							<Zap size={20} class="mb-2 text-[#0155FF]" />
+							<span>No preview available</span>
 						</div>
 					{/if}
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section id="modules" class="mx-auto max-w-7xl scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
-	<div class="mx-auto mb-12 max-w-2xl space-y-2 text-center">
-		<h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-			Architecture Modules
-		</h2>
-		<p class="text-sm font-medium text-slate-500">
-			Seluruh ekosistem fitur inti terintegrasi tanpa putus, siap mendongkrak performa manajemen
-			institusi Anda.
-		</p>
-	</div>
+	<!-- Content Prose (Optional) -->
+	{#if product.content}
+		<section class="mt-20 border-t border-slate-200/60 pt-16">
+			<div class="prose max-w-none prose-slate prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h3:text-lg prose-p:text-slate-600 prose-a:text-[#0155FF] prose-strong:text-slate-900">
+				{@html product.content}
+			</div>
+		</section>
+	{/if}
 
-	<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-		{#each product.modules as m}
-			<div
-				class="group rounded-2xl border border-slate-200/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#0155FF]/40 hover:shadow-[0_20px_40px_-15px_rgba(1,85,255,0.05)]"
-			>
-				<div class="flex flex-col gap-4">
-					<div
-						class="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-100 bg-slate-50 shadow-sm transition-all duration-300 group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-[#0155FF] group-hover:to-[#00C2CB]"
-					>
-						<svelte:component
-							this={iconFor(m)}
-							size={20}
-							class="text-slate-700 transition-colors duration-300 group-hover:text-white"
-						/>
+	<!-- Architecture Modules -->
+	<section id="modules" class="mt-24 scroll-mt-12">
+		<div class="max-w-2xl space-y-2">
+			<h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+				Modul Sistem Inti
+			</h2>
+			<p class="text-sm text-slate-500">
+				Seluruh fitur dirancang modular dan terintegrasi untuk mendukung efisiensi operasional.
+			</p>
+		</div>
+
+		<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			{#each modules as m}
+				{@const IconComponent = m.icon
+					? (ICON_MAP[m.icon] ?? iconFor(m.name))
+					: iconFor(m.name)}
+				<div class="group rounded-xl border border-slate-200/80 bg-white p-5 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100">
+					<div class="flex items-start gap-4">
+						<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-100 bg-slate-50 text-slate-700 transition-colors group-hover:border-blue-100 group-hover:bg-blue-50 group-hover:text-[#0155FF]">
+							<IconComponent size={18} />
+						</div>
+						<div class="space-y-1">
+							<h3 class="text-sm font-semibold text-slate-900">
+								{m.name}
+							</h3>
+							<p class="text-xs leading-relaxed text-slate-500">
+								Tersinkronisasi otomatis dengan standar enkripsi data dan performa tinggi.
+							</p>
+						</div>
 					</div>
-					<div>
-						<h3
-							class="text-base font-bold text-slate-900 transition-colors group-hover:text-[#0155FF]"
-						>
-							{m}
+				</div>
+			{/each}
+		</div>
+	</section>
+
+	<!-- Investment & Pricing -->
+	<section id="pricing" class="mt-24 scroll-mt-12">
+		<div class="max-w-2xl space-y-2">
+			<h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+				Skema Investasi
+			</h2>
+			<p class="text-sm text-slate-500">
+				Pilihan fleksibel yang disesuaikan dengan skala dan kapasitas instansi Anda.
+			</p>
+		</div>
+
+		<div class="mt-8 rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8">
+			{#if product.pricing && product.pricing.length > 0}
+				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{#each product.pricing as tier}
+						<div class="flex flex-col rounded-xl border border-slate-200 p-6 bg-slate-50/50">
+							<p class="text-xs font-bold uppercase tracking-wider text-[#0155FF]">{tier.name}</p>
+							<p class="mt-2 text-2xl font-semibold text-slate-900">{tier.price}</p>
+							{#if tier.highlights?.length}
+								<ul class="mt-6 flex-1 space-y-2.5 text-xs text-slate-600">
+									{#each tier.highlights as h}
+										<li class="flex items-start gap-2">
+											<Check size={14} class="mt-0.5 shrink-0 text-[#0155FF]" />
+											<span>{h}</span>
+										</li>
+									{/each}
+								</ul>
+							{/if}
+							<a
+								href="/#get-started"
+								class="mt-6 flex w-full items-center justify-center rounded-lg border border-slate-200 bg-white py-2.5 text-xs font-semibold text-slate-700 transition-all hover:bg-slate-50"
+							>
+								Minta Penawaran
+							</a>
+						</div>
+					{/each}
+				</div>
+			{:else}
+				<div class="grid grid-cols-1 gap-8 items-center lg:grid-cols-12">
+					<div class="space-y-4 lg:col-span-7">
+						<div class="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-[#0155FF]">
+							Tailored Enterprise Solution
+						</div>
+						<h3 class="text-xl font-semibold text-slate-900">
+							Implementasi Sesuai Kebutuhan Spesifik
 						</h3>
-						<p class="mt-1.5 text-xs leading-relaxed text-slate-500">
-							Modul tersinkronisasi otomatis dengan enkripsi database berlapis dan dukungan bridging
-							sistem eksternal.
+						<p class="text-xs leading-relaxed text-slate-600">
+							Setiap institusi memiliki alur kerja dan regulasi yang unik. Kami menyediakan skema kustom modular agar Anda berinvestasi tepat pada fitur dan kapasitas yang dibutuhkan.
 						</p>
+
+						<div class="grid grid-cols-1 gap-2.5 pt-2 text-xs font-medium text-slate-700 sm:grid-cols-2">
+							<div class="flex items-center gap-2">
+								<Check size={14} class="text-[#0155FF]" />
+								<span>SLA Uptime & Support 24/7</span>
+							</div>
+							<div class="flex items-center gap-2">
+								<Check size={14} class="text-[#0155FF]" />
+								<span>Integrasi Third-Party API & Payment Gateway</span>
+							</div>
+							<div class="flex items-center gap-2">
+								<Check size={14} class="text-[#0155FF]" />
+								<span>Opsi On-Premise / Cloud</span>
+							</div>
+							<div class="flex items-center gap-2">
+								<Check size={14} class="text-[#0155FF]" />
+								<span>Pendampingan & Pelatihan Staf</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="rounded-xl border border-slate-900 bg-slate-900 p-6 text-white lg:col-span-5">
+						<h4 class="text-base font-semibold text-white">Minta Penawaran Resmi</h4>
+						<p class="mt-2 text-xs text-slate-300 leading-relaxed">
+							Diskusikan kebutuhan arsitektur sistem bersama Product Consultant kami untuk estimasi biaya.
+						</p>
+						<a
+							href="/#get-started"
+							class="mt-6 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#0155FF] py-2.5 text-xs font-semibold text-white transition-all hover:bg-blue-600"
+						>
+							Hubungi Tim Sales <ArrowUpRight size={14} />
+						</a>
 					</div>
 				</div>
-			</div>
-		{/each}
-	</div>
-</section>
+			{/if}
+		</div>
+	</section>
 
-<section
-	id="pricing"
-	class="mx-auto max-w-5xl scroll-mt-24 border-t border-slate-200/60 px-4 py-16 sm:px-6 lg:px-8"
->
-	<div class="mx-auto mb-12 max-w-2xl space-y-2 text-center">
-		<h2 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
-			Skema Investasi & Kemitraan
-		</h2>
-		<p class="text-sm font-medium text-slate-500">
-			Sistem modular yang fleksibel, disesuaikan sepenuhnya dengan skala operasional dan regulasi
-			institusi Anda.
-		</p>
-	</div>
-
-	<div
-		class="relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-[0_32px_64px_-16px_rgba(15,23,42,0.04)] sm:p-12"
-	>
-		<div
-			class="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gradient-to-br from-[#0155FF]/10 to-[#00C2CB]/10 blur-2xl"
-		></div>
-
-		<div class="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-			<div class="space-y-5 text-left lg:col-span-7">
-				<div
-					class="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-[10px] font-black tracking-widest text-[#0155FF] uppercase"
-				>
-					Tailored Enterprise Solution
-				</div>
-				<h3 class="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
-					Implementasi Sesuai Kebutuhan Spesifik
-				</h3>
-				<p class="text-sm leading-relaxed font-medium text-slate-500">
-					Kami memahami bahwa setiap institusi memiliki standarisasi alur kerja, volume pengguna,
-					dan kebutuhan infrastruktur yang berbeda. Layanan kami bersifat modular—Anda hanya
-					berinvestasi pada fitur dan kapasitas yang benar-benar digunakan.
-				</p>
-
-				<div class="grid grid-cols-1 gap-3 pt-2 text-xs font-bold text-slate-600 sm:grid-cols-2">
-					<div class="flex items-center gap-2.5">
-						<div
-							class="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-blue-50 text-[#0155FF]"
-						>
-							<Check size={12} strokeWidth={3} />
-						</div>
-						<span>SLA Uptime & Support 24/7</span>
-					</div>
-					<div class="flex items-center gap-2.5">
-						<div
-							class="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-blue-50 text-[#0155FF]"
-						>
-							<Check size={12} strokeWidth={3} />
-						</div>
-						<span>Kepatuhan Regulasi Kemenkes/BPJS</span>
-					</div>
-					<div class="flex items-center gap-2.5">
-						<div
-							class="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-blue-50 text-[#0155FF]"
-						>
-							<Check size={12} strokeWidth={3} />
-						</div>
-						<span>Opsi On-Premise / Hybrid Cloud</span>
-					</div>
-					<div class="flex items-center gap-2.5">
-						<div
-							class="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-blue-50 text-[#015FF]"
-						>
-							<Check size={12} strokeWidth={3} />
-						</div>
-						<span>Pelatihan Staf & Maintenance Full</span>
-					</div>
-				</div>
+	<!-- Call to Action Banner -->
+	<section class="mt-20">
+		<div class="relative overflow-hidden rounded-2xl border border-slate-800 px-6 py-10 sm:px-12">
+			<!-- Background Image dengan Gradient Overlay agar Teks Tetap Readabel -->
+			<div class="absolute inset-0 -z-10">
+				<img
+					src={bgMain3}
+					alt="Background"
+					class="h-full w-full object-cover object-center"
+				/>
+				<!-- Dark Overlay lembut -->
+				<div class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/90 via-slate-900/75 to-slate-900/60"></div>
 			</div>
 
-			<div
-				class="flex flex-col justify-between rounded-3xl border border-slate-900 bg-slate-950 p-6 text-center text-white shadow-xl sm:p-8 lg:col-span-5 lg:text-left"
-			>
-				<div class="space-y-2">
-					<p class="text-[10px] font-black tracking-widest text-[#00C2CB] uppercase">
-						Informasi Lebih Lanjut
-					</p>
-					<h4 class="text-xl font-black tracking-tight text-white">Minta Penawaran Resmi</h4>
-					<p class="pt-1 text-xs leading-relaxed font-medium text-slate-400">
-						Diskusikan arsitektur sistem yang Anda butuhkan bersama Technical Product Consultant
-						kami untuk mendapatkan rincian biaya penawaran (Quotation).
+			<!-- Content -->
+			<div class="relative z-10 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
+				<div class="space-y-1">
+					<h2 class="text-xl font-semibold text-white">
+						Siap mentransformasi alur kerja Anda?
+					</h2>
+					<p class="text-xs text-slate-300">
+						Jadwalkan uji coba sistem bersama tim engineer teknis kami.
 					</p>
 				</div>
-
-				<div class="mt-8 space-y-3">
+				<div class="mt-6 flex flex-col gap-2.5 sm:mt-0 sm:flex-row">
 					<a
 						href="/#get-started"
-						class="flex w-full items-center justify-center rounded-xl bg-[#0155FF] py-3.5 text-center text-xs font-bold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:opacity-90 active:scale-95"
+						class="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-xs font-semibold text-slate-900 transition-all hover:bg-slate-100 active:scale-[0.98]"
 					>
-						Hubungi Sales Executive
+						Request Uji Coba Demo
 					</a>
-					<p class="text-center text-[10px] leading-normal font-semibold text-slate-500">
-						Atau jadwalkan Zoom Technical Meeting via WhatsApp.
-					</p>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-
-<section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-	<div
-		class="relative overflow-hidden rounded-[2.5rem] border border-slate-900 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 px-8 py-12 shadow-2xl sm:px-12"
-	>
-		<div
-			class="pointer-events-none absolute -right-10 -bottom-10 h-72 w-72 rounded-full bg-[#00C2CB]/10 blur-3xl"
-		></div>
-		<div
-			class="pointer-events-none absolute -top-10 -left-10 h-72 w-72 rounded-full bg-[#0155FF]/10 blur-3xl"
-		></div>
-
-		<div class="relative z-10 flex flex-col items-center justify-between gap-8 lg:flex-row">
-			<div class="max-w-xl space-y-3 text-center lg:text-left">
-				<span class="block text-[10px] font-black tracking-[0.2em] text-[#00C2CB] uppercase"
-					>LIVE DEMO TESTING</span
-				>
-				<h2 class="text-3xl leading-tight font-black tracking-tight text-white sm:text-4xl">
-					Siap mentransformasi alur kerja instansi Anda?
-				</h2>
-				<p class="text-sm font-medium text-slate-400">
-					Jadwalkan uji coba live-system gratis bersama tim technical engineer kami sekarang juga.
-				</p>
-			</div>
-
-			<div class="flex w-full shrink-0 flex-wrap items-center justify-center gap-4 sm:w-auto">
-				<a
-					href="/#get-started"
-					class="inline-flex w-full items-center justify-center rounded-xl bg-white px-6 py-4 text-center text-sm font-bold text-slate-950 shadow-md transition-all hover:bg-slate-50 active:scale-98 sm:w-auto"
-				>
-					Request Demo Langsung
-				</a>
-				<a
-					href="/#get-started"
-					class="inline-flex w-full items-center justify-center rounded-xl bg-white/5 px-6 py-4 text-center text-sm font-bold text-white ring-1 ring-white/20 backdrop-blur-sm transition-all ring-inset hover:bg-white/10 active:scale-98 sm:w-auto"
-				>
-					Coba Akses Gratis
-				</a>
-			</div>
-		</div>
-	</div>
-</section>
+	</section>
+</main>

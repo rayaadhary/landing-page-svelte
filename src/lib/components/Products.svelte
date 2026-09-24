@@ -4,6 +4,7 @@
 	import { reveal } from '$lib/actions/reveal.js';
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { normalizeModule } from '$lib/data/moduleIcons.js';
 
 	let { items = [] } = $props();
 
@@ -88,7 +89,7 @@
 					tagline: p.tagline || p.category,
 					description: p.overview,
 					image: p.image || '',
-					features: p.modules || []
+					features: (p.modules || []).map((/** @type {any} */ m) => normalizeModule(m).name)
 				}))
 			: fallbackServices
 	);
