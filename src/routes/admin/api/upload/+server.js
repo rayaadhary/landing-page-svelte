@@ -3,6 +3,8 @@ import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import sharp from 'sharp';
 
+const uploadDir = process.env.UPLOAD_DIR || join(process.cwd(), 'uploads');
+
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
 	const formData = await request.formData();
@@ -13,7 +15,6 @@ export async function POST({ request }) {
 	}
 
 	const buffer = Buffer.from(await file.arrayBuffer());
-	const uploadDir = join(process.cwd(), 'static', 'uploads');
 	await mkdir(uploadDir, { recursive: true });
 
 	const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.webp`;

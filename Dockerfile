@@ -12,5 +12,6 @@ COPY --from=build /app/package.json /app/package-lock.json ./
 COPY --from=build /app/drizzle.config.js ./
 COPY --from=build /app/src/lib/server/db ./src/lib/server/db
 RUN npm ci --omit=dev
+RUN mkdir -p /app/uploads
 EXPOSE 3000
 CMD ["node", "build"]
