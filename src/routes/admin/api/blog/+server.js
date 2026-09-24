@@ -2,12 +2,14 @@ import { json } from '@sveltejs/kit';
 import { db } from '$lib/server/db/index.js';
 import { blogPosts } from '$lib/server/db/schema.js';
 import { eq, desc } from 'drizzle-orm';
+import { estimateReadTime } from '$lib/utils/readTime.js';
 
 const columnNames = new Set(Object.keys(blogPosts));
-const READ_ONLY = new Set(['id', 'createdAt', 'updatedAt']);
+const READ_ONLY = new Set(['id', 'createdAt', 'updatedAt', 'readTime']);
 
 /** @param {Record<string, unknown>} data */
 function pickEditable(data) {
+	/** @type {Record<string, unknown>} */
 	const out = {};
 	for (const key of Object.keys(data)) {
 		if (columnNames.has(key) && !READ_ONLY.has(key) && data[key] !== undefined) {
@@ -30,6 +32,7 @@ export async function POST({ request }) {
 	if (data.metaDescription === null) delete data.metaDescription;
 	if (data.tags === null) delete data.tags;
 	if (data.active === null) delete data.active;
+	data.readTime = estimateReadTime(typeof data.content === 'string' ? data.content : '');
 	const result = await db.insert(blogPosts).values(data).returning();
 	return json(result[0]);
 }
@@ -45,6 +48,9 @@ export async function PUT({ request }) {
 	if (data.metaDescription === null) delete data.metaDescription;
 	if (data.tags === null) delete data.tags;
 	if (data.active === null) delete data.active;
+	if (typeof data.content === 'string') {
+		data.readTime = estimateReadTime(data.content);
+	}
 	data.updatedAt = new Date();
 	const result = await db.update(blogPosts).set(data).where(eq(blogPosts.id, id)).returning();
 	if (!result[0]) {
