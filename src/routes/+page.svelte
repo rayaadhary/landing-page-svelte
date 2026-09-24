@@ -58,11 +58,8 @@
 </script>
 
 <svelte:head>
-	<title>Jasa Pembuatan SIMRS &amp; Aplikasi Klinik Terintegrasi BPJS SatuSehat | AORTA</title>
-	<meta
-		name="description"
-		content="AORTA jasa pembuatan SIMRS, aplikasi klinik, HRIS & POS terintegrasi BPJS & SatuSehat. Custom software tanpa langganan untuk RS, klinik & enterprise di Indonesia."
-	/>
+    <title>Jasa Pembuatan Aplikasi & Software Custom Perusahaan | AORTA</title>
+	<meta name="description" content="Jasa pembuatan aplikasi & software custom perusahaan. Melayani sistem informasi, aplikasi kasir, inventory, sekolah, hingga klinik terintegrasi." />
 	<meta name="robots" content="index, follow" />
 	<meta
 		property="og:title"
