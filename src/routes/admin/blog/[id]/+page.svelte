@@ -27,13 +27,29 @@
 	let uploading = $state(false);
 	let slugEdited = $state(false);
 	let fileInput = $state(null);
+	let saveError = $state('');
+	let saving = $state(false);
 
 	onMount(async () => {
 		if (!isNew) {
 			const res = await fetch('/admin/api/blog');
 			const items = await res.json();
 			const found = items.find((i) => i.id === Number(id));
-			if (found) form = { ...found, tags: found.tags || '' };
+			if (found) {
+				form = {
+					slug: found.slug,
+					title: found.title,
+					category: found.category,
+					image: found.image,
+					author: found.author,
+					date: found.date,
+					readTime: found.readTime,
+					excerpt: found.excerpt,
+					content: found.content,
+					metaDescription: found.metaDescription ?? '',
+					tags: found.tags || ''
+				};
+			}
 			slugEdited = true;
 		}
 		loading = false;
@@ -82,10 +98,34 @@
 	}
 
 	async function save() {
-		const method = isNew ? 'POST' : 'PUT';
-		const body = isNew ? form : { id: Number(id), ...form };
-		await fetch('/admin/api/blog', { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-		goto('/admin/blog');
+		saveError = '';
+		saving = true;
+		try {
+			const method = isNew ? 'POST' : 'PUT';
+			const body = isNew ? { ...form } : { id: Number(id), ...form };
+			const res = await fetch('/admin/api/blog', {
+				method,
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body)
+			});
+			if (!res.ok) {
+				let detail = '';
+				try {
+					const data = await res.json();
+					detail = data.error || '';
+				} catch {
+					// non-JSON error body
+				}
+				saveError = detail || `Gagal menyimpan (HTTP ${res.status})`;
+				return;
+			}
+			goto('/admin/blog');
+		} catch (err) {
+			console.error('Save failed:', err);
+			saveError = 'Gagal menyimpan. Periksa koneksi lalu coba lagi.';
+		} finally {
+			saving = false;
+		}
 	}
 </script>
 
@@ -96,32 +136,35 @@
 		{/each}
 	</div>
 {:else}
-	<div class="space-y-6 max-w-4xl">
+	<div class="max-w-4xl space-y-6">
 		<div class="flex items-center justify-between">
-			<h1 class="text-lg font-bold tracking-tight text-slate-800">{isNew ? 'Tambah Blog Post' : 'Edit Blog Post'}</h1>
-			<Button onclick={save}>Simpan</Button>
+			<h1 class="text-lg font-bold tracking-tight text-slate-800">
+				{isNew ? 'Tambah Blog Post' : 'Edit Blog Post'}
+			</h1>
+			<Button onclick={save} disabled={saving}>{saving ? 'Menyimpan...' : 'Simpan'}</Button>
 		</div>
+		{#if saveError}
+			<div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+				{saveError}
+			</div>
+		{/if}
 
 		<Card class="p-6">
 			<div class="space-y-3">
-				<Input
-					bind:value={form.title}
-					placeholder="Judul"
-					oninput={handleTitleInput}
-				/>
-				<Input
-					bind:value={form.slug}
-					placeholder="slug"
-					oninput={handleSlugInput}
-				/>
+				<Input bind:value={form.title} placeholder="Judul" oninput={handleTitleInput} />
+				<Input bind:value={form.slug} placeholder="slug" oninput={handleSlugInput} />
 				<div class="grid grid-cols-2 gap-3">
-					<Input bind:value={form.category} type="select" options={[
-						{ value: 'SIMRS', label: 'SIMRS' },
-						{ value: 'SIM Klinik', label: 'SIM Klinik' },
-						{ value: 'HRIS', label: 'HRIS' },
-						{ value: 'Custom Software', label: 'Custom Software' },
-						{ value: 'Perbandingan', label: 'Perbandingan' }
-					]} />
+					<Input
+						bind:value={form.category}
+						type="select"
+						options={[
+							{ value: 'SIMRS', label: 'SIMRS' },
+							{ value: 'SIM Klinik', label: 'SIM Klinik' },
+							{ value: 'HRIS', label: 'HRIS' },
+							{ value: 'Custom Software', label: 'Custom Software' },
+							{ value: 'Perbandingan', label: 'Perbandingan' }
+						]}
+					/>
 					<Input bind:value={form.readTime} placeholder="Read Time" />
 				</div>
 				<div class="grid grid-cols-2 gap-3">
@@ -133,9 +176,12 @@
 								<img src={form.image} alt="Preview" class="h-32 w-full rounded-lg object-cover" />
 								<button
 									type="button"
-									onclick={() => { form.image = ''; }}
-									class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-white text-xs hover:bg-black/70"
-								>x</button>
+									onclick={() => {
+										form.image = '';
+									}}
+									class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-xs text-white hover:bg-black/70"
+									>x</button
+								>
 							</div>
 						{/if}
 						<input
@@ -150,7 +196,10 @@
 						{/if}
 					</div>
 				</div>
-				<Input bind:value={form.tags} placeholder="Tags (koma pemisah: simrs, kesehatan, digital)" />
+				<Input
+					bind:value={form.tags}
+					placeholder="Tags (koma pemisah: simrs, kesehatan, digital)"
+				/>
 				<Input bind:value={form.excerpt} placeholder="Excerpt" />
 				<Input bind:value={form.metaDescription} placeholder="Meta Description (SEO)" />
 			</div>

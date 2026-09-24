@@ -21,21 +21,21 @@ Guides analytics implementation: GA4 setup, event tracking, conversions, and dat
 
 Track CTA clicks on key articles to measure content ROI:
 
-| Action | Purpose |
-|--------|---------|
-| **Event per CTA** | e.g., `cta_click` with `content_url`, `content_type` |
-| **Conversion** | Mark as conversion in GA4 for attribution |
-| **Use** | Compare high vs low performers; optimize CTA placement and copy |
+| Action            | Purpose                                                         |
+| ----------------- | --------------------------------------------------------------- |
+| **Event per CTA** | e.g., `cta_click` with `content_url`, `content_type`            |
+| **Conversion**    | Mark as conversion in GA4 for attribution                       |
+| **Use**           | Compare high vs low performers; optimize CTA placement and copy |
 
 See **seo-monitoring** for article database and benchmark context.
 
 ## Infrastructure Requirements
 
-| Component | Purpose |
-|-----------|---------|
-| **Data warehouse** | Centralized data; BI reporting |
-| **Event tracking** | User behavior; funnel mapping |
-| **Attribution** | Ad pixels; attribution model; impression-to-sale tracking |
+| Component          | Purpose                                                   |
+| ------------------ | --------------------------------------------------------- |
+| **Data warehouse** | Centralized data; BI reporting                            |
+| **Event tracking** | User behavior; funnel mapping                             |
+| **Attribution**    | Ad pixels; attribution model; impression-to-sale tracking |
 
 **Optimization flow**: Clean UTM + conversion events → attribution reports → optimize channel mix.
 
@@ -68,12 +68,12 @@ Enable in Admin > Data Streams > Enhanced Measurement for automatic tracking of:
 
 ### Event Types
 
-| Type | Description |
-|------|-------------|
+| Type                        | Description                           |
+| --------------------------- | ------------------------------------- |
 | **Automatically collected** | page_view, first_visit, session_start |
-| **Enhanced measurement** | scroll, click, file_download, etc. |
-| **Recommended** | purchase, sign_up, search, etc. |
-| **Custom** | Business-specific actions |
+| **Enhanced measurement**    | scroll, click, file_download, etc.    |
+| **Recommended**             | purchase, sign_up, search, etc.       |
+| **Custom**                  | Business-specific actions             |
 
 ### Naming Conventions
 
@@ -95,14 +95,14 @@ Place below the Google tag snippet. Events fire on page load or user action (e.g
 
 ### Recommended Events
 
-| Event | Use | Key Parameters |
-|-------|-----|----------------|
-| `purchase` | E-commerce | value, currency, items |
-| `sign_up` | Registration | method |
-| `login` | Login | method |
-| `search` | Site search | search_term |
-| `view_item` | Product view | items |
-| `add_to_cart` | Add to cart | items |
+| Event         | Use          | Key Parameters         |
+| ------------- | ------------ | ---------------------- |
+| `purchase`    | E-commerce   | value, currency, items |
+| `sign_up`     | Registration | method                 |
+| `login`       | Login        | method                 |
+| `search`      | Site search  | search_term            |
+| `view_item`   | Product view | items                  |
+| `add_to_cart` | Add to cart  | items                  |
 
 ### Custom Events
 
@@ -120,10 +120,10 @@ Place below the Google tag snippet. Events fire on page load or user action (e.g
 
 Attribution models determine how conversion credit is assigned across touchpoints. Use attribution data to optimize ads and growth channels.
 
-| Model | Use |
-|-------|-----|
-| **Data-driven** (GA4 default) | ML assigns credit by actual contribution; best for multi-touch journeys |
-| **Last-click** | 100% to final touchpoint; simple but undervalues awareness/consideration |
+| Model                         | Use                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| **Data-driven** (GA4 default) | ML assigns credit by actual contribution; best for multi-touch journeys  |
+| **Last-click**                | 100% to final touchpoint; simple but undervalues awareness/consideration |
 
 **Optimization flow**: Clean UTM (source, medium, campaign) + conversion events → GA4 attribution reports → compare channels by attributed conversions → reallocate budget to ads/channels that drive results. Inconsistent UTM fragments data; multi-touch attribution requires reliable touchpoint data.
 
@@ -131,10 +131,10 @@ Attribution models determine how conversion credit is assigned across touchpoint
 
 ## Testing & Validation
 
-| Tool | Use |
-|------|-----|
-| **Realtime** | See events as they fire |
-| **DebugView** | Detailed event/parameter inspection; requires debug mode |
+| Tool               | Use                                                               |
+| ------------------ | ----------------------------------------------------------------- |
+| **Realtime**       | See events as they fire                                           |
+| **DebugView**      | Detailed event/parameter inspection; requires debug mode          |
 | **GA4 Debug mode** | `gtag('config', 'G-XXX', { 'debug_mode': true });` or GTM preview |
 
 - Test before launch; verify parameters and naming
