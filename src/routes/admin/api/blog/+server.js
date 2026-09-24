@@ -2,14 +2,19 @@ import { json } from '@sveltejs/kit';
 import { db } from '$lib/server/db/index.js';
 import { blogPosts } from '$lib/server/db/schema.js';
 import { eq, desc } from 'drizzle-orm';
+import { estimateReadTime } from '$lib/utils/readTime.js';
 
 const columnNames = new Set(Object.keys(blogPosts));
+const READ_ONLY = new Set(['id', 'createdAt', 'updatedAt', 'readTime']);
 
 /** @param {Record<string, unknown>} data */
-function pickKnown(data) {
+function pickEditable(data) {
+	/** @type {Record<string, unknown>} */
 	const out = {};
 	for (const key of Object.keys(data)) {
-		if (columnNames.has(key)) out[key] = data[key];
+		if (columnNames.has(key) && !READ_ONLY.has(key) && data[key] !== undefined) {
+			out[key] = data[key];
+		}
 	}
 	return out;
 }
@@ -23,17 +28,34 @@ export async function GET() {
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
 	const raw = await request.json();
-	const data = pickKnown(raw);
+	const data = pickEditable(raw);
+	if (data.metaDescription === null) delete data.metaDescription;
+	if (data.tags === null) delete data.tags;
+	if (data.active === null) delete data.active;
+	data.readTime = estimateReadTime(typeof data.content === 'string' ? data.content : '');
 	const result = await db.insert(blogPosts).values(data).returning();
 	return json(result[0]);
 }
 
 /** @type {import('./$types').RequestHandler} */
 export async function PUT({ request }) {
-	const { id, ...raw } = await request.json();
-	const data = pickKnown(raw);
+	const raw = await request.json();
+	const id = Number(raw.id);
+	if (!Number.isInteger(id) || id <= 0) {
+		return json({ error: 'id wajib' }, { status: 400 });
+	}
+	const data = pickEditable(raw);
+	if (data.metaDescription === null) delete data.metaDescription;
+	if (data.tags === null) delete data.tags;
+	if (data.active === null) delete data.active;
+	if (typeof data.content === 'string') {
+		data.readTime = estimateReadTime(data.content);
+	}
 	data.updatedAt = new Date();
 	const result = await db.update(blogPosts).set(data).where(eq(blogPosts.id, id)).returning();
+	if (!result[0]) {
+		return json({ error: 'post tidak ditemukan' }, { status: 404 });
+	}
 	return json(result[0]);
 }
 

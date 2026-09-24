@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { getAllArticles } from '$lib/data/blog/articles.js';
+	import { estimateReadTime } from '$lib/utils/readTime.js';
 	import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-svelte';
 
 	let allArticles = $state([]);
@@ -148,7 +149,11 @@
 									<div class="flex items-center gap-2 text-xs text-slate-500">
 										<time datetime={article.date}>{article.date}</time>
 										<span>·</span>
-										<span>{article.readTime}</span>
+										<span
+											>{article.content
+												? estimateReadTime(article.content)
+												: article.readTime}</span
+										>
 									</div>
 
 									<h2

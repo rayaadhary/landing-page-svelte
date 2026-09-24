@@ -22,17 +22,18 @@ Guides canonical tag configuration to consolidate duplicate content and declare 
 **Check for project context first:** If `.claude/project-context.md` or `.cursor/project-context.md` exists, read it for site URL and language structure.
 
 Identify:
+
 1. **Site URL**: Base domain
 2. **Duplicate scenarios**: Multi-language, query params, pagination, alternate URLs
 3. **Framework**: Next.js, React, static, etc.
 
 ## Canonicalization Methods (Choose by Scenario)
 
-| Method | When | Strength |
-|--------|------|----------|
-| **301 redirect** | Preferred; server can redirect | Strongest — permanent redirect |
-| **Canonical tag** | Cannot redirect (e.g. params, pagination) | Strong — HTML signal |
-| **robots.txt** | Block non-canonical paths | Weak — advisory only |
+| Method            | When                                      | Strength                       |
+| ----------------- | ----------------------------------------- | ------------------------------ |
+| **301 redirect**  | Preferred; server can redirect            | Strongest — permanent redirect |
+| **Canonical tag** | Cannot redirect (e.g. params, pagination) | Strong — HTML signal           |
+| **robots.txt**    | Block non-canonical paths                 | Weak — advisory only           |
 
 Use 301 for HTTP→HTTPS, www variants, trailing slash. Use canonical for params, pagination, UTM.
 
@@ -40,12 +41,12 @@ Use 301 for HTTP→HTTPS, www variants, trailing slash. Use canonical for params
 
 HTTPS is a ranking signal ([Google, 2014](https://developers.google.com/search/blog/2014/08/https-as-ranking-signal)). Users and crawlers should access only the HTTPS version.
 
-| Requirement | Action |
-|-------------|--------|
-| **SSL/TLS certificate** | Install valid certificate; use Let's Encrypt for free |
-| **301 redirect** | HTTP → HTTPS; all HTTP requests redirect to HTTPS |
-| **Mixed content** | No HTTP resources on HTTPS pages; fix mixed content warnings |
-| **HSTS** | Optional; `Strict-Transport-Security` header for repeat visitors |
+| Requirement             | Action                                                           |
+| ----------------------- | ---------------------------------------------------------------- |
+| **SSL/TLS certificate** | Install valid certificate; use Let's Encrypt for free            |
+| **301 redirect**        | HTTP → HTTPS; all HTTP requests redirect to HTTPS                |
+| **Mixed content**       | No HTTP resources on HTTPS pages; fix mixed content warnings     |
+| **HSTS**                | Optional; `Strict-Transport-Security` header for repeat visitors |
 
 **WWW vs non-WWW**: Choose one preferred version; 301 redirect the other. See canonical rules above.
 
@@ -58,11 +59,11 @@ HTTPS is a ranking signal ([Google, 2014](https://developers.google.com/search/b
 
 ## Rules
 
-| Rule | Note |
-|------|------|
-| **Absolute URL** | Include `https://` |
-| **Consistency** | Must match current page URL or the chosen preferred version |
-| **No chains** | A→B→C is invalid |
+| Rule             | Note                                                        |
+| ---------------- | ----------------------------------------------------------- |
+| **Absolute URL** | Include `https://`                                          |
+| **Consistency**  | Must match current page URL or the chosen preferred version |
+| **No chains**    | A→B→C is invalid                                            |
 
 ## Implementation Patterns
 
@@ -70,14 +71,14 @@ HTTPS is a ranking signal ([Google, 2014](https://developers.google.com/search/b
 
 ```tsx
 export const metadata = {
-  alternates: {
-    canonical: "https://example.com/page-slug",
-    languages: {
-      zh: "https://example.com/zh/page-slug",
-      en: "https://example.com/page-slug",
-      "x-default": "https://example.com/page-slug",
-    },
-  },
+	alternates: {
+		canonical: 'https://example.com/page-slug',
+		languages: {
+			zh: 'https://example.com/zh/page-slug',
+			en: 'https://example.com/page-slug',
+			'x-default': 'https://example.com/page-slug'
+		}
+	}
 };
 ```
 
@@ -90,6 +91,7 @@ export const metadata = {
 ### Server Redirects (301)
 
 **Apache (.htaccess)**:
+
 ```apache
 RewriteEngine On
 RewriteCond %{HTTPS} off
@@ -97,6 +99,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 ```
 
 **Nginx**:
+
 ```nginx
 return 301 https://$host$request_uri;
 ```

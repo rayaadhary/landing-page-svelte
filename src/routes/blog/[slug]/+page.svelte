@@ -1,10 +1,10 @@
 <script>
-	import ArticleLayout from '$lib/components/ArticleLayout.svelte';
 	import { ArrowLeft, ChevronRight, MessageCircle } from 'lucide-svelte';
 	import bgMain3 from '$lib/assets/bg_main3.webp';
 
 	let { data } = $props();
 	let post = $derived(data.post);
+	let readTime = $derived(post.content ? estimateReadTime(post.content) : post.readTime);
 </script>
 
 <svelte:head>
@@ -50,7 +50,7 @@
 				<span>·</span>
 				<time datetime={post.date}>{post.date}</time>
 				<span>·</span>
-				<span>{post.readTime}</span>
+				<span>{readTime}</span>
 			</div>
 
 			<h1

@@ -6,6 +6,7 @@
 	import Button from '$lib/components/admin/primitives/Button.svelte';
 	import Input from '$lib/components/admin/primitives/Input.svelte';
 	import TiptapEditor from '$lib/components/admin/TiptapEditor.svelte';
+	import { estimateReadTime } from '$lib/utils/readTime.js';
 
 	const id = page.params.id;
 	const isNew = id === 'new';
@@ -17,23 +18,38 @@
 		image: '/assets/hospital2.webp',
 		author: 'Tim AORTA',
 		date: new Date().toISOString().split('T')[0],
-		readTime: '5 menit',
 		excerpt: '',
 		content: '',
 		metaDescription: '',
 		tags: ''
 	});
+	let previewReadTime = $derived(estimateReadTime(form.content));
 	let loading = $state(true);
 	let uploading = $state(false);
 	let slugEdited = $state(false);
 	let fileInput = $state(null);
+	let saveError = $state('');
+	let saving = $state(false);
 
 	onMount(async () => {
 		if (!isNew) {
 			const res = await fetch('/admin/api/blog');
 			const items = await res.json();
 			const found = items.find((i) => i.id === Number(id));
-			if (found) form = { ...found, tags: found.tags || '' };
+			if (found) {
+				form = {
+					slug: found.slug,
+					title: found.title,
+					category: found.category,
+					image: found.image,
+					author: found.author,
+					date: found.date,
+					excerpt: found.excerpt,
+					content: found.content,
+					metaDescription: found.metaDescription ?? '',
+					tags: found.tags || ''
+				};
+			}
 			slugEdited = true;
 		}
 		loading = false;
@@ -107,6 +123,11 @@
 			</h1>
 			<Button onclick={save}>Simpan</Button>
 		</div>
+		{#if saveError}
+			<div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+				{saveError}
+			</div>
+		{/if}
 
 		<Card class="p-6">
 			<div class="space-y-3">
@@ -127,6 +148,17 @@
 					<Input bind:value={form.readTime} placeholder="Read Time" />
 				</div>
 				<div class="grid grid-cols-2 gap-3">
+					<Input
+						bind:value={form.category}
+						type="select"
+						options={[
+							{ value: 'SIMRS', label: 'SIMRS' },
+							{ value: 'SIM Klinik', label: 'SIM Klinik' },
+							{ value: 'HRIS', label: 'HRIS' },
+							{ value: 'Custom Software', label: 'Custom Software' },
+							{ value: 'Perbandingan', label: 'Perbandingan' }
+						]}
+					/>
 					<Input bind:value={form.date} type="date" />
 					<div>
 						<label class="mb-1.5 block text-[13px] font-medium text-slate-600">Gambar</label>
