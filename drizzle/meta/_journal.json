@@ -8,6 +8,20 @@
       "when": 1790000069533,
       "tag": "0000_awesome_komodo",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790100000000,
+      "tag": "0001_hero_single",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790200000000,
+      "tag": "0002_products_tagline_image",
+      "breakpoints": true
     }
   ]
 }
