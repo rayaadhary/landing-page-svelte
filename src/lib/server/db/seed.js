@@ -10,7 +10,8 @@ import {
 	testimonials,
 	faqs,
 	blogPosts,
-	settings
+	settings,
+	demoRequests
 } from './schema.js';
 import { scrypt, randomBytes } from 'crypto';
 import { promisify } from 'util';
@@ -364,6 +365,7 @@ async function seed() {
 	console.log('Seeding database...');
 
 	// Clear existing data
+	await db.delete(demoRequests);
 	await db.delete(blogPosts);
 	await db.delete(settings);
 	await db.delete(faqs);

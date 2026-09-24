@@ -9,14 +9,15 @@
 		rows = 4,
 		options = [],
 		error = '',
-		oninput = undefined
+		oninput = undefined,
+		onchange = undefined
 	} = $props();
 </script>
 
 {#if label}
 	<label for={label} class="mb-1.5 block text-[13px] font-medium text-slate-600">
 		{label}
-		{#if required}<span class="text-red-400 ml-0.5">*</span>{/if}
+		{#if required}<span class="ml-0.5 text-red-400">*</span>{/if}
 	</label>
 {/if}
 
@@ -29,7 +30,9 @@
 		{disabled}
 		{rows}
 		{oninput}
-		class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:outline-none focus:ring-2 focus:ring-[#0155FF]/10 disabled:opacity-50 {error ? 'border-red-300 focus:border-red-500 focus:ring-red-300/10' : ''}"
+		class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none disabled:opacity-50 {error
+			? 'border-red-300 focus:border-red-500 focus:ring-red-300/10'
+			: ''}"
 	></textarea>
 {:else if type === 'select'}
 	<select
@@ -37,7 +40,10 @@
 		bind:value
 		{required}
 		{disabled}
-		class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors focus:border-[#0155FF] focus:outline-none focus:ring-2 focus:ring-[#0155FF]/10 disabled:opacity-50 {error ? 'border-red-300' : ''}"
+		{onchange}
+		class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none disabled:opacity-50 {error
+			? 'border-red-300'
+			: ''}"
 	>
 		{#each options as opt}
 			<option value={opt.value}>{opt.label}</option>
@@ -52,7 +58,9 @@
 		{required}
 		{disabled}
 		{oninput}
-		class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:outline-none focus:ring-2 focus:ring-[#0155FF]/10 disabled:opacity-50 {error ? 'border-red-300' : ''}"
+		class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none disabled:opacity-50 {error
+			? 'border-red-300'
+			: ''}"
 	/>
 {/if}
 

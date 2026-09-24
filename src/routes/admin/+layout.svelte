@@ -10,6 +10,7 @@
 		MessageSquare,
 		HelpCircle,
 		FileText,
+		Inbox,
 		Settings,
 		LogOut,
 		Menu,
@@ -27,6 +28,7 @@
 		{ href: '/admin/testimonials', label: 'Testimoni', icon: MessageSquare },
 		{ href: '/admin/faqs', label: 'FAQ', icon: HelpCircle },
 		{ href: '/admin/blog', label: 'Blog', icon: FileText },
+		{ href: '/admin/demo-requests', label: 'Request Demo', icon: Inbox },
 		{ href: '/admin/settings', label: 'Settings', icon: Settings }
 	];
 

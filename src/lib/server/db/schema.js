@@ -104,6 +104,19 @@ export const blogPosts = pgTable('blog_posts', {
 	updatedAt: timestamp('updated_at').defaultNow().notNull()
 });
 
+export const demoRequests = pgTable('demo_requests', {
+	id: serial('id').primaryKey(),
+	name: varchar('name', { length: 255 }).default('').notNull(),
+	companyName: varchar('company_name', { length: 255 }).default('').notNull(),
+	email: varchar('email', { length: 255 }).notNull(),
+	phone: varchar('phone', { length: 50 }).notNull(),
+	message: text('message').default('').notNull(),
+	productSlug: varchar('product_slug', { length: 255 }).default('').notNull(),
+	productTitle: varchar('product_title', { length: 255 }).default('').notNull(),
+	status: varchar('status', { length: 20 }).default('baru').notNull(),
+	createdAt: timestamp('created_at').defaultNow().notNull()
+});
+
 export const settings = pgTable('settings', {
 	id: serial('id').primaryKey(),
 	key: varchar('key', { length: 255 }).notNull().unique(),

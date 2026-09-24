@@ -28,12 +28,14 @@
 		ArrowUpRight
 	} from 'lucide-svelte';
 	import { ICON_MAP, normalizeModule } from '$lib/data/moduleIcons.js';
+	import DemoRequestModal from '$lib/components/DemoRequestModal.svelte';
 	import bgMain3 from '$lib/assets/bg_main3.jpg';
 
 	// 1. Props & Reactive Data
 	let { data } = $props();
 	let product = $derived(data.product);
 	let modules = $derived((product.modules ?? []).map(normalizeModule));
+	let demoOpen = $state(false);
 
 	// 2. Icon Mapper (fallback untuk data lama / icon kosong)
 	function iconFor(m) {
@@ -373,14 +375,17 @@
 					</p>
 				</div>
 				<div class="mt-6 flex flex-col gap-2.5 sm:mt-0 sm:flex-row">
-					<a
-						href="/#get-started"
+					<button
+						type="button"
+						onclick={() => (demoOpen = true)}
 						class="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-xs font-semibold text-slate-900 transition-all hover:bg-slate-100 active:scale-[0.98]"
 					>
 						Request Uji Coba Demo
-					</a>
+					</button>
 				</div>
 			</div>
 		</div>
 	</section>
 </main>
+
+<DemoRequestModal bind:open={demoOpen} productSlug={product.slug} productTitle={product.title} />
