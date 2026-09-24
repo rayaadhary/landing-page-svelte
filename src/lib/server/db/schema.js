@@ -1,4 +1,13 @@
-import { pgTable, serial, text, varchar, integer, boolean, timestamp, jsonb } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	serial,
+	text,
+	varchar,
+	integer,
+	boolean,
+	timestamp,
+	jsonb
+} from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
 	id: serial('id').primaryKey(),
@@ -10,19 +19,23 @@ export const users = pgTable('users', {
 export const sessions = pgTable('sessions', {
 	id: serial('id').primaryKey(),
 	token: varchar('token', { length: 64 }).notNull().unique(),
-	userId: integer('user_id').references(() => users.id).notNull(),
+	userId: integer('user_id')
+		.references(() => users.id)
+		.notNull(),
 	expiresAt: timestamp('expires_at').notNull()
 });
 
-export const heroSlides = pgTable('hero_slides', {
+export const hero = pgTable('hero', {
 	id: serial('id').primaryKey(),
-	title: varchar('title', { length: 255 }).notNull(),
-	subtitle: varchar('subtitle', { length: 255 }).notNull(),
+	titlePrefix: varchar('title_prefix', { length: 255 }).notNull(),
+	titleHighlight: varchar('title_highlight', { length: 255 }).notNull(),
+	highlightColor: varchar('highlight_color', { length: 50 }).default('#0155FF').notNull(),
 	description: text('description').notNull(),
-	svgHtml: text('svg_html').notNull(),
-	color: varchar('color', { length: 50 }).notNull(),
-	sortOrder: integer('sort_order').default(0).notNull(),
-	active: boolean('active').default(true).notNull()
+	ctaPrimaryLabel: varchar('cta_primary_label', { length: 255 }).notNull(),
+	ctaPrimaryHref: text('cta_primary_href').default('').notNull(),
+	ctaSecondaryLabel: varchar('cta_secondary_label', { length: 255 }).notNull(),
+	ctaSecondaryHref: varchar('cta_secondary_href', { length: 500 }).default('#layanan').notNull(),
+	stats: jsonb('stats').$type().default([]).notNull()
 });
 
 export const products = pgTable('products', {
@@ -30,7 +43,10 @@ export const products = pgTable('products', {
 	slug: varchar('slug', { length: 255 }).notNull().unique(),
 	title: varchar('title', { length: 255 }).notNull(),
 	category: varchar('category', { length: 255 }).notNull(),
+	tagline: varchar('tagline', { length: 255 }).default('').notNull(),
 	overview: text('overview').notNull(),
+	content: text('content').default('').notNull(),
+	image: varchar('image', { length: 500 }).default('').notNull(),
 	screenshots: jsonb('screenshots').$type().default([]).notNull(),
 	modules: jsonb('modules').$type().default([]).notNull(),
 	pricing: jsonb('pricing').$type().default([]).notNull(),
@@ -55,6 +71,9 @@ export const testimonials = pgTable('testimonials', {
 	avatarLetter: varchar('avatar_letter', { length: 10 }).notNull(),
 	avatarColor: varchar('avatar_color', { length: 50 }).notNull(),
 	projectName: varchar('project_name', { length: 255 }).notNull(),
+	category: varchar('category', { length: 255 }).default('').notNull(),
+	image: varchar('image', { length: 500 }).default('').notNull(),
+	rating: integer('rating').default(5).notNull(),
 	sortOrder: integer('sort_order').default(0).notNull(),
 	active: boolean('active').default(true).notNull()
 });
@@ -83,6 +102,19 @@ export const blogPosts = pgTable('blog_posts', {
 	active: boolean('active').default(true).notNull(),
 	createdAt: timestamp('created_at').defaultNow().notNull(),
 	updatedAt: timestamp('updated_at').defaultNow().notNull()
+});
+
+export const demoRequests = pgTable('demo_requests', {
+	id: serial('id').primaryKey(),
+	name: varchar('name', { length: 255 }).default('').notNull(),
+	companyName: varchar('company_name', { length: 255 }).default('').notNull(),
+	email: varchar('email', { length: 255 }).notNull(),
+	phone: varchar('phone', { length: 50 }).notNull(),
+	message: text('message').default('').notNull(),
+	productSlug: varchar('product_slug', { length: 255 }).default('').notNull(),
+	productTitle: varchar('product_title', { length: 255 }).default('').notNull(),
+	status: varchar('status', { length: 20 }).default('baru').notNull(),
+	createdAt: timestamp('created_at').defaultNow().notNull()
 });
 
 export const settings = pgTable('settings', {

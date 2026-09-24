@@ -61,7 +61,7 @@
 		<h2>8. Hubungi Kami</h2>
 		<p>Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami:</p>
 		<ul>
-			<li>Email: <a href="mailto:aortadigitalsolusi.business@gmail.com">aortadigitalsolusi.business@gmail.com</a></li>
+			<li>Email: <a href="mailto:aortadigitalsolusi@gmail.com">aortadigitalsolusi@gmail.com</a></li>
 			<li>WhatsApp: <a href="https://wa.me/6289629949441">+62 896-2994-9441</a></li>
 		</ul>
 	</div>

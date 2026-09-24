@@ -1,15 +1,33 @@
 <script>
-	const testimonials = [
-		{
-			quote:
-				'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
-			name: 'Tim Kaigopedia',
-			role: 'kaigopedia.com',
-			avatar: 'K',
-			color: 'bg-emerald-500',
-			project: 'Platform eLearning / LMS untuk Daycare di Jepang'
+	import { onMount } from 'svelte';
+
+	/** @type {any[]} */
+	let testimonials = $state([]);
+
+	onMount(async () => {
+		try {
+			const res = await fetch('/api/testimonials');
+			if (res.ok) testimonials = await res.json();
+		} catch {
+			testimonials = [];
 		}
-	];
+		if (!testimonials.length) {
+			testimonials = [
+				{
+					quote:
+						'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
+					clientName: 'Tim Kaigopedia',
+					clientRole: 'kaigopedia.com',
+					avatarLetter: 'K',
+					avatarColor: '#10b981',
+					projectName: 'Platform eLearning / LMS untuk Daycare di Jepang',
+					category: 'E-LEARNING & LMS',
+					image: '',
+					rating: 5
+				}
+			];
+		}
+	});
 </script>
 
 <svelte:head>
@@ -50,14 +68,22 @@
 				<div
 					class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(1,85,255,0.1)]"
 				>
+					{#if t.image}
+						<img
+							src={t.image}
+							alt={t.projectName || t.clientName}
+							class="mb-6 h-40 w-full rounded-lg object-cover object-top"
+						/>
+					{/if}
 					<div class="mb-6 flex items-center gap-1 text-amber-400">
-						{#each Array(5) as _}
+						{#each Array(5) as _, starIdx}
 							<svg
 								width="18"
 								height="18"
 								viewBox="0 0 24 24"
 								fill="currentColor"
 								xmlns="http://www.w3.org/2000/svg"
+								class={starIdx < (t.rating ?? 5) ? 'text-amber-400' : 'text-slate-200'}
 							>
 								<path
 									d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
@@ -72,19 +98,23 @@
 
 					<div class="flex items-center gap-4">
 						<div
-							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full {t.color} text-sm font-black text-white"
+							class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-black text-white"
+							style="background-color: {t.avatarColor}"
 						>
-							{t.avatar}
+							{t.avatarLetter}
 						</div>
 						<div>
-							<p class="text-sm font-bold text-slate-900">{t.name}</p>
-							<p class="text-xs font-medium text-slate-500">{t.role}</p>
+							<p class="text-sm font-bold text-slate-900">{t.clientName}</p>
+							<p class="text-xs font-medium text-slate-500">{t.clientRole}</p>
 						</div>
 					</div>
 
 					<div class="mt-4 rounded-lg bg-slate-50 px-3 py-2">
 						<p class="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Proyek</p>
-						<p class="text-xs font-semibold text-slate-700">{t.project}</p>
+						<p class="text-xs font-semibold text-slate-700">{t.projectName}</p>
+						{#if t.category}
+							<p class="mt-1 text-[11px] font-semibold text-slate-500">{t.category}</p>
+						{/if}
 					</div>
 				</div>
 			{/each}
