@@ -6,7 +6,7 @@
 	title="Harga Software SIMRS Murah Terintegrasi BPJS &amp; Satu Sehat"
 	description="Cari harga software SIMRS murah yang sudah terintegrasi BPJS dan Satu Sehat? Simak perbandingan biaya, fitur, dan rekomendasi SIMRS terjangkau untuk RS Anda."
 	ogDescription="Harga software SIMRS murah dengan integrasi BPJS dan Satu Sehat. Bandingkan biaya lisensi, fitur bridging, dan pilih yang cocok untuk rumah sakit Anda."
-	image="/assets/hospital2.png"
+	image="/assets/hospital2.webp"
 	slug="harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat"
 	date="2025-08-04"
 	category="SIMRS"

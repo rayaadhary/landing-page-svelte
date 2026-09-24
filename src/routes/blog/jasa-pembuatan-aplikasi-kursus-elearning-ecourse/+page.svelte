@@ -6,7 +6,7 @@
 	title="Checklist Fitur E-Learning yang Wajib Ada di Platform Kursus Online"
 	description="Ingin membuat platform kursus online? Simak checklist fitur e-learning yang wajib ada — dari manajemen materi, quiz, hingga pembayaran."
 	ogDescription="Checklist lengkap fitur e-learning untuk platform kursus online. Panduan memilih sistem LMS yang tepat untuk lembaga kursus, bimbel, atau perusahaan."
-	image="/assets/pos.png"
+	image="/assets/pos.webp"
 	slug="jasa-pembuatan-aplikasi-kursus-elearning-ecourse"
 	date="2025-07-28"
 	category="Custom Software"
@@ -32,20 +32,21 @@
 	<h3>2. Upload &amp; Organisasi Materi</h3>
 	<p>
 		Instruktur harus bisa upload video, PDF, dokumen, dan tautan eksternal. Yang krusial: materi
-		harus terstruktur per modul dan minggu — bukan cuma folder rata. Siswa harus tahu harus baca
-		apa duluan.
+		harus terstruktur per modul dan minggu — bukan cuma folder rata. Siswa harus tahu harus baca apa
+		duluan.
 	</p>
 
 	<h3>3. Quiz &amp; Penilaian</h3>
 	<p>
-		Quiz bukan opsional. Tanpa penilaian, tidak ada cara mengukur pemahaman siswa. Fitur wajib:
-		soal pilihan ganda (auto-grade), essay (manual grade), batas waktu, dan batas percobaan.
+		Quiz bukan opsional. Tanpa penilaian, tidak ada cara mengukur pemahaman siswa. Fitur wajib: soal
+		pilihan ganda (auto-grade), essay (manual grade), batas waktu, dan batas percobaan.
 	</p>
 
 	<h3>4. Sertifikat Digital</h3>
 	<p>
 		Sertifikat adalah motivasi terbesar siswa menyelesaikan kursus. Platform harus bisa generate
-		sertifikat otomatis setelah siswa lulus — dengan template yang bisa dicustom (logo, nama, tanggal).
+		sertifikat otomatis setelah siswa lulus — dengan template yang bisa dicustom (logo, nama,
+		tanggal).
 	</p>
 
 	<h3>5. Manajemen Pengguna</h3>
@@ -63,14 +64,16 @@
 	<h3>7. Laporan &amp; Analitik</h3>
 	<p>
 		Admin butuh data: berapa siswa aktif, kursus terpopuler, rata-rata nilai quiz, tingkat
-	_kelulusan. Tanpa data ini, sulit mengambil keputusan bisnis.
+		_kelulusan. Tanpa data ini, sulit mengambil keputusan bisnis.
 	</p>
 
 	<h2>Fitur Tambahan yang Membedakan</h2>
 	<ul>
 		<li><strong>Forum diskusi</strong> — siswa bisa tanya jawab tanpa keluar platform</li>
 		<li><strong>Live class</strong> — integrasi Zoom/Google Meet untuk kelas real-time</li>
-		<li><strong>Progress tracking</strong> — siswa melihat berapa % materi yang sudah diselesaikan</li>
+		<li>
+			<strong>Progress tracking</strong> — siswa melihat berapa % materi yang sudah diselesaikan
+		</li>
 		<li><strong>Mobile app</strong> — akses dari HP tanpa browser</li>
 		<li><strong>Notifikasi</strong> — pengingat jadwal kelas, deadline tugas, nilai quiz</li>
 	</ul>
@@ -78,7 +81,10 @@
 	<h2>Platform Marketplace vs Platform Sendiri</h2>
 
 	<table>
-		<thead><tr><th>Aspek</th><th>Marketplace (Skillshare, Udemy)</th><th>Platform Sendiri</th></tr></thead>
+		<thead
+			><tr><th>Aspek</th><th>Marketplace (Skillshare, Udemy)</th><th>Platform Sendiri</th></tr
+			></thead
+		>
 		<tbody>
 			<tr><td>Branding</td><td>Atas nama marketplace</td><td>100% brand Anda</td></tr>
 			<tr><td>Data Murid</td><td>Milik marketplace</td><td>Milik Anda sepenuhnya</td></tr>
@@ -90,7 +96,9 @@
 
 	<p>
 		Platform sendiri lebih menguntungkan untuk jangka panjang — tapi butuh investasi awal.
-		Pertimbangkan <a href="/blog/biaya-jasa-pembuatan-aplikasi-custom">biaya pembuatan aplikasi custom</a>
+		Pertimbangkan <a href="/blog/biaya-jasa-pembuatan-aplikasi-custom"
+			>biaya pembuatan aplikasi custom</a
+		>
 		sesuai budget Anda.
 	</p>
 

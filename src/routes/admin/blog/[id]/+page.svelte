@@ -14,7 +14,7 @@
 		slug: '',
 		title: '',
 		category: 'SIMRS',
-		image: '/assets/hospital2.png',
+		image: '/assets/hospital2.webp',
 		author: 'Tim AORTA',
 		date: new Date().toISOString().split('T')[0],
 		readTime: '5 menit',
@@ -84,7 +84,11 @@
 	async function save() {
 		const method = isNew ? 'POST' : 'PUT';
 		const body = isNew ? form : { id: Number(id), ...form };
-		await fetch('/admin/api/blog', { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+		await fetch('/admin/api/blog', {
+			method,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body)
+		});
 		goto('/admin/blog');
 	}
 </script>
@@ -96,32 +100,30 @@
 		{/each}
 	</div>
 {:else}
-	<div class="space-y-6 max-w-4xl">
+	<div class="max-w-4xl space-y-6">
 		<div class="flex items-center justify-between">
-			<h1 class="text-lg font-bold tracking-tight text-slate-800">{isNew ? 'Tambah Blog Post' : 'Edit Blog Post'}</h1>
+			<h1 class="text-lg font-bold tracking-tight text-slate-800">
+				{isNew ? 'Tambah Blog Post' : 'Edit Blog Post'}
+			</h1>
 			<Button onclick={save}>Simpan</Button>
 		</div>
 
 		<Card class="p-6">
 			<div class="space-y-3">
-				<Input
-					bind:value={form.title}
-					placeholder="Judul"
-					oninput={handleTitleInput}
-				/>
-				<Input
-					bind:value={form.slug}
-					placeholder="slug"
-					oninput={handleSlugInput}
-				/>
+				<Input bind:value={form.title} placeholder="Judul" oninput={handleTitleInput} />
+				<Input bind:value={form.slug} placeholder="slug" oninput={handleSlugInput} />
 				<div class="grid grid-cols-2 gap-3">
-					<Input bind:value={form.category} type="select" options={[
-						{ value: 'SIMRS', label: 'SIMRS' },
-						{ value: 'SIM Klinik', label: 'SIM Klinik' },
-						{ value: 'HRIS', label: 'HRIS' },
-						{ value: 'Custom Software', label: 'Custom Software' },
-						{ value: 'Perbandingan', label: 'Perbandingan' }
-					]} />
+					<Input
+						bind:value={form.category}
+						type="select"
+						options={[
+							{ value: 'SIMRS', label: 'SIMRS' },
+							{ value: 'SIM Klinik', label: 'SIM Klinik' },
+							{ value: 'HRIS', label: 'HRIS' },
+							{ value: 'Custom Software', label: 'Custom Software' },
+							{ value: 'Perbandingan', label: 'Perbandingan' }
+						]}
+					/>
 					<Input bind:value={form.readTime} placeholder="Read Time" />
 				</div>
 				<div class="grid grid-cols-2 gap-3">
@@ -133,9 +135,12 @@
 								<img src={form.image} alt="Preview" class="h-32 w-full rounded-lg object-cover" />
 								<button
 									type="button"
-									onclick={() => { form.image = ''; }}
-									class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-white text-xs hover:bg-black/70"
-								>x</button>
+									onclick={() => {
+										form.image = '';
+									}}
+									class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-xs text-white hover:bg-black/70"
+									>x</button
+								>
 							</div>
 						{/if}
 						<input
@@ -150,7 +155,10 @@
 						{/if}
 					</div>
 				</div>
-				<Input bind:value={form.tags} placeholder="Tags (koma pemisah: simrs, kesehatan, digital)" />
+				<Input
+					bind:value={form.tags}
+					placeholder="Tags (koma pemisah: simrs, kesehatan, digital)"
+				/>
 				<Input bind:value={form.excerpt} placeholder="Excerpt" />
 				<Input bind:value={form.metaDescription} placeholder="Meta Description (SEO)" />
 			</div>

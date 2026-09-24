@@ -1,7 +1,7 @@
 <script>
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
 	import { ArrowRight } from 'lucide-svelte';
-	import bgMain from '$lib/assets/bg_main.jpg';
+	import bgMain from '$lib/assets/bg_main.webp';
 
 	let { content = null } = $props();
 
@@ -32,13 +32,22 @@
 	);
 </script>
 
+<svelte:head>
+	<link rel="preload" href={bgMain} as="image" type="image/webp" fetchpriority="high" />
+</svelte:head>
+
 <section class="relative overflow-hidden bg-white py-20 lg:py-24">
 	<!-- Gambar Kanan: Full Height & Full Width di Sisi Kanan Section dengan Clip-Path (<) -->
-	<div class="fade-in pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+	<div class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block">
 		<img
 			src={bgMain}
 			alt="AORTA Digital Solution"
 			class="h-full w-full object-cover"
+			width="1920"
+			height="1280"
+			fetchpriority="high"
+			loading="eager"
+			decoding="async"
 			style="clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);"
 		/>
 	</div>
@@ -47,7 +56,7 @@
 		<div class="grid items-center gap-8 lg:grid-cols-12">
 			<!-- Teks Kiri -->
 			<div class="z-10 space-y-6 lg:col-span-6">
-				<h1 class="rise text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+				<h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
 					{titlePrefix}
 					<span style="color: {highlightColor}">{titleHighlight}</span>
 				</h1>

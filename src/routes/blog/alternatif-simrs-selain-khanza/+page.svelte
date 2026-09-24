@@ -6,7 +6,7 @@
 	title="Alternatif SIMRS selain Khanza — Solusi Kustomisasi Tanpa Batas"
 	description="Cari alternatif SIMRS selain Khanza? AORTA solusinya — SIMRS yang bisa dikustomisasi sesuai kebutuhan RS Anda, lebih cepat implementasi, dan support lokal responsif."
 	ogDescription="Alternatif SIMRS selain Khanza dengan kustomisasi penuh. Sistem informasi rumah sakit yang fleksibel, terintegrasi BPJS & Satu Sehat, dan didukung tim lokal."
-	image="/assets/hospital.png"
+	image="/assets/hospital.webp"
 	slug="alternatif-simrs-selain-khanza"
 	date="2025-08-06"
 	category="SIMRS"
@@ -113,10 +113,12 @@
 		Tapi untuk RS yang butuh sistem siap pakai, kustomisasi cepat, support terjamin, dan kepatuhan
 		regulasi, AORTA SIMRS adalah pilihan yang lebih tepat. Jika ingin tahu opsi gratis lainnya, baca
 		<a href="/blog/aplikasi-rumah-sakit-gratis">daftar SIMRS gratis</a> atau
-		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">SIMRS murah tanpa langganan</a>.
-		Baca juga
+		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">SIMRS murah tanpa langganan</a>. Baca
+		juga
 		<a href="/blog/cara-memilih-simrs-rumah-sakit">panduan memilih SIMRS</a> dan
-		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">rincian harga software SIMRS</a>.
+		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat"
+			>rincian harga software SIMRS</a
+		>.
 	</p>
 
 	<blockquote>

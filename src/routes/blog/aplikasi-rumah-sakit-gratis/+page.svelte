@@ -6,7 +6,7 @@
 	title="Aplikasi Rumah Sakit Gratis: Apakah Ada SIMRS yang Benar-Benar Gratis?"
 	description="Mencari aplikasi rumah sakit gratis? Simak daftar SIMRS open source, keterbatasannya, dan kapan waktu yang tepat untuk beralih ke sistem berbayar."
 	ogDescription="Daftar aplikasi SIMRS rumah sakit gratis dan open source. Ketahui kelebihan, kekurangan, dan kapan harus upgrade ke sistem enterprise."
-	image="/assets/hospital.png"
+	image="/assets/hospital.webp"
 	slug="aplikasi-rumah-sakit-gratis"
 	date="2025-07-15"
 	category="SIMRS"
@@ -83,7 +83,9 @@
 
 	<h2>Kapan Harus Upgrade ke SIMRS Berbayar?</h2>
 	<p>
-		Segera upgrade jika (baca <a href="/blog/cara-memilih-simrs-rumah-sakit">panduan lengkap memilih SIMRS</a>):
+		Segera upgrade jika (baca <a href="/blog/cara-memilih-simrs-rumah-sakit"
+			>panduan lengkap memilih SIMRS</a
+		>):
 	</p>
 	<ul>
 		<li>RS Anda wajib akreditasi KARS</li>
@@ -95,9 +97,9 @@
 
 	<h2>Solusi dari AORTA</h2>
 	<p>
-		Jika ingin mencoba SIMRS tanpa komitmen, AORTA menyediakan <strong>demo gratis 14 hari</strong> dengan
-		akses penuh fitur. Tim kami siap mendampingi migrasi data dari sistem gratis atau Excel ke SIMRS yang
-		memenuhi standar Kemenkes. Bandingkan juga
+		Jika ingin mencoba SIMRS tanpa komitmen, AORTA menyediakan <strong>demo gratis 14 hari</strong>
+		dengan akses penuh fitur. Tim kami siap mendampingi migrasi data dari sistem gratis atau Excel ke
+		SIMRS yang memenuhi standar Kemenkes. Bandingkan juga
 		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">harga software SIMRS</a>
 		dan
 		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">opsi SIMRS tanpa langganan</a>.

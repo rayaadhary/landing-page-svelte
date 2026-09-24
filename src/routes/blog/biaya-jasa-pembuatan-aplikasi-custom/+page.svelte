@@ -6,7 +6,7 @@
 	title="Berapa Biaya Jasa Pembuatan Aplikasi Custom di Indonesia?"
 	description="Rincian perkiraan biaya jasa pembuatan aplikasi custom di Indonesia — dari aplikasi sederhana hingga sistem enterprise kompleks."
 	ogDescription="Biaya jasa pembuatan aplikasi custom bervariasi. Simak rincian harga berdasarkan kompleksitas, fitur, dan teknologi yang digunakan."
-	image="/assets/pos.png"
+	image="/assets/pos.webp"
 	slug="biaya-jasa-pembuatan-aplikasi-custom"
 	date="2025-06-28"
 	category="Custom Software"

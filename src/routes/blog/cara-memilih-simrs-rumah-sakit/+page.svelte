@@ -6,7 +6,7 @@
 	title="Cara Memilih SIMRS yang Tepat untuk Rumah Sakit Anda"
 	description="Panduan lengkap memilih Sistem Informasi Manajemen Rumah Sakit (SIMRS) yang sesuai dengan kelas dan kebutuhan operasional RS Anda."
 	ogDescription="Panduan memilih SIMRS untuk rumah sakit: fitur wajib, regulasi Kemenkes, bridging BPJS, dan tips implementasi dari AORTA."
-	image="/assets/hospital2.png"
+	image="/assets/hospital2.webp"
 	slug="cara-memilih-simrs-rumah-sakit"
 	date="2025-07-10"
 	category="SIMRS"
@@ -24,7 +24,9 @@
 	<p>
 		Peraturan Kemenkes RI mewajibkan setiap Rumah Sakit memiliki SIMRS yang terintegrasi dengan
 		SatuSehat dan BPJS Kesehatan. Sebelum masuk ke tips memilih, pastikan Anda memahami
-		<a href="/blog/perbedaan-simrs-dan-aplikasi-klinik">perbedaan mendasar SIMRS dan aplikasi klinik</a>
+		<a href="/blog/perbedaan-simrs-dan-aplikasi-klinik"
+			>perbedaan mendasar SIMRS dan aplikasi klinik</a
+		>
 		— karena keduanya tidak bisa saling substitusi.
 	</p>
 
@@ -71,8 +73,7 @@
 		termasuk biaya integrasi BPJS dan SatuSehat. Jika mencari opsi lebih terjangkau, baca juga
 		<a href="/blog/aplikasi-rumah-sakit-gratis">daftar SIMRS gratis</a> dan
 		<a href="/blog/aplikasi-rumah-sakit-murah-tanpa-langganan">SIMRS murah tanpa langganan</a>.
-		Kalau RS Anda sedang pakai Khanza dan ingin
-		migrasi, baca juga
+		Kalau RS Anda sedang pakai Khanza dan ingin migrasi, baca juga
 		<a href="/blog/alternatif-simrs-selain-khanza">alternatif SIMRS selain Khanza</a>.
 	</p>
 

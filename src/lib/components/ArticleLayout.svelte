@@ -29,17 +29,17 @@
 	<meta name="twitter:image" content={image} />
 	<link rel="canonical" href="https://aorta.my.id/blog/{slug}" />
 	{@html `<script type="application/ld+json">${JSON.stringify({
-		"@context": "https://schema.org",
-		"@type": "BlogPosting",
-		"headline": title,
-		"description": description,
-		"image": "https://aorta.my.id" + image,
-		"datePublished": date,
-		"dateModified": dateModified || date,
-		"author": { "@type": "Organization", "name": author },
-		"publisher": { "@id": "https://aorta.my.id/#organization" },
-		"mainEntityOfPage": "https://aorta.my.id/blog/" + slug,
-		"inLanguage": "id-ID"
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		headline: title,
+		description: description,
+		image: 'https://aorta.my.id' + image,
+		datePublished: date,
+		dateModified: dateModified || date,
+		author: { '@type': 'Organization', name: author },
+		publisher: { '@id': 'https://aorta.my.id/#organization' },
+		mainEntityOfPage: 'https://aorta.my.id/blog/' + slug,
+		inLanguage: 'id-ID'
 	})}</script>`}
 </svelte:head>
 
@@ -78,7 +78,15 @@
 		</div>
 
 		<div class="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-			<img src={image} alt={title} class="aspect-video w-full object-cover" />
+			<img
+				src={image}
+				alt={title}
+				class="aspect-video w-full object-cover"
+				width="1200"
+				height="675"
+				loading="lazy"
+				decoding="async"
+			/>
 		</div>
 
 		<div
@@ -100,13 +108,33 @@
 		</div>
 
 		<div class="mt-10 flex flex-wrap gap-2 text-xs">
-		<a href="/blog/cara-memilih-simrs-rumah-sakit" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">Cara memilih SIMRS →</a>
-		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">Harga SIMRS →</a>
-		<a href="/blog/apa-itu-sim-klinik-manfaat" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">Apa itu SIM Klinik →</a>
-		<a href="/blog/jasa-pembuatan-aplikasi-website" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">Jasa Pembuatan Aplikasi →</a>
-		<a href="/faq" class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]">FAQ →</a>
-	</div>
-	<div class="mt-16 border-t border-slate-200 pt-8 text-center">
+			<a
+				href="/blog/cara-memilih-simrs-rumah-sakit"
+				class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]"
+				>Cara memilih SIMRS →</a
+			>
+			<a
+				href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat"
+				class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]"
+				>Harga SIMRS →</a
+			>
+			<a
+				href="/blog/apa-itu-sim-klinik-manfaat"
+				class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]"
+				>Apa itu SIM Klinik →</a
+			>
+			<a
+				href="/blog/jasa-pembuatan-aplikasi-website"
+				class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]"
+				>Jasa Pembuatan Aplikasi →</a
+			>
+			<a
+				href="/faq"
+				class="rounded-full border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-600 hover:border-[#0155FF] hover:text-[#0155FF]"
+				>FAQ →</a
+			>
+		</div>
+		<div class="mt-16 border-t border-slate-200 pt-8 text-center">
 			<p class="mb-4 text-sm font-semibold text-slate-500">Tertarik dengan solusi AORTA?</p>
 			<a
 				href="https://wa.me/6289629949441?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA"

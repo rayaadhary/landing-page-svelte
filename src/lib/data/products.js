@@ -6,7 +6,7 @@ const products = [
 		category: 'HEALTHCARE SYSTEM',
 		overview:
 			'Solusi transformasi digital menyeluruh untuk manajemen Rumah Sakit skala besar. Menyinkronkan seluruh alur kerja klinis, operasional, hingga administrasi keuangan dalam satu pusat data terpadu.',
-		screenshots: ['/assets/hospital2.png'],
+		screenshots: ['/assets/hospital2.webp'],
 		modules: [
 			'Pendaftaran & Antrean Multi-Layanan',
 			'Rekam Medis Elektronik (EMR) Kemenkes',
@@ -55,7 +55,7 @@ const products = [
 		category: 'HEALTHCARE SYSTEM',
 		overview:
 			'Sistem manajemen klinik modern multi-cabang yang dirancang end-to-end untuk memotong birokrasi pendaftaran yang lambat dan mengontrol rekam medis pasien.',
-		screenshots: ['/assets/clinic2.png'],
+		screenshots: ['/assets/clinic2.webp'],
 		modules: [
 			'Portal Reservasi Online & Janji Pasien',
 			'Pencatatan Rekam Medis Ringkas (RME)',
@@ -104,7 +104,7 @@ const products = [
 		category: 'BUSINESS ENTERPRISE',
 		overview:
 			'Sistem manajemen SDM cerdas berbasis cloud untuk mengotomatisasi seluruh administrasi personalia, kehadiran biometrik, hingga kalkulasi payroll perusahaan Anda.',
-		screenshots: ['/assets/hris.png'],
+		screenshots: ['/assets/hris.webp'],
 		modules: [
 			'Absensi Biometrik & Anti-Fake GPS',
 			'Manajemen Penjadwalan & Multi-Shift',
@@ -153,7 +153,7 @@ const products = [
 		category: 'RETAIL & COMMERCE',
 		overview:
 			'Aplikasi kasir pintar serbaguna untuk mengamankan arus pendapatan dan mengoptimalkan manajemen stok multi-gudang pada bisnis retail, grosir, maupun F&B.',
-		screenshots: ['/assets/pos.png'],
+		screenshots: ['/assets/pos.webp'],
 		modules: [
 			'Aplikasi Kasir Omnichannel & QRIS',
 			'Manajemen Inventori Multi-Gudang',

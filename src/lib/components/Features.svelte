@@ -2,8 +2,8 @@
 	import { Layers, Unlink2, ShieldCheck, BarChart3, Plus, ArrowRight } from 'lucide-svelte';
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
 	import { reveal } from '$lib/actions/reveal.js';
-	import bgMain from '$lib/assets/bg_main2.jpg'; 
-	import bgAnalytics from '$lib/assets/bg_analytics.jpg'; 
+	import bgMain from '$lib/assets/bg_main2.webp';
+	import bgAnalytics from '$lib/assets/bg_analytics.webp';
 
 	const features = [
 		{
@@ -58,10 +58,11 @@
 		<!-- Header Section -->
 		<div class="mb-12 max-w-2xl" use:reveal>
 			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-				Keunggulan  <span class="text-[#0155FF]">Aorta Digital Solusi</span>
+				Keunggulan <span class="text-[#0155FF]">Aorta Digital Solusi</span>
 			</h2>
 			<p class="mt-3 text-base text-slate-600">
-				Solusi teknologi terpadu yang dirancang khusus untuk mempercepat efisiensi dan transformasi digital perusahaan Anda.
+				Solusi teknologi terpadu yang dirancang khusus untuk mempercepat efisiensi dan transformasi
+				digital perusahaan Anda.
 			</p>
 		</div>
 
@@ -69,13 +70,18 @@
 		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 			{#each features as f, i}
 				<div
-					class="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 {f.bg || 'text-white'} {f.gridSpan}"
-					style={f.bgImage ? `background-image: url('${f.bgImage}'); background-size: cover; background-position: center;` : ''}
+					class="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 {f.bg ||
+						'text-white'} {f.gridSpan}"
+					style={f.bgImage
+						? `background-image: url('${f.bgImage}'); background-size: cover; background-position: center;`
+						: ''}
 					use:reveal={{ delay: 60 + i * 80 }}
 				>
 					<!-- Dark Overlay khusus untuk card dengan background image agar teks tidak samar -->
 					{#if f.bgImage}
-						<div class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/90 via-slate-900/60 to-slate-900/40"></div>
+						<div
+							class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/90 via-slate-900/60 to-slate-900/40"
+						></div>
 					{/if}
 
 					<!-- Header Card (Icon & Plus Indicator) -->
@@ -83,7 +89,9 @@
 						<div class="flex h-12 w-12 items-center justify-center rounded-2xl {f.badgeColor}">
 							<f.icon size={22} class={f.iconColor} />
 						</div>
-						<div class="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-sm">
+						<div
+							class="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 backdrop-blur-sm dark:bg-white/10"
+						>
 							<Plus size={18} class={f.plusColor} />
 						</div>
 					</div>

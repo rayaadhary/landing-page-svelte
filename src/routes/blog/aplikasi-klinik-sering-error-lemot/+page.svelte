@@ -6,7 +6,7 @@
 	title="Aplikasi Klinik Sering Error &amp; Lemot? Cara Memilih Sistem yang Stabil"
 	description="Aplikasi klinik sering error atau lemot? Simak penyebab umum SIM Klinik tidak stabil, dampaknya ke operasional, dan panduan memilih sistem yang handal."
 	ogDescription="Atasi aplikasi klinik yang sering error dan lemot. Pelajari penyebab, dampak, dan cara memilih SIM Klinik yang stabil dan cepat."
-	image="/assets/clinic.png"
+	image="/assets/clinic.webp"
 	slug="aplikasi-klinik-sering-error-lemot"
 	date="2025-07-21"
 	category="SIM Klinik"
@@ -70,10 +70,9 @@
 
 	<h3>1. Infrastruktur Server Lemah</h3>
 	<p>
-		Banyak <a href="/blog/aplikasi-klinik-gratis">aplikasi klinik gratis</a> atau murah dipasang di shared hosting atau server seadanya. Saat data pasien
-		bertambah, server tidak sanggup menahan beban. Akibatnya: <strong
-			>loading makin lambat tiap bulan.</strong
-		>
+		Banyak <a href="/blog/aplikasi-klinik-gratis">aplikasi klinik gratis</a> atau murah dipasang di
+		shared hosting atau server seadanya. Saat data pasien bertambah, server tidak sanggup menahan
+		beban. Akibatnya: <strong>loading makin lambat tiap bulan.</strong>
 	</p>
 
 	<h3>2. Kode Aplikasi Tidak Dirancang untuk Beban</h3>

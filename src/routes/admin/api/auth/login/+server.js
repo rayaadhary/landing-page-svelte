@@ -8,7 +8,9 @@ import { promisify } from 'util';
 const scryptAsync = promisify(scrypt);
 
 async function verifyPassword(password, hash) {
+	if (!hash || !hash.includes(':')) return false;
 	const [salt, key] = hash.split(':');
+	if (!salt || !key || !/^[0-9a-f]+$/i.test(key)) return false;
 	const buf = await scryptAsync(password, salt, 64);
 	const keyBuffer = Buffer.from(key, 'hex');
 	return keyBuffer.length === buf.length && timingSafeEqual(buf, keyBuffer);
