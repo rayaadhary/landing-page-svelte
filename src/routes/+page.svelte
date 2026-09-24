@@ -66,11 +66,11 @@
 	<meta name="robots" content="index, follow" />
 	<meta
 		property="og:title"
-		content="Jasa Pembuatan SIMRS & Aplikasi Klinik Terintegrasi BPJS SatuSehat | AORTA"
+		content="Jasa Pembuatan Aplikasi & Software Custom Perusahaan | AORTA"
 	/>
 	<meta
 		property="og:description"
-		content="SIMRS, SIM Klinik, HRIS & POS terintegrasi BPJS & SatuSehat. Konsultasi & demo gratis — Cianjur, Bandung, seluruh Indonesia."
+		content="Jasa pembuatan aplikasi & software custom perusahaan. Melayani sistem informasi, aplikasi kasir, inventory, sekolah, hingga klinik terintegrasi."
 	/>
 	<meta property="og:image" content="https://aorta.my.id/assets/og-default.jpg" />
 	<meta property="og:image:width" content="1200" />

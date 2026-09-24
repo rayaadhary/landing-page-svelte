@@ -15,6 +15,7 @@ import {
 } from './schema.js';
 import { scrypt, randomBytes } from 'crypto';
 import { promisify } from 'util';
+import { count as drizzleCount } from 'drizzle-orm';
 
 const scryptAsync = promisify(scrypt);
 
@@ -476,7 +477,15 @@ async function seed() {
 	console.log('Seeding database...');
 	await ensureSchema();
 
-	// Clear existing data
+	// Idempotent: kalau data sudah ada, jangan hapus edit admin (deploy selalu jalanin seed)
+	const [{ count: userCount }] = await db.select({ count: drizzleCount() }).from(users);
+	if (Number(userCount) > 0) {
+		console.log('DB already seeded, skip wipe/insert.');
+		await client.end();
+		return;
+	}
+
+	// Clear existing data (only for first boot)
 	await db.delete(demoRequests);
 	await db.delete(blogPosts);
 	await db.delete(settings);
