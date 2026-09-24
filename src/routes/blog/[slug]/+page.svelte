@@ -1,14 +1,16 @@
 <script>
 	import ArticleLayout from '$lib/components/ArticleLayout.svelte';
+	import { ArrowLeft, ChevronRight, MessageCircle } from 'lucide-svelte';
+	import bgMain3 from '$lib/assets/bg_main3.jpg';
 
 	let { data } = $props();
 	let post = $derived(data.post);
 </script>
 
 <svelte:head>
-	<title>{post.title} | Blog AORTA</title>
+	<title>{post.title} — Blog AORTA</title>
 	<meta name="description" content={post.metaDescription || post.excerpt} />
-	<meta property="og:title" content="{post.title} | Blog AORTA" />
+	<meta property="og:title" content="{post.title} — Blog AORTA" />
 	<meta property="og:description" content={post.metaDescription || post.excerpt} />
 	<meta property="og:image" content={post.image} />
 	<meta property="og:type" content="article" />
@@ -21,46 +23,114 @@
 	<link rel="canonical" href="https://aorta.my.id/blog/{post.slug}" />
 </svelte:head>
 
-<div class="min-h-screen bg-slate-50">
-	<article class="mx-auto max-w-3xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
-		<div class="mb-8 flex w-fit items-center gap-2 rounded-full border border-slate-100 bg-white px-4 py-1.5 text-xs font-semibold text-slate-500 shadow-sm">
-			<a href="/" class="flex items-center gap-1 transition-colors hover:text-[#0155FF]">Beranda</a>
-			<span class="text-slate-300">/</span>
-			<a href="/blog" class="transition-colors hover:text-[#0155FF]">Blog</a>
-			<span class="text-slate-300">/</span>
-			<span class="max-w-[200px] truncate font-bold text-slate-800">{post.title}</span>
-		</div>
+<!-- Ambient Soft Glow -->
+<div class="pointer-events-none fixed inset-0 -z-10 bg-slate-50/50">
+	<div class="absolute top-0 left-1/2 -translate-x-1/2 h-[300px] w-full max-w-5xl bg-[radial-gradient(ellipse_at_top,rgba(1,85,255,0.04),transparent_70%)]"></div>
+</div>
 
-		<div class="space-y-6">
-			<div class="flex flex-wrap items-center gap-3 text-[11px] font-bold tracking-wider text-slate-500 uppercase">
-				<span class="rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-[#0155FF]">{post.category}</span>
+<div class="min-h-screen">
+	<article class="mx-auto max-w-3xl px-4 pt-16 pb-24 sm:px-6 lg:px-8">
+		<!-- Navigation Breadcrumb -->
+		<nav class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+			<a href="/" class="hover:text-slate-900 transition-colors">Beranda</a>
+			<ChevronRight size={12} class="text-slate-300" />
+			<a href="/blog" class="hover:text-slate-900 transition-colors">Blog</a>
+			<ChevronRight size={12} class="text-slate-300" />
+			<span class="max-w-[220px] truncate text-slate-900 font-semibold">{post.title}</span>
+		</nav>
+
+		<!-- Article Header -->
+		<header class="mt-8 space-y-4">
+			<div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 font-medium">
+				<span class="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-[#0155FF]">
+					{post.category}
+				</span>
 				<span>·</span>
 				<time datetime={post.date}>{post.date}</time>
 				<span>·</span>
 				<span>{post.readTime}</span>
 			</div>
 
-			<h1 class="text-3xl leading-tight font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">{post.title}</h1>
+			<h1 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl lg:leading-[1.15]">
+				{post.title}
+			</h1>
 
-			<p class="text-sm font-medium text-slate-500">{post.author}</p>
+			<div class="flex items-center gap-2 pt-1 text-xs text-slate-500 font-medium">
+				<span>Ditulis oleh <strong class="text-slate-800 font-semibold">{post.author}</strong></span>
+			</div>
+		</header>
+
+		<!-- Featured Image -->
+		<div class="mt-8 overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-1.5 shadow-sm">
+			<img
+				src={post.image}
+				alt={post.title}
+				class="aspect-[16/9] w-full rounded-xl object-cover"
+			/>
 		</div>
 
-		<div class="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-			<img src={post.image} alt={post.title} class="aspect-video w-full object-cover" />
-		</div>
-
-		<div class="prose mt-10 max-w-none prose-slate prose-headings:font-black prose-headings:tracking-tight prose-headings:text-slate-900 prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-lg prose-p:text-sm prose-p:leading-relaxed prose-p:font-medium prose-p:text-slate-600 prose-a:font-bold prose-a:text-[#0155FF] prose-a:no-underline hover:prose-a:underline prose-blockquote:rounded-r-xl prose-blockquote:border-l-[#0155FF] prose-blockquote:bg-slate-50 prose-blockquote:px-4 prose-blockquote:py-2 prose-blockquote:text-sm prose-blockquote:text-slate-600 prose-strong:text-slate-900 prose-code:rounded prose-code:bg-blue-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-xs prose-code:font-bold prose-code:text-[#0155FF] prose-li:text-sm prose-li:text-slate-600 prose-table:text-sm prose-th:bg-slate-50 prose-th:p-3 prose-th:font-bold prose-th:text-slate-700 prose-td:p-3 prose-td:text-slate-600">
+		<!-- Article Typography / Content -->
+		<div class="prose mt-10 max-w-none prose-slate 
+			prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-slate-900 
+			prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-2xl 
+			prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-lg 
+			prose-p:text-base prose-p:leading-relaxed prose-p:text-slate-600 
+			prose-a:font-semibold prose-a:text-[#0155FF] prose-a:no-underline hover:prose-a:underline 
+			prose-blockquote:rounded-r-xl prose-blockquote:border-l-2 prose-blockquote:border-l-[#0155FF] prose-blockquote:bg-slate-50 prose-blockquote:px-5 prose-blockquote:py-3 prose-blockquote:text-sm prose-blockquote:not-italic prose-blockquote:text-slate-600 
+			prose-strong:font-semibold prose-strong:text-slate-900 
+			prose-code:rounded-md prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-xs prose-code:font-semibold prose-code:text-slate-800 
+			prose-li:text-base prose-li:text-slate-600 
+			prose-table:text-sm prose-th:bg-slate-50 prose-th:p-3 prose-th:font-semibold prose-th:text-slate-800 prose-td:p-3 prose-td:text-slate-600">
 			{@html post.content}
 		</div>
 
-		<div class="mt-16 border-t border-slate-200 pt-8 text-center">
-			<p class="mb-4 text-sm font-semibold text-slate-500">Tertarik dengan solusi AORTA?</p>
-			<a href="https://wa.me/6289629949441?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl bg-[#0155FF] px-8 py-3.5 text-sm font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:opacity-90 active:scale-95">
-				Konsultasi Gratis via WhatsApp
-			</a>
-			<div class="mt-4">
-				<a href="/blog" class="text-xs font-bold text-[#0155FF] hover:underline">← Kembali ke Blog</a>
+		<!-- Footer Action & CTA -->
+		<footer class="mt-16 border-t border-slate-200/60 pt-8 space-y-8">
+			<!-- CTA Card dengan Dark Style + bgMain3 Overlay -->
+			<div class="relative overflow-hidden rounded-2xl border border-slate-800 px-6 py-8 sm:px-10">
+				<!-- Background Image dengan Gradient Overlay -->
+				<div class="absolute inset-0 -z-10">
+					<img
+						src={bgMain3}
+						alt="Background"
+						class="h-full w-full object-cover object-center"
+					/>
+					<!-- Dark Overlay lembut -->
+					<div class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/90 via-slate-900/80 to-slate-900/70"></div>
+				</div>
+		
+				<!-- Content -->
+				<div class="relative z-10 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
+					<div class="space-y-1">
+						<h3 class="text-base sm:text-lg font-semibold text-white">
+							Tertarik dengan solusi software AORTA?
+						</h3>
+						<p class="text-xs text-slate-300">
+							Konsultasikan kebutuhan SIMRS, HRIS, POS, atau custom app secara langsung.
+						</p>
+					</div>
+					
+					<div class="mt-6 sm:mt-0 sm:shrink-0">
+						<a
+							href="https://wa.me/6289629949441?text=Halo%20saya%20tertarik%20dengan%20produk%20AORTA"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2.5 text-xs font-semibold text-slate-900 transition-all hover:bg-slate-100 active:scale-[0.98]"
+						>
+							<MessageCircle size={15} />
+							<span>Konsultasi WhatsApp</span>
+						</a>
+					</div>
+				</div>
 			</div>
-		</div>
+		
+			<!-- Back to Blog Link -->
+			<div>
+				<a href="/blog" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-[#0155FF] transition-colors">
+					<ArrowLeft size={14} />
+					<span>Kembali ke daftar artikel</span>
+				</a>
+			</div>
+		</footer>
 	</article>
 </div>
