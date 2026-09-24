@@ -79,6 +79,7 @@ export const blogPosts = pgTable('blog_posts', {
 	excerpt: text('excerpt').notNull(),
 	content: text('content').notNull(),
 	metaDescription: text('meta_description'),
+	tags: text('tags'),
 	active: boolean('active').default(true).notNull(),
 	createdAt: timestamp('created_at').defaultNow().notNull(),
 	updatedAt: timestamp('updated_at').defaultNow().notNull()

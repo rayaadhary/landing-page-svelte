@@ -1,24 +1,37 @@
 <script>
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import {
+		LayoutDashboard,
+		Target,
+		Package,
+		Zap,
+		MessageSquare,
+		HelpCircle,
+		FileText,
+		Settings,
+		LogOut,
+		Menu,
+		X
+	} from 'lucide-svelte';
 
 	let { children } = $props();
 
 	const navItems = [
-		{ href: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
-		{ href: '/admin/hero', label: 'Hero Slides', icon: '🎯' },
-		{ href: '/admin/products', label: 'Produk', icon: '📦' },
-		{ href: '/admin/features', label: 'Fitur', icon: '⚡' },
-		{ href: '/admin/testimonials', label: 'Testimoni', icon: '💬' },
-		{ href: '/admin/faqs', label: 'FAQ', icon: '❓' },
-		{ href: '/admin/blog', label: 'Blog', icon: '📝' },
-		{ href: '/admin/settings', label: 'Settings', icon: '⚙️' }
+		{ href: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+		{ href: '/admin/hero', label: 'Hero Slides', icon: Target },
+		{ href: '/admin/products', label: 'Produk', icon: Package },
+		{ href: '/admin/features', label: 'Fitur', icon: Zap },
+		{ href: '/admin/testimonials', label: 'Testimoni', icon: MessageSquare },
+		{ href: '/admin/faqs', label: 'FAQ', icon: HelpCircle },
+		{ href: '/admin/blog', label: 'Blog', icon: FileText },
+		{ href: '/admin/settings', label: 'Settings', icon: Settings }
 	];
 
 	let sidebarOpen = $state(false);
 
 	async function logout() {
-		await fetch('/api/auth/logout', { method: 'POST' });
+		await fetch('/admin/api/auth/logout', { method: 'POST' });
 		goto('/admin/login');
 	}
 </script>
@@ -26,38 +39,50 @@
 {#if page.url.pathname === '/admin/login'}
 	{@render children()}
 {:else}
-	<div class="flex min-h-screen bg-slate-100">
+	<div class="flex min-h-screen bg-slate-50">
 		<!-- Sidebar -->
 		<aside
-			class="fixed inset-y-0 left-0 z-50 w-64 border-r border-slate-200 bg-white transition-transform duration-300 {sidebarOpen
+			class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform duration-300 lg:translate-x-0 {sidebarOpen
 				? 'translate-x-0'
-				: '-translate-x-full'} lg:translate-x-0"
+				: '-translate-x-full'}"
 		>
-			<div class="flex h-16 items-center border-b border-slate-200 px-6">
-				<a href="/admin/dashboard" class="text-lg font-black text-slate-900">AORTA Admin</a>
+			<div class="flex h-16 shrink-0 items-center gap-3 border-b border-slate-100 px-5">
+				<div class="flex h-8 w-8 items-center justify-center rounded-md bg-[#0155FF]">
+					<span class="text-xs font-bold text-white">A</span>
+				</div>
+				<div>
+					<p class="text-sm font-bold tracking-tight text-slate-900">AORTA</p>
+					<p class="text-[10px] font-medium text-slate-400">Admin Panel</p>
+				</div>
 			</div>
-			<nav class="space-y-1 p-4">
+
+			<nav class="flex-1 space-y-0.5 overflow-y-auto p-3">
 				{#each navItems as item}
+					{@const active = page.url.pathname.startsWith(item.href)}
 					<a
 						href={item.href}
-						class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors {page.url.pathname.startsWith(
-							item.href
-						)
-							? 'bg-[#0155FF] text-white'
-							: 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}"
+						class="group flex items-center gap-3 rounded-md px-3 py-2 text-[13px] font-medium transition-colors {active
+							? 'bg-[#0155FF]/5 text-[#0155FF]'
+							: 'text-slate-500 hover:bg-slate-50 hover:text-slate-700'}"
 					>
-						<span>{item.icon}</span>
+						<svelte:component
+							this={item.icon}
+							size={18}
+							strokeWidth={active ? 2 : 1.5}
+							class="shrink-0 {active ? 'text-[#0155FF]' : 'text-slate-400 group-hover:text-slate-500'}"
+						/>
 						<span>{item.label}</span>
 					</a>
 				{/each}
 			</nav>
-			<div class="absolute bottom-0 left-0 right-0 border-t border-slate-200 p-4">
+
+			<div class="shrink-0 border-t border-slate-100 p-3">
 				<button
 					onclick={logout}
-					class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600"
+					class="flex w-full items-center gap-3 rounded-md px-3 py-2 text-[13px] font-medium text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500"
 				>
-					<span>🚪</span>
-					<span>Logout</span>
+					<LogOut size={18} strokeWidth={1.5} />
+					<span>Keluar</span>
 				</button>
 			</div>
 		</aside>
@@ -65,7 +90,7 @@
 		<!-- Overlay for mobile -->
 		{#if sidebarOpen}
 			<button
-				class="fixed inset-0 z-40 bg-black/50 lg:hidden"
+				class="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
 				onclick={() => (sidebarOpen = false)}
 				aria-label="Close sidebar"
 			></button>
@@ -74,18 +99,16 @@
 		<!-- Main content -->
 		<div class="flex-1 lg:pl-64">
 			<header
-				class="sticky top-0 z-30 flex h-16 items-center border-b border-slate-200 bg-white/80 px-6 backdrop-blur-md"
+				class="sticky top-0 z-30 flex h-14 items-center border-b border-slate-200 bg-white px-6"
 			>
 				<button
-					class="mr-4 rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden"
+					class="mr-4 rounded-md p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 lg:hidden"
 					onclick={() => (sidebarOpen = !sidebarOpen)}
 					aria-label="Toggle sidebar"
 				>
-					<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-						<path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-					</svg>
+					<Menu size={20} strokeWidth={1.5} />
 				</button>
-				<h1 class="text-sm font-bold text-slate-800">
+				<h1 class="text-sm font-semibold text-slate-700">
 					{navItems.find((n) => page.url.pathname.startsWith(n.href))?.label || 'Admin'}
 				</h1>
 			</header>
