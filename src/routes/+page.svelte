@@ -33,16 +33,27 @@
 	);
 
 	const testimonials = $derived(
-		data.testimonials || [
-			{
-				quote:
-					'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
-				clientName: 'Tim Kaigopedia',
-				clientRole: 'kaigopedia.com',
-				avatarLetter: 'K',
-				avatarColor: 'bg-emerald-500'
-			}
-		]
+		(data.testimonials?.length
+			? data.testimonials
+			: [
+					{
+						quote:
+							'Tim AORTA membangun LMS kaigopedia sesuai harapan dan kebutuhan kami,responsif dan tepat waktu. Suka sama hasilnya',
+						clientName: 'Tim Kaigopedia',
+						clientRole: 'kaigopedia.com',
+						avatarLetter: 'K',
+						avatarColor: '#10b981',
+						projectName: 'Kaigopedia (LMS Platform)',
+						category: 'E-LEARNING & LMS',
+						image: '',
+						rating: 5
+					}
+				]
+		).map((/** @type {any} */ t) => ({
+			...t,
+			image: t.image || (t.projectName?.includes('Kaigopedia') ? bgKaigopedia : ''),
+			rating: Math.min(5, Math.max(1, Number(t.rating) || 5))
+		}))
 	);
 </script>
 
@@ -96,47 +107,71 @@
 			<span class="font-bold text-[#0155FF]">Aorta Digital Solusi</span>
 		</div>
 
-		<!-- Showcase Card (Mengikuti Referensi Gambar) -->
+		<!-- Showcase Cards from DB — horizontal scroll -->
 		<div
-			class="group relative mx-auto max-w-md overflow-hidden rounded-xl border border-slate-200/80 bg-white p-6 sm:p-8"
-			use:reveal={{ delay: 120 }}
+			class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 [&::-webkit-scrollbar]:hidden"
 		>
-			<img
-				src={bgKaigopedia}
-				alt="Kaigopedia Desktop Preview"
-				class="h-full w-full object-cover object-top"
-			/>
-
-			<!-- Category Badge Pill -->
-			<div class="mb-5 flex justify-center">
-				<span
-					class="inline-flex items-center gap-1.5 rounded-full bg-[#1E293B] px-5 py-1.5 text-xs font-bold tracking-wider text-white uppercase shadow-md"
+			{#each testimonials as t, i}
+				<article
+					class="group w-72 shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200/80 bg-white p-4 sm:w-80"
+					use:reveal={{ delay: 120 + i * 60 }}
 				>
-					E-LEARNING &amp; LMS
-				</span>
-			</div>
+					{#if t.image}
+						<div class="overflow-hidden rounded-lg">
+							<img
+								src={t.image}
+								alt={t.projectName || t.clientName}
+								class="h-36 w-full object-cover object-top"
+							/>
+						</div>
+					{/if}
 
-			<!-- Content Title & Quote Description -->
-			<div class="text-center">
-				<h3 class="text-xl font-bold tracking-tight text-slate-900">Kaigopedia (LMS Platform)</h3>
+					{#if t.category}
+						<div class="mt-4 mb-3 flex justify-center">
+							<span
+								class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md"
+							>
+								{t.category}
+							</span>
+						</div>
+					{/if}
 
-				<blockquote class="mt-4 text-xs leading-relaxed text-slate-600 sm:text-base">
-					“Tim AORTA membangun LMS Kaigopedia sesuai harapan dan kebutuhan kami, responsif dan tepat
-					waktu. Suka banget sama hasilnya!”
-				</blockquote>
+					<div class="text-center">
+						{#if t.projectName}
+							<h3 class="text-base font-bold tracking-tight text-slate-900">{t.projectName}</h3>
+						{/if}
 
-				<!-- Client Rating & Link Footer -->
-				<div
-					class="mt-6 flex flex-col items-center justify-center gap-3 border-t border-slate-100 pt-6"
-				>
-					<div class="flex items-center gap-1 text-amber-400">
-						{#each Array(5) as _}
-							<Star size={16} class="fill-amber-400" />
-						{/each}
-						<span class="ml-1.5 text-xs font-bold text-slate-700">5.0</span>
+						<blockquote class="mt-2.5 line-clamp-4 text-xs leading-relaxed text-slate-600">
+							“{t.quote}”
+						</blockquote>
+
+						<div
+							class="mt-4 flex flex-col items-center justify-center gap-2 border-t border-slate-100 pt-4"
+						>
+							<div class="flex items-center gap-0.5 text-amber-400">
+								{#each Array(5) as _, starIdx}
+									{#if starIdx < t.rating}
+										<Star size={14} class="fill-amber-400" />
+									{:else}
+										<Star size={14} class="fill-slate-200 text-slate-200" />
+									{/if}
+								{/each}
+								<span class="ml-1 text-[11px] font-bold text-slate-700">{t.rating}.0</span>
+							</div>
+							<div class="flex items-center gap-2">
+								<span
+									class="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold text-white"
+									style="background-color: {t.avatarColor}">{t.avatarLetter}</span
+								>
+								<div class="text-left">
+									<p class="text-xs font-bold text-slate-800">{t.clientName}</p>
+									<p class="text-[10px] text-slate-400">{t.clientRole}</p>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
+				</article>
+			{/each}
 		</div>
 	</div>
 </section>

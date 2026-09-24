@@ -243,7 +243,10 @@ const testimonialsData = [
 		clientRole: 'kaigopedia.com',
 		avatarLetter: 'K',
 		avatarColor: '#10b981',
-		projectName: 'Platform eLearning / LMS untuk Daycare di Jepang',
+		projectName: 'Kaigopedia (LMS Platform)',
+		category: 'E-LEARNING & LMS',
+		image: '/assets/kaigopedia.png',
+		rating: 5,
 		sortOrder: 0
 	}
 ];

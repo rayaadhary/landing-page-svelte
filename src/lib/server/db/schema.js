@@ -71,6 +71,9 @@ export const testimonials = pgTable('testimonials', {
 	avatarLetter: varchar('avatar_letter', { length: 10 }).notNull(),
 	avatarColor: varchar('avatar_color', { length: 50 }).notNull(),
 	projectName: varchar('project_name', { length: 255 }).notNull(),
+	category: varchar('category', { length: 255 }).default('').notNull(),
+	image: varchar('image', { length: 500 }).default('').notNull(),
+	rating: integer('rating').default(5).notNull(),
 	sortOrder: integer('sort_order').default(0).notNull(),
 	active: boolean('active').default(true).notNull()
 });
