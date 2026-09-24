@@ -131,7 +131,10 @@
 										src={article.image}
 										alt={article.title}
 										class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+										width="640"
+										height="360"
 										loading={i < 2 ? 'eager' : 'lazy'}
+										decoding="async"
 									/>
 									<div class="absolute top-3 left-3">
 										<span

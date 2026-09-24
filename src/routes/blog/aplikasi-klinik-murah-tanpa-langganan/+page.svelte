@@ -6,7 +6,7 @@
 	title="Aplikasi Klinik Murah tanpa Langganan: Solusi Sekali Bayar Selamanya"
 	description="Cari aplikasi klinik murah tanpa biaya bulanan? Simak opsi software klinik sistem sekali bayar, kelebihan vs kekurangannya, dan rekomendasi terbaik."
 	ogDescription="Rekomendasi aplikasi klinik murah tanpa langganan berbayar — sistem sekali bayar tanpa biaya bulanan. Cocok untuk klinik yang ingin hemat biaya operasional."
-	image="/assets/clinic2.png"
+	image="/assets/clinic2.webp"
 	slug="aplikasi-klinik-murah-tanpa-langganan"
 	date="2025-07-18"
 	category="SIM Klinik"
@@ -131,11 +131,13 @@
 
 	<h2>Solusi dari AORTA</h2>
 	<p>
-		AORTA SIM Klinik memakai model <strong>SaaS berlangganan</strong> mulai 850rb/bulan — sudah termasuk
-		server, backup, support 24/7, update fitur rutin, bridging BPJS, dan
-		<a href="/blog/apa-itu-sim-klinik-manfaat">RME standar Kemenkes</a>. Tidak ada
-		biaya instalasi atau biaya tersembunyi. Kalau aplikasi klinik Anda sekarang sering bermasalah,
-		baca <a href="/blog/aplikasi-klinik-sering-error-lemot">penyebab dan solusi aplikasi klinik error &amp; lemot</a>.
+		AORTA SIM Klinik memakai model <strong>SaaS berlangganan</strong> mulai 850rb/bulan — sudah
+		termasuk server, backup, support 24/7, update fitur rutin, bridging BPJS, dan
+		<a href="/blog/apa-itu-sim-klinik-manfaat">RME standar Kemenkes</a>. Tidak ada biaya instalasi
+		atau biaya tersembunyi. Kalau aplikasi klinik Anda sekarang sering bermasalah, baca
+		<a href="/blog/aplikasi-klinik-sering-error-lemot"
+			>penyebab dan solusi aplikasi klinik error &amp; lemot</a
+		>.
 	</p>
 	<p>
 		Untuk klinik yang benar-benar ingin tanpa langganan, konsultasikan dulu kebutuhan Anda — model

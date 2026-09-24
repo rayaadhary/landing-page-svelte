@@ -6,7 +6,7 @@
 	title="Perbedaan SIMRS vs Aplikasi Klinik: Mana yang Sesuai untuk Institusi Anda?"
 	description="Bingung memilih antara SIMRS untuk rumah sakit atau aplikasi klinik? Simak perbedaan mendasar dan panduan memilih dari AORTA."
 	ogDescription="Perbedaan SIMRS dan Aplikasi Klinik dari segi fitur, skala, regulasi, dan biaya. Panduan memilih sistem informasi kesehatan yang tepat."
-	image="/assets/hospital.png"
+	image="/assets/hospital.webp"
 	slug="perbedaan-simrs-dan-aplikasi-klinik"
 	date="2025-06-20"
 	category="Perbandingan"
@@ -74,8 +74,8 @@
 
 	<h2>Solusi dari AORTA</h2>
 	<p>
-		Kami menyediakan <strong>kedua sistem</strong> — SIMRS Core Enterprise untuk RS dan SIM Klinik Pratama
-		&amp; Utama untuk klinik. Jika masih bingung menentukan budget, simak
+		Kami menyediakan <strong>kedua sistem</strong> — SIMRS Core Enterprise untuk RS dan SIM Klinik
+		Pratama &amp; Utama untuk klinik. Jika masih bingung menentukan budget, simak
 		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">rincian harga SIMRS</a>
 		dan
 		<a href="/blog/cara-memilih-simrs-rumah-sakit">panduan memilih SIMRS</a>

@@ -10,14 +10,17 @@ function initDb() {
 		if (!env.DATABASE_URL) {
 			throw new Error('DATABASE_URL environment variable is not set');
 		}
-		const client = postgres(env.DATABASE_URL);
+		const client = postgres(env.DATABASE_URL, { connect_timeout: 3 });
 		_db = drizzle(client, { schema });
 	}
 	return _db;
 }
 
-export const db = new Proxy({} , {
-	get(_, prop) {
-		return initDb()[prop];
+export const db = new Proxy(
+	{},
+	{
+		get(_, prop) {
+			return initDb()[prop];
+		}
 	}
-});
+);

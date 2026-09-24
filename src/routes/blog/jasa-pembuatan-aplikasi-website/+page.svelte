@@ -6,7 +6,7 @@
 	title="Jasa Pembuatan Aplikasi &amp; Website — SIM Klinik, SIMRS, HRIS, Custom Software"
 	description="Butuh jasa pembuatan aplikasi atau website? AORTA melayani SIM Klinik, SIMRS, HRIS, POS, dan custom software untuk bisnis di Jawa Barat — Bandung, Cianjur, Subang, Indramayu."
 	ogDescription="Jasa pembuatan aplikasi dan website dari AORTA. Solusi software untuk klinik, rumah sakit, UMKM, dan bisnis di Bandung, Cianjur, Subang, Indramayu."
-	image="/assets/pos.png"
+	image="/assets/pos.webp"
 	slug="jasa-pembuatan-aplikasi-website"
 	date="2025-07-22"
 	category="Jasa Pembuatan"
@@ -63,17 +63,28 @@
 	</p>
 
 	<h2>Cakupan Wilayah</h2>
-	<p>
-		AORTA melayani seluruh wilayah Jawa Barat, termasuk:
-	</p>
+	<p>AORTA melayani seluruh wilayah Jawa Barat, termasuk:</p>
 	<ul>
-		<li><strong>Bandung Raya</strong> — Bandung Kota, Cimahi, Soreang, Banjaran, Cileunyi, Rancaekek. Dekat RS Hasan Sadikin & area Dago.</li>
-		<li><strong>Cianjur</strong> — Cianjur Kota, Ciranjang, Cibeber, Cikalongkulon, Pacet, Cipanas. Dekat RSUD Cianjur & kawasan Cipanas.</li>
-		<li><strong>Subang</strong> — Subang Kota, Binong, Pamanukan, Ciasem, Patokbeusi, Purwadadi, Kalijati, Pagaden. Dekat RSUD Subang & kawasan Pamanukan.</li>
-		<li><strong>Indramayu</strong> — Indramayu Kota, Jatibarang, Sliyeg, Karangampel, Haurgeulis, Anjatan, Patrol, Sindang, Lohbener. Dekat RSUD Indramayu & Jatibarang.</li>
+		<li>
+			<strong>Bandung Raya</strong> — Bandung Kota, Cimahi, Soreang, Banjaran, Cileunyi, Rancaekek. Dekat
+			RS Hasan Sadikin & area Dago.
+		</li>
+		<li>
+			<strong>Cianjur</strong> — Cianjur Kota, Ciranjang, Cibeber, Cikalongkulon, Pacet, Cipanas. Dekat
+			RSUD Cianjur & kawasan Cipanas.
+		</li>
+		<li>
+			<strong>Subang</strong> — Subang Kota, Binong, Pamanukan, Ciasem, Patokbeusi, Purwadadi, Kalijati,
+			Pagaden. Dekat RSUD Subang & kawasan Pamanukan.
+		</li>
+		<li>
+			<strong>Indramayu</strong> — Indramayu Kota, Jatibarang, Sliyeg, Karangampel, Haurgeulis, Anjatan,
+			Patrol, Sindang, Lohbener. Dekat RSUD Indramayu & Jatibarang.
+		</li>
 	</ul>
 	<p>
-		Proses bisa online penuh atau tatap muka. Tim bisa on-site dalam 24 jam untuk wilayah Jawa Barat.
+		Proses bisa online penuh atau tatap muka. Tim bisa on-site dalam 24 jam untuk wilayah Jawa
+		Barat.
 	</p>
 
 	<h2>Mengapa Pilih AORTA?</h2>
@@ -86,13 +97,70 @@
 	</ul>
 
 	<h2>FAQ</h2>
-	<p><strong>Berapa lama pembuatan SIM Klinik?</strong> 14–21 hari termasuk bridging BPJS &amp; SatuSehat.</p>
+	<p>
+		<strong>Berapa lama pembuatan SIM Klinik?</strong> 14–21 hari termasuk bridging BPJS &amp; SatuSehat.
+	</p>
 	<p><strong>Bisa untuk RS besar?</strong> Bisa — SIMRS Enterprise skala ribuan pasien per hari.</p>
-	<p><strong>Berapa biaya awal?</strong> Mulai 1,5jt/bulan sudah termasuk bridging BPJS &amp; SatuSehat. Rincian lengkap ada di
-		<a href="/blog/biaya-jasa-pembuatan-aplikasi-custom">halaman biaya jasa pembuatan aplikasi custom</a>.</p>
-	<p><strong>Bisa on-site ke kota saya?</strong> Ya — Bandung, Cianjur, Subang, Indramayu bisa on-site. Proses juga bisa online penuh.</p>
+	<p>
+		<strong>Berapa biaya awal?</strong> Mulai 1,5jt/bulan sudah termasuk bridging BPJS &amp;
+		SatuSehat. Rincian lengkap ada di
+		<a href="/blog/biaya-jasa-pembuatan-aplikasi-custom"
+			>halaman biaya jasa pembuatan aplikasi custom</a
+		>.
+	</p>
+	<p>
+		<strong>Bisa on-site ke kota saya?</strong> Ya — Bandung, Cianjur, Subang, Indramayu bisa on-site.
+		Proses juga bisa online penuh.
+	</p>
 	<p><strong>Apakah ada garansi?</strong> Ya, SLA 24/7 &amp; garansi bridging lolos Kemenkes.</p>
-	<script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Berapa lama pembuatan SIM Klinik?","acceptedAnswer":{"@type":"Answer","text":"14-21 hari termasuk bridging BPJS & SatuSehat."}},{"@type":"Question","name":"Bisa untuk RS besar?","acceptedAnswer":{"@type":"Answer","text":"Bisa, SIMRS Enterprise skala ribuan pasien per hari."}},{"@type":"Question","name":"Berapa biaya awal?","acceptedAnswer":{"@type":"Answer","text":"Mulai 1,5 juta per bulan sudah termasuk bridging BPJS & SatuSehat."}},{"@type":"Question","name":"Bisa on-site ke kota saya?","acceptedAnswer":{"@type":"Answer","text":"Ya, Bandung, Cianjur, Subang, Indramayu bisa on-site. Proses juga bisa online penuh."}},{"@type":"Question","name":"Apakah ada garansi?","acceptedAnswer":{"@type":"Answer","text":"Ya, SLA 24/7 & garansi bridging lolos Kemenkes."}}]})}</script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "Berapa lama pembuatan SIM Klinik?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "14-21 hari termasuk bridging BPJS & SatuSehat."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Bisa untuk RS besar?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Bisa, SIMRS Enterprise skala ribuan pasien per hari."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Berapa biaya awal?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Mulai 1,5 juta per bulan sudah termasuk bridging BPJS & SatuSehat."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Bisa on-site ke kota saya?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Ya, Bandung, Cianjur, Subang, Indramayu bisa on-site. Proses juga bisa online penuh."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Apakah ada garansi?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Ya, SLA 24/7 & garansi bridging lolos Kemenkes."
+					}
+				}
+			]
+		}
+	</script>
 
 	<blockquote>
 		<a

@@ -6,7 +6,7 @@
 	title="Cara Membuat Website Profesional untuk UMKM — Panduan Lengkap"
 	description="Panduan membuat website profesional untuk UMKM: fitur wajib, tips SEO, pilihan teknologi, dan estimasi biaya agar bisnis Anda tampil profesional."
 	ogDescription="Panduan lengkap membuat website profesional untuk UMKM dan bisnis kecil. Fitur wajib, tips SEO, dan estimasi biaya."
-	image="/assets/pos.png"
+	image="/assets/pos.webp"
 	slug="jasa-pembuatan-website-perusahaan-company-profile"
 	date="2025-07-29"
 	category="Custom Software"
@@ -20,9 +20,15 @@
 		website punya keunggulan yang Instagram atau Facebook tidak punya:
 	</p>
 	<ul>
-		<li><strong>Kredibilitas</strong> — calon klien menilai perusahaan yang punya website lebih profesional</li>
-		<li><strong>SEO</strong> — muncul di Google saat orang cari produk/jasa Anda (tanpa bayar iklan)</li>
-		<li><strong>Kontrol penuh</strong> — data pelanggan dan konten milik Anda, bukan platform media sosial</li>
+		<li>
+			<strong>Kredibilitas</strong> — calon klien menilai perusahaan yang punya website lebih profesional
+		</li>
+		<li>
+			<strong>SEO</strong> — muncul di Google saat orang cari produk/jasa Anda (tanpa bayar iklan)
+		</li>
+		<li>
+			<strong>Kontrol penuh</strong> — data pelanggan dan konten milik Anda, bukan platform media sosial
+		</li>
 		<li><strong>24/7</strong> — website bekerja tanpa libur, bahkan saat Anda tidur</li>
 	</ul>
 
@@ -30,35 +36,35 @@
 
 	<h3>1. Profil Perusahaan</h3>
 	<p>
-		Halaman "Tentang Kami" dengan visi, misi, sejarah, dan tim. Ini yang dilihat calon klien
-		sebelum memutuskan bekerja sama. Jangan remehkan — halaman ini sering jadi halaman kedua
-		paling banyak dikunjungi setelah homepage.
+		Halaman "Tentang Kami" dengan visi, misi, sejarah, dan tim. Ini yang dilihat calon klien sebelum
+		memutuskan bekerja sama. Jangan remehkan — halaman ini sering jadi halaman kedua paling banyak
+		dikunjungi setelah homepage.
 	</p>
 
 	<h3>2. Daftar Layanan / Produk</h3>
 	<p>
-		Jelaskan apa yang Anda jual dengan jelas. Gunakan foto asli (bukan stock photo), harga
-		(jika memungkinkan), dan CTA (Call to Action) yang jelas seperti "Konsultasi Gratis" atau
-		"Beli Sekarang".
+		Jelaskan apa yang Anda jual dengan jelas. Gunakan foto asli (bukan stock photo), harga (jika
+		memungkinkan), dan CTA (Call to Action) yang jelas seperti "Konsultasi Gratis" atau "Beli
+		Sekarang".
 	</p>
 
 	<h3>3. Portofolio / Testimoni</h3>
 	<p>
-		Bukti sosial adalah faktor keputusan terbesar. Tampilkan projek yang sudah dikerjakan,
-		testimoni klien, dan studi kasus. Semakin spesifik, semakin meyakinkan.
+		Bukti sosial adalah faktor keputusan terbesar. Tampilkan projek yang sudah dikerjakan, testimoni
+		klien, dan studi kasus. Semakin spesifik, semakin meyakinkan.
 	</p>
 
 	<h3>4. Halaman Kontak &amp; Google Maps</h3>
 	<p>
-		Form kontak, nomor WhatsApp, alamat, dan peta lokasi. WhatsApp integration sangat penting
-		untuk UMKM Indonesia — mayoritas konsumen lebih suka chat langsung.
+		Form kontak, nomor WhatsApp, alamat, dan peta lokasi. WhatsApp integration sangat penting untuk
+		UMKM Indonesia — mayoritas konsumen lebih suka chat langsung.
 	</p>
 
 	<h3>5. Blog / Artikel</h3>
 	<p>
-		Blog adalah mesin SEO gratis. Tulis artikel yang menjawab pertanyaan calon pelanggan.
-		Contoh: toko material bangunan bisa tulis "Cara Memilih Keramik yang Benar" — orang yang
-		baca artikel ini adalah prospek yang sudah dekat dengan keputusan beli.
+		Blog adalah mesin SEO gratis. Tulis artikel yang menjawab pertanyaan calon pelanggan. Contoh:
+		toko material bangunan bisa tulis "Cara Memilih Keramik yang Benar" — orang yang baca artikel
+		ini adalah prospek yang sudah dekat dengan keputusan beli.
 	</p>
 
 	<h2>Pilihan Teknologi untuk Website UMKM</h2>
@@ -95,18 +101,22 @@
 
 	<h2>Tips SEO untuk Website UMKM</h2>
 	<ol>
-		<li><strong>Gunakan domain sendiri</strong> — `tokobangunan.com`, bukan `tokobangunan.wordpress.com`</li>
+		<li>
+			<strong>Gunakan domain sendiri</strong> — `tokobangunan.com`, bukan `tokobangunan.wordpress.com`
+		</li>
 		<li><strong>Title tag unik</strong> — setiap halaman punya judul berbeda, 50-60 karakter</li>
-		<li><strong>Meta description</strong> — deskripsi singkat yang mengundang klik, 150-160 karakter</li>
+		<li>
+			<strong>Meta description</strong> — deskripsi singkat yang mengundang klik, 150-160 karakter
+		</li>
 		<li><strong>Speed</strong> — loading di bawah 3 detik (hosting cepat, gambar terkompresi)</li>
 		<li><strong>Mobile-friendly</strong> — 70% pengunjung Indonesia akses dari HP</li>
-		<li><strong>Content</strong> — tulis blog minimal 1 artikel per minggu tentang topik relevan</li>
+		<li>
+			<strong>Content</strong> — tulis blog minimal 1 artikel per minggu tentang topik relevan
+		</li>
 	</ol>
 
 	<h2>Estimasi Biaya</h2>
-	<p>
-		Perkiraan biaya membuat website profesional untuk UMKM (2025):
-	</p>
+	<p>Perkiraan biaya membuat website profesional untuk UMKM (2025):</p>
 	<ul>
 		<li><strong>DIY (WordPress/Wix):</strong> Rp 1-3 juta/tahun (hosting + domain + template)</li>
 		<li><strong>Jasa Pembuatan:</strong> Rp 5-15 juta (design + development + setup)</li>
@@ -116,8 +126,8 @@
 	<h2>Kesimpulan</h2>
 	<p>
 		Website adalah investasi, bukan biaya. Untuk UMKM, mulai dari yang sederhana — yang penting
-		punya domain sendiri, mobile-friendly, dan konten yang jelas. Bisa diupgrade nanti saat
-		bisnis berkembang.
+		punya domain sendiri, mobile-friendly, dan konten yang jelas. Bisa diupgrade nanti saat bisnis
+		berkembang.
 	</p>
 
 	<blockquote>

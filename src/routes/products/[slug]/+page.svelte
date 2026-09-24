@@ -29,7 +29,7 @@
 	} from 'lucide-svelte';
 	import { ICON_MAP, normalizeModule } from '$lib/data/moduleIcons.js';
 	import DemoRequestModal from '$lib/components/DemoRequestModal.svelte';
-	import bgMain3 from '$lib/assets/bg_main3.jpg';
+	import bgMain3 from '$lib/assets/bg_main3.webp';
 
 	// 1. Props & Reactive Data
 	let { data } = $props();
@@ -99,7 +99,10 @@
 
 <svelte:head>
 	<title>{product.title} — AORTA</title>
-	<meta name="description" content="{product.overview} Hubungi AORTA untuk konsultasi dan demo gratis." />
+	<meta
+		name="description"
+		content="{product.overview} Hubungi AORTA untuk konsultasi dan demo gratis."
+	/>
 	<link rel="canonical" href="https://aorta.my.id/products/{product.slug}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={product.title} />
@@ -148,26 +151,30 @@
 
 <!-- Gradient Background Subtle -->
 <div class="pointer-events-none fixed inset-0 -z-10 bg-slate-50/50">
-	<div class="absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-full max-w-7xl bg-[radial-gradient(ellipse_at_top,rgba(1,85,255,0.06),transparent_70%)]"></div>
+	<div
+		class="absolute top-0 left-1/2 h-[400px] w-full max-w-7xl -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(1,85,255,0.06),transparent_70%)]"
+	></div>
 </div>
 
 <main class="mx-auto max-w-6xl px-4 pt-16 pb-24 sm:px-6 lg:px-8">
 	<!-- Breadcrumb Minimalis -->
-	<nav class="flex items-center gap-2 text-xs text-slate-500 font-medium">
-		<a href="/" class="flex items-center gap-1 hover:text-slate-900 transition-colors">
+	<nav class="flex items-center gap-2 text-xs font-medium text-slate-500">
+		<a href="/" class="flex items-center gap-1 transition-colors hover:text-slate-900">
 			<ArrowLeft size={14} class="text-slate-400" /> Beranda
 		</a>
 		<ChevronRight size={12} class="text-slate-300" />
-		<a href="/#products" class="hover:text-slate-900 transition-colors">Produk</a>
+		<a href="/#products" class="transition-colors hover:text-slate-900">Produk</a>
 		<ChevronRight size={12} class="text-slate-300" />
-		<span class="text-slate-900 font-semibold">{product.title}</span>
+		<span class="font-semibold text-slate-900">{product.title}</span>
 	</nav>
 
 	<!-- Hero Section -->
 	<section class="mt-8 grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
 		<!-- Main Info -->
 		<div class="space-y-6 lg:col-span-6">
-			<div class="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/80 px-3 py-1 text-xs font-semibold text-[#0155FF]">
+			<div
+				class="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/80 px-3 py-1 text-xs font-semibold text-[#0155FF]"
+			>
 				<span class="h-1.5 w-1.5 rounded-full bg-[#0155FF]"></span>
 				{product.category}
 			</div>
@@ -198,7 +205,9 @@
 
 		<!-- Screenshot Showcase -->
 		<div class="lg:col-span-6">
-			<div class="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-1.5 shadow-lg shadow-slate-200/40">
+			<div
+				class="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-1.5 shadow-lg shadow-slate-200/40"
+			>
 				<div class="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-900">
 					{#if product.screenshots && product.screenshots.length > 0}
 						<img
@@ -209,7 +218,9 @@
 							class="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
 						/>
 					{:else}
-						<div class="flex h-full w-full flex-col items-center justify-center font-mono text-xs text-slate-500">
+						<div
+							class="flex h-full w-full flex-col items-center justify-center font-mono text-xs text-slate-500"
+						>
 							<Zap size={20} class="mb-2 text-[#0155FF]" />
 							<span>No preview available</span>
 						</div>
@@ -222,7 +233,9 @@
 	<!-- Content Prose (Optional) -->
 	{#if product.content}
 		<section class="mt-20 border-t border-slate-200/60 pt-16">
-			<div class="prose max-w-none prose-slate prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h3:text-lg prose-p:text-slate-600 prose-a:text-[#0155FF] prose-strong:text-slate-900">
+			<div
+				class="prose max-w-none prose-slate prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h3:text-lg prose-p:text-slate-600 prose-a:text-[#0155FF] prose-strong:text-slate-900"
+			>
 				{@html product.content}
 			</div>
 		</section>
@@ -231,9 +244,7 @@
 	<!-- Architecture Modules -->
 	<section id="modules" class="mt-24 scroll-mt-12">
 		<div class="max-w-2xl space-y-2">
-			<h2 class="text-2xl font-semibold tracking-tight text-slate-900">
-				Modul Sistem Inti
-			</h2>
+			<h2 class="text-2xl font-semibold tracking-tight text-slate-900">Modul Sistem Inti</h2>
 			<p class="text-sm text-slate-500">
 				Seluruh fitur dirancang modular dan terintegrasi untuk mendukung efisiensi operasional.
 			</p>
@@ -241,12 +252,14 @@
 
 		<div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{#each modules as m}
-				{@const IconComponent = m.icon
-					? (ICON_MAP[m.icon] ?? iconFor(m.name))
-					: iconFor(m.name)}
-				<div class="group rounded-xl border border-slate-200/80 bg-white p-5 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100">
+				{@const IconComponent = m.icon ? (ICON_MAP[m.icon] ?? iconFor(m.name)) : iconFor(m.name)}
+				<div
+					class="group rounded-xl border border-slate-200/80 bg-white p-5 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:shadow-slate-100"
+				>
 					<div class="flex items-start gap-4">
-						<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-100 bg-slate-50 text-slate-700 transition-colors group-hover:border-blue-100 group-hover:bg-blue-50 group-hover:text-[#0155FF]">
+						<div
+							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-100 bg-slate-50 text-slate-700 transition-colors group-hover:border-blue-100 group-hover:bg-blue-50 group-hover:text-[#0155FF]"
+						>
 							<IconComponent size={18} />
 						</div>
 						<div class="space-y-1">
@@ -266,9 +279,7 @@
 	<!-- Investment & Pricing -->
 	<section id="pricing" class="mt-24 scroll-mt-12">
 		<div class="max-w-2xl space-y-2">
-			<h2 class="text-2xl font-semibold tracking-tight text-slate-900">
-				Skema Investasi
-			</h2>
+			<h2 class="text-2xl font-semibold tracking-tight text-slate-900">Skema Investasi</h2>
 			<p class="text-sm text-slate-500">
 				Pilihan fleksibel yang disesuaikan dengan skala dan kapasitas instansi Anda.
 			</p>
@@ -278,8 +289,8 @@
 			{#if product.pricing && product.pricing.length > 0}
 				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{#each product.pricing as tier}
-						<div class="flex flex-col rounded-xl border border-slate-200 p-6 bg-slate-50/50">
-							<p class="text-xs font-bold uppercase tracking-wider text-[#0155FF]">{tier.name}</p>
+						<div class="flex flex-col rounded-xl border border-slate-200 bg-slate-50/50 p-6">
+							<p class="text-xs font-bold tracking-wider text-[#0155FF] uppercase">{tier.name}</p>
 							<p class="mt-2 text-2xl font-semibold text-slate-900">{tier.price}</p>
 							{#if tier.highlights?.length}
 								<ul class="mt-6 flex-1 space-y-2.5 text-xs text-slate-600">
@@ -301,19 +312,24 @@
 					{/each}
 				</div>
 			{:else}
-				<div class="grid grid-cols-1 gap-8 items-center lg:grid-cols-12">
+				<div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
 					<div class="space-y-4 lg:col-span-7">
-						<div class="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-[#0155FF]">
+						<div
+							class="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-[#0155FF]"
+						>
 							Tailored Enterprise Solution
 						</div>
 						<h3 class="text-xl font-semibold text-slate-900">
 							Implementasi Sesuai Kebutuhan Spesifik
 						</h3>
 						<p class="text-xs leading-relaxed text-slate-600">
-							Setiap institusi memiliki alur kerja dan regulasi yang unik. Kami menyediakan skema kustom modular agar Anda berinvestasi tepat pada fitur dan kapasitas yang dibutuhkan.
+							Setiap institusi memiliki alur kerja dan regulasi yang unik. Kami menyediakan skema
+							kustom modular agar Anda berinvestasi tepat pada fitur dan kapasitas yang dibutuhkan.
 						</p>
 
-						<div class="grid grid-cols-1 gap-2.5 pt-2 text-xs font-medium text-slate-700 sm:grid-cols-2">
+						<div
+							class="grid grid-cols-1 gap-2.5 pt-2 text-xs font-medium text-slate-700 sm:grid-cols-2"
+						>
 							<div class="flex items-center gap-2">
 								<Check size={14} class="text-[#0155FF]" />
 								<span>SLA Uptime & Support 24/7</span>
@@ -335,8 +351,9 @@
 
 					<div class="rounded-xl border border-slate-900 bg-slate-900 p-6 text-white lg:col-span-5">
 						<h4 class="text-base font-semibold text-white">Minta Penawaran Resmi</h4>
-						<p class="mt-2 text-xs text-slate-300 leading-relaxed">
-							Diskusikan kebutuhan arsitektur sistem bersama Product Consultant kami untuk estimasi biaya.
+						<p class="mt-2 text-xs leading-relaxed text-slate-300">
+							Diskusikan kebutuhan arsitektur sistem bersama Product Consultant kami untuk estimasi
+							biaya.
 						</p>
 						<a
 							href="/#get-started"
@@ -355,21 +372,19 @@
 		<div class="relative overflow-hidden rounded-2xl border border-slate-800 px-6 py-10 sm:px-12">
 			<!-- Background Image dengan Gradient Overlay agar Teks Tetap Readabel -->
 			<div class="absolute inset-0 -z-10">
-				<img
-					src={bgMain3}
-					alt="Background"
-					class="h-full w-full object-cover object-center"
-				/>
+				<img src={bgMain3} alt="Background" class="h-full w-full object-cover object-center" />
 				<!-- Dark Overlay lembut -->
-				<div class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/90 via-slate-900/75 to-slate-900/60"></div>
+				<div
+					class="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/90 via-slate-900/75 to-slate-900/60"
+				></div>
 			</div>
 
 			<!-- Content -->
-			<div class="relative z-10 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
+			<div
+				class="relative z-10 text-center sm:flex sm:items-center sm:justify-between sm:text-left"
+			>
 				<div class="space-y-1">
-					<h2 class="text-xl font-semibold text-white">
-						Siap mentransformasi alur kerja Anda?
-					</h2>
+					<h2 class="text-xl font-semibold text-white">Siap mentransformasi alur kerja Anda?</h2>
 					<p class="text-xs text-slate-300">
 						Jadwalkan uji coba sistem bersama tim engineer teknis kami.
 					</p>

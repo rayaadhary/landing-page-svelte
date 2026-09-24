@@ -6,7 +6,7 @@
 	title="Aplikasi Rumah Sakit Murah tanpa Langganan: Opsi dan Pertimbangannya"
 	description="Mencari aplikasi rumah sakit murah tanpa biaya langganan bulanan? Simak opsi SIMRS sekali bayar, kelebihan, kekurangan, dan kapan model SaaS tetap lebih hemat."
 	ogDescription="Panduan memilih aplikasi rumah sakit murah tanpa langganan. Bandingkan model lisensi perpetual vs SaaS untuk SIMRS rumah sakit Anda."
-	image="/assets/hospital.png"
+	image="/assets/hospital.webp"
 	slug="aplikasi-rumah-sakit-murah-tanpa-langganan"
 	date="2025-07-19"
 	category="SIMRS"
@@ -129,9 +129,9 @@
 	</p>
 
 	<p>
-		Untuk RS kecil-menengah, model <strong>SaaS dengan biaya bulanan terjangkau</strong> seperti AORTA
-		SIMRS bisa lebih hemat karena biaya server, update, support, dan bridging sudah termasuk dalam satu
-		harga. Lihat juga
+		Untuk RS kecil-menengah, model <strong>SaaS dengan biaya bulanan terjangkau</strong> seperti
+		AORTA SIMRS bisa lebih hemat karena biaya server, update, support, dan bridging sudah termasuk
+		dalam satu harga. Lihat juga
 		<a href="/blog/harga-software-simrs-murah-terintegrasi-bpjs-satu-sehat">rincian harga SIMRS</a>
 		dan
 		<a href="/blog/alternatif-simrs-selain-khanza">alternatif SIMRS selain Khanza</a>.

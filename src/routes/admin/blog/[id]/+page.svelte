@@ -15,7 +15,7 @@
 		slug: '',
 		title: '',
 		category: 'SIMRS',
-		image: '/assets/hospital2.png',
+		image: '/assets/hospital2.webp',
 		author: 'Tim AORTA',
 		date: new Date().toISOString().split('T')[0],
 		excerpt: '',
@@ -98,34 +98,14 @@
 	}
 
 	async function save() {
-		saveError = '';
-		saving = true;
-		try {
-			const method = isNew ? 'POST' : 'PUT';
-			const body = isNew ? { ...form } : { id: Number(id), ...form };
-			const res = await fetch('/admin/api/blog', {
-				method,
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(body)
-			});
-			if (!res.ok) {
-				let detail = '';
-				try {
-					const data = await res.json();
-					detail = data.error || '';
-				} catch {
-					// non-JSON error body
-				}
-				saveError = detail || `Gagal menyimpan (HTTP ${res.status})`;
-				return;
-			}
-			goto('/admin/blog');
-		} catch (err) {
-			console.error('Save failed:', err);
-			saveError = 'Gagal menyimpan. Periksa koneksi lalu coba lagi.';
-		} finally {
-			saving = false;
-		}
+		const method = isNew ? 'POST' : 'PUT';
+		const body = isNew ? form : { id: Number(id), ...form };
+		await fetch('/admin/api/blog', {
+			method,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(body)
+		});
+		goto('/admin/blog');
 	}
 </script>
 
@@ -141,7 +121,7 @@
 			<h1 class="text-lg font-bold tracking-tight text-slate-800">
 				{isNew ? 'Tambah Blog Post' : 'Edit Blog Post'}
 			</h1>
-			<Button onclick={save} disabled={saving}>{saving ? 'Menyimpan...' : 'Simpan'}</Button>
+			<Button onclick={save}>Simpan</Button>
 		</div>
 		{#if saveError}
 			<div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -165,41 +145,47 @@
 							{ value: 'Perbandingan', label: 'Perbandingan' }
 						]}
 					/>
-					<Input bind:value={form.date} type="date" />
+					<Input bind:value={form.readTime} placeholder="Read Time" />
 				</div>
-				<div>
-					<label class="mb-1.5 block text-[13px] font-medium text-slate-600">Estimasi baca</label>
-					<div
-						class="flex h-9 items-center rounded-lg border border-slate-200 bg-slate-50 px-3 text-[13px] font-medium text-slate-600"
-					>
-						{previewReadTime}
-					</div>
-				</div>
-				<div>
-					<label class="mb-1.5 block text-[13px] font-medium text-slate-600">Gambar</label>
-					{#if form.image}
-						<div class="relative mb-2">
-							<img src={form.image} alt="Preview" class="h-32 w-full rounded-lg object-cover" />
-							<button
-								type="button"
-								onclick={() => {
-									form.image = '';
-								}}
-								class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-xs text-white hover:bg-black/70"
-								>x</button
-							>
-						</div>
-					{/if}
-					<input
-						type="file"
-						accept="image/*"
-						onchange={handleImageUpload}
-						bind:this={fileInput}
-						class="w-full text-[13px] text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-[#0155FF]/5 file:px-3 file:py-1.5 file:text-[13px] file:font-semibold file:text-[#0155FF] hover:file:bg-[#0155FF]/10"
+				<div class="grid grid-cols-2 gap-3">
+					<Input
+						bind:value={form.category}
+						type="select"
+						options={[
+							{ value: 'SIMRS', label: 'SIMRS' },
+							{ value: 'SIM Klinik', label: 'SIM Klinik' },
+							{ value: 'HRIS', label: 'HRIS' },
+							{ value: 'Custom Software', label: 'Custom Software' },
+							{ value: 'Perbandingan', label: 'Perbandingan' }
+						]}
 					/>
-					{#if uploading}
-						<p class="mt-1 text-xs text-slate-400">Uploading...</p>
-					{/if}
+					<Input bind:value={form.date} type="date" />
+					<div>
+						<label class="mb-1.5 block text-[13px] font-medium text-slate-600">Gambar</label>
+						{#if form.image}
+							<div class="relative mb-2">
+								<img src={form.image} alt="Preview" class="h-32 w-full rounded-lg object-cover" />
+								<button
+									type="button"
+									onclick={() => {
+										form.image = '';
+									}}
+									class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-xs text-white hover:bg-black/70"
+									>x</button
+								>
+							</div>
+						{/if}
+						<input
+							type="file"
+							accept="image/*"
+							onchange={handleImageUpload}
+							bind:this={fileInput}
+							class="w-full text-[13px] text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-[#0155FF]/5 file:px-3 file:py-1.5 file:text-[13px] file:font-semibold file:text-[#0155FF] hover:file:bg-[#0155FF]/10"
+						/>
+						{#if uploading}
+							<p class="mt-1 text-xs text-slate-400">Uploading...</p>
+						{/if}
+					</div>
 				</div>
 				<Input
 					bind:value={form.tags}

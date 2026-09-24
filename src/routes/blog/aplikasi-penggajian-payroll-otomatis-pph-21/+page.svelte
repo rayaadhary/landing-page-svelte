@@ -6,7 +6,7 @@
 	title="Aplikasi Penggajian / Payroll Otomatis PPh 21 — Hitung Gaji Tanpa Ribet"
 	description="Cari aplikasi penggajian / payroll otomatis dengan hitung PPh 21? AORTA menyediakan software payroll yang otomatis hitung gaji, potongan, BPJS, dan pajak karyawan."
 	ogDescription="Aplikasi payroll otomatis dengan perhitungan PPh 21, BPJS, dan potongan gaji. Kelola penggajian karyawan lebih cepat dan akurat tanpa manual Excel."
-	image="/assets/pos.png"
+	image="/assets/pos.webp"
 	slug="aplikasi-penggajian-payroll-otomatis-pph-21"
 	date="2025-08-05"
 	category="HRIS"

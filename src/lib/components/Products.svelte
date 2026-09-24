@@ -183,6 +183,10 @@
 									src={activeService.image}
 									alt={activeService.title}
 									class="h-40 w-full shrink-0 rounded-xl border border-slate-100 object-cover sm:ml-auto sm:h-36 sm:w-48 lg:h-44 lg:w-70"
+									width="640"
+									height="360"
+									loading="lazy"
+									decoding="async"
 								/>
 							{/if}
 						</div>

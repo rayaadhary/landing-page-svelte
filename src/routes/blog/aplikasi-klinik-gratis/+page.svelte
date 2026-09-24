@@ -6,7 +6,7 @@
 	title="Aplikasi Klinik Gratis: 5 Rekomendasi dan Kapan Saatnya Berlangganan"
 	description="Butuh aplikasi klinik gratis untuk praktek? Ini 5 rekomendasi SIM Klinik gratis populer, plus panduan kapan saatnya upgrade ke sistem berbayar."
 	ogDescription="Rekomendasi aplikasi klinik gratis terbaik di Indonesia. Bandingkan fitur, kelebihan, dan ketahui kapan waktunya beralih ke software berbayar."
-	image="/assets/clinic2.png"
+	image="/assets/clinic2.webp"
 	slug="aplikasi-klinik-gratis"
 	date="2025-07-12"
 	category="SIM Klinik"
@@ -101,11 +101,14 @@
 	<p>
 		Aplikasi klinik gratis cocok untuk <strong>tahap awal</strong> — praktik pribadi dengan pasien
 		terbatas. Saat pasien bertambah dan kebutuhan operasional naik, pertimbangkan
-		<a href="/blog/aplikasi-klinik-murah-tanpa-langganan">opsi aplikasi klinik murah tanpa langganan</a>
+		<a href="/blog/aplikasi-klinik-murah-tanpa-langganan"
+			>opsi aplikasi klinik murah tanpa langganan</a
+		>
 		atau SaaS berlangganan. Kalau sistem lama sering bermasalah, baca juga
-		<a href="/blog/aplikasi-klinik-sering-error-lemot">cara mengatasi aplikasi klinik yang error dan lemot</a>.
-		AORTA SIM Klinik bisa lebih <strong>murah dalam jangka panjang</strong> dibanding biaya salah input dan
-		pasien yang pergi karena sistem lambat.
+		<a href="/blog/aplikasi-klinik-sering-error-lemot"
+			>cara mengatasi aplikasi klinik yang error dan lemot</a
+		>. AORTA SIM Klinik bisa lebih <strong>murah dalam jangka panjang</strong> dibanding biaya salah input
+		dan pasien yang pergi karena sistem lambat.
 	</p>
 
 	<blockquote>

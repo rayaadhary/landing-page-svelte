@@ -6,7 +6,7 @@
 	title="Apa itu SIM Klinik? Manfaat dan Fitur Utama untuk Klinik Modern"
 	description="Mengenal Sistem Informasi Manajemen Klinik (SIM Klinik), manfaatnya untuk operasional sehari-hari, dan fitur apa saja yang wajib ada."
 	ogDescription="Apa itu SIM Klinik? Pelajari manfaat, fitur utama, dan cara memilih sistem informasi manajemen klinik yang tepat untuk praktek Anda."
-	image="/assets/clinic2.png"
+	image="/assets/clinic2.webp"
 	slug="apa-itu-sim-klinik-manfaat"
 	date="2025-07-05"
 	category="SIM Klinik"
@@ -61,13 +61,13 @@
 
 	<h2>SIM Klinik vs SIMRS: Apa Bedanya?</h2>
 	<p>
-		SIM Klinik dibuat untuk <strong>klinik pratama dan utama</strong> dengan skala operasional lebih kecil
-		dan lebih sederhana dibanding SIMRS untuk rumah sakit. Baca detail
+		SIM Klinik dibuat untuk <strong>klinik pratama dan utama</strong> dengan skala operasional lebih
+		kecil dan lebih sederhana dibanding SIMRS untuk rumah sakit. Baca detail
 		<a href="/blog/perbedaan-simrs-dan-aplikasi-klinik">perbedaan SIMRS vs aplikasi klinik</a>
-		untuk memahami kapan harus pakai mana. 	Harganya juga jauh lebih terjangkau — kalau ingin tahu
-		opsi gratis, lihat
-		<a href="/blog/aplikasi-klinik-gratis">rekomendasi aplikasi klinik gratis</a>.
-		Jika sedang cari opsi tanpa langganan, baca juga
+		untuk memahami kapan harus pakai mana. Harganya juga jauh lebih terjangkau — kalau ingin tahu opsi
+		gratis, lihat
+		<a href="/blog/aplikasi-klinik-gratis">rekomendasi aplikasi klinik gratis</a>. Jika sedang cari
+		opsi tanpa langganan, baca juga
 		<a href="/blog/aplikasi-klinik-murah-tanpa-langganan">aplikasi klinik murah tanpa langganan</a>.
 	</p>
 

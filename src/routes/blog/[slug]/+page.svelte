@@ -1,7 +1,6 @@
 <script>
 	import { ArrowLeft, ChevronRight, MessageCircle } from 'lucide-svelte';
-	import bgMain3 from '$lib/assets/bg_main3.jpg';
-	import { estimateReadTime } from '$lib/utils/readTime.js';
+	import bgMain3 from '$lib/assets/bg_main3.webp';
 
 	let { data } = $props();
 	let post = $derived(data.post);
@@ -70,7 +69,16 @@
 		<div
 			class="mt-8 overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-1.5 shadow-sm"
 		>
-			<img src={post.image} alt={post.title} class="aspect-[16/9] w-full rounded-xl object-cover" />
+			<img
+				src={post.image}
+				alt={post.title}
+				class="aspect-[16/9] w-full rounded-xl object-cover"
+				width="1200"
+				height="675"
+				loading="eager"
+				fetchpriority="high"
+				decoding="async"
+			/>
 		</div>
 
 		<!-- Article Typography / Content -->

@@ -76,7 +76,7 @@ const productsData = [
 		tagline: 'Otomatisasi & Integrasi Alur Bisnis Terpusat',
 		overview:
 			'Sistem manajemen terintegrasi untuk mengotomatisasi seluruh alur kerja operasional, keuangan, supply chain, hingga manufaktur secara real-time.',
-		image: '/assets/hris.png',
+		image: '/assets/hris.webp',
 		screenshots: [],
 		modules: [
 			'Modul Bisnis Fleksibel & Modular',
@@ -94,8 +94,8 @@ const productsData = [
 		tagline: 'Digitalisasi Ekosistem Fasilitas Kesehatan',
 		overview:
 			'Solusi digitalisasi operasional Fasilitas Kesehatan (Faskes) dari pendaftaran, rekam medis elektronik (RME), hingga integrasi BPJS & Satusehat.',
-		image: '/assets/hospital2.png',
-		screenshots: ['/assets/hospital2.png'],
+		image: '/assets/hospital2.webp',
+		screenshots: ['/assets/hospital2.webp'],
 		modules: [
 			'Rekam Medis Elektronik (RME) Standar Kemenkes',
 			'Antrean Pintar, Farmasi & Laboratorium',
@@ -133,8 +133,8 @@ const productsData = [
 		tagline: 'Kelola SDM & Penggajian Lebih Efisien',
 		overview:
 			'Sistem pengelolaan SDM otomatis untuk menyederhanakan administrasi personalia, presensi GPS berbasis lokasi/biometrik, hingga kalkulasi payroll.',
-		image: '/assets/hris.png',
-		screenshots: ['/assets/hris.png'],
+		image: '/assets/hris.webp',
+		screenshots: ['/assets/hris.webp'],
 		modules: [
 			'Presensi GPS, Geofencing & Face Recognition',
 			'Kalkulasi PPh 21, BPJS Ketenagakerjaan & Kesehatan',
@@ -172,8 +172,8 @@ const productsData = [
 		tagline: 'Kasir Pintar & Kontrol Stok Multi-Gudang',
 		overview:
 			'Sistem kasir dan manajemen stok terpusat untuk retail, grosir, maupun F&B dengan pemantauan multi-gudang secara akurat dan real-time.',
-		image: '/assets/pos.png',
-		screenshots: ['/assets/pos.png'],
+		image: '/assets/pos.webp',
+		screenshots: ['/assets/pos.webp'],
 		modules: [
 			'Kasir Omnichannel (QRIS, EDC & E-Wallet)',
 			'Manajemen Stok Multi-Gudang & Barcode',
@@ -246,7 +246,7 @@ const testimonialsData = [
 		avatarColor: '#10b981',
 		projectName: 'Kaigopedia (LMS Platform)',
 		category: 'E-LEARNING & LMS',
-		image: '/assets/kaigopedia.png',
+		image: '/assets/kaigopedia.webp',
 		rating: 5,
 		sortOrder: 0
 	}
@@ -290,7 +290,7 @@ const blogPostsData = [
 		slug: 'digitalisasi-rumah-sakit-simrs-aorta',
 		title: 'Digitalisasi Rumah Sakit: Mengapa SIMRS AORTA Solusi Tepat',
 		category: 'Healthcare',
-		image: '/assets/hospital2.png',
+		image: '/assets/hospital2.webp',
 		author: 'AORTA Team',
 		date: '22 Sep 2026',
 		readTime: '5 min read',
@@ -307,7 +307,7 @@ const blogPostsData = [
 		slug: 'hris-modern-kelola-karyawan-lebih-mudah',
 		title: 'HRIS Modern: Kelola Karyawan Lebih Mudah dengan AORTA',
 		category: 'Business',
-		image: '/assets/hris.png',
+		image: '/assets/hris.webp',
 		author: 'AORTA Team',
 		date: '18 Sep 2026',
 		readTime: '4 min read',
@@ -324,7 +324,7 @@ const blogPostsData = [
 		slug: 'pos-stok-bisnis-retail-efisien',
 		title: 'POS & Stok: Cara Tingkatkan Efisiensi Bisnis Retail',
 		category: 'Retail',
-		image: '/assets/pos.png',
+		image: '/assets/pos.webp',
 		author: 'AORTA Team',
 		date: '15 Sep 2026',
 		readTime: '4 min read',
@@ -361,8 +361,120 @@ const settingsData = [
 	}
 ];
 
+// ponytail: drizzle-kit push needs a TTY for column conflicts and dies in CI —
+// sync schema here so every deploy that runs seed also fixes drift
+async function ensureSchema() {
+	await client.unsafe(`
+		CREATE TABLE IF NOT EXISTS users (
+			id serial PRIMARY KEY,
+			email varchar(255) NOT NULL UNIQUE,
+			password_hash text NOT NULL,
+			created_at timestamp DEFAULT now() NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS sessions (
+			id serial PRIMARY KEY,
+			token varchar(64) NOT NULL UNIQUE,
+			user_id integer NOT NULL REFERENCES users(id),
+			expires_at timestamp NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS hero (
+			id serial PRIMARY KEY,
+			title_prefix varchar(255) NOT NULL,
+			title_highlight varchar(255) NOT NULL,
+			highlight_color varchar(50) DEFAULT '#0155FF' NOT NULL,
+			description text NOT NULL,
+			cta_primary_label varchar(255) NOT NULL,
+			cta_primary_href text DEFAULT '' NOT NULL,
+			cta_secondary_label varchar(255) NOT NULL,
+			cta_secondary_href varchar(500) DEFAULT '#layanan' NOT NULL,
+			stats jsonb DEFAULT '[]'::jsonb NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS products (
+			id serial PRIMARY KEY,
+			slug varchar(255) NOT NULL UNIQUE,
+			title varchar(255) NOT NULL,
+			category varchar(255) NOT NULL,
+			overview text NOT NULL,
+			screenshots jsonb DEFAULT '[]'::jsonb NOT NULL,
+			modules jsonb DEFAULT '[]'::jsonb NOT NULL,
+			pricing jsonb DEFAULT '[]'::jsonb NOT NULL,
+			sort_order integer DEFAULT 0 NOT NULL,
+			active boolean DEFAULT true NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS features (
+			id serial PRIMARY KEY,
+			title varchar(255) NOT NULL,
+			description text NOT NULL,
+			icon_name varchar(100) NOT NULL,
+			sort_order integer DEFAULT 0 NOT NULL,
+			active boolean DEFAULT true NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS testimonials (
+			id serial PRIMARY KEY,
+			quote text NOT NULL,
+			client_name varchar(255) NOT NULL,
+			client_role varchar(255) NOT NULL,
+			avatar_letter varchar(10) NOT NULL,
+			avatar_color varchar(50) NOT NULL,
+			project_name varchar(255) NOT NULL,
+			sort_order integer DEFAULT 0 NOT NULL,
+			active boolean DEFAULT true NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS faqs (
+			id serial PRIMARY KEY,
+			question text NOT NULL,
+			answer text NOT NULL,
+			sort_order integer DEFAULT 0 NOT NULL,
+			active boolean DEFAULT true NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS blog_posts (
+			id serial PRIMARY KEY,
+			slug varchar(255) NOT NULL UNIQUE,
+			title varchar(255) NOT NULL,
+			category varchar(255) NOT NULL,
+			image varchar(500) NOT NULL,
+			author varchar(255) NOT NULL,
+			date varchar(20) NOT NULL,
+			read_time varchar(50) NOT NULL,
+			excerpt text NOT NULL,
+			content text NOT NULL,
+			meta_description text,
+			active boolean DEFAULT true NOT NULL,
+			created_at timestamp DEFAULT now() NOT NULL,
+			updated_at timestamp DEFAULT now() NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS settings (
+			id serial PRIMARY KEY,
+			key varchar(255) NOT NULL UNIQUE,
+			value text NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS demo_requests (
+			id serial PRIMARY KEY,
+			name varchar(255) DEFAULT '' NOT NULL,
+			company_name varchar(255) DEFAULT '' NOT NULL,
+			email varchar(255) NOT NULL,
+			phone varchar(50) NOT NULL,
+			message text DEFAULT '' NOT NULL,
+			product_slug varchar(255) DEFAULT '' NOT NULL,
+			product_title varchar(255) DEFAULT '' NOT NULL,
+			status varchar(20) DEFAULT 'baru' NOT NULL,
+			created_at timestamp DEFAULT now() NOT NULL
+		);
+
+		ALTER TABLE products ADD COLUMN IF NOT EXISTS tagline varchar(255) DEFAULT '' NOT NULL;
+		ALTER TABLE products ADD COLUMN IF NOT EXISTS content text DEFAULT '' NOT NULL;
+		ALTER TABLE products ADD COLUMN IF NOT EXISTS image varchar(500) DEFAULT '' NOT NULL;
+		ALTER TABLE testimonials ADD COLUMN IF NOT EXISTS category varchar(255) DEFAULT '' NOT NULL;
+		ALTER TABLE testimonials ADD COLUMN IF NOT EXISTS image varchar(500) DEFAULT '' NOT NULL;
+		ALTER TABLE testimonials ADD COLUMN IF NOT EXISTS rating integer DEFAULT 5 NOT NULL;
+		ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS tags text;
+		DROP TABLE IF EXISTS hero_slides;
+	`);
+}
+
 async function seed() {
 	console.log('Seeding database...');
+	await ensureSchema();
 
 	// Clear existing data
 	await db.delete(demoRequests);

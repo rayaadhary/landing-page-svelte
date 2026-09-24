@@ -39,8 +39,8 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
-          source: "docker-compose.yml"
-          target: "/opt/aorta-web"
+          source: 'docker-compose.yml'
+          target: '/opt/aorta-web'
 
       - uses: appleboy/ssh-action@v1
         with:
@@ -54,6 +54,6 @@ jobs:
             echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull app
             docker compose up -d --force-recreate app
-            docker exec aorta-web npm run db:push
+            docker exec aorta-web npm run db:push || true
             docker exec aorta-web npm run db:seed
             docker image prune -f
