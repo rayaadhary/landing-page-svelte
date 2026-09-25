@@ -18,6 +18,7 @@
 		image: '/assets/hospital2.webp',
 		author: 'Tim AORTA',
 		date: new Date().toISOString().split('T')[0],
+		readTime: '',
 		excerpt: '',
 		content: '',
 		metaDescription: '',
@@ -44,6 +45,7 @@
 					image: found.image,
 					author: found.author,
 					date: found.date,
+					readTime: found.readTime || '',
 					excerpt: found.excerpt,
 					content: found.content,
 					metaDescription: found.metaDescription ?? '',
@@ -145,47 +147,33 @@
 							{ value: 'Perbandingan', label: 'Perbandingan' }
 						]}
 					/>
-					<Input bind:value={form.readTime} placeholder="Read Time" />
-				</div>
-				<div class="grid grid-cols-2 gap-3">
-					<Input
-						bind:value={form.category}
-						type="select"
-						options={[
-							{ value: 'SIMRS', label: 'SIMRS' },
-							{ value: 'SIM Klinik', label: 'SIM Klinik' },
-							{ value: 'HRIS', label: 'HRIS' },
-							{ value: 'Custom Software', label: 'Custom Software' },
-							{ value: 'Perbandingan', label: 'Perbandingan' }
-						]}
-					/>
 					<Input bind:value={form.date} type="date" />
-					<div>
-						<label class="mb-1.5 block text-[13px] font-medium text-slate-600">Gambar</label>
-						{#if form.image}
-							<div class="relative mb-2">
-								<img src={form.image} alt="Preview" class="h-32 w-full rounded-lg object-cover" />
-								<button
-									type="button"
-									onclick={() => {
-										form.image = '';
-									}}
-									class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-xs text-white hover:bg-black/70"
-									>x</button
-								>
-							</div>
-						{/if}
-						<input
-							type="file"
-							accept="image/*"
-							onchange={handleImageUpload}
-							bind:this={fileInput}
-							class="w-full text-[13px] text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-[#0155FF]/5 file:px-3 file:py-1.5 file:text-[13px] file:font-semibold file:text-[#0155FF] hover:file:bg-[#0155FF]/10"
-						/>
-						{#if uploading}
-							<p class="mt-1 text-xs text-slate-400">Uploading...</p>
-						{/if}
-					</div>
+				</div>
+				<div>
+					<label class="mb-1.5 block text-[13px] font-medium text-slate-600">Gambar</label>
+					{#if form.image}
+						<div class="relative mb-2">
+							<img src={form.image} alt="Preview" class="h-32 w-full rounded-lg object-cover" />
+							<button
+								type="button"
+								onclick={() => {
+									form.image = '';
+								}}
+								class="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black/50 text-xs text-white hover:bg-black/70"
+								>x</button
+							>
+						</div>
+					{/if}
+					<input
+						type="file"
+						accept="image/*"
+						onchange={handleImageUpload}
+						bind:this={fileInput}
+						class="w-full text-[13px] text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-[#0155FF]/5 file:px-3 file:py-1.5 file:text-[13px] file:font-semibold file:text-[#0155FF] hover:file:bg-[#0155FF]/10"
+					/>
+					{#if uploading}
+						<p class="mt-1 text-xs text-slate-400">Uploading...</p>
+					{/if}
 				</div>
 				<Input
 					bind:value={form.tags}
