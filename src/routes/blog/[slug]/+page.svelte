@@ -4,7 +4,6 @@
 
 	let { data } = $props();
 	let post = $derived(data.post);
-	let readTime = $derived(post.content ? estimateReadTime(post.content) : post.readTime);
 </script>
 
 <svelte:head>
@@ -49,8 +48,6 @@
 				</span>
 				<span>·</span>
 				<time datetime={post.date}>{post.date}</time>
-				<span>·</span>
-				<span>{readTime}</span>
 			</div>
 
 			<h1
