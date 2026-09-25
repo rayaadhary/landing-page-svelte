@@ -99,7 +99,7 @@
 <section class="bg-white px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<!-- Section Header -->
-		<div class="mb-12 max-w-2xl">
+		<div class="mb-12 max-w-2xl" use:reveal>
 			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Testimoni</h2>
 			<p class="mt-3 text-base text-slate-600">
 				Apa kata mitra yang telah mempercayakan pengembangan sistem kustomnya kepada
@@ -107,75 +107,157 @@
 			<span class="font-bold text-[#0155FF]">Aorta Digital Solusi</span>
 		</div>
 
-		<!-- Showcase Cards from DB — horizontal scroll -->
+		<!-- Showcase Cards from DB — auto slide (marquee) -->
 		<div
-			class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 [&::-webkit-scrollbar]:hidden"
+			class="pb-4 [-ms-overflow-style:none] [scrollbar-width:none] {testimonials.length >= 2
+				? 'overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] motion-reduce:overflow-x-auto motion-reduce:[mask-image:none] motion-reduce:[-webkit-mask-image:none]'
+				: 'overflow-x-auto'} [&::-webkit-scrollbar]:hidden"
 		>
-			{#each testimonials as t, i}
-				<article
-					class="group w-72 shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200/80 bg-white p-4 sm:w-80"
-					use:reveal={{ delay: 120 + i * 60 }}
-				>
-					{#if t.image}
-						<div class="overflow-hidden rounded-lg">
-							<img
-								src={t.image}
-								alt={t.projectName || t.clientName}
-								class="h-36 w-full object-cover object-top"
-								width="640"
-								height="360"
-								loading="lazy"
-								decoding="async"
-							/>
-						</div>
-					{/if}
-
-					{#if t.category}
-						<div class="mt-4 mb-3 flex justify-center">
-							<span
-								class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md"
-							>
-								{t.category}
-							</span>
-						</div>
-					{/if}
-
-					<div class="text-center">
-						{#if t.projectName}
-							<h3 class="text-base font-bold tracking-tight text-slate-900">{t.projectName}</h3>
-						{/if}
-
-						<blockquote class="mt-2.5 line-clamp-4 text-xs leading-relaxed text-slate-600">
-							“{t.quote}”
-						</blockquote>
-
-						<div
-							class="mt-4 flex flex-col items-center justify-center gap-2 border-t border-slate-100 pt-4"
+			<div
+				class="flex w-max {testimonials.length >= 2
+					? 'hover:[animation-play-state:paused] motion-safe:animate-[testimonial-marquee_40s_linear_infinite]'
+					: 'gap-4 sm:gap-5'}"
+			>
+				{#each testimonials as t}
+					<div class="flex shrink-0 gap-4 pr-4 sm:gap-5 sm:pr-5">
+						<article
+							class="group w-72 shrink-0 overflow-hidden rounded-xl border border-slate-200/80 bg-white p-4 sm:w-80"
 						>
-							<div class="flex items-center gap-0.5 text-amber-400">
-								{#each Array(5) as _, starIdx}
-									{#if starIdx < t.rating}
-										<Star size={14} class="fill-amber-400" />
-									{:else}
-										<Star size={14} class="fill-slate-200 text-slate-200" />
-									{/if}
-								{/each}
-								<span class="ml-1 text-[11px] font-bold text-slate-700">{t.rating}.0</span>
-							</div>
-							<div class="flex items-center gap-2">
-								<span
-									class="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold text-white"
-									style="background-color: {t.avatarColor}">{t.avatarLetter}</span
+							{#if t.image}
+								<div class="overflow-hidden rounded-lg">
+									<img
+										src={t.image}
+										alt={t.projectName || t.clientName}
+										class="h-36 w-full object-cover object-top"
+										width="640"
+										height="360"
+										loading="lazy"
+										decoding="async"
+									/>
+								</div>
+							{/if}
+
+							{#if t.category}
+								<div class="mt-4 mb-3 flex justify-center">
+									<span
+										class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md"
+									>
+										{t.category}
+									</span>
+								</div>
+							{/if}
+
+							<div class="text-center">
+								{#if t.projectName}
+									<h3 class="text-base font-bold tracking-tight text-slate-900">
+										{t.projectName}
+									</h3>
+								{/if}
+
+								<blockquote class="mt-2.5 line-clamp-4 text-xs leading-relaxed text-slate-600">
+									“{t.quote}”
+								</blockquote>
+
+								<div
+									class="mt-4 flex flex-col items-center justify-center gap-2 border-t border-slate-100 pt-4"
 								>
-								<div class="text-left">
-									<p class="text-xs font-bold text-slate-800">{t.clientName}</p>
-									<p class="text-[10px] text-slate-400">{t.clientRole}</p>
+									<div class="flex items-center gap-0.5 text-amber-400">
+										{#each Array(5) as _, starIdx}
+											{#if starIdx < t.rating}
+												<Star size={14} class="fill-amber-400" />
+											{:else}
+												<Star size={14} class="fill-slate-200 text-slate-200" />
+											{/if}
+										{/each}
+										<span class="ml-1 text-[11px] font-bold text-slate-700">{t.rating}.0</span>
+									</div>
+									<div class="flex items-center gap-2">
+										<span
+											class="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold text-white"
+											style="background-color: {t.avatarColor}">{t.avatarLetter}</span
+										>
+										<div class="text-left">
+											<p class="text-xs font-bold text-slate-800">{t.clientName}</p>
+											<p class="text-[10px] text-slate-400">{t.clientRole}</p>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+						</article>
 					</div>
-				</article>
-			{/each}
+				{/each}
+
+				{#if testimonials.length >= 2}
+					{#each testimonials as t}
+						<div class="flex shrink-0 gap-4 pr-4 sm:gap-5 sm:pr-5" aria-hidden="true">
+							<article
+								class="group w-72 shrink-0 overflow-hidden rounded-xl border border-slate-200/80 bg-white p-4 sm:w-80"
+							>
+								{#if t.image}
+									<div class="overflow-hidden rounded-lg">
+										<img
+											src={t.image}
+											alt=""
+											class="h-36 w-full object-cover object-top"
+											width="640"
+											height="360"
+											loading="lazy"
+											decoding="async"
+										/>
+									</div>
+								{/if}
+
+								{#if t.category}
+									<div class="mt-4 mb-3 flex justify-center">
+										<span
+											class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md"
+										>
+											{t.category}
+										</span>
+									</div>
+								{/if}
+
+								<div class="text-center">
+									{#if t.projectName}
+										<h3 class="text-base font-bold tracking-tight text-slate-900">
+											{t.projectName}
+										</h3>
+									{/if}
+
+									<blockquote class="mt-2.5 line-clamp-4 text-xs leading-relaxed text-slate-600">
+										“{t.quote}”
+									</blockquote>
+
+									<div
+										class="mt-4 flex flex-col items-center justify-center gap-2 border-t border-slate-100 pt-4"
+									>
+										<div class="flex items-center gap-0.5 text-amber-400">
+											{#each Array(5) as _, starIdx}
+												{#if starIdx < t.rating}
+													<Star size={14} class="fill-amber-400" />
+												{:else}
+													<Star size={14} class="fill-slate-200 text-slate-200" />
+												{/if}
+											{/each}
+											<span class="ml-1 text-[11px] font-bold text-slate-700">{t.rating}.0</span>
+										</div>
+										<div class="flex items-center gap-2">
+											<span
+												class="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold text-white"
+												style="background-color: {t.avatarColor}">{t.avatarLetter}</span
+											>
+											<div class="text-left">
+												<p class="text-xs font-bold text-slate-800">{t.clientName}</p>
+												<p class="text-[10px] text-slate-400">{t.clientRole}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+					{/each}
+				{/if}
+			</div>
 		</div>
 	</div>
 </section>
