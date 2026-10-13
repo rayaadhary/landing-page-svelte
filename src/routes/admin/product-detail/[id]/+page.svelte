@@ -40,12 +40,33 @@
 	let notFound = $state(false);
 	let uploading = $state(false);
 
+	/** @type {string} */
+	let productSlug = $state('');
+	/** @type {any[]} */
+	let allProducts = $state([]);
+	/** @type {any[]} */
+	let allTestimonials = $state([]);
+	let productTestimonials = $derived(
+		allTestimonials.filter((/** @type {any} */ t) => t.productSlug === productSlug)
+	);
+	let newT = $state({
+		projectName: '',
+		clientName: '',
+		clientRole: '',
+		quote: '',
+		category: '',
+		avatarLetter: '',
+		avatarColor: '#0155FF'
+	});
+
 	onMount(async () => {
 		const res = await fetch('/admin/api/products');
 		/** @type {any[]} */
 		const items = await res.json();
+		allProducts = items;
 		const found = items.find((/** @type {any} */ i) => i.id === Number(id));
 		if (found) {
+			productSlug = found.slug ?? '';
 			form = {
 				title: found.title,
 				category: found.category ?? '',
@@ -61,7 +82,60 @@
 			notFound = true;
 		}
 		loading = false;
+		fetch('/admin/api/testimonials')
+			.then((r) => r.json())
+			.then((t) => (allTestimonials = t))
+			.catch(() => (allTestimonials = []));
 	});
+
+	async function addTestimonial() {
+		if (!newT.quote.trim() || !newT.clientName.trim()) return;
+		await fetch('/admin/api/testimonials', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				...newT,
+				productSlug,
+				avatarLetter: newT.avatarLetter || newT.clientName[0].toUpperCase(),
+				rating: 5,
+				sortOrder: allTestimonials.length
+			})
+		});
+		newT = {
+			projectName: '',
+			clientName: '',
+			clientRole: '',
+			quote: '',
+			category: '',
+			avatarLetter: '',
+			avatarColor: '#0155FF'
+		};
+		await loadTestimonials();
+	}
+
+	async function setTestimonialProduct(/** @type {any} */ t, /** @type {string} */ slug) {
+		t.productSlug = slug || null;
+		await fetch('/admin/api/testimonials', {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ id: t.id, productSlug: t.productSlug })
+		});
+		await loadTestimonials();
+	}
+
+	async function removeTestimonial(/** @type {number} */ tid) {
+		await fetch('/admin/api/testimonials', {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ id: tid })
+		});
+		await loadTestimonials();
+	}
+
+	async function loadTestimonials() {
+		const r = await fetch('/admin/api/testimonials');
+		allTestimonials = await r.json();
+	}
 
 	function addModule() {
 		if (newModule.trim()) {
@@ -435,6 +509,99 @@
 					{/each}
 				</div>
 			{/if}
+		</Card>
+		<Card class="p-6">
+			<h2 class="mb-1 text-sm font-bold text-slate-800">Testimoni</h2>
+			<p class="mb-3 text-xs text-slate-400">
+				Testimoni milik produk ini. Testimoni tanpa produk tampil di landing page &amp; halaman
+				/testimonials.
+			</p>
+
+			{#if productTestimonials.length > 0}
+				<div class="mb-3 space-y-1.5">
+					{#each productTestimonials as t (t.id)}
+						<div class="flex items-center gap-2 rounded-lg bg-slate-50 px-3 py-2">
+							<span
+								class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
+								style="background-color: {t.avatarColor}"
+							>
+								{t.avatarLetter}
+							</span>
+							<div class="min-w-0 flex-1">
+								<p class="truncate text-[13px] font-semibold text-slate-700">
+									{t.clientName}
+									<span class="font-normal text-slate-400">— {t.projectName || t.quote}</span>
+								</p>
+							</div>
+							<select
+								value={t.productSlug ?? ''}
+								onchange={(e) =>
+									setTestimonialProduct(t, /** @type {HTMLSelectElement} */ (e.target).value)}
+								class="w-40 shrink-0 rounded-md border border-slate-200 bg-white px-2 py-1 text-xs text-slate-700 focus:border-[#0155FF] focus:outline-none"
+								aria-label="Pindahkan testimoni {t.clientName}"
+							>
+								<option value="">Global</option>
+								{#each allProducts as p}
+									<option value={p.slug}>{p.title}</option>
+								{/each}
+							</select>
+							<button
+								type="button"
+								onclick={() => removeTestimonial(t.id)}
+								class="shrink-0 text-xs text-red-500 hover:text-red-700">Hapus</button
+							>
+						</div>
+					{/each}
+				</div>
+			{/if}
+
+			<div class="space-y-2">
+				<div class="grid grid-cols-2 gap-2">
+					<input
+						bind:value={newT.clientName}
+						placeholder="Nama Klien"
+						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					/>
+					<input
+						bind:value={newT.clientRole}
+						placeholder="Role / Perusahaan"
+						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					/>
+				</div>
+				<div class="grid grid-cols-2 gap-2">
+					<input
+						bind:value={newT.projectName}
+						placeholder="Judul Project"
+						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					/>
+					<input
+						bind:value={newT.category}
+						placeholder="Category badge"
+						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					/>
+				</div>
+				<textarea
+					bind:value={newT.quote}
+					rows="3"
+					placeholder="Quote klien"
+					class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+				></textarea>
+				<div class="grid grid-cols-2 gap-2">
+					<input
+						bind:value={newT.avatarLetter}
+						placeholder="Inisial (default dari nama)"
+						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					/>
+					<input
+						bind:value={newT.avatarColor}
+						placeholder="#0155FF"
+						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					/>
+				</div>
+				<div class="flex justify-end">
+					<Button variant="secondary" onclick={addTestimonial}>Tambah</Button>
+				</div>
+			</div>
 		</Card>
 	</div>
 {/if}
