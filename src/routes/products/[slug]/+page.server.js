@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { db } from '$lib/server/db/index.js';
-import { products as productsTable } from '$lib/server/db/schema.js';
-import { eq } from 'drizzle-orm';
+import { products as productsTable, testimonials } from '$lib/server/db/schema.js';
+import { and, asc, eq } from 'drizzle-orm';
 import { getProductBySlug } from '$lib/data/products.js';
 
 export async function load({ params }) {
@@ -30,5 +30,17 @@ export async function load({ params }) {
 		throw error(404, 'Produk tidak ditemukan');
 	}
 
-	return { product };
+	// Testimoni khusus produk ini; query gagal (mis. kolom belum dimigrate) = blok disembunyikan
+	let productTestimonials = [];
+	try {
+		productTestimonials = await db
+			.select()
+			.from(testimonials)
+			.where(and(eq(testimonials.productSlug, params.slug), eq(testimonials.active, true)))
+			.orderBy(asc(testimonials.sortOrder));
+	} catch {
+		productTestimonials = [];
+	}
+
+	return { product, productTestimonials };
 }

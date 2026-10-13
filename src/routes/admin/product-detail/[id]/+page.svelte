@@ -13,7 +13,8 @@
 	/**
 	 * @typedef {{ name: string, price: string, highlights: string[] }} PricingTier
 	 * @typedef {{ name: string, icon: string }} ModuleItem
-	 * @typedef {{ title: string, category: string, tagline: string, overview: string, content: string, screenshots: string[], modules: ModuleItem[], pricing: PricingTier[] }} DetailForm
+	 * @typedef {{ question: string, answer: string }} FaqItem
+	 * @typedef {{ title: string, category: string, tagline: string, overview: string, content: string, screenshots: string[], modules: ModuleItem[], pricing: PricingTier[], faqs: FaqItem[] }} DetailForm
 	 */
 
 	/** @type {DetailForm} */
@@ -25,13 +26,16 @@
 		content: '',
 		screenshots: [],
 		modules: [],
-		pricing: []
+		pricing: [],
+		faqs: []
 	});
 	let newModule = $state('');
 	let newModuleIcon = $state('');
 	let newPricingName = $state('');
 	let newPricingPrice = $state('');
 	let newPricingHighlight = $state('');
+	let newFaqQuestion = $state('');
+	let newFaqAnswer = $state('');
 	let loading = $state(true);
 	let notFound = $state(false);
 	let uploading = $state(false);
@@ -50,7 +54,8 @@
 				content: found.content ?? '',
 				screenshots: found.screenshots ?? [],
 				modules: (found.modules ?? []).map(normalizeModule),
-				pricing: found.pricing ?? []
+				pricing: found.pricing ?? [],
+				faqs: found.faqs ?? []
 			};
 		} else {
 			notFound = true;
@@ -109,6 +114,18 @@
 		form.screenshots = form.screenshots.filter((_, idx) => idx !== i);
 	}
 
+	function addFaq() {
+		if (newFaqQuestion.trim() && newFaqAnswer.trim()) {
+			form.faqs = [...form.faqs, { question: newFaqQuestion.trim(), answer: newFaqAnswer.trim() }];
+			newFaqQuestion = '';
+			newFaqAnswer = '';
+		}
+	}
+
+	function removeFaq(/** @type {number} */ i) {
+		form.faqs = form.faqs.filter((_, idx) => idx !== i);
+	}
+
 	async function handleScreenshotUpload(/** @type {Event} */ e) {
 		const input = /** @type {HTMLInputElement} */ (e.target);
 		const files = input.files;
@@ -145,7 +162,8 @@
 				content: form.content,
 				screenshots: form.screenshots,
 				modules: form.modules,
-				pricing: form.pricing
+				pricing: form.pricing,
+				faqs: form.faqs
 			})
 		});
 		goto('/admin/product-detail');
@@ -375,6 +393,44 @@
 									{/each}
 								</ul>
 							{/if}
+						</div>
+					{/each}
+				</div>
+			{/if}
+		</Card>
+		<Card class="p-6">
+			<h2 class="mb-1 text-sm font-bold text-slate-800">FAQ</h2>
+			<p class="mb-3 text-xs text-slate-400">
+				Pertanyaan umum produk ini. Ditampilkan sebagai accordion di bawah pricing.
+			</p>
+			<div class="space-y-2">
+				<input
+					bind:value={newFaqQuestion}
+					placeholder="Pertanyaan"
+					class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+				/>
+				<textarea
+					bind:value={newFaqAnswer}
+					rows="3"
+					placeholder="Jawaban"
+					class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+				></textarea>
+				<div class="flex justify-end">
+					<Button variant="secondary" onclick={addFaq}>Add</Button>
+				</div>
+			</div>
+			{#if form.faqs.length > 0}
+				<div class="mt-3 space-y-1.5">
+					{#each form.faqs as faq, i}
+						<div class="rounded-lg bg-slate-50 px-3 py-2">
+							<div class="flex items-start justify-between gap-2">
+								<p class="text-[13px] font-semibold text-slate-700">{faq.question}</p>
+								<button
+									onclick={() => removeFaq(i)}
+									class="shrink-0 text-xs text-red-500 hover:text-red-700">Hapus</button
+								>
+							</div>
+							<p class="mt-0.5 line-clamp-2 text-xs text-slate-500">{faq.answer}</p>
 						</div>
 					{/each}
 				</div>

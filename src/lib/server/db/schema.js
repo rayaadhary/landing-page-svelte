@@ -50,6 +50,7 @@ export const products = pgTable('products', {
 	screenshots: jsonb('screenshots').$type().default([]).notNull(),
 	modules: jsonb('modules').$type().default([]).notNull(),
 	pricing: jsonb('pricing').$type().default([]).notNull(),
+	faqs: jsonb('faqs').$type().default([]).notNull(),
 	sortOrder: integer('sort_order').default(0).notNull(),
 	active: boolean('active').default(true).notNull()
 });
@@ -75,7 +76,9 @@ export const testimonials = pgTable('testimonials', {
 	image: varchar('image', { length: 500 }).default('').notNull(),
 	rating: integer('rating').default(5).notNull(),
 	sortOrder: integer('sort_order').default(0).notNull(),
-	active: boolean('active').default(true).notNull()
+	active: boolean('active').default(true).notNull(),
+	// null = testimoni global (landing page / /testimonials)
+	productSlug: varchar('product_slug', { length: 255 })
 });
 
 export const faqs = pgTable('faqs', {

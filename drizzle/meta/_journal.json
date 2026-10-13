@@ -1,27 +1,41 @@
 {
-  "version": "7",
-  "dialect": "postgresql",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "7",
-      "when": 1790000069533,
-      "tag": "0000_awesome_komodo",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1790100000000,
-      "tag": "0001_hero_single",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1790200000000,
-      "tag": "0002_products_tagline_image",
-      "breakpoints": true
-    }
-  ]
+	"version": "7",
+	"dialect": "postgresql",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "7",
+			"when": 1790000069533,
+			"tag": "0000_awesome_komodo",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "7",
+			"when": 1790100000000,
+			"tag": "0001_hero_single",
+			"breakpoints": true
+		},
+		{
+			"idx": 2,
+			"version": "7",
+			"when": 1790200000000,
+			"tag": "0002_products_tagline_image",
+			"breakpoints": true
+		},
+		{
+			"idx": 3,
+			"version": "7",
+			"when": 1790300000000,
+			"tag": "0003_testimonials_product_slug",
+			"breakpoints": true
+		},
+		{
+			"idx": 4,
+			"version": "7",
+			"when": 1790400000000,
+			"tag": "0004_products_faqs",
+			"breakpoints": true
+		}
+	]
 }

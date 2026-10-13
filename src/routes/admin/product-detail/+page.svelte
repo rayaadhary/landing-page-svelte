@@ -20,7 +20,8 @@
 
 <div class="space-y-6">
 	<PageHeader title="Detail Produk">
-		<span class="text-xs text-slate-400">Hero · Konten · Screenshots · Modules · Pricing</span>
+		<span class="text-xs text-slate-400">Hero · Konten · Screenshots · Modules · Pricing · FAQ</span
+		>
 	</PageHeader>
 
 	{#if loading}

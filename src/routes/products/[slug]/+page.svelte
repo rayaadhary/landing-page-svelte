@@ -1,6 +1,8 @@
 <script>
-	import {
+import {
 		CheckCircle,
+		Plus,
+		Minus,
 		ClipboardList,
 		FileText,
 		Microscope,
@@ -25,9 +27,11 @@
 		Barcode,
 		Spline,
 		ChevronRight,
-		ArrowUpRight
+		ArrowUpRight,
+		Star
 	} from 'lucide-svelte';
 	import { ICON_MAP, normalizeModule } from '$lib/data/moduleIcons.js';
+	import { slide } from 'svelte/transition';
 	import DemoRequestModal from '$lib/components/DemoRequestModal.svelte';
 	import bgMain3 from '$lib/assets/bg_main3.webp';
 
@@ -35,7 +39,14 @@
 	let { data } = $props();
 	let product = $derived(data.product);
 	let modules = $derived((product.modules ?? []).map(normalizeModule));
+	let productTestimonials = $derived(data.productTestimonials ?? []);
 	let demoOpen = $state(false);
+	/** @type {number | null} */
+	let openFaq = $state(null);
+
+	function toggleFaq(/** @type {number} */ i) {
+		openFaq = openFaq === i ? null : i;
+	}
 
 	// 2. Icon Mapper (fallback untuk data lama / icon kosong)
 	function iconFor(m) {
@@ -366,6 +377,139 @@
 			{/if}
 		</div>
 	</section>
+
+	<!-- FAQ produk ini -->
+	{#if product.faqs?.length > 0}
+		<section class="mt-20">
+			<div class="mb-8 max-w-2xl">
+				<h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+					Pertanyaan Umum
+				</h2>
+				<p class="mt-3 text-sm text-slate-600">
+					Jawaban singkat seputar implementasi dan penggunaan {product.title}.
+				</p>
+			</div>
+
+			<div class="max-w-3xl space-y-3">
+				{#each product.faqs as faq, i}
+					<div
+						class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white transition-all duration-200 hover:border-slate-300"
+					>
+						<button
+							type="button"
+							onclick={() => toggleFaq(i)}
+							class="flex w-full items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-slate-50/50"
+							aria-expanded={openFaq === i}
+						>
+							<span class="text-sm font-semibold text-slate-900">{faq.question}</span>
+							<span
+								class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-500 transition-colors {openFaq ===
+								i
+									? 'border-blue-200 bg-blue-50 text-[#0155FF]'
+									: ''}"
+							>
+								{#if openFaq === i}
+									<Minus size={14} />
+								{:else}
+									<Plus size={14} />
+								{/if}
+							</span>
+						</button>
+
+						{#if openFaq === i}
+							<div
+								transition:slide={{ duration: 250 }}
+								class="border-t border-slate-100 px-5 pt-3 pb-5 text-xs leading-relaxed text-slate-600"
+							>
+								{faq.answer}
+							</div>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		</section>
+	{/if}
+
+	<!-- Testimoni khusus produk ini -->
+	{#if productTestimonials.length > 0}
+		<section class="mt-20">
+			<div class="mb-10 max-w-2xl">
+				<h2 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Testimoni</h2>
+				<p class="mt-3 text-sm text-slate-600">
+					Cerita dari klien yang sudah menerapkan sistem ini di lingkungan masing-masing.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+				{#each productTestimonials as t}
+					<article
+						class="flex flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white p-4"
+					>
+						{#if t.image}
+							<div class="overflow-hidden rounded-lg">
+								<img
+									src={t.image}
+									alt={t.projectName || t.clientName}
+									class="h-36 w-full object-cover object-top"
+									width="640"
+									height="360"
+									loading="lazy"
+									decoding="async"
+								/>
+							</div>
+						{/if}
+
+						{#if t.category}
+							<div class="mt-4 mb-3 flex justify-center">
+								<span
+									class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md"
+								>
+									{t.category}
+								</span>
+							</div>
+						{/if}
+
+						<div class="flex flex-1 flex-col text-center">
+							{#if t.projectName}
+								<h3 class="text-base font-bold tracking-tight text-slate-900">
+									{t.projectName}
+								</h3>
+							{/if}
+
+							<blockquote class="mt-2.5 text-xs leading-relaxed text-slate-600">
+								“{t.quote}”
+							</blockquote>
+
+							<div
+								class="mt-4 flex flex-col items-center justify-center gap-2 border-t border-slate-100 pt-4"
+							>
+								<div class="flex items-center gap-0.5 text-amber-400">
+									{#each Array(5) as _, starIdx}
+										{#if starIdx < t.rating}
+											<Star size={14} class="fill-amber-400" />
+										{:else}
+											<Star size={14} class="fill-slate-200 text-slate-200" />
+										{/if}
+									{/each}
+									<span class="ml-1 text-[11px] font-bold text-slate-700">{t.rating}.0</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<span
+										class="flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold text-white"
+										style="background-color: {t.avatarColor}">{t.avatarLetter}</span
+									>
+									<div class="text-left">
+										<p class="text-xs font-bold text-slate-800">{t.clientName}</p>
+										<p class="text-[10px] text-slate-400">{t.clientRole}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+				{/each}
+			</div>
+		</section>
+	{/if}
 
 	<!-- Call to Action Banner -->
 	<section class="mt-20">

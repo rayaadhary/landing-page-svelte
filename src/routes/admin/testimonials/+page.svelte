@@ -14,6 +14,8 @@
 	let uploading = $state(false);
 	let confirmOpen = $state(false);
 	let deleteId = $state(null);
+	/** @type {any[]} */
+	let products = $state([]);
 
 	const emptyForm = {
 		quote: '',
@@ -25,7 +27,8 @@
 		category: '',
 		image: '',
 		rating: 5,
-		sortOrder: 0
+		sortOrder: 0,
+		productSlug: ''
 	};
 	let form = $state({ ...emptyForm });
 
@@ -35,6 +38,10 @@
 		const res = await fetch('/admin/api/testimonials');
 		items = await res.json();
 		loading = false;
+		fetch('/admin/api/products')
+			.then((r) => r.json())
+			.then((p) => (products = p))
+			.catch(() => (products = []));
 	}
 
 	function startEdit(item) {
@@ -44,7 +51,8 @@
 			...item,
 			category: item.category ?? '',
 			image: item.image ?? '',
-			rating: item.rating ?? 5
+			rating: item.rating ?? 5,
+			productSlug: item.productSlug ?? ''
 		};
 	}
 
@@ -72,7 +80,9 @@
 	}
 
 	async function save() {
-		const body = JSON.stringify(form);
+		// '' = global → null (kolomnya nullable)
+		const payload = { ...form, productSlug: form.productSlug || null };
+		const body = JSON.stringify(payload);
 		if (editing === 'new') {
 			await fetch('/admin/api/testimonials', {
 				method: 'POST',
@@ -83,7 +93,7 @@
 			await fetch('/admin/api/testimonials', {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ id: editing, ...form })
+				body: JSON.stringify({ id: editing, ...payload })
 			});
 		}
 		editing = null;
@@ -127,6 +137,26 @@
 					placeholder="Judul Showcase (mis. Kaigopedia (LMS Platform))"
 				/>
 				<Input bind:value={form.category} placeholder="Category badge (mis. E-LEARNING & LMS)" />
+				<div>
+					<label
+						for="testimonial-product"
+						class="mb-1.5 block text-[13px] font-medium text-slate-600">Tampilkan di produk</label
+					>
+					<select
+						id="testimonial-product"
+						bind:value={form.productSlug}
+						class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					>
+						<option value="">Semua halaman (global)</option>
+						{#each products as p}
+							<option value={p.slug}>{p.title}</option>
+						{/each}
+					</select>
+					<p class="mt-1 text-[11px] text-slate-400">
+						Global tampil di landing &amp; /testimonials. Pilih produk hanya tampil di halaman
+						detail produk itu.
+					</p>
+				</div>
 				<div class="grid grid-cols-3 gap-3">
 					<Input bind:value={form.clientName} placeholder="Nama Klien" />
 					<Input bind:value={form.clientRole} placeholder="Role/Perusahaan" />
@@ -210,6 +240,11 @@
 							<p class="truncate text-xs text-slate-400">
 								{item.category || '—'} · {item.projectName || item.quote}
 							</p>
+							{#if item.productSlug}
+								<p class="truncate text-[11px] font-semibold text-[#0155FF]">
+									→ produk: {item.productSlug}
+								</p>
+							{/if}
 						</div>
 					</div>
 					<div class="flex shrink-0 gap-1">

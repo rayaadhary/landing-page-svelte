@@ -1,0 +1,1 @@
+ALTER TABLE "testimonials" ADD COLUMN "product_slug" varchar(255);

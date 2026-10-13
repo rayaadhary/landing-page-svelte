@@ -464,10 +464,12 @@ async function ensureSchema() {
 
 		ALTER TABLE products ADD COLUMN IF NOT EXISTS tagline varchar(255) DEFAULT '' NOT NULL;
 		ALTER TABLE products ADD COLUMN IF NOT EXISTS content text DEFAULT '' NOT NULL;
+		ALTER TABLE products ADD COLUMN IF NOT EXISTS faqs jsonb DEFAULT '[]' NOT NULL;
 		ALTER TABLE products ADD COLUMN IF NOT EXISTS image varchar(500) DEFAULT '' NOT NULL;
 		ALTER TABLE testimonials ADD COLUMN IF NOT EXISTS category varchar(255) DEFAULT '' NOT NULL;
 		ALTER TABLE testimonials ADD COLUMN IF NOT EXISTS image varchar(500) DEFAULT '' NOT NULL;
 		ALTER TABLE testimonials ADD COLUMN IF NOT EXISTS rating integer DEFAULT 5 NOT NULL;
+		ALTER TABLE testimonials ADD COLUMN IF NOT EXISTS product_slug varchar(255);
 		ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS tags text;
 		DROP TABLE IF EXISTS hero_slides;
 	`);
