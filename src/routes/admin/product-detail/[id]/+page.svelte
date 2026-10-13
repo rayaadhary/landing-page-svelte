@@ -56,7 +56,8 @@
 		quote: '',
 		category: '',
 		avatarLetter: '',
-		avatarColor: '#0155FF'
+		avatarColor: '#0155FF',
+		rating: 5
 	});
 
 	onMount(async () => {
@@ -97,7 +98,7 @@
 				...newT,
 				productSlug,
 				avatarLetter: newT.avatarLetter || newT.clientName[0].toUpperCase(),
-				rating: 5,
+				rating: Number(newT.rating) || 5,
 				sortOrder: allTestimonials.length
 			})
 		});
@@ -108,19 +109,24 @@
 			quote: '',
 			category: '',
 			avatarLetter: '',
-			avatarColor: '#0155FF'
+			avatarColor: '#0155FF',
+			rating: 5
 		};
+		await loadTestimonials();
+	}
+
+	async function patchTestimonial(/** @type {number} */ tid, /** @type {any} */ fields) {
+		await fetch('/admin/api/testimonials', {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ id: tid, ...fields })
+		});
 		await loadTestimonials();
 	}
 
 	async function setTestimonialProduct(/** @type {any} */ t, /** @type {string} */ slug) {
 		t.productSlug = slug || null;
-		await fetch('/admin/api/testimonials', {
-			method: 'PUT',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ id: t.id, productSlug: t.productSlug })
-		});
-		await loadTestimonials();
+		await patchTestimonial(t.id, { productSlug: t.productSlug });
 	}
 
 	async function removeTestimonial(/** @type {number} */ tid) {
@@ -545,6 +551,19 @@
 									<option value={p.slug}>{p.title}</option>
 								{/each}
 							</select>
+							<select
+								value={t.rating}
+								onchange={(e) =>
+									patchTestimonial(t.id, {
+										rating: Number(/** @type {HTMLSelectElement} */ (e.target).value)
+									})}
+								class="w-16 shrink-0 rounded-md border border-slate-200 bg-white px-2 py-1 text-xs text-slate-700 focus:border-[#0155FF] focus:outline-none"
+								aria-label="Rating testimoni {t.clientName}"
+							>
+								{#each [1, 2, 3, 4, 5] as r}
+									<option value={r}>{r} ★</option>
+								{/each}
+							</select>
 							<button
 								type="button"
 								onclick={() => removeTestimonial(t.id)}
@@ -586,7 +605,7 @@
 					placeholder="Quote klien"
 					class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
 				></textarea>
-				<div class="grid grid-cols-2 gap-2">
+				<div class="grid grid-cols-3 gap-2">
 					<input
 						bind:value={newT.avatarLetter}
 						placeholder="Inisial (default dari nama)"
@@ -597,6 +616,15 @@
 						placeholder="#0155FF"
 						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
 					/>
+					<select
+						bind:value={newT.rating}
+						aria-label="Rating testimoni baru"
+						class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+					>
+						{#each [1, 2, 3, 4, 5] as r}
+							<option value={r}>{r} ★</option>
+						{/each}
+					</select>
 				</div>
 				<div class="flex justify-end">
 					<Button variant="secondary" onclick={addTestimonial}>Tambah</Button>
