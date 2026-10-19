@@ -484,16 +484,30 @@
 			</div>
 		</div>
 
-		<!-- Copyright & Links -->
+		<!-- Copyright, Lisensi PSE & Links -->
 		<div
-			class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-8 sm:flex-row"
+			class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-6 text-xs text-slate-400 lg:flex-row lg:items-start"
 		>
-			<p class="text-xs text-slate-400">
-				&copy; {currentYear} PT AORTA DIGITAL SOLUSI. All rights reserved.
-			</p>
-			<div class="flex items-center gap-4 text-xs text-slate-400">
+			<div class="flex flex-col items-center gap-2 text-center lg:items-start lg:text-left">
+				<p class="whitespace-nowrap">
+					&copy; {currentYear} PT AORTA DIGITAL SOLUSI. All rights reserved.
+				</p>
+				<span class="flex items-center gap-2.5 whitespace-nowrap">
+					<img
+						src="/assets/logo-pse-small.png"
+						alt="Logo PSE Lingkup Privat"
+						width="182"
+						height="50"
+						loading="lazy"
+						class="h-5 w-auto"
+					/>
+					<span class="h-4 w-px bg-slate-200"></span>
+					<span>TDPSE 030039.01/DJAI.PSE/09/2026</span>
+				</span>
+			</div>
+			<div class="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
 				<a href="/privacy" class="hover:text-[#0155FF]">Kebijakan Privasi</a>
-				<span>&bull;</span>
+				<span class="text-slate-300">&bull;</span>
 				<span>Engineered with Precision &bull; Built for Excellence</span>
 			</div>
 		</div>
