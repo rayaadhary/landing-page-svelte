@@ -1,9 +1,20 @@
 <script>
-	import { CheckCircle2, ArrowRight, ChevronRight } from 'lucide-svelte';
+	import {
+		Check,
+		CheckCircle2,
+		ArrowRight,
+		ArrowUpRight,
+		Blocks,
+		Boxes,
+		HeartPulse,
+		Users,
+		ShoppingCart,
+		Layers,
+		Sparkles,
+		Building2
+	} from 'lucide-svelte';
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
 	import { reveal } from '$lib/actions/reveal.js';
-	import { fly } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
 	import { normalizeModule } from '$lib/data/moduleIcons.js';
 
 	let { items = [] } = $props();
@@ -12,71 +23,76 @@
 		{
 			slug: 'custom-software-app',
 			title: 'Custom Web & Mobile App',
-			tagline: 'Solusi Tailor-made untuk Skala Enterprise',
+			tagline: 'Aplikasi sesuai kebutuhan unik',
+			category: 'Platform',
 			description:
 				'Pengembangan aplikasi kustom dari nol sesuai kebutuhan unik bisnis Anda. Bebas menentukan arsitektur, fitur, dan integrasi API tanpa batasan template.',
 			image: '',
 			features: [
-				'Arsitektur Tailor-made & Scalable',
-				'UI/UX Kustom, Responsive & Modern',
-				'Integrasi Third-Party API & Payment Gateway',
-				'Keamanan Tingkat Tinggi & Optimasi Performa'
+				'Arsitektur tailor-made & scalable',
+				'UI/UX kustom, responsive & modern',
+				'Integrasi third-party API & payment gateway',
+				'Keamanan tingkat tinggi & optimasi performa'
 			]
 		},
 		{
 			slug: 'custom-erp',
-			title: 'Enterprise Resource Planning (ERP)',
-			tagline: 'Otomatisasi & Integrasi Alur Bisnis Terpusat',
+			title: 'ERP',
+			tagline: 'Alur bisnis terpusat',
+			category: 'Platform',
 			description:
-				'Sistem manajemen terintegrasi untuk mengotomatisasi seluruh alur kerja operasional, keuangan, supply chain, hingga manufaktur secara real-time.',
+				'Sistem manajemen terintegrasi untuk mengotomatisasi alur kerja operasional, keuangan, supply chain, hingga manufaktur secara real-time.',
 			image: '',
 			features: [
-				'Modul Bisnis Fleksibel & Modular',
-				'Multi-Branch, Multi-Warehouse & Currency',
-				'Dashboard Laporan Keuangan Real-time',
-				'Otomatisasi Workflow & Approval Multi-Level'
+				'Modul bisnis fleksibel & modular',
+				'Multi-branch, multi-warehouse & currency',
+				'Dashboard laporan keuangan real-time',
+				'Workflow & approval multi-level'
 			]
 		},
 		{
 			slug: 'simrs-klinik',
 			title: 'SIMRS & SIM Klinik',
-			tagline: 'Digitalisasi Ekosistem Fasilitas Kesehatan',
+			tagline: 'Fasilitas kesehatan',
+			category: 'Software',
 			description:
-				'Solusi digitalisasi operasional Fasilitas Kesehatan (Faskes) dari pendaftaran, rekam medis elektronik (RME), hingga integrasi BPJS & Satusehat.',
+				'Digitalisasi operasional faskes dari pendaftaran, rekam medis elektronik (RME), hingga integrasi BPJS & Satusehat.',
 			image: '',
 			features: [
-				'Rekam Medis Elektronik (RME) Standar Kemenkes',
-				'Antrean Pintar, Farmasi & Laboratorium',
-				'Bridging BPJS V-Claim & Integrasi Satusehat',
-				'Kasir Billing & Laporan Klaim Terpadu'
+				'RME standar Kemenkes',
+				'Antrean pintar, farmasi & laboratorium',
+				'Bridging BPJS V-Claim & Satusehat',
+				'Kasir billing & laporan klaim terpadu'
 			]
 		},
 		{
 			slug: 'hris-payroll',
-			title: 'HRIS & Payroll System',
-			tagline: 'Kelola SDM & Penggajian Lebih Efisien',
+			title: 'HRIS & Payroll',
+			tagline: 'SDM & penggajian',
+			category: 'Software',
 			description:
-				'Sistem pengelolaan SDM otomatis untuk menyederhanakan administrasi personalia, presensi GPS berbasis lokasi/biometrik, hingga kalkulasi payroll.',
+				'Sistem pengelolaan SDM otomatis untuk administrasi personalia, presensi GPS/biometrik, hingga kalkulasi payroll.',
 			image: '',
 			features: [
-				'Presensi GPS, Geofencing & Face Recognition',
-				'Kalkulasi PPh 21, BPJS Ketenagakerjaan & Kesehatan',
-				'Portal Mandiri Karyawan / ESS App',
-				'Manajemen Shift, Cuti & Overtime'
+				'Presensi GPS, geofencing & face recognition',
+				'Kalkulasi PPh 21 & BPJS',
+				'Portal mandiri karyawan (ESS)',
+				'Manajemen shift, cuti & overtime'
 			]
 		},
 		{
 			slug: 'pos-inventory',
-			title: 'POS & Smart Inventory',
-			tagline: 'Kasir Pintar & Kontrol Stok Multi-Gudang',
+			title: 'POS & Inventory',
+			tagline: 'Kasir & stok multi-gudang',
+			category: 'Software',
 			description:
-				'Sistem kasir dan manajemen stok terpusat untuk retail, grosir, maupun F&B dengan pemantauan multi-gudang secara akurat dan real-time.',
+				'Sistem kasir dan manajemen stok terpusat untuk retail, grosir, maupun F&B dengan pemantauan multi-gudang real-time.',
 			image: '',
 			features: [
-				'Kasir Omnichannel (QRIS, EDC & E-Wallet)',
-				'Manajemen Stok Multi-Gudang & Barcode',
-				'Dashboard Laporan Penjualan & Profitability',
-				'Skema Harga Fleksibel (Grosir/Eceran/Promo)'
+				'Kasir omnichannel (QRIS, EDC & e-wallet)',
+				'Stok multi-gudang & barcode',
+				'Laporan penjualan & profitabilitas',
+				'Skema harga grosir/eceran/promo'
 			]
 		}
 	];
@@ -86,7 +102,8 @@
 			? items.map((/** @type {any} */ p) => ({
 					slug: p.slug,
 					title: p.title,
-					tagline: p.tagline || p.category,
+					tagline: p.tagline || p.category || '',
+					category: p.category || 'Software',
 					description: p.overview,
 					image: p.image || '',
 					features: (p.modules || []).map((/** @type {any} */ m) => normalizeModule(m).name)
@@ -94,137 +111,193 @@
 			: fallbackServices
 	);
 
-	let activeIndex = $state(0);
-	let activeService = $derived(services[Math.min(activeIndex, services.length - 1)]);
+	/** @type {Record<string, any>} */
+	const iconBySlug = {
+		'custom-software-app': Blocks,
+		'custom-erp': Boxes,
+		'simrs-klinik': HeartPulse,
+		'hris-payroll': Users,
+		'pos-inventory': ShoppingCart
+	};
+	const palettes = [
+		{ from: '#ef4444', to: '#b91c1c' },
+		{ from: '#38bdf8', to: '#0155FF' },
+		{ from: '#3b82f6', to: '#1d4ed8' },
+		{ from: '#fbbf24', to: '#f97316' },
+		{ from: '#a78bfa', to: '#7c3aed' },
+		{ from: '#475569', to: '#1e3a8a' }
+	];
+
+	const tabs = $derived(['Semua', ...new Set(services.map((s) => s.category))]);
+	let activeTab = $state('Semua');
+
+	const visible = $derived(
+		activeTab === 'Semua' ? services : services.filter((s) => s.category === activeTab)
+	);
+
+	const enterprise = $derived(
+		services.find((s) => s.slug.includes('custom')) ?? services[0]
+	);
 
 	$effect(() => {
-		services;
-		if (activeIndex >= services.length) activeIndex = 0;
+		if (!tabs.includes(activeTab)) activeTab = 'Semua';
 	});
 </script>
 
 <section id="layanan" class="bg-white px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
-		<!-- Header Section -->
-		<div class="mb-12 max-w-2xl" use:reveal>
-			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-				Layanan & <span class="text-[#0155FF]">Solusi Digital</span>
-			</h2>
-			<p class="mt-3 text-base text-slate-600">
-				Pilih jenis solusi di sebelah kiri untuk melihat gambaran sistem, cakupan fitur, dan opsi
-				pengembangannya.
-			</p>
-		</div>
-
-		<!-- Layout Main Grid (Kiri List, Kanan Detail) -->
-		<div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
-			<!-- SEBELAH KIRI: List Navigation (4/12 Grid) -->
-			<div class="flex flex-col gap-2 lg:col-span-4">
-				{#each services as item, index}
-					<button
-						type="button"
-						onclick={() => (activeIndex = index)}
-						use:reveal={{ delay: 80 + index * 70 }}
-						class="group relative flex items-center justify-between rounded-xl border p-4 text-left transition-all duration-200 {activeIndex ===
-						index
-							? 'border-slate-300 bg-white text-slate-900'
-							: 'border-transparent text-slate-600 hover:border-slate-200 hover:bg-white/60 hover:text-slate-900'}"
+		<div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-12">
+			<!-- Solusi modular -->
+			<div class="lg:col-span-7" use:reveal>
+				<div class="flex items-center gap-3">
+					<span
+						class="flex size-10 items-center justify-center rounded-full bg-blue-50 text-[#0155FF]"
 					>
-						<div class="pl-2">
-							<p
-								class="text-xs font-semibold tracking-wider uppercase {activeIndex === index
-									? 'text-[#0155FF]'
-									: 'text-slate-400'}"
-							>
-								0{index + 1}
-							</p>
-							<h3
-								class="text-base font-bold {activeIndex === index
-									? 'text-[#0155FF]'
-									: 'text-slate-700'}"
-							>
-								{item.title}
-							</h3>
-						</div>
+						<Sparkles size={18} />
+					</span>
+					<h2 class="text-2xl font-bold tracking-tight text-slate-900">Solusi modular</h2>
+				</div>
+				<p class="mt-3 pl-[52px] text-base text-slate-600">
+					Software siap pakai untuk berbagai fungsi bisnis
+				</p>
 
-						<ChevronRight
-							size={18}
-							class="transition-transform duration-200 {activeIndex === index
-								? 'translate-x-0.5 text-[#0155FF]'
-								: 'text-slate-300 group-hover:text-slate-500'}"
-						/>
-					</button>
-				{/each}
+				<div class="mt-6 rounded-3xl border border-slate-200 bg-slate-50/70 p-4 sm:p-5">
+					<!-- Tabs pill -->
+					<div
+						role="group"
+						aria-label="Filter kategori produk"
+						class="inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-slate-200/70 p-1"
+					>
+						{#each tabs as tab}
+							<button
+								type="button"
+								aria-pressed={activeTab === tab}
+								onclick={() => (activeTab = tab)}
+								class="rounded-full px-4 py-1.5 text-sm font-semibold whitespace-nowrap transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none {activeTab ===
+								tab
+									? 'bg-white text-slate-900 shadow-sm'
+									: 'text-slate-500 hover:text-slate-800'}"
+							>
+								{tab}
+							</button>
+						{/each}
+					</div>
+
+					<!-- Grid kartu produk -->
+					<div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+						{#each visible as item, index (item.slug)}
+							{@const Icon = iconBySlug[item.slug] ?? Layers}
+							{@const c = palettes[index % palettes.length]}
+							<a
+								href="/products/{item.slug}"
+								class="group flex flex-col rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0155FF]/40 hover:shadow-[0_10px_30px_rgba(15,23,42,0.08)] focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none"
+							>
+								<div class="flex items-start justify-between">
+									{#if item.image}
+										<img
+											src={item.image}
+											alt=""
+											class="size-11 rounded-xl object-cover"
+											loading="lazy"
+											decoding="async"
+										/>
+									{:else}
+										<span
+											class="flex size-11 items-center justify-center rounded-xl text-white shadow-sm"
+											style="background: linear-gradient(135deg, {c.from}, {c.to});"
+										>
+											<Icon size={20} strokeWidth={2.2} />
+										</span>
+									{/if}
+									<ArrowUpRight
+										size={18}
+										class="text-slate-300 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#0155FF]"
+									/>
+								</div>
+
+								<h3 class="mt-4 text-base font-bold text-slate-900">{item.title}</h3>
+								<p class="mt-1 text-sm text-slate-500">{item.tagline}</p>
+
+								{#if item.features.length}
+									<ul class="mt-4 space-y-1.5 border-t border-slate-100 pt-4">
+										{#each item.features.slice(0, 2) as feature}
+											<li class="flex items-start gap-2 text-xs text-slate-500">
+												<Check size={14} strokeWidth={3} class="mt-px shrink-0 text-emerald-500" />
+												<span>{feature}</span>
+											</li>
+										{/each}
+									</ul>
+								{/if}
+							</a>
+						{/each}
+					</div>
+				</div>
 			</div>
 
-			<!-- SEBELAH KANAN: Detail Content (8/12 Grid) - Card Polos Tanpa Shadow -->
-			<div
-				class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:col-span-8"
-				use:reveal={{ delay: 200 }}
-			>
-				{#key activeIndex}
-					<div class="space-y-6" in:fly={{ y: 12, duration: 350, easing: cubicOut }}>
-						<div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-							<div class="min-w-0 flex-1">
-								<span
-									class="inline-block rounded-md bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#0155FF]"
-								>
-									{activeService.tagline}
-								</span>
-								<h3 class="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-									{activeService.title}
-								</h3>
-								<p class="mt-3 text-base leading-relaxed text-slate-600">
-									{activeService.description}
-								</p>
-							</div>
-							{#if activeService.image}
-								<img
-									src={activeService.image}
-									alt={activeService.title}
-									class="h-40 w-full shrink-0 rounded-xl border border-slate-100 object-cover sm:ml-auto sm:h-36 sm:w-48 lg:h-44 lg:w-70"
-									width="640"
-									height="360"
-									loading="lazy"
-									decoding="async"
-								/>
-							{/if}
-						</div>
+			<!-- Solusi enterprise -->
+			<div class="flex flex-col lg:col-span-5" use:reveal={{ delay: 120 }}>
+				<div class="flex items-center gap-3">
+					<span
+						class="flex size-10 items-center justify-center rounded-full bg-blue-50 text-[#0155FF]"
+					>
+						<Building2 size={18} />
+					</span>
+					<h2 class="text-2xl font-bold tracking-tight text-slate-900">Solusi enterprise</h2>
+				</div>
+				<p class="mt-3 pl-[52px] text-base text-slate-600">
+					Didesain untuk mengikuti pertumbuhan bisnis
+				</p>
 
-						<!-- Fitur Utama -->
-						<div class="border-t border-slate-100 pt-6">
-							<h4 class="mb-4 text-xs font-bold tracking-wider text-slate-400 uppercase">
-								Cakupan Fitur & Kemampuan Utama:
-							</h4>
-							<div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-								{#each activeService.features as feature}
-									<div class="flex items-start gap-2.5 text-sm text-slate-700">
-										<CheckCircle2 size={16} class="mt-0.5 shrink-0 text-[#0155FF]" />
-										<span>{feature}</span>
-									</div>
-								{/each}
-							</div>
-						</div>
-
-						<!-- Action Buttons -->
-						<div class="flex flex-wrap gap-4 border-t border-slate-100 pt-6 sm:items-center">
-							<a
-								href={whatsappLink}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="inline-flex items-center gap-2 rounded-lg bg-[#0155FF] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.98]"
-							>
-								Konsultasi Modul Ini <ArrowRight size={16} />
-							</a>
-							<a
-								href="/products/{activeService.slug}"
-								class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-slate-300 hover:bg-slate-50 active:scale-[0.98]"
-							>
-								Detail
-							</a>
-						</div>
+				<div
+					class="mt-6 flex flex-1 flex-col rounded-3xl border border-slate-200 bg-gradient-to-br from-blue-50 via-white to-slate-50 p-6 sm:p-7"
+				>
+					<div class="flex items-center gap-2.5">
+						<span
+							class="flex size-8 items-center justify-center rounded-lg bg-[#0155FF] text-white"
+						>
+							<Blocks size={16} />
+						</span>
+						<h3 class="text-lg font-extrabold tracking-tight text-slate-900">
+							{enterprise.title}
+						</h3>
 					</div>
-				{/key}
+
+					<p class="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+						{enterprise.description}
+					</p>
+
+					{#if enterprise.features.length}
+						<ul class="mt-5 space-y-2.5">
+							{#each enterprise.features.slice(0, 4) as feature}
+								<li class="flex items-start gap-2.5 text-sm leading-snug text-slate-700">
+									<CheckCircle2
+										size={18}
+										class="mt-0.5 shrink-0 fill-emerald-500 text-white"
+										strokeWidth={2}
+									/>
+									<span>{feature}</span>
+								</li>
+							{/each}
+						</ul>
+					{/if}
+
+					<div class="mt-auto flex flex-col gap-2.5 pt-7 sm:flex-row">
+						<a
+							href="/products/{enterprise.slug}"
+							class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-[#0155FF] transition-all hover:border-[#0155FF]/40 hover:bg-blue-50/50 focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none active:scale-[0.98]"
+						>
+							Pelajari lebih lanjut <ArrowRight size={16} />
+						</a>
+						<a
+							href={whatsappLink}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0155FF] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.98]"
+						>
+							Konsultasi gratis
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
