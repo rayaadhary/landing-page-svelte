@@ -346,7 +346,7 @@ const settingsData = [
 		key: 'whatsapp_message',
 		value: 'Halo Saya Tertarik menggunakan sistem dari AORTA bisa tolong dibantu?'
 	},
-	{ key: 'email', value: 'aortadigitalsolusi.business@gmail.com' },
+	{ key: 'email', value: 'aortadigitalsolusi@gmail.com' },
 	{ key: 'phone', value: '+62 896-2994-9441' },
 	{ key: 'address', value: 'Cianjur, Jawa Barat, Indonesia' },
 	{ key: 'cta_title', value: 'Digitalisasi Tanpa Pusing Dimulai di Sini.' },

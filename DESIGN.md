@@ -47,5 +47,5 @@ Gradients: `from-[#0155FF] to-[#00C2CB]` reserved for icon tiles and decorative 
 
 - Icons: `lucide-svelte` only, `strokeWidth={2.5}` on tiles.
 - Images: `.webp` sources via `<picture>`, `loading="lazy"` off-first-viewport, aspect-ratio wrappers to avoid CLS.
-- Contact truth: WhatsApp `wa.me/6289629949441`, email `aortadigitalsolusi.business@gmail.com`, kantor Cianjur, Jawa Barat. Never placeholder social URLs.
+- Contact truth: WhatsApp `wa.me/6289629949441`, email `aortadigitalsolusi@gmail.com`, kantor Cianjur, Jawa Barat. Never placeholder social URLs.
 - Copy in Bahasa Indonesia; no fabricated metrics/testimonials (see PRODUCT.md).

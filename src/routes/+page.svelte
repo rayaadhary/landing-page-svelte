@@ -19,7 +19,9 @@
 		MessageCircle,
 		ArrowUpRight,
 		Star,
-		CircleCheck
+		CircleCheck,
+		Pause,
+		Play
 	} from 'lucide-svelte';
 
 	let { data } = $props();
@@ -27,6 +29,7 @@
 	const currentYear = new Date().getFullYear();
 
 	let faqOpen = $state(/** @type {number | null} */ (null));
+	let marqueePaused = $state(false);
 
 	const faqs = $derived(
 		(data.faqs || []).map((/** @type {any} */ f) => ({ q: f.question || f.q, a: f.answer || f.a }))
@@ -99,12 +102,29 @@
 <section class="bg-white px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 		<!-- Section Header -->
-		<div class="mb-12 max-w-2xl" use:reveal>
-			<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Testimoni</h2>
-			<p class="mt-3 text-base text-slate-600">
-				Apa kata mitra yang telah mempercayakan pengembangan sistem kustomnya kepada
-			</p>
-			<span class="font-bold text-[#0155FF]">Aorta Digital Solusi</span>
+		<div class="mb-12 flex flex-wrap items-end justify-between gap-4" use:reveal>
+			<div class="max-w-2xl">
+				<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Testimoni</h2>
+				<p class="mt-3 text-base text-slate-600">
+					Apa kata mitra yang telah mempercayakan pengembangan sistem kustomnya kepada
+					<span class="font-bold text-[#0155FF]">Aorta Digital Solusi</span>
+				</p>
+			</div>
+			{#if testimonials.length >= 2}
+				<button
+					type="button"
+					onclick={() => (marqueePaused = !marqueePaused)}
+					aria-pressed={marqueePaused}
+					aria-label={marqueePaused ? 'Lanjutkan testimoni bergulir' : 'Jeda testimoni bergulir'}
+					class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none"
+				>
+					{#if marqueePaused}
+						<Play size={14} /> Lanjutkan
+					{:else}
+						<Pause size={14} /> Jeda
+					{/if}
+				</button>
+			{/if}
 		</div>
 
 		<!-- Showcase Cards from DB — auto slide (marquee) -->
@@ -116,7 +136,7 @@
 			<div
 				class="flex w-max {testimonials.length >= 2
 					? 'hover:[animation-play-state:paused] motion-safe:animate-[testimonial-marquee_40s_linear_infinite]'
-					: 'gap-4 sm:gap-5'}"
+					: 'gap-4 sm:gap-5'} {marqueePaused ? '[animation-play-state:paused]' : ''}"
 			>
 				{#each testimonials as t}
 					<div class="flex shrink-0 gap-4 pr-4 sm:gap-5 sm:pr-5">
@@ -140,7 +160,7 @@
 							{#if t.category}
 								<div class="mt-4 mb-3 flex justify-center">
 									<span
-										class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md"
+										class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[11px] font-bold tracking-wider text-white uppercase shadow-md"
 									>
 										{t.category}
 									</span>
@@ -154,7 +174,7 @@
 									</h3>
 								{/if}
 
-								<blockquote class="mt-2.5 line-clamp-4 text-xs leading-relaxed text-slate-600">
+								<blockquote class="mt-2.5 text-xs leading-relaxed text-slate-600">
 									“{t.quote}”
 								</blockquote>
 
@@ -169,7 +189,7 @@
 												<Star size={14} class="fill-slate-200 text-slate-200" />
 											{/if}
 										{/each}
-										<span class="ml-1 text-[11px] font-bold text-slate-700">{t.rating}.0</span>
+										<span class="ml-1 text-xs font-bold text-slate-700">{t.rating}.0</span>
 									</div>
 									<div class="flex items-center gap-2">
 										<span
@@ -178,7 +198,7 @@
 										>
 										<div class="text-left">
 											<p class="text-xs font-bold text-slate-800">{t.clientName}</p>
-											<p class="text-[10px] text-slate-400">{t.clientRole}</p>
+											<p class="text-[11px] text-slate-500">{t.clientRole}</p>
 										</div>
 									</div>
 								</div>
@@ -210,7 +230,7 @@
 								{#if t.category}
 									<div class="mt-4 mb-3 flex justify-center">
 										<span
-											class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[10px] font-bold tracking-wider text-white uppercase shadow-md"
+											class="inline-flex items-center rounded-full bg-[#1E293B] px-4 py-1 text-[11px] font-bold tracking-wider text-white uppercase shadow-md"
 										>
 											{t.category}
 										</span>
@@ -224,7 +244,7 @@
 										</h3>
 									{/if}
 
-									<blockquote class="mt-2.5 line-clamp-4 text-xs leading-relaxed text-slate-600">
+									<blockquote class="mt-2.5 text-xs leading-relaxed text-slate-600">
 										“{t.quote}”
 									</blockquote>
 
@@ -239,7 +259,7 @@
 													<Star size={14} class="fill-slate-200 text-slate-200" />
 												{/if}
 											{/each}
-											<span class="ml-1 text-[11px] font-bold text-slate-700">{t.rating}.0</span>
+											<span class="ml-1 text-xs font-bold text-slate-700">{t.rating}.0</span>
 										</div>
 										<div class="flex items-center gap-2">
 											<span
@@ -248,7 +268,7 @@
 											>
 											<div class="text-left">
 												<p class="text-xs font-bold text-slate-800">{t.clientName}</p>
-												<p class="text-[10px] text-slate-400">{t.clientRole}</p>
+												<p class="text-[11px] text-slate-500">{t.clientRole}</p>
 											</div>
 										</div>
 									</div>
@@ -275,19 +295,23 @@
 					use:reveal={{ delay: 60 + i * 60 }}
 				>
 					<button
+						type="button"
 						onclick={() => (faqOpen = faqOpen === i ? null : i)}
+						aria-expanded={faqOpen === i}
+						aria-controls="faq-answer-{i}"
 						class="flex w-full items-center justify-between gap-4 p-5 text-left"
 					>
 						<span class="text-sm font-semibold text-slate-900">{faq.q}</span>
 						<ChevronDown
 							size={16}
-							class="shrink-0 text-slate-400 transition-transform duration-200 {faqOpen === i
+							class="shrink-0 text-slate-500 transition-transform duration-200 {faqOpen === i
 								? 'rotate-180'
 								: ''}"
 						/>
 					</button>
 					{#if faqOpen === i}
 						<div
+							id="faq-answer-{i}"
 							transition:slide={{ duration: 250, easing: cubicOut }}
 							class="px-5 pb-5 text-sm leading-relaxed text-slate-600"
 						>
@@ -326,15 +350,15 @@
 					href={whatsappLink}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="inline-flex items-center gap-2 rounded-xl bg-[#0155FF] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-[#0145dd] active:scale-[0.98]"
+					class="inline-flex items-center gap-2 rounded-xl bg-[#0155FF] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-[#0145dd] active:scale-[0.96]"
 				>
 					<MessageSquare size={16} /> Hubungi Sales
 				</a>
 				<a
 					href="#layanan"
-					class="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-[0.98]"
+					class="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-[0.96]"
 				>
-					Mulai Gratis
+					Lihat Produk
 				</a>
 			</div>
 		</div>
@@ -367,30 +391,30 @@
 
 			<!-- Solusi & Layanan -->
 			<div class="space-y-4">
-				<h4 class="text-xs font-semibold tracking-wider text-slate-400 uppercase">
+				<h4 class="text-xs font-semibold tracking-wider text-slate-500 uppercase">
 					Solusi & Layanan
 				</h4>
 				<ul class="space-y-2 text-sm text-slate-600">
 					<li>
-						<a href="/layanan/custom-development" class="hover:text-[#0155FF]"
+						<a href="/products/custom-software-app" class="hover:text-[#0155FF]"
 							>Pengembangan Software Kustom</a
 						>
 					</li>
 					<li>
-						<a href="/layanan/enterprise-erp" class="hover:text-[#0155FF]"
+						<a href="/products/custom-erp" class="hover:text-[#0155FF]"
 							>Sistem ERP & Integrasi Bisnis</a
 						>
 					</li>
 					<li>
-						<a href="/layanan/hris-payroll" class="hover:text-[#0155FF]"
+						<a href="/products/hris-payroll" class="hover:text-[#0155FF]"
 							>HRIS & Otomatisasi Payroll</a
 						>
 					</li>
 					<li>
-						<a href="/layanan/simrs-simklinik" class="hover:text-[#0155FF]">SIMRS & SIM Klinik</a>
+						<a href="/products/simrs-klinik" class="hover:text-[#0155FF]">SIMRS & SIM Klinik</a>
 					</li>
 					<li>
-						<a href="/layanan/pos-inventory" class="hover:text-[#0155FF]"
+						<a href="/products/pos-inventory" class="hover:text-[#0155FF]"
 							>POS & Manajemen Inventaris</a
 						>
 					</li>
@@ -399,24 +423,27 @@
 
 			<!-- Kontak & Media Sosial -->
 			<div class="space-y-4">
-				<h4 class="text-xs font-semibold tracking-wider text-slate-400 uppercase">Kontak</h4>
+				<h4 class="text-xs font-semibold tracking-wider text-slate-500 uppercase">Kontak</h4>
 				<ul class="space-y-3 text-sm text-slate-600">
 					<li class="flex items-center gap-2">
-						<Mail size={14} class="shrink-0 text-slate-400" />
-						<span class="truncate">aortadigitalsolusi@gmail.com</span>
+						<Mail size={14} class="shrink-0 text-slate-500" />
+						<a
+							href="mailto:aortadigitalsolus@gmail.com"
+							class="break-all hover:text-[#0155FF]">aortadigitalsolus@gmail.com</a
+						>
 					</li>
 					<li class="flex items-center gap-2">
-						<Phone size={14} class="shrink-0 text-slate-400" />
+						<Phone size={14} class="shrink-0 text-slate-500" />
 						<span>+62 896-2994-9441</span>
 					</li>
 					<li class="flex items-start gap-2">
-						<MapPin size={14} class="mt-0.5 shrink-0 text-slate-400" />
+						<MapPin size={14} class="mt-0.5 shrink-0 text-slate-500" />
 						<span>Cianjur, Jawa Barat, Indonesia</span>
 					</li>
 				</ul>
 
 				<div class="pt-2">
-					<p class="mb-2 text-xs font-medium text-slate-400">Ikuti Kami:</p>
+					<p class="mb-2 text-xs font-medium text-slate-500">Ikuti Kami:</p>
 					<div class="flex items-center gap-2">
 						<!-- WhatsApp -->
 						<a
@@ -424,7 +451,7 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label="WhatsApp"
-							class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-600 active:scale-95"
+							class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-600 active:scale-[0.96]"
 						>
 							<svg
 								viewBox="0 0 24 24"
@@ -443,16 +470,16 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label="Instagram"
-							class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600 active:scale-95"
+							class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600 active:scale-[0.96]"
 						>
 							<Instagram size={16} />
 						</a>
 
 						<!-- Email -->
 						<a
-							href="mailto:aortadigitalsolusi@gmail.com"
-							aria-label="Email"
-							class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-[#0155FF] hover:bg-blue-50 hover:text-[#0155FF] active:scale-95"
+							href="mailto:aortadigitalsolus@gmail.com"
+							aria-label="Kirim email ke AORTA"
+							class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:border-[#0155FF] hover:bg-blue-50 hover:text-[#0155FF] active:scale-[0.96]"
 						>
 							<Mail size={16} />
 						</a>
@@ -462,7 +489,7 @@
 
 			<!-- Local SEO Google Maps Widget -->
 			<div class="space-y-3">
-				<h4 class="text-xs font-semibold tracking-wider text-slate-400 uppercase">
+				<h4 class="text-xs font-semibold tracking-wider text-slate-500 uppercase">
 					Lokasi Operasional
 				</h4>
 				<div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-1 shadow-sm">
@@ -478,7 +505,7 @@
 						class="w-full rounded-xl"
 					></iframe>
 				</div>
-				<p class="text-[11px] font-medium text-slate-400">
+				<p class="text-[11px] font-medium text-slate-500">
 					*Melayani proyek software kustom seluruh Indonesia.
 				</p>
 			</div>
@@ -486,7 +513,7 @@
 
 		<!-- Copyright, Lisensi PSE & Links -->
 		<div
-			class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-6 text-xs text-slate-400 lg:flex-row lg:items-start"
+			class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-6 text-xs text-slate-500 lg:flex-row lg:items-start"
 		>
 			<div class="flex flex-col items-center gap-2 text-center lg:items-start lg:text-left">
 				<p class="whitespace-nowrap">

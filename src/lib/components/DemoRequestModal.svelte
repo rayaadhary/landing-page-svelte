@@ -115,60 +115,85 @@
 
 				<form class="mt-5 space-y-3" onsubmit={submit}>
 					<div>
-						<label for="demo-name" class="mb-1.5 block text-[13px] font-medium text-slate-600">
+						<label
+							for="demo-name"
+							class="mb-1.5 block text-base font-medium text-slate-600 sm:text-[13px]"
+						>
 							Nama <span class="ml-0.5 text-red-400">*</span>
 						</label>
 						<input
 							id="demo-name"
 							type="text"
+							name="name"
+							autocomplete="name"
 							bind:value={form.name}
 							placeholder="Nama lengkap"
 							required
-							class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+							class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none sm:text-[13px]"
 						/>
 					</div>
 					<div>
-						<label for="demo-company" class="mb-1.5 block text-[13px] font-medium text-slate-600">
+						<label
+							for="demo-company"
+							class="mb-1.5 block text-base font-medium text-slate-600 sm:text-[13px]"
+						>
 							Nama Perusahaan
 						</label>
 						<input
 							id="demo-company"
 							type="text"
+							name="organization"
+							autocomplete="organization"
 							bind:value={form.companyName}
 							placeholder="Nama perusahaan / instansi"
-							class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+							class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none sm:text-[13px]"
 						/>
 					</div>
 					<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 						<div>
-							<label for="demo-email" class="mb-1.5 block text-[13px] font-medium text-slate-600">
+							<label
+								for="demo-email"
+								class="mb-1.5 block text-base font-medium text-slate-600 sm:text-[13px]"
+							>
 								Email <span class="ml-0.5 text-red-400">*</span>
 							</label>
 							<input
 								id="demo-email"
 								type="email"
+								name="email"
+								autocomplete="email"
+								inputmode="email"
 								bind:value={form.email}
 								placeholder="email@perusahaan.com"
 								required
-								class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+								class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none sm:text-[13px]"
 							/>
 						</div>
 						<div>
-							<label for="demo-phone" class="mb-1.5 block text-[13px] font-medium text-slate-600">
+							<label
+								for="demo-phone"
+								class="mb-1.5 block text-base font-medium text-slate-600 sm:text-[13px]"
+							>
 								No. Telepon <span class="ml-0.5 text-red-400">*</span>
 							</label>
 							<input
 								id="demo-phone"
 								type="tel"
+								name="phone"
+								autocomplete="tel"
+								inputmode="tel"
 								bind:value={form.phone}
 								placeholder="08xxxxxxxxxx"
 								required
-								class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+								class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none sm:text-[13px]"
 							/>
 						</div>
 					</div>
 					<div>
-						<label for="demo-message" class="mb-1.5 block text-[13px] font-medium text-slate-600">
+						<label
+							for="demo-message"
+							class="mb-1.5 block text-base font-medium text-slate-600 sm:text-[13px]"
+						>
 							Pesan
 						</label>
 						<textarea
@@ -176,18 +201,18 @@
 							bind:value={form.message}
 							placeholder="Kebutuhan / pertanyaan Anda (opsional)"
 							rows="3"
-							class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none"
+							class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 transition-colors placeholder:text-slate-400 focus:border-[#0155FF] focus:ring-2 focus:ring-[#0155FF]/10 focus:outline-none sm:text-[13px]"
 						></textarea>
 					</div>
 
 					{#if error}
-						<p class="text-xs text-red-500">{error}</p>
+						<p role="alert" class="text-xs text-red-500">{error}</p>
 					{/if}
 
 					<button
 						type="submit"
 						disabled={submitting}
-						class="flex w-full items-center justify-center gap-2 rounded-lg bg-[#0155FF] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-600 active:scale-[0.98] disabled:opacity-50"
+						class="flex w-full items-center justify-center gap-2 rounded-lg bg-[#0155FF] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-blue-600 active:scale-[0.96] disabled:opacity-50"
 					>
 						{#if submitting}
 							<svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">

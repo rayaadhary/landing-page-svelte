@@ -138,9 +138,7 @@
 		activeTab === 'Semua' ? services : services.filter((s) => s.category === activeTab)
 	);
 
-	const enterprise = $derived(
-		services.find((s) => s.slug.includes('custom')) ?? services[0]
-	);
+	const enterprise = $derived(services.find((s) => s.slug.includes('custom')) ?? services[0]);
 
 	$effect(() => {
 		if (!tabs.includes(activeTab)) activeTab = 'Semua';
@@ -176,7 +174,7 @@
 								type="button"
 								aria-pressed={activeTab === tab}
 								onclick={() => (activeTab = tab)}
-								class="rounded-full px-4 py-1.5 text-sm font-semibold whitespace-nowrap transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none {activeTab ===
+								class="rounded-full px-4 py-1.5 text-sm font-semibold whitespace-nowrap transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none {activeTab ===
 								tab
 									? 'bg-white text-slate-900 shadow-sm'
 									: 'text-slate-500 hover:text-slate-800'}"
@@ -214,7 +212,7 @@
 									{/if}
 									<ArrowUpRight
 										size={18}
-										class="text-slate-300 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#0155FF]"
+										class="text-slate-300 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0155FF]"
 									/>
 								</div>
 
@@ -276,7 +274,7 @@
 					<div class="mt-auto flex flex-col gap-2.5 pt-7 sm:flex-row">
 						<a
 							href="/products/{enterprise.slug}"
-							class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-[#0155FF] transition-all hover:border-[#0155FF]/40 hover:bg-blue-50/50 focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none active:scale-[0.98]"
+							class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-[#0155FF] transition-all hover:border-[#0155FF]/40 hover:bg-blue-50/50 focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:outline-none active:scale-[0.96]"
 						>
 							Pelajari lebih lanjut <ArrowRight size={16} />
 						</a>
@@ -284,7 +282,7 @@
 							href={whatsappLink}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0155FF] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.98]"
+							class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0155FF] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] focus-visible:ring-2 focus-visible:ring-[#0155FF] focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.96]"
 						>
 							Konsultasi gratis
 						</a>

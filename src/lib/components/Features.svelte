@@ -1,5 +1,5 @@
 <script>
-	import { Layers, Unlink2, ShieldCheck, BarChart3, Plus, ArrowRight } from 'lucide-svelte';
+	import { Layers, Unlink2, ShieldCheck, BarChart3, ArrowRight } from 'lucide-svelte';
 	import { whatsappLink } from '$lib/data/whatsappRedirect.js';
 	import { reveal } from '$lib/actions/reveal.js';
 	import bgMain from '$lib/assets/bg_main2.webp';
@@ -13,7 +13,6 @@
 			bgImage: bgMain, // Menggunakan gambar impor
 			badgeColor: 'bg-white/20 text-white backdrop-blur-md',
 			iconColor: 'text-white',
-			plusColor: 'text-white/80',
 			gridSpan: 'lg:col-span-2 lg:row-span-2',
 			isFeatured: true
 		},
@@ -24,7 +23,6 @@
 			bg: 'bg-slate-100 text-slate-900 border border-slate-200/80',
 			badgeColor: 'bg-slate-100 text-[#0155FF]',
 			iconColor: 'text-[#0155FF]',
-			plusColor: 'text-slate-400',
 			gridSpan: 'lg:col-span-1',
 			isFeatured: false
 		},
@@ -35,7 +33,6 @@
 			bg: 'bg-slate-100 text-slate-900 border border-slate-200/80',
 			badgeColor: 'bg-slate-100 text-[#0155FF]',
 			iconColor: 'text-[#0155FF]',
-			plusColor: 'text-slate-400',
 			gridSpan: 'lg:col-span-1',
 			isFeatured: false
 		},
@@ -46,7 +43,6 @@
 			bgImage: bgAnalytics,
 			badgeColor: 'bg-white/20 text-white backdrop-blur-md',
 			iconColor: 'text-white',
-			plusColor: 'text-white/80',
 			gridSpan: 'lg:col-span-2',
 			isFeatured: false
 		}
@@ -70,7 +66,7 @@
 		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 			{#each features as f, i}
 				<div
-					class="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 {f.bg ||
+					class="group relative flex flex-col justify-between overflow-hidden rounded-2xl p-7 {f.bg ||
 						'text-white'} {f.gridSpan}"
 					style={f.bgImage
 						? `background-image: url('${f.bgImage}'); background-size: cover; background-position: center;`
@@ -84,15 +80,10 @@
 						></div>
 					{/if}
 
-					<!-- Header Card (Icon & Plus Indicator) -->
-					<div class="relative z-10 flex items-center justify-between">
+					<!-- Header Card -->
+					<div class="relative z-10">
 						<div class="flex h-12 w-12 items-center justify-center rounded-2xl {f.badgeColor}">
 							<f.icon size={22} class={f.iconColor} />
-						</div>
-						<div
-							class="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 backdrop-blur-sm dark:bg-white/10"
-						>
-							<Plus size={18} class={f.plusColor} />
 						</div>
 					</div>
 
@@ -111,7 +102,7 @@
 									href={whatsappLink}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-gray-800 transition-all hover:bg-slate-100 active:scale-95"
+									class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-gray-800 transition-all hover:bg-slate-100 active:scale-[0.96]"
 								>
 									Konsultasi Kebutuhan <ArrowRight size={16} />
 								</a>

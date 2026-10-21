@@ -81,7 +81,7 @@
 		},
 		{
 			href: 'mailto:aortadigitalsolusi@gmail.com',
-			label: 'Email',
+			label: 'Kirim email',
 			color: 'hover:text-[#0155FF] hover:bg-blue-50',
 			svg: `<svg viewBox="0 0 24 24" class="h-4.5 w-4.5 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>`
 		}
@@ -144,6 +144,13 @@
 	</script>
 </svelte:head>
 
+<a
+	href="#main-content"
+	class="sr-only z-[60] rounded-lg bg-[#0155FF] px-4 py-2 text-sm font-semibold text-white focus:not-sr-only focus:absolute focus:top-3 focus:left-3"
+>
+	Lewati ke konten utama
+</a>
+
 {#if !isAdmin}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<header class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
@@ -151,7 +158,7 @@
 			<div class="flex h-16 items-center justify-between">
 				<a
 					href="/"
-					class="flex items-center gap-2.5 transition-transform duration-200 active:scale-95"
+					class="flex items-center gap-2.5 transition-transform duration-200 active:scale-[0.96]"
 				>
 					<picture>
 						<source srcset="/assets/logo.webp" type="image/webp" />
@@ -168,7 +175,7 @@
 						<span class="text-base font-extrabold tracking-tight text-slate-900">
 							<span class="text-[#0155FF]">AORTA</span> DIGITAL SOLUSI
 						</span>
-						<span class="text-[9.5px] font-semibold tracking-wider text-slate-500 uppercase">
+						<span class="text-[11px] font-semibold tracking-wider text-slate-500 uppercase">
 							Empowering Digital Transformation
 						</span>
 					</div>
@@ -181,8 +188,12 @@
 					{#if productsList.length > 0}
 						<div class="relative" bind:this={productDropdownEl}>
 							<button
+								type="button"
 								class="flex items-center gap-1 transition-colors hover:text-[#0155FF]"
 								onclick={() => (productDropdownOpen = !productDropdownOpen)}
+								aria-expanded={productDropdownOpen}
+								aria-haspopup="true"
+								aria-controls="product-menu"
 							>
 								<span>Produk</span>
 								<ChevronDown
@@ -195,8 +206,7 @@
 
 							{#if productDropdownOpen}
 								<div
-									role="menu"
-									tabindex="-1"
+									id="product-menu"
 									transition:fly={{ y: 8, duration: 150, easing: cubicOut }}
 									class="absolute top-full left-0 mt-2 w-72 rounded-xl border border-slate-100 bg-white p-2 shadow-lg"
 								>
@@ -232,7 +242,7 @@
 								href={item.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-all duration-200 active:scale-90 {item.color}"
+								class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-all duration-200 active:scale-[0.96] {item.color}"
 								aria-label={item.label}
 							>
 								{@html item.svg}
@@ -242,9 +252,12 @@
 				</nav>
 
 				<button
+					type="button"
 					class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 md:hidden"
 					onclick={() => (open = !open)}
-					aria-label="Toggle menu"
+					aria-expanded={open}
+					aria-controls="mobile-menu"
+					aria-label={open ? 'Tutup menu' : 'Buka menu'}
 				>
 					<div class="flex flex-col gap-1 transition-all duration-200 {open ? 'rotate-90' : ''}">
 						<span
@@ -269,6 +282,7 @@
 
 		{#if open}
 			<div
+				id="mobile-menu"
 				transition:fly={{ y: -10, duration: 200, easing: cubicOut }}
 				class="absolute top-full left-0 w-full border-b border-slate-100 bg-white shadow-lg md:hidden"
 			>
@@ -294,7 +308,7 @@
 
 					{#if productsList.length > 0}
 						<div class="py-1.5">
-							<p class="px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-400 uppercase">
+							<p class="px-3 py-1.5 text-xs font-semibold tracking-wider text-slate-500 uppercase">
 								Produk
 							</p>
 							{#each productsList as prod}
@@ -335,7 +349,7 @@
 									onclick={closeMenu}
 									class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-500 transition-all {item.color}"
 								>
-									<div class="fill-current text-slate-400">{@html item.svg}</div>
+									<div class="fill-current text-slate-500">{@html item.svg}</div>
 									<span>{item.label}</span>
 								</a>
 							{/each}
@@ -346,7 +360,7 @@
 						<a
 							href="#get-started"
 							onclick={closeMenu}
-							class="flex w-full items-center justify-center rounded-lg bg-[#0155FF] py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.98]"
+							class="flex w-full items-center justify-center rounded-lg bg-[#0155FF] py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.96]"
 						>
 							Mulai Sekarang
 						</a>
@@ -357,6 +371,6 @@
 	</header>
 {/if}
 
-<main class="min-h-screen">
+<main id="main-content" class="min-h-screen" tabindex="-1">
 	<slot />
 </main>

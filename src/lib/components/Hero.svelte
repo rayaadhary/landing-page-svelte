@@ -41,7 +41,8 @@
 	<div class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block">
 		<img
 			src={bgMain}
-			alt="AORTA Digital Solution"
+			alt=""
+			aria-hidden="true"
 			class="h-full w-full object-cover"
 			width="1920"
 			height="1280"
@@ -73,14 +74,14 @@
 						href={ctaPrimaryHref}
 						target={isExternal ? '_blank' : undefined}
 						rel={isExternal ? 'noopener noreferrer' : undefined}
-						class="inline-flex items-center gap-2 rounded-lg bg-[#0155FF] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.98]"
+						class="inline-flex items-center gap-2 rounded-lg bg-[#0155FF] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#0145dd] active:scale-[0.96]"
 					>
 						{ctaPrimaryLabel}
 						<ArrowRight size={16} />
 					</a>
 					<a
 						href={ctaSecondaryHref}
-						class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 transition-all hover:border-slate-300 hover:text-slate-900 active:scale-[0.98]"
+						class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 transition-all hover:border-slate-300 hover:text-slate-900 active:scale-[0.96]"
 					>
 						{ctaSecondaryLabel}
 					</a>

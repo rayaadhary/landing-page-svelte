@@ -21,7 +21,7 @@ Penyedia solusi software kesehatan modular kelas enterprise dengan compliance re
 ## Operating Context
 
 - Bahasa utama: Bahasa Indonesia. Halaman diakses calon pembeli keputusan (manajer RS, pemilik klinik, HRD).
-- Kontak utama: WhatsApp sales (+62 896-2994-9441), email aortadigitalsolusi.business@gmail.com, kantor di Cianjur, Jawa Barat.
+- Kontak utama: WhatsApp sales (+62 896-2994-9441), email aortadigitalsolusi@gmail.com, kantor di Cianjur, Jawa Barat.
 - Produk yang diiklankan: SIMRS Core Enterprise, SIM Klinik Pratama & Utama, HRIS Smart Corporate, POS & Intelligent Inventory, Custom Architecture System.
 - Blog berisi artikel SEO dengan topik SIMRS, aplikasi klinik, HRIS, jasa pembuatan di kota-kota Jawa Barat, undangan digital.
 
