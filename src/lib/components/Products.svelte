@@ -1,6 +1,5 @@
 <script>
 	import {
-		Check,
 		CheckCircle2,
 		ArrowRight,
 		ArrowUpRight,
@@ -19,6 +18,9 @@
 
 	let { items = [] } = $props();
 
+	/** @typedef {{ slug: string, title: string, tagline: string, category: string, description: string, image: string, features: string[] }} Service */
+
+	/** @type {Service[]} */
 	const fallbackServices = [
 		{
 			slug: 'custom-software-app',
@@ -97,6 +99,7 @@
 		}
 	];
 
+	/** @type {Service[]} */
 	const services = $derived(
 		items.length
 			? items.map((/** @type {any} */ p) => ({
@@ -105,7 +108,8 @@
 					tagline: p.tagline || p.category || '',
 					category: p.category || 'Software',
 					description: p.overview,
-					image: p.image || ''
+					image: p.image || '',
+					features: (p.modules || []).map((/** @type {any} */ m) => normalizeModule(m).name)
 				}))
 			: fallbackServices
 	);
@@ -216,17 +220,6 @@
 
 								<h3 class="mt-4 text-base font-bold text-slate-900">{item.title}</h3>
 								<p class="mt-1 text-sm text-slate-500">{item.tagline}</p>
-
-								{#if item.features.length}
-									<ul class="mt-4 space-y-1.5 border-t border-slate-100 pt-4">
-										{#each item.features.slice(0, 2) as feature}
-											<li class="flex items-start gap-2 text-xs text-slate-500">
-												<Check size={14} strokeWidth={3} class="mt-px shrink-0 text-emerald-500" />
-												<span>{feature}</span>
-											</li>
-										{/each}
-									</ul>
-								{/if}
 							</a>
 						{/each}
 					</div>
