@@ -105,8 +105,7 @@
 					tagline: p.tagline || p.category || '',
 					category: p.category || 'Software',
 					description: p.overview,
-					image: p.image || '',
-					features: (p.modules || []).map((/** @type {any} */ m) => normalizeModule(m).name)
+					image: p.image || ''
 				}))
 			: fallbackServices
 	);
